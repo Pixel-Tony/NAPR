@@ -1,2 +1,2 @@
 # NAPR
-North-American Passenger Railroads set for (https://github.com/OpenTTD)[OpenTTD]
+North-American Passenger Railroads set for [OpenTTD](https://github.com/OpenTTD) game
