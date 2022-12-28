@@ -1,0 +1,1630 @@
+//--------------------------------------------------------------------------------------------------Amfleet
+spriteset (spriteset_Amfleet_Coach_purchase_Phase_II,"gfx/USA_Amtrak_Amfleet.png")  { [38, 4, 36, 16, -19, -12] }
+spriteset (spriteset_Amfleet_Coach_purchase_Phase_III,"gfx/USA_Amtrak_Amfleet.png") { [38, 37, 36, 16, -19, -12] }
+spriteset (spriteset_Amfleet_Coach_purchase_Phase_IVa,"gfx/USA_Amtrak_Amfleet.png") { [38, 70, 36, 16, -19, -12] }
+spriteset (spriteset_Amfleet_Coach_purchase_Phase_V,"gfx/USA_Amtrak_Amfleet.png")   { [38, 103, 36, 16, -19, -12] }
+
+spriteset (spriteset_Amfleet_Cafe_purchase_Phase_II,"gfx/USA_Amtrak_Amfleet.png")  { [134, 4, 36, 16, -19, -12] }
+spriteset (spriteset_Amfleet_Cafe_purchase_Phase_III,"gfx/USA_Amtrak_Amfleet.png") { [134, 37, 36, 16, -19, -12] }
+spriteset (spriteset_Amfleet_Cafe_purchase_Phase_IVa,"gfx/USA_Amtrak_Amfleet.png") { [134, 70, 36, 16, -19, -12] }
+spriteset (spriteset_Amfleet_Cafe_purchase_Phase_V,"gfx/USA_Amtrak_Amfleet.png")   { [134, 103, 36, 16, -19, -12] }
+
+template tmpl_Amfleet(x,y) {
+  [x,      y,    8,     26,     -3,    -10]
+	[x+9,    y,    24,    21,     -16,   -10]
+	[x+34,   y,    36,    16,     -20,   -12]
+	[x+71,   y,    24,    21,     -10,   -12]
+}
+template tmpl_Amfleet2(x,y) {
+  [x,      y,    8,     26,     -3,    -12]
+	[x+9,    y,    24,    21,     -14,   -11]
+	[x+34,   y,    36,    16,     -16,   -12]
+	[x+71,   y,    24,    21,     -8,    -11]
+}
+spriteset (spriteset_Amfleet_Coach_Phase_II,"gfx/USA_Amtrak_Amfleet.png")  { tmpl_Amfleet(4,4) tmpl_Amfleet2(4,4) }
+spriteset (spriteset_Amfleet_Coach_Phase_III,"gfx/USA_Amtrak_Amfleet.png") { tmpl_Amfleet(4,37) tmpl_Amfleet2(4,37) }
+spriteset (spriteset_Amfleet_Coach_Phase_IVa,"gfx/USA_Amtrak_Amfleet.png") { tmpl_Amfleet(4,70) tmpl_Amfleet2(4,70) }
+spriteset (spriteset_Amfleet_Coach_Phase_V,"gfx/USA_Amtrak_Amfleet.png")   { tmpl_Amfleet(4,103) tmpl_Amfleet2(4,103) }
+
+spriteset (spriteset_Amfleet_Cafe_Phase_II,"gfx/USA_Amtrak_Amfleet.png")  { tmpl_Amfleet(100,4) tmpl_Amfleet2(100,4) }
+spriteset (spriteset_Amfleet_Cafe_Phase_III,"gfx/USA_Amtrak_Amfleet.png") { tmpl_Amfleet(100,37) tmpl_Amfleet2(100,37) }
+spriteset (spriteset_Amfleet_Cafe_Phase_IVa,"gfx/USA_Amtrak_Amfleet.png") { tmpl_Amfleet(100,70) tmpl_Amfleet2(100,70) }
+spriteset (spriteset_Amfleet_Cafe_Phase_V,"gfx/USA_Amtrak_Amfleet.png")  { tmpl_Amfleet(100,103) tmpl_Amfleet2(100,103) }
+
+switch(FEAT_TRAINS, SELF, sw_Amfleet_Coach_purchase, current_year) {
+  0..1975:  spriteset_Amfleet_Coach_purchase_Phase_II;
+  1976..1992:  spriteset_Amfleet_Coach_purchase_Phase_III;
+  1993..1999:  spriteset_Amfleet_Coach_purchase_Phase_IVa;
+  spriteset_Amfleet_Coach_purchase_Phase_V;
+}
+
+switch(FEAT_TRAINS, SELF, sw_Amfleet_Cafe_purchase, current_year) {
+  0..1975:  spriteset_Amfleet_Cafe_purchase_Phase_II;
+  1976..1992:  spriteset_Amfleet_Cafe_purchase_Phase_III;
+  1993..1999:  spriteset_Amfleet_Cafe_purchase_Phase_IVa;
+  spriteset_Amfleet_Cafe_purchase_Phase_V;
+}
+
+switch(FEAT_TRAINS, SELF, sw_Amfleet_livery_1_2_names, cargo_subtype) {
+  0:  string(STR_Livery_Auto);
+  1:  string(STR_Amtrak_Phase_II);
+  2:  string(STR_Amtrak_Phase_III);
+}
+switch(FEAT_TRAINS, SELF, sw_Amfleet_livery_1_2_3_names, cargo_subtype) {
+  0:  string(STR_Livery_Auto);
+  1:  string(STR_Amtrak_Phase_II);
+  2:  string(STR_Amtrak_Phase_III);
+  3:  string(STR_Amtrak_Phase_IVa);
+}
+switch(FEAT_TRAINS, SELF, sw_Amfleet_livery_1_2_3_4_names, cargo_subtype) {
+  0:  string(STR_Livery_Auto);
+  1:  string(STR_Amtrak_Phase_II);
+  2:  string(STR_Amtrak_Phase_III);
+  3:  string(STR_Amtrak_Phase_IVa);
+  4:  string(STR_Amtrak_Phase_V);
+}
+switch(FEAT_TRAINS, SELF, sw_Amfleet_livery_names, current_year) {
+  0..1975:  string(STR_Livery_Auto);
+  1976..1992:  sw_Amfleet_livery_1_2_names;
+  1993..1999:  sw_Amfleet_livery_1_2_3_names;
+  sw_Amfleet_livery_1_2_3_4_names;
+}
+
+switch(FEAT_TRAINS, SELF, sw_Amfleet_Coach_livery_by_year, cargo_subtype) {
+  0..1975:  spriteset_Amfleet_Coach_Phase_II;
+  1976..1992:  spriteset_Amfleet_Coach_Phase_III;
+  1993..1999:  spriteset_Amfleet_Coach_Phase_IVa;
+  spriteset_Amfleet_Coach_Phase_V;
+}
+switch(FEAT_TRAINS, SELF, sw_Amfleet_Coach_livery_1_2, cargo_subtype) {
+  0:  sw_Amfleet_Coach_livery_by_year;
+  1:  spriteset_Amfleet_Coach_Phase_II;
+  2:  spriteset_Amfleet_Coach_Phase_III;
+}
+switch(FEAT_TRAINS, SELF, sw_Amfleet_Coach_livery_1_2_3, cargo_subtype) {
+  0:  sw_Amfleet_Coach_livery_by_year;
+  1:  spriteset_Amfleet_Coach_Phase_II;
+  2:  spriteset_Amfleet_Coach_Phase_III;
+  3:  spriteset_Amfleet_Coach_Phase_IVa;
+}
+switch(FEAT_TRAINS, SELF, sw_Amfleet_Coach_livery_1_2_3_4, cargo_subtype) {
+  0:  sw_Amfleet_Coach_livery_by_year;
+  1:  spriteset_Amfleet_Coach_Phase_II;
+  2:  spriteset_Amfleet_Coach_Phase_III;
+  3:  spriteset_Amfleet_Coach_Phase_IVa;
+  4:  spriteset_Amfleet_Coach_Phase_V;
+}
+switch(FEAT_TRAINS, SELF, sw_Amfleet_Coach_livery, current_year) {
+  0..1975:  spriteset_Amfleet_Coach_Phase_II;
+  1976..1992:  sw_Amfleet_Coach_livery_1_2;
+  1993..1999:  sw_Amfleet_Coach_livery_1_2_3;
+  sw_Amfleet_Coach_livery_1_2_3_4;
+}
+
+switch(FEAT_TRAINS, SELF, sw_Amfleet_Cafe_livery_by_year, cargo_subtype) {
+  0..1975:  spriteset_Amfleet_Cafe_Phase_II;
+  1976..1992:  spriteset_Amfleet_Cafe_Phase_III;
+  1993..1999:  spriteset_Amfleet_Cafe_Phase_IVa;
+  spriteset_Amfleet_Cafe_Phase_V;
+}
+switch(FEAT_TRAINS, SELF, sw_Amfleet_Cafe_livery_1_2, cargo_subtype) {
+  0:  sw_Amfleet_Cafe_livery_by_year;
+  1:  spriteset_Amfleet_Cafe_Phase_II;
+  2:  spriteset_Amfleet_Cafe_Phase_III;
+}
+switch(FEAT_TRAINS, SELF, sw_Amfleet_Cafe_livery_1_2_3, cargo_subtype) {
+  0:  sw_Amfleet_Cafe_livery_by_year;
+  1:  spriteset_Amfleet_Cafe_Phase_II;
+  2:  spriteset_Amfleet_Cafe_Phase_III;
+  3:  spriteset_Amfleet_Cafe_Phase_IVa;
+}
+switch(FEAT_TRAINS, SELF, sw_Amfleet_Cafe_livery_1_2_3_4, cargo_subtype) {
+  0:  sw_Amfleet_Cafe_livery_by_year;
+  1:  spriteset_Amfleet_Cafe_Phase_II;
+  2:  spriteset_Amfleet_Cafe_Phase_III;
+  3:  spriteset_Amfleet_Cafe_Phase_IVa;
+  4:  spriteset_Amfleet_Cafe_Phase_V;
+}
+switch(FEAT_TRAINS, SELF, sw_Amfleet_Cafe_livery, current_year) {
+  0..1975:  spriteset_Amfleet_Cafe_Phase_II;
+  1976..1992:  sw_Amfleet_Cafe_livery_1_2;
+  1993..1999:  sw_Amfleet_Cafe_livery_1_2_3;
+  sw_Amfleet_Cafe_livery_1_2_3_4;
+}
+
+switch(FEAT_TRAINS, SELF, sw_Amfleet_Coach_graphics, position_in_vehid_chain % 2) {
+  0:  sw_Amfleet_Coach_livery;
+  spriteset_obsolete;
+}
+switch(FEAT_TRAINS, SELF, sw_Amfleet_Coach_articulated, extra_callback_info1) {
+  1:  item_Amfleet_Coach;
+  CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+switch(FEAT_TRAINS, SELF, sw_Amfleet_Cafe_graphics, position_in_vehid_chain % 2) {
+  0:  sw_Amfleet_Cafe_livery;
+  spriteset_obsolete;
+}
+switch(FEAT_TRAINS, SELF, sw_Amfleet_Cafe_articulated, extra_callback_info1) {
+  1:  item_Amfleet_Cafe;
+  CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+item (FEAT_TRAINS, item_Amfleet_Coach, 700) {
+  property {
+    name:                         string(STR_Amfleet_Coach_Name);
+    climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+    introduction_date:            date(1975, 1, 6);
+    model_life:                   VEHICLE_NEVER_EXPIRES;
+    vehicle_life:                 20;
+    refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+    non_refittable_cargo_classes: bitmask();
+    loading_speed:                13;
+    cost_factor:                  135;
+    running_cost_factor:          1;
+    sprite_id:                    SPRITE_ID_NEW_TRAIN;
+    speed:                        201 km/h;
+    misc_flags:                   bitmask();
+    refit_cost:                   0;
+    track_type:                   RAIL;
+    ai_special_flag:              AI_FLAG_PASSENGER;
+    power:                        0;
+    cargo_capacity:               84;
+    weight:                       49 ton;
+    ai_engine_rank:               0;
+    tractive_effort_coefficient:  0.3;
+    air_drag_coefficient:         0.06;
+    visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+    extra_weight_per_wagon:       0;
+    bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 sw_Amfleet_Coach_purchase;
+        additional_text:          return string(STR_Amfleet_Desc);
+        length:                   (position_in_vehid_chain % 2) == 0 ? 8 : 1;
+        cargo_subtype_text:       sw_Amfleet_livery_names;
+        default:                  sw_Amfleet_Coach_graphics;
+        articulated_part:         sw_Amfleet_Coach_articulated;
+    }
+}
+
+item (FEAT_TRAINS, item_Amfleet_Cafe, 701) {
+  property {
+    name:                         string(STR_Amfleet_Cafe_Name);
+    climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+    introduction_date:            date(1975, 1, 6);
+    model_life:                   VEHICLE_NEVER_EXPIRES;
+    vehicle_life:                 20;
+    refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+    non_refittable_cargo_classes: bitmask();
+    loading_speed:                13;
+    cost_factor:                  134;
+    running_cost_factor:          1;
+    sprite_id:                    SPRITE_ID_NEW_TRAIN;
+    speed:                        201 km/h;
+    misc_flags:                   bitmask();
+    refit_cost:                   0;
+    track_type:                   RAIL;
+    ai_special_flag:              AI_FLAG_PASSENGER;
+    power:                        0;
+    cargo_capacity:               32;
+    weight:                       49 ton;
+    ai_engine_rank:               0;
+    tractive_effort_coefficient:  0.3;
+    air_drag_coefficient:         0.06;
+    visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+    extra_weight_per_wagon:       0;
+    bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                sw_Amfleet_Cafe_purchase;
+        additional_text:         return string(STR_Amfleet_Desc);
+        length:                  (position_in_vehid_chain % 2) == 0 ? 8 : 1;
+        cargo_subtype_text:      sw_Amfleet_livery_names;
+        default:                 sw_Amfleet_Cafe_graphics;
+        articulated_part:        sw_Amfleet_Cafe_articulated;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------//EMD F40PH---P32AC-DM---Comet II-V---Multilevel---ALP-46//
+spriteset (spriteset_purchase_F40PH_phase_II, "gfx/USA_EMD_F40PH_Amtrak.png")  { [4,  190,  87,  13,  -11,  -9] }
+spriteset (spriteset_purchase_F40PH_phase_III, "gfx/USA_EMD_F40PH_Amtrak.png") { [4,  204,  87,  13,  -11,  -9] }
+spriteset (spriteset_purchase_F40PH_phase_IVa, "gfx/USA_EMD_F40PH_Amtrak.png") { [4,  218,  87,  13,  -11,  -9] }
+spriteset (spriteset_purchase_P32AC_DM_Metro_North, "gfx/USA_Amtrak_P32AC-DM.png") { [4,  97,  87,  12,  -15,  -8] }
+spriteset (spriteset_purchase_P32AC_DM_Amtrak, "gfx/USA_Amtrak_P32AC-DM.png") { [92,  97,  87,  12,  -15,  -8] }
+spriteset (spriteset_purchase_ALP_46, "gfx/USA_NJT_ALP-46.png") { [4,  66,  87,  15,  -15,  -11] }
+spriteset (spriteset_Comet_I_purchase,"gfx/USA_NJT_Comet_I.png") { [4,  103,  87,  12,  -19,  -8] }
+spriteset (spriteset_Comet_II_purchase,"gfx/USA_NJT_Comet_II.png") { [4,  103,  87,  12,  -19,  -8] }
+spriteset (spriteset_Comet_III_purchase,"gfx/USA_NJT_Comet_III.png") { [4,  103,  87,  12,  -19,  -8] }
+spriteset (spriteset_Comet_IV_purchase,"gfx/USA_NJT_Comet_IV.png")     { [4,  103,  87,  12,  -19,  -8] }
+spriteset (spriteset_Comet_IV_Car_purchase,"gfx/USA_NJT_Comet_IV.png") { [100,  103, 87,  12,  -19,  -8] }
+spriteset (spriteset_Comet_V_purchase,"gfx/USA_NJT_Comet_V.png")     { [4,  103,  87,  12,  -19,  -8] }
+spriteset (spriteset_Comet_V_Car_purchase,"gfx/USA_NJT_Comet_V.png") { [100, 103,  87,  12,  -19,  -8] }
+spriteset (spriteset_Multilevel_purchase,"gfx/USA_Bombardier_Multilevel.png")     { [4,  97,  87,  14,  -15,  -10] }
+spriteset (spriteset_Multilevel_Car_purchase,"gfx/USA_Bombardier_Multilevel.png") { [92, 97,  87,  14,  -15,  -10] }
+
+switch(FEAT_TRAINS,SELF,sw_P32AC_DM_purchase, current_year) {
+  0..1999:  spriteset_purchase_P32AC_DM_Metro_North;
+  spriteset_purchase_P32AC_DM_Amtrak;
+}
+
+template tmpl_F40PH(x,y) {
+    [x,      y,    8,     24,     -3,    -10]
+	[x+9,    y,    22,    20,     -12,   -11]
+	[x+32,   y,    32,    16,     -16,   -12]
+	[x+65,   y,    22,    20,     -8,    -11]
+    [x+88,   y,    8,     24,     -3,     -8]
+	[x+97,   y,    22,    20,     -14,   -10]
+	[x+120,  y,    32,    16,     -16,   -12]
+	[x+153,  y,    22,    20,     -10,   -12]
+}
+template tmpl_F40PH_rev(x,y) {
+    [x+88,   y,    8,     24,     -3,     -8]
+	[x+97,   y,    22,    20,     -12,   -11]
+	[x+120,  y,    32,    16,     -12,   -12]
+	[x+153,  y,    22,    20,     -8,    -11]
+    [x,      y,    8,     24,     -3,     -8]
+	[x+9,    y,    22,    20,     -14,   -10]
+	[x+32,   y,    32,    16,     -20,   -12]
+	[x+65,   y,    22,    20,     -10,   -12]
+}
+template tmpl_F40PH_cab(x,y) {
+    [x+88,   y,    8,     24,     -3,     -8]
+	[x+97,   y,    22,    20,     -14,   -10]
+	[x+120,  y,    32,    16,     -16,   -12]
+	[x+153,  y,    22,    20,     -10,   -12]
+    [x,      y,    8,     24,     -3,    -10]
+	[x+9,    y,    22,    20,     -12,   -11]
+	[x+32,   y,    32,    16,     -16,   -12]
+	[x+65,   y,    22,    20,     -8,    -11]
+}
+spriteset (spriteset_F40PH_Amtrak_Phase_II_f, "gfx/USA_EMD_F40PH_Amtrak.png") { tmpl_F40PH(4,4) }
+spriteset (spriteset_F40PH_Amtrak_Phase_II_b, "gfx/USA_EMD_F40PH_Amtrak.png") { tmpl_F40PH_rev(4,35) }
+spriteset (spriteset_F40PH_Amtrak_Phase_III_f, "gfx/USA_EMD_F40PH_Amtrak.png") { tmpl_F40PH(4,66) }
+spriteset (spriteset_F40PH_Amtrak_Phase_III_b, "gfx/USA_EMD_F40PH_Amtrak.png") { tmpl_F40PH_rev(4,97) }
+spriteset (spriteset_F40PH_Amtrak_Phase_IVa_f, "gfx/USA_EMD_F40PH_Amtrak.png") { tmpl_F40PH(4,128) }
+spriteset (spriteset_F40PH_Amtrak_Phase_IVa_b, "gfx/USA_EMD_F40PH_Amtrak.png") { tmpl_F40PH_rev(4,159) }
+spriteset (spriteset_F40PH_NJT_f, "gfx/USA_EMD_F40PH_NJT.png") { tmpl_F40PH(4,4) }
+spriteset (spriteset_F40PH_NJT_b, "gfx/USA_EMD_F40PH_NJT.png") { tmpl_F40PH_rev(4,35) }
+spriteset (spriteset_F40PH_Metra_f, "gfx/USA_EMD_F40PH_Metra.png") { tmpl_F40PH(4,4) }
+spriteset (spriteset_F40PH_Metra_b, "gfx/USA_EMD_F40PH_Metra.png") { tmpl_F40PH_rev(4,35) }
+
+spriteset (spriteset_F40PH_Amtrak_Phase_II_cab, "gfx/USA_EMD_F40PH_Amtrak.png") { tmpl_F40PH_cab(4,35) }
+spriteset (spriteset_F40PH_Amtrak_Phase_III_cab, "gfx/USA_EMD_F40PH_Amtrak.png") { tmpl_F40PH_cab(4,97) }
+spriteset (spriteset_F40PH_Amtrak_Phase_IVa_cab, "gfx/USA_EMD_F40PH_Amtrak.png") { tmpl_F40PH_cab(4,159) }
+spriteset (spriteset_F40PH_NJT_cab, "gfx/USA_EMD_F40PH_NJT.png") { tmpl_F40PH_cab(4,35) }
+spriteset (spriteset_F40PH_Metra_cab, "gfx/USA_EMD_F40PH_Metra.png") { tmpl_F40PH_cab(4,35) }
+
+
+template tmpl_P32AC_DM(x,y) {
+  [x,      y,    8,     24,     -3,    -10]
+	[x+9,    y,    22,    20,     -14,   -10]
+	[x+32,   y,    32,    16,     -16,   -12]
+	[x+65,   y,    22,    20,     -8,    -11]
+  [x+88,   y,    8,     24,     -3,    -10]
+	[x+97,   y,    22,    20,     -14,   -10]
+	[x+120,  y,    32,    16,     -16,   -12]
+	[x+153,  y,    22,    20,     -8,    -11]
+}
+template tmpl_P32AC_DM2(x,y) {
+  [x+88,   y,    8,     24,     -3,    -10]
+	[x+97,   y,    22,    20,     -14,   -10]
+	[x+120,  y,    32,    16,     -16,   -12]
+	[x+153,  y,    22,    20,     -8,    -11]
+  [x,      y,    8,     24,     -3,    -10]
+	[x+9,    y,    22,    20,     -14,   -10]
+	[x+32,   y,    32,    16,     -16,   -12]
+	[x+65,   y,    22,    20,     -8,    -11]
+}
+spriteset (spriteset_P32AC_DM_MTA_f, "gfx/USA_Amtrak_P32AC-DM.png")  { tmpl_P32AC_DM(4,4) }
+spriteset (spriteset_P32AC_DM_MTA_b, "gfx/USA_Amtrak_P32AC-DM.png")  { tmpl_P32AC_DM2(4,4) }
+spriteset (spriteset_P32AC_DM_AMTR_f, "gfx/USA_Amtrak_P32AC-DM.png") { tmpl_P32AC_DM(4,35) }
+spriteset (spriteset_P32AC_DM_AMTR_b, "gfx/USA_Amtrak_P32AC-DM.png") { tmpl_P32AC_DM2(4,35) }
+spriteset (spriteset_P32AC_DM_NH_f, "gfx/USA_Amtrak_P32AC-DM.png")   { tmpl_P32AC_DM(4,66) }
+spriteset (spriteset_P32AC_DM_NH_b, "gfx/USA_Amtrak_P32AC-DM.png")   { tmpl_P32AC_DM2(4,66) }
+
+template tmpl_ALP_46(x,y) {
+  [x,      y,    8,     24,     -3,    -11]
+	[x+9,    y,    22,    20,     -14,   -10]
+	[x+32,   y,    32,    16,     -16,   -12]
+	[x+65,   y,    22,    20,     -8,    -11]
+}
+spriteset (spriteset_ALP_46_f, "gfx/USA_NJT_ALP-46.png") { tmpl_ALP_46(4,4) tmpl_ALP_46(92,4) }
+spriteset (spriteset_ALP_46_b, "gfx/USA_NJT_ALP-46.png") { tmpl_ALP_46(92,35) tmpl_ALP_46(4,35) }
+
+template tmpl_Multilevel(x,y) {
+  [x,      y,    8,     24,     -3,    -12]
+	[x+9,    y,    22,    20,     -14,   -11]
+	[x+32,   y,    32,    16,     -16,   -12]
+	[x+65,   y,    22,    20,     -8,    -12]
+}
+
+template tmpl_Comet_1(x,y) {
+  [x,      y,    8,     26,     -3,    -12]
+	[x+9,    y,    24,    21,     -14,   -11]
+	[x+34,   y,    36,    16,     -16,   -12]
+	[x+71,   y,    24,    21,     -8,    -11]
+}
+template tmpl_Comet_2(x,y) {
+  [x,      y,    8,     26,     -3,    -10]
+	[x+9,    y,    24,    21,     -16,   -10]
+	[x+34,   y,    36,    16,     -20,   -12]
+	[x+71,   y,    24,    21,     -10,   -12]
+}
+template tmpl_Comet_1_rev(x,y) {
+  [x,      y,    8,     26,     -3,    -10]
+	[x+9,    y,    24,    21,     -16,   -10]
+	[x+34,   y,    36,    16,     -20,   -12]
+	[x+71,   y,    24,    21,     -10,   -12]
+}
+template tmpl_Comet_2_rev(x,y) {
+  [x,      y,    8,     26,     -3,    -12]
+	[x+9,    y,    24,    21,     -14,   -11]
+	[x+34,   y,    36,    16,     -16,   -12]
+	[x+71,   y,    24,    21,     -8,    -11]
+}
+template tmpl_Comet_1_rev_F40PH(x,y) {
+  [x,      y,    8,     26,     -3,    -10]
+	[x+9,    y,    24,    21,     -16,   -10]
+	[x+34,   y,    36,    16,     -20,   -12]
+	[x+71,   y,    24,    21,     -10,   -12]
+}
+template tmpl_Comet_2_rev_F40PH(x,y) {
+  [x,      y,    8,     26,     -3,    -12]
+	[x+9,    y,    24,    21,     -14,   -11]
+	[x+34,   y,    36,    16,     -16,   -12]
+	[x+71,   y,    24,    21,     -8,    -11]
+}
+template tmpl_Comet_1_rev_F40PH_car(x,y) {
+  [x,      y,    8,     26,     -3,     -8]
+	[x+9,    y,    24,    21,     -18,    -9]
+	[x+34,   y,    36,    16,     -24,   -12]
+	[x+71,   y,    24,    21,     -12,   -13]
+}
+template tmpl_Comet_2_rev_F40PH_car(x,y) {
+  [x,      y,    8,     26,     -3,    -14]
+	[x+9,    y,    24,    21,     -12,   -12]
+	[x+34,   y,    36,    16,     -12,   -12]
+	[x+71,   y,    24,    21,     -6,    -10]
+}
+spriteset (spriteset_Comet_I_Cab_f,"gfx/USA_NJT_Comet_I.png") { tmpl_Comet_1(4,4)   tmpl_Comet_2(100,4) }
+spriteset (spriteset_Comet_I_Cab_b,"gfx/USA_NJT_Comet_I.png") { tmpl_Comet_1(100,37) tmpl_Comet_2(4,37) }
+spriteset (spriteset_Comet_I_Car,"gfx/USA_NJT_Comet_I.png")   { tmpl_Comet_1(4,70)  tmpl_Comet_2(100,70) }
+
+spriteset (spriteset_Comet_I_Cab_f_rev,"gfx/USA_NJT_Comet_I.png") { tmpl_Comet_1_rev(4,4)   tmpl_Comet_2_rev(100,4) }
+spriteset (spriteset_Comet_I_Car_rev,"gfx/USA_NJT_Comet_I.png")   { tmpl_Comet_1_rev(4,70)  tmpl_Comet_2_rev(100,70) }
+
+spriteset (spriteset_Comet_I_Cab_f_rev_F40PH,"gfx/USA_NJT_Comet_I.png") { tmpl_Comet_1_rev_F40PH(4,4)   tmpl_Comet_2_rev_F40PH(100,4) }
+spriteset (spriteset_Comet_I_Car_rev_F40PH,"gfx/USA_NJT_Comet_I.png")   { tmpl_Comet_1_rev_F40PH_car(4,70)  tmpl_Comet_2_rev_F40PH_car(100,70) }
+
+spriteset (spriteset_Comet_II_Cab_f,"gfx/USA_NJT_Comet_II.png") { tmpl_Comet_1(4,4)   tmpl_Comet_2(100,4) }
+spriteset (spriteset_Comet_II_Cab_b,"gfx/USA_NJT_Comet_II.png") { tmpl_Comet_1(100,37) tmpl_Comet_2(4,37) }
+spriteset (spriteset_Comet_II_Car,"gfx/USA_NJT_Comet_II.png")   { tmpl_Comet_1(4,70)  tmpl_Comet_2(100,70) }
+
+spriteset (spriteset_Comet_II_Cab_f_rev,"gfx/USA_NJT_Comet_II.png") { tmpl_Comet_1_rev(4,4)   tmpl_Comet_2_rev(100,4) }
+spriteset (spriteset_Comet_II_Car_rev,"gfx/USA_NJT_Comet_II.png")   { tmpl_Comet_1_rev(4,70)  tmpl_Comet_2_rev(100,70) }
+
+spriteset (spriteset_Comet_II_Cab_f_rev_F40PH,"gfx/USA_NJT_Comet_II.png") { tmpl_Comet_1_rev_F40PH(4,4)   tmpl_Comet_2_rev_F40PH(100,4) }
+spriteset (spriteset_Comet_II_Car_rev_F40PH,"gfx/USA_NJT_Comet_II.png")   { tmpl_Comet_1_rev_F40PH_car(4,70)  tmpl_Comet_2_rev_F40PH_car(100,70) }
+
+spriteset (spriteset_Comet_III_Cab_f,"gfx/USA_NJT_Comet_III.png") { tmpl_Comet_1(4,4)   tmpl_Comet_2(100,4) }
+spriteset (spriteset_Comet_III_Cab_b,"gfx/USA_NJT_Comet_III.png") { tmpl_Comet_1(100,37) tmpl_Comet_2(4,37) }
+spriteset (spriteset_Comet_III_Car,"gfx/USA_NJT_Comet_III.png")   { tmpl_Comet_1(4,70)  tmpl_Comet_2(100,70) }
+
+spriteset (spriteset_Comet_III_Cab_f_rev,"gfx/USA_NJT_Comet_III.png") { tmpl_Comet_1_rev(4,4)   tmpl_Comet_2_rev(100,4) }
+spriteset (spriteset_Comet_III_Car_rev,"gfx/USA_NJT_Comet_III.png")   { tmpl_Comet_1_rev(4,70)  tmpl_Comet_2_rev(100,70) }
+
+spriteset (spriteset_Comet_III_Cab_f_rev_F40PH,"gfx/USA_NJT_Comet_III.png") { tmpl_Comet_1_rev_F40PH(4,4)   tmpl_Comet_2_rev_F40PH(100,4) }
+spriteset (spriteset_Comet_III_Car_rev_F40PH,"gfx/USA_NJT_Comet_III.png")   { tmpl_Comet_1_rev_F40PH_car(4,70)  tmpl_Comet_2_rev_F40PH_car(100,70) }
+
+spriteset (spriteset_Comet_IV_Cab_f,"gfx/USA_NJT_Comet_IV.png") { tmpl_Comet_1(4,4)   tmpl_Comet_2(100,4) }
+spriteset (spriteset_Comet_IV_Cab_b,"gfx/USA_NJT_Comet_IV.png") { tmpl_Comet_1(100,37) tmpl_Comet_2(4,37) }
+spriteset (spriteset_Comet_IV_Car,"gfx/USA_NJT_Comet_IV.png")   { tmpl_Comet_1(4,70)  tmpl_Comet_2(100,70) }
+
+spriteset (spriteset_Comet_IV_Cab_f_rev,"gfx/USA_NJT_Comet_IV.png") { tmpl_Comet_1_rev(4,4)   tmpl_Comet_2_rev(100,4) }
+spriteset (spriteset_Comet_IV_Car_rev,"gfx/USA_NJT_Comet_IV.png")   { tmpl_Comet_1_rev(4,70)  tmpl_Comet_2_rev(100,70) }
+
+spriteset (spriteset_Comet_IV_Cab_f_rev_F40PH,"gfx/USA_NJT_Comet_IV.png") { tmpl_Comet_1_rev_F40PH(4,4)   tmpl_Comet_2_rev_F40PH(100,4) }
+spriteset (spriteset_Comet_IV_Car_rev_F40PH,"gfx/USA_NJT_Comet_IV.png")   { tmpl_Comet_1_rev_F40PH_car(4,70)  tmpl_Comet_2_rev_F40PH_car(100,70) }
+
+spriteset (spriteset_Comet_V_Cab_f,"gfx/USA_NJT_Comet_V.png") { tmpl_Comet_1(4,4)   tmpl_Comet_2(100,4) }
+spriteset (spriteset_Comet_V_Cab_b,"gfx/USA_NJT_Comet_V.png") { tmpl_Comet_1(100,37) tmpl_Comet_2(4,37) }
+spriteset (spriteset_Comet_V_Car,"gfx/USA_NJT_Comet_V.png")   { tmpl_Comet_1(4,70)  tmpl_Comet_2(100,70) }
+
+spriteset (spriteset_Comet_V_Cab_f_rev,"gfx/USA_NJT_Comet_V.png") { tmpl_Comet_1_rev(4,4)   tmpl_Comet_2_rev(100,4) }
+spriteset (spriteset_Comet_V_Car_rev,"gfx/USA_NJT_Comet_V.png")   { tmpl_Comet_1_rev(4,70)  tmpl_Comet_2_rev(100,70) }
+
+spriteset (spriteset_Comet_V_Cab_f_rev_F40PH,"gfx/USA_NJT_Comet_V.png") { tmpl_Comet_1_rev_F40PH(4,4)   tmpl_Comet_2_rev_F40PH(100,4) }
+spriteset (spriteset_Comet_V_Car_rev_F40PH,"gfx/USA_NJT_Comet_V.png")   { tmpl_Comet_1_rev_F40PH_car(4,70)  tmpl_Comet_2_rev_F40PH_car(100,70) }
+
+spriteset (spriteset_Multilevel_Cab_f,"gfx/USA_Bombardier_Multilevel.png") { tmpl_Multilevel(4,4)   tmpl_Multilevel(92,4) }
+spriteset (spriteset_Multilevel_Cab_b,"gfx/USA_Bombardier_Multilevel.png") { tmpl_Multilevel(92,35) tmpl_Multilevel(4,35) }
+spriteset (spriteset_Multilevel_Car,"gfx/USA_Bombardier_Multilevel.png")   { tmpl_Multilevel(4,66)  tmpl_Multilevel(92,66) }
+
+//-------------------------------------------------------------------------------------------F40PH sprite choose
+
+switch(FEAT_TRAINS, SELF, sw_F40PH_livery_by_year_f, cargo_subtype) {
+  0..1975:  spriteset_F40PH_Amtrak_Phase_II_f;
+  1976..1992:  spriteset_F40PH_Amtrak_Phase_III_f;
+  spriteset_F40PH_Amtrak_Phase_IVa_f;
+}
+switch(FEAT_TRAINS, SELF, sw_F40PH_livery_by_year_b, cargo_subtype) {
+  0..1975:  spriteset_F40PH_Amtrak_Phase_II_b;
+  1976..1992:  spriteset_F40PH_Amtrak_Phase_III_b;
+  spriteset_F40PH_Amtrak_Phase_IVa_b;
+}
+switch(FEAT_TRAINS, SELF, sw_F40PH_livery_by_year_cab, cargo_subtype) {
+  0..1975:  spriteset_F40PH_Amtrak_Phase_II_cab;
+  1976..1992:  spriteset_F40PH_Amtrak_Phase_III_cab;
+  spriteset_F40PH_Amtrak_Phase_IVa_cab;
+}
+
+switch(FEAT_TRAINS,SELF,sw_F40PH_front, cargo_subtype) {
+  0:  sw_F40PH_livery_by_year_f;
+  1:  spriteset_F40PH_Amtrak_Phase_II_f;
+  2:  spriteset_F40PH_Amtrak_Phase_III_f;
+  3:  spriteset_F40PH_Amtrak_Phase_IVa_f;
+  4:  spriteset_F40PH_NJT_f;
+  spriteset_F40PH_Metra_f;
+}
+switch(FEAT_TRAINS,SELF,sw_F40PH_back, cargo_subtype) {
+  0:  sw_F40PH_livery_by_year_b;
+  1:  spriteset_F40PH_Amtrak_Phase_II_b;
+  2:  spriteset_F40PH_Amtrak_Phase_III_b;
+  3:  spriteset_F40PH_Amtrak_Phase_IVa_b;
+  4:  spriteset_F40PH_NJT_b;
+  spriteset_F40PH_Metra_b;
+}
+switch(FEAT_TRAINS,SELF,sw_F40PH_livery, cargo_subtype) {
+  0:  return string(STR_Livery_Auto);
+  1:  return string(STR_Amtrak_Phase_II);
+  2:  return string(STR_Amtrak_Phase_III);
+  3:  return string(STR_Amtrak_Phase_IVa);
+  4:  return string(STR_Livery_NJT);
+  return string(STR_Livery_Metra);
+}
+
+switch(FEAT_TRAINS, SELF, sw_F40PH_purchase, current_year) {
+  0..1975: spriteset_purchase_F40PH_phase_II;
+  1976..1992:  spriteset_purchase_F40PH_phase_III;
+  spriteset_purchase_F40PH_phase_IVa;
+}
+
+//---------------------------------------------------------------------------------F40PH graphics
+switch(FEAT_TRAINS,SELF,sw_F40PH_grapfics3, position_in_consist % 2) {
+  0:  sw_F40PH_front;
+  sw_F40PH_back;
+}
+switch(FEAT_TRAINS,SELF,sw_F40PH_grapfics2, position_in_consist_from_end) {
+  0:  sw_F40PH_back;
+  sw_F40PH_grapfics3;
+}
+switch(FEAT_TRAINS,SELF,sw_F40PH_graphics, position_in_consist) {
+  0:  sw_F40PH_front;
+  sw_F40PH_grapfics2;
+}
+
+switch(FEAT_TRAINS,SELF,sw_F40PH_graphics_Comet_I, vehicle_is_reversed) {
+  0:  sw_F40PH_graphics;
+  spriteset_Comet_I_Cab_f_rev_F40PH;
+}
+switch(FEAT_TRAINS,SELF,sw_F40PH_graphics_Comet_II, vehicle_is_reversed) {
+  0:  sw_F40PH_graphics;
+  spriteset_Comet_II_Cab_f_rev;
+}
+switch(FEAT_TRAINS,SELF,sw_F40PH_graphics_Comet_III, vehicle_is_reversed) {
+  0:  sw_F40PH_graphics;
+  spriteset_Comet_III_Cab_f_rev;
+}
+switch(FEAT_TRAINS,SELF,sw_F40PH_graphics_Comet_IV, vehicle_is_reversed) {
+  0:  sw_F40PH_graphics;
+  spriteset_Comet_IV_Cab_f_rev;
+}
+switch(FEAT_TRAINS,SELF,sw_F40PH_graphics_Comet_V, vehicle_is_reversed) {
+  0:  sw_F40PH_graphics;
+  spriteset_Comet_V_Cab_f_rev;
+}
+switch(FEAT_TRAINS,SELF,sw_F40PH_graphics_Multilevel,vehicle_is_reversed) {
+  0:  sw_F40PH_graphics;
+  spriteset_Multilevel_Cab_f;
+}
+
+switch(FEAT_TRAINS,SELF,sw_F40PH_detect_6,count_veh_id(624)) {
+  0:  sw_F40PH_graphics;
+  sw_F40PH_graphics_Comet_V;
+}
+switch(FEAT_TRAINS,SELF,sw_F40PH_detect_5,count_veh_id(622)) {
+  0:  sw_F40PH_detect_6;
+  sw_F40PH_graphics_Comet_IV;
+}
+switch(FEAT_TRAINS,SELF,sw_F40PH_detect_4,count_veh_id(620)) {
+  0:  sw_F40PH_detect_5;
+  sw_F40PH_graphics_Comet_III;
+}
+switch(FEAT_TRAINS,SELF,sw_F40PH_detect_3,count_veh_id(618)) {
+  0:  sw_F40PH_detect_4;
+  sw_F40PH_graphics_Comet_II;
+}
+switch(FEAT_TRAINS,SELF,sw_F40PH_detect_2,count_veh_id(616)) {
+  0:  sw_F40PH_detect_3;
+  sw_F40PH_graphics_Comet_I;
+}
+switch(FEAT_TRAINS,SELF,sw_F40PH_detect_1,count_veh_id(612)) {
+  0:  sw_F40PH_detect_2;
+  sw_F40PH_graphics_Multilevel;
+}
+
+//-------------------------------------------------------------------------------------------P32AC-DM sprite choose
+switch(FEAT_TRAINS,SELF,sw_P32AC_DM_front, cargo_subtype) {
+  0:  spriteset_P32AC_DM_AMTR_f;
+  1:  spriteset_P32AC_DM_MTA_f;
+  spriteset_P32AC_DM_NH_f;
+}
+switch(FEAT_TRAINS,SELF,sw_P32AC_DM_back, cargo_subtype) {
+  0:  spriteset_P32AC_DM_AMTR_b;
+  1:  spriteset_P32AC_DM_MTA_b;
+  spriteset_P32AC_DM_NH_b;
+}
+switch(FEAT_TRAINS,SELF,sw_P32AC_DM_livery, cargo_subtype) {
+  0:  return string(STR_Livery_AMTR);
+  1:  return string(STR_Livery_MN);
+  return string(STR_Livery_NH);
+}
+//---------------------------------------------------------------------------------P32AC-DM graphics
+switch(FEAT_TRAINS,SELF,sw_P32AC_DM_grapfics3, position_in_consist % 2) {
+  0:  sw_P32AC_DM_front;
+  sw_P32AC_DM_back;
+}
+switch(FEAT_TRAINS,SELF,sw_P32AC_DM_grapfics2, position_in_consist_from_end) {
+  0:  sw_P32AC_DM_back;
+  sw_P32AC_DM_grapfics3;
+}
+switch(FEAT_TRAINS,SELF,sw_P32AC_DM_graphics, position_in_consist) {
+  0:  sw_P32AC_DM_front;
+  sw_P32AC_DM_grapfics2;
+}
+
+switch(FEAT_TRAINS,SELF,sw_P32AC_DM_graphics_Comet_I, vehicle_is_reversed) {
+  0:  sw_P32AC_DM_graphics;
+  spriteset_Comet_I_Cab_f_rev;
+}
+switch(FEAT_TRAINS,SELF,sw_P32AC_DM_graphics_Comet_II, vehicle_is_reversed) {
+  0:  sw_P32AC_DM_graphics;
+  spriteset_Comet_II_Cab_f_rev;
+}
+switch(FEAT_TRAINS,SELF,sw_P32AC_DM_graphics_Comet_III, vehicle_is_reversed) {
+  0:  sw_P32AC_DM_graphics;
+  spriteset_Comet_III_Cab_f_rev;
+}
+switch(FEAT_TRAINS,SELF,sw_P32AC_DM_graphics_Comet_IV, vehicle_is_reversed) {
+  0:  sw_P32AC_DM_graphics;
+  spriteset_Comet_IV_Cab_f_rev;
+}
+switch(FEAT_TRAINS,SELF,sw_P32AC_DM_graphics_Comet_V, vehicle_is_reversed) {
+  0:  sw_P32AC_DM_graphics;
+  spriteset_Comet_V_Cab_f_rev;
+}
+switch(FEAT_TRAINS,SELF,sw_P32AC_DM_graphics_Multilevel,vehicle_is_reversed) {
+  0:  sw_P32AC_DM_graphics;
+  spriteset_Multilevel_Cab_f;
+}
+
+switch(FEAT_TRAINS,SELF,sw_P32AC_DM_detect_6,count_veh_id(624)) {
+  0:  sw_P32AC_DM_graphics;
+  sw_P32AC_DM_graphics_Comet_V;
+}
+switch(FEAT_TRAINS,SELF,sw_P32AC_DM_detect_5,count_veh_id(622)) {
+  0:  sw_P32AC_DM_detect_6;
+  sw_P32AC_DM_graphics_Comet_IV;
+}
+switch(FEAT_TRAINS,SELF,sw_P32AC_DM_detect_4,count_veh_id(620)) {
+  0:  sw_P32AC_DM_detect_5;
+  sw_P32AC_DM_graphics_Comet_III;
+}
+switch(FEAT_TRAINS,SELF,sw_P32AC_DM_detect_3,count_veh_id(618)) {
+  0:  sw_P32AC_DM_detect_4;
+  sw_P32AC_DM_graphics_Comet_II;
+}
+switch(FEAT_TRAINS,SELF,sw_P32AC_DM_detect_2,count_veh_id(616)) {
+  0:  sw_P32AC_DM_detect_3;
+  sw_P32AC_DM_graphics_Comet_I;
+}
+switch(FEAT_TRAINS,SELF,sw_P32AC_DM_detect_1,count_veh_id(612)) {
+  0:  sw_P32AC_DM_detect_2;
+  sw_P32AC_DM_graphics_Multilevel;
+}
+
+
+//--------------------------------------------------------------------------------------ALP-46 Graphics
+switch(FEAT_TRAINS,SELF,sw_ALP_46_graphics, position_in_consist) {
+  0:  spriteset_ALP_46_f;
+  spriteset_ALP_46_b;
+}
+
+switch(FEAT_TRAINS,SELF,sw_ALP_46_graphics_Multilevel,vehicle_is_reversed) {
+  0:  sw_ALP_46_graphics;
+  spriteset_Multilevel_Cab_f;
+}
+switch(FEAT_TRAINS,SELF,sw_ALP_46_graphics_Comet_I,vehicle_is_reversed) {
+  0:  sw_ALP_46_graphics;
+  spriteset_Comet_I_Cab_f_rev;
+}
+switch(FEAT_TRAINS,SELF,sw_ALP_46_graphics_Comet_II,vehicle_is_reversed) {
+  0:  sw_ALP_46_graphics;
+  spriteset_Comet_II_Cab_f_rev;
+}
+switch(FEAT_TRAINS,SELF,sw_ALP_46_graphics_Comet_III,vehicle_is_reversed) {
+  0:  sw_ALP_46_graphics;
+  spriteset_Comet_III_Cab_f_rev;
+}
+switch(FEAT_TRAINS,SELF,sw_ALP_46_graphics_Comet_IV,vehicle_is_reversed) {
+  0:  sw_ALP_46_graphics;
+  spriteset_Comet_IV_Cab_f_rev;
+}
+switch(FEAT_TRAINS,SELF,sw_ALP_46_graphics_Comet_V,vehicle_is_reversed) {
+  0:  sw_ALP_46_graphics;
+  spriteset_Comet_V_Cab_f_rev;
+}
+
+switch(FEAT_TRAINS,SELF,sw_ALP_46_detect_6,count_veh_id(624)) {
+  0:  sw_ALP_46_graphics;
+  sw_ALP_46_graphics_Comet_V;
+}
+switch(FEAT_TRAINS,SELF,sw_ALP_46_detect_5,count_veh_id(622)) {
+  0:  sw_ALP_46_detect_6;
+  sw_ALP_46_graphics_Comet_IV;
+}
+switch(FEAT_TRAINS,SELF,sw_ALP_46_detect_4,count_veh_id(620)) {
+  0:  sw_ALP_46_detect_5;
+  sw_ALP_46_graphics_Comet_III;
+}
+switch(FEAT_TRAINS,SELF,sw_ALP_46_detect_3,count_veh_id(618)) {
+  0:  sw_ALP_46_detect_4;
+  sw_ALP_46_graphics_Comet_II;
+}
+switch(FEAT_TRAINS,SELF,sw_ALP_46_detect_2,count_veh_id(616)) {
+  0:  sw_ALP_46_detect_3;
+  sw_ALP_46_graphics_Comet_I;
+}
+switch(FEAT_TRAINS,SELF,sw_ALP_46_detect_1,count_veh_id(612)) {
+  0:  sw_ALP_46_detect_2;
+  sw_ALP_46_graphics_Multilevel;
+}
+
+switch(FEAT_TRAINS,PARENT,sw_F40PH_graphics_for_Push_Pull, cargo_subtype) {
+  0:  sw_F40PH_livery_by_year_cab;
+  1:  spriteset_F40PH_Amtrak_Phase_II_cab;
+  2:  spriteset_F40PH_Amtrak_Phase_III_cab;
+  3:  spriteset_F40PH_Amtrak_Phase_IVa_cab;
+  4:  spriteset_F40PH_NJT_cab;
+  spriteset_F40PH_Metra_cab;
+}
+switch(FEAT_TRAINS,PARENT,sw_P32AC_DM_graphics_for_Push_Pull, cargo_subtype) {
+  0:  spriteset_P32AC_DM_AMTR_b;
+  1:  spriteset_P32AC_DM_MTA_b;
+  spriteset_P32AC_DM_NH_b;
+}
+
+switch (FEAT_TRAINS, SELF, sw_Comet_I_Cab_graphics, position_in_consist) {
+  0:  spriteset_Comet_I_Cab_f;
+  spriteset_Comet_I_Cab_b;
+}
+
+switch(FEAT_TRAINS, PARENT, sw_push_pull_Comet_I_F40PH, vehicle_is_reversed) {
+  0:  sw_Comet_I_Cab_graphics;
+  sw_F40PH_graphics_for_Push_Pull;
+}
+switch(FEAT_TRAINS, PARENT, sw_push_pull_Comet_I_P32AC_DM, vehicle_is_reversed) {
+  0:  sw_Comet_I_Cab_graphics;
+  sw_P32AC_DM_graphics_for_Push_Pull;
+}
+switch(FEAT_TRAINS, PARENT, sw_push_pull_Comet_I_ALP_46, vehicle_is_reversed) {
+  0:  sw_Comet_I_Cab_graphics;
+  spriteset_ALP_46_b;
+}
+switch(FEAT_TRAINS, PARENT, sw_push_pull_Comet_I, vehicle_type_id) {
+  item_P32AC_DM:  sw_push_pull_Comet_I_P32AC_DM;
+  item_ALP_46:  sw_push_pull_Comet_I_ALP_46;
+  item_F40PH:  sw_push_pull_Comet_I_F40PH;
+  sw_Comet_I_Cab_graphics;
+}
+
+switch(FEAT_TRAINS, SELF, sw_Comet_I_Cab_graphics_articulated, position_in_vehid_chain % 2) {
+  0:  spriteset_obsolete;
+  sw_push_pull_Comet_I;
+}
+switch(FEAT_TRAINS, PARENT, sw_Comet_I_Car_flipping_F40PH, vehicle_is_reversed) {
+  0:  spriteset_Comet_I_Car;
+  spriteset_Comet_I_Car_rev_F40PH;
+}
+switch(FEAT_TRAINS, PARENT, sw_Comet_I_Car_flipping_normal, vehicle_is_reversed) {
+  0:  spriteset_Comet_I_Car;
+  spriteset_Comet_I_Car_rev;
+}
+switch(FEAT_TRAINS, PARENT, sw_Comet_I_Car_flipping, count_veh_id(215)) {
+  0:  sw_Comet_I_Car_flipping_normal;
+  sw_Comet_I_Car_flipping_F40PH;
+}
+
+switch(FEAT_TRAINS, SELF, sw_Comet_I_Car_graphics_articulated, position_in_vehid_chain % 2) {
+  0:  spriteset_obsolete;
+  sw_Comet_I_Car_flipping;
+}
+switch(FEAT_TRAINS, SELF, sw_Comet_I_Cab_articulated, extra_callback_info1) {
+  1:  item_Comet_I_Cab;
+  CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+switch(FEAT_TRAINS, SELF, sw_Comet_I_Car_articulated, extra_callback_info1) {
+  1:  item_Comet_I_Car;
+  CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+switch(FEAT_TRAINS, PARENT, sw_Comet_I_smoke2, vehicle_is_reversed) {
+  0:  visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+  visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER);
+}
+switch(FEAT_TRAINS, PARENT, sw_Comet_I_smoke, count_veh_id(215)) {
+  0:  visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+  sw_Comet_I_smoke2;
+}
+
+item (FEAT_TRAINS, item_Comet_I_Cab, 616) {
+  property {
+    name:                         string(STR_Comet_I_Cab_Name);
+    climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+    introduction_date:            date(1970, 1, 1);
+    model_life:                   VEHICLE_NEVER_EXPIRES;
+    vehicle_life:                 25;
+    refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+    non_refittable_cargo_classes: bitmask();
+    loading_speed:                11;
+    cost_factor:                  23;
+    running_cost_factor:          23;
+    sprite_id:                    SPRITE_ID_NEW_TRAIN;
+    speed:                        170 km/h;
+    misc_flags:                   bitmask();
+    refit_cost:                   0;
+    track_type:                   RAIL;
+    ai_special_flag:              AI_FLAG_PASSENGER;
+    power:                        1;
+    cargo_capacity:               51;
+    weight:                       26 ton;
+    tractive_effort_coefficient:  0.3;
+    air_drag_coefficient:         0.06;
+    visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+    extra_weight_per_wagon:       0;
+    bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_Comet_I_purchase;
+        additional_text:          return string(STR_Comet_I_IV_Cab_Desc);
+        length:                   (position_in_vehid_chain % 2) == 0 ? 1 : 8;
+        sound_effect:             CB_RESULT_NO_SOUND;
+        visual_effect_and_powered:sw_Comet_I_smoke;
+        articulated_part:         sw_Comet_I_Cab_articulated;
+        default:                  sw_Comet_I_Cab_graphics_articulated;
+    }
+}
+
+item (FEAT_TRAINS, item_Comet_I_Car, 617) {
+  property {
+    name:                         string(STR_Comet_I_Car_Name);
+    climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+    introduction_date:            date(1970, 1, 1);
+    model_life:                   VEHICLE_NEVER_EXPIRES;
+    vehicle_life:                 25;
+    refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+    non_refittable_cargo_classes: bitmask();
+    loading_speed:                11;
+    cost_factor:                  123;
+    running_cost_factor:          23;
+    sprite_id:                    SPRITE_ID_NEW_TRAIN;
+    speed:                        170 km/h;
+    misc_flags:                   bitmask();
+    refit_cost:                   0;
+    track_type:                   RAIL;
+    ai_special_flag:              AI_FLAG_PASSENGER;
+    power:                        0;
+    cargo_capacity:               54;
+    weight:                       25.5 ton;
+    tractive_effort_coefficient:  0.3;
+    air_drag_coefficient:         0.06;
+    visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+    extra_weight_per_wagon:       0;
+    bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_Comet_I_purchase;
+        additional_text:          return string(STR_Obsolete_Desc);
+        length:                   (position_in_vehid_chain % 2) == 0 ? 1 : 8;
+        articulated_part:         sw_Comet_I_Car_articulated;
+        default:                  sw_Comet_I_Car_graphics_articulated;
+    }
+}
+
+switch (FEAT_TRAINS, SELF, sw_Comet_II_Cab_graphics, position_in_consist) {
+  0:  spriteset_Comet_II_Cab_f;
+  spriteset_Comet_II_Cab_b;
+}
+
+switch(FEAT_TRAINS, PARENT, sw_push_pull_Comet_II_F40PH, vehicle_is_reversed) {
+  0:  sw_Comet_II_Cab_graphics;
+  sw_F40PH_graphics_for_Push_Pull;
+}
+switch(FEAT_TRAINS, PARENT, sw_push_pull_Comet_II_P32AC_DM, vehicle_is_reversed) {
+  0:  sw_Comet_II_Cab_graphics;
+  sw_P32AC_DM_graphics_for_Push_Pull;
+}
+switch(FEAT_TRAINS, PARENT, sw_push_pull_Comet_II_ALP_46, vehicle_is_reversed) {
+  0:  sw_Comet_II_Cab_graphics;
+  spriteset_ALP_46_b;
+}
+switch(FEAT_TRAINS, PARENT, sw_push_pull_Comet_II, vehicle_type_id) {
+  item_P32AC_DM:  sw_push_pull_Comet_II_P32AC_DM;
+  item_ALP_46:  sw_push_pull_Comet_II_ALP_46;
+  item_F40PH:  sw_push_pull_Comet_II_F40PH;
+  sw_Comet_II_Cab_graphics;
+}
+
+switch(FEAT_TRAINS, SELF, sw_Comet_II_Cab_graphics_articulated, position_in_vehid_chain % 2) {
+  0:  spriteset_obsolete;
+  sw_push_pull_Comet_II;
+}
+switch(FEAT_TRAINS, PARENT, sw_Comet_II_Car_flipping_F40PH, vehicle_is_reversed) {
+  0:  spriteset_Comet_II_Car;
+  spriteset_Comet_II_Car_rev_F40PH;
+}
+switch(FEAT_TRAINS, PARENT, sw_Comet_II_Car_flipping_normal, vehicle_is_reversed) {
+  0:  spriteset_Comet_II_Car;
+  spriteset_Comet_II_Car_rev;
+}
+switch(FEAT_TRAINS, PARENT, sw_Comet_II_Car_flipping, count_veh_id(215)) {
+  0:  sw_Comet_II_Car_flipping_normal;
+  sw_Comet_II_Car_flipping_F40PH;
+}
+
+switch(FEAT_TRAINS, SELF, sw_Comet_II_Car_graphics_articulated, position_in_vehid_chain % 2) {
+  0:  spriteset_obsolete;
+  sw_Comet_II_Car_flipping;
+}
+switch(FEAT_TRAINS, SELF, sw_Comet_II_Cab_articulated, extra_callback_info1) {
+  1:  item_Comet_II_Cab;
+  CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+switch(FEAT_TRAINS, SELF, sw_Comet_II_Car_articulated, extra_callback_info1) {
+  1:  item_Comet_II_Car;
+  CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+switch(FEAT_TRAINS, PARENT, sw_Comet_II_smoke2, vehicle_is_reversed) {
+  0:  visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+  visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER);
+}
+switch(FEAT_TRAINS, PARENT, sw_Comet_II_smoke, count_veh_id(215)) {
+  0:  visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+  sw_Comet_II_smoke2;
+}
+
+item (FEAT_TRAINS, item_Comet_II_Cab, 618) {
+  property {
+    name:                         string(STR_Comet_II_Cab_Name);
+    climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+    introduction_date:            date(1982, 1, 1);
+    model_life:                   VEHICLE_NEVER_EXPIRES;
+    vehicle_life:                 25;
+    refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+    non_refittable_cargo_classes: bitmask();
+    loading_speed:                11;
+    cost_factor:                  25;
+    running_cost_factor:          25;
+    sprite_id:                    SPRITE_ID_NEW_TRAIN;
+    speed:                        175 km/h;
+    misc_flags:                   bitmask();
+    refit_cost:                   0;
+    track_type:                   RAIL;
+    ai_special_flag:              AI_FLAG_PASSENGER;
+    power:                        1;
+    cargo_capacity:               59;
+    weight:                       26 ton;
+    tractive_effort_coefficient:  0.3;
+    air_drag_coefficient:         0.06;
+    visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+    extra_weight_per_wagon:       0;
+    bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_Comet_II_purchase;
+        additional_text:          return string(STR_Comet_I_IV_Cab_Desc);
+        length:                   (position_in_vehid_chain % 2) == 0 ? 1 : 8;
+        sound_effect:             CB_RESULT_NO_SOUND;
+        visual_effect_and_powered:sw_Comet_II_smoke;
+        articulated_part:         sw_Comet_II_Cab_articulated;
+        default:                  sw_Comet_II_Cab_graphics_articulated;
+    }
+}
+
+item (FEAT_TRAINS, item_Comet_II_Car, 619) {
+  property {
+    name:                         string(STR_Comet_II_Car_Name);
+    climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+    introduction_date:            date(1982, 1, 1);
+    model_life:                   VEHICLE_NEVER_EXPIRES;
+    vehicle_life:                 25;
+    refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+    non_refittable_cargo_classes: bitmask();
+    loading_speed:                11;
+    cost_factor:                  125;
+    running_cost_factor:          4;
+    sprite_id:                    SPRITE_ID_NEW_TRAIN;
+    speed:                        175 km/h;
+    misc_flags:                   bitmask();
+    refit_cost:                   0;
+    track_type:                   RAIL;
+    ai_special_flag:              AI_FLAG_PASSENGER;
+    power:                        0;
+    cargo_capacity:               60;
+    weight:                       25.5 ton;
+    tractive_effort_coefficient:  0.3;
+    air_drag_coefficient:         0.06;
+    visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+    extra_weight_per_wagon:       0;
+    bitmask_vehicle_info:         0;
+    }
+    graphics { 
+        purchase:                 spriteset_Comet_II_purchase;
+        additional_text:          return string(STR_Obsolete_Desc);
+        length:                   (position_in_vehid_chain % 2) == 0 ? 1 : 8;
+        articulated_part:         sw_Comet_II_Car_articulated;
+        default:                  sw_Comet_II_Car_graphics_articulated;
+    }
+}
+switch (FEAT_TRAINS, SELF, sw_Comet_III_Cab_graphics, position_in_consist) {
+  0:  spriteset_Comet_III_Cab_f;
+  spriteset_Comet_III_Cab_b;
+}
+
+switch(FEAT_TRAINS, PARENT, sw_push_pull_Comet_III_F40PH, vehicle_is_reversed) {
+  0:  sw_Comet_III_Cab_graphics;
+  sw_F40PH_graphics_for_Push_Pull;
+}
+switch(FEAT_TRAINS, PARENT, sw_push_pull_Comet_III_P32AC_DM, vehicle_is_reversed) {
+  0:  sw_Comet_III_Cab_graphics;
+  sw_P32AC_DM_graphics_for_Push_Pull;
+}
+switch(FEAT_TRAINS, PARENT, sw_push_pull_Comet_III_ALP_46, vehicle_is_reversed) {
+  0:  sw_Comet_III_Cab_graphics;
+  spriteset_ALP_46_b;
+}
+switch(FEAT_TRAINS, PARENT, sw_push_pull_Comet_III, vehicle_type_id) {
+  item_P32AC_DM:  sw_push_pull_Comet_III_P32AC_DM;
+  item_ALP_46:  sw_push_pull_Comet_III_ALP_46;
+  item_F40PH:  sw_push_pull_Comet_III_F40PH;
+  sw_Comet_III_Cab_graphics;
+}
+
+switch(FEAT_TRAINS, SELF, sw_Comet_III_Cab_graphics_articulated, position_in_vehid_chain % 2) {
+  0:  spriteset_obsolete;
+  sw_push_pull_Comet_III;
+}
+switch(FEAT_TRAINS, PARENT, sw_Comet_III_Car_flipping_F40PH, vehicle_is_reversed) {
+  0:  spriteset_Comet_III_Car;
+  spriteset_Comet_III_Car_rev_F40PH;
+}
+switch(FEAT_TRAINS, PARENT, sw_Comet_III_Car_flipping_normal, vehicle_is_reversed) {
+  0:  spriteset_Comet_III_Car;
+  spriteset_Comet_III_Car_rev;
+}
+switch(FEAT_TRAINS, PARENT, sw_Comet_III_Car_flipping, count_veh_id(215)) {
+  0:  sw_Comet_III_Car_flipping_normal;
+  sw_Comet_III_Car_flipping_F40PH;
+}
+
+switch(FEAT_TRAINS, SELF, sw_Comet_III_Car_graphics_articulated, position_in_vehid_chain % 2) {
+  0:  spriteset_obsolete;
+  sw_Comet_III_Car_flipping;
+}
+switch(FEAT_TRAINS, SELF, sw_Comet_III_Cab_articulated, extra_callback_info1) {
+  1:  item_Comet_III_Cab;
+  CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+switch(FEAT_TRAINS, SELF, sw_Comet_III_Car_articulated, extra_callback_info1) {
+  1:  item_Comet_III_Car;
+  CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+switch(FEAT_TRAINS, PARENT, sw_Comet_III_smoke2, vehicle_is_reversed) {
+  0:  visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+  visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER);
+}
+switch(FEAT_TRAINS, PARENT, sw_Comet_III_smoke, count_veh_id(215)) {
+  0:  visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+  sw_Comet_III_smoke2;
+}
+
+item (FEAT_TRAINS, item_Comet_III_Cab, 620) {
+  property {
+    name:                         string(STR_Comet_III_Cab_Name);
+    climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+    introduction_date:            date(1990, 1, 1);
+    model_life:                   21;
+    vehicle_life:                 23;
+    refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+    non_refittable_cargo_classes: bitmask();
+    loading_speed:                14;
+    cost_factor:                  29;
+    running_cost_factor:          29;
+    sprite_id:                    SPRITE_ID_NEW_TRAIN;
+    speed:                        180 km/h;
+    misc_flags:                   bitmask();
+    refit_cost:                   0;
+    track_type:                   RAIL;
+    ai_special_flag:              AI_FLAG_PASSENGER;
+    power:                        1;
+    cargo_capacity:               59;
+    weight:                       26 ton;
+    ai_engine_rank:               0;
+    tractive_effort_coefficient:  0.3;
+    air_drag_coefficient:         0.06;
+    visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+    extra_weight_per_wagon:       0;
+    bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_Comet_III_purchase;
+        additional_text:          return string(STR_Comet_I_IV_Cab_Desc);
+        sound_effect:             CB_RESULT_NO_SOUND;
+        length:                   (position_in_vehid_chain % 2) == 0 ? 1 : 8;
+        visual_effect_and_powered:sw_Comet_III_smoke;
+        articulated_part:         sw_Comet_III_Cab_articulated;
+        default:                  sw_Comet_III_Cab_graphics_articulated;
+    }
+}
+
+item (FEAT_TRAINS, item_Comet_III_Car, 621) {
+  property {
+    name:                         string(STR_Comet_III_Car_Name);
+    climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+    introduction_date:            date(1990, 1, 1);
+    model_life:                   21;
+    vehicle_life:                 23;
+    refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+    non_refittable_cargo_classes: bitmask();
+    loading_speed:                14;
+    cost_factor:                  129;
+    running_cost_factor:          7;
+    sprite_id:                    SPRITE_ID_NEW_TRAIN;
+    speed:                        180 km/h;
+    misc_flags:                   bitmask();
+    refit_cost:                   0;
+    track_type:                   RAIL;
+    ai_special_flag:              AI_FLAG_PASSENGER;
+    power:                        0;
+    cargo_capacity:               60;
+    weight:                       25.5 ton;
+    ai_engine_rank:               0;
+    tractive_effort_coefficient:  0.3;
+    air_drag_coefficient:         0.06;
+    visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+    extra_weight_per_wagon:       0;
+    bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_Comet_III_purchase;
+        additional_text:          return string(STR_Obsolete_Desc);
+        length:                   (position_in_vehid_chain % 2) == 0 ? 1 : 8;
+        articulated_part:         sw_Comet_III_Car_articulated;
+        default:                  sw_Comet_III_Car_graphics_articulated;
+    }
+}
+
+switch (FEAT_TRAINS, SELF, sw_Comet_IV_Cab_graphics, position_in_consist) {
+  0:  spriteset_Comet_IV_Cab_f;
+  spriteset_Comet_IV_Cab_b;
+}
+
+switch(FEAT_TRAINS, PARENT, sw_push_pull_Comet_IV_F40PH, vehicle_is_reversed) {
+  0:  sw_Comet_IV_Cab_graphics;
+  sw_F40PH_graphics_for_Push_Pull;
+}
+switch(FEAT_TRAINS, PARENT, sw_push_pull_Comet_IV_P32AC_DM, vehicle_is_reversed) {
+  0:  sw_Comet_IV_Cab_graphics;
+  sw_P32AC_DM_graphics_for_Push_Pull;
+}
+switch(FEAT_TRAINS, PARENT, sw_push_pull_Comet_IV_ALP_46, vehicle_is_reversed) {
+  0:  sw_Comet_IV_Cab_graphics;
+  spriteset_ALP_46_b;
+}
+switch(FEAT_TRAINS, PARENT, sw_push_pull_Comet_IV, vehicle_type_id) {
+  item_P32AC_DM:  sw_push_pull_Comet_IV_P32AC_DM;
+  item_ALP_46:  sw_push_pull_Comet_IV_ALP_46;
+  item_F40PH:  sw_push_pull_Comet_IV_F40PH;
+  sw_Comet_IV_Cab_graphics;
+}
+
+switch(FEAT_TRAINS, SELF, sw_Comet_IV_Cab_graphics_articulated, position_in_vehid_chain % 2) {
+  0:  spriteset_obsolete;
+  sw_push_pull_Comet_IV;
+}
+switch(FEAT_TRAINS, PARENT, sw_Comet_IV_Car_flipping_F40PH, vehicle_is_reversed) {
+  0:  spriteset_Comet_IV_Car;
+  spriteset_Comet_IV_Car_rev_F40PH;
+}
+switch(FEAT_TRAINS, PARENT, sw_Comet_IV_Car_flipping_normal, vehicle_is_reversed) {
+  0:  spriteset_Comet_IV_Car;
+  spriteset_Comet_IV_Car_rev;
+}
+switch(FEAT_TRAINS, PARENT, sw_Comet_IV_Car_flipping, count_veh_id(215)) {
+  0:  sw_Comet_IV_Car_flipping_normal;
+  sw_Comet_IV_Car_flipping_F40PH;
+}
+
+switch(FEAT_TRAINS, SELF, sw_Comet_IV_Car_graphics_articulated, position_in_vehid_chain % 2) {
+  0:  spriteset_obsolete;
+  sw_Comet_IV_Car_flipping;
+}
+switch(FEAT_TRAINS, SELF, sw_Comet_IV_Cab_articulated, extra_callback_info1) {
+  1:  item_Comet_IV_Cab;
+  CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+switch(FEAT_TRAINS, SELF, sw_Comet_IV_Car_articulated, extra_callback_info1) {
+  1:  item_Comet_IV_Car;
+  CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+switch(FEAT_TRAINS, PARENT, sw_Comet_IV_smoke2, vehicle_is_reversed) {
+  0:  visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+  visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER);
+}
+switch(FEAT_TRAINS, PARENT, sw_Comet_IV_smoke, count_veh_id(215)) {
+  0:  visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+  sw_Comet_IV_smoke2;
+}
+
+item (FEAT_TRAINS, item_Comet_IV_Cab, 622) {
+  property {
+    name:                         string(STR_Comet_IV_Cab_Name);
+    climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+    introduction_date:            date(1996, 1, 1);
+    model_life:                   21;
+    vehicle_life:                 23;
+    refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+    non_refittable_cargo_classes: bitmask();
+    loading_speed:                14;
+    cost_factor:                  35;
+    running_cost_factor:          35;
+    sprite_id:                    SPRITE_ID_NEW_TRAIN;
+    speed:                        185 km/h;
+    misc_flags:                   bitmask();
+    refit_cost:                   0;
+    track_type:                   RAIL;
+    ai_special_flag:              AI_FLAG_PASSENGER;
+    power:                        1;
+    cargo_capacity:               59;
+    weight:                       27 ton;
+    ai_engine_rank:               0;
+    tractive_effort_coefficient:  0.3;
+    air_drag_coefficient:         0.06;
+    visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+    extra_weight_per_wagon:       0;
+    bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_Comet_IV_purchase;
+        additional_text:          return string(STR_Comet_I_IV_Cab_Desc);
+        sound_effect:             CB_RESULT_NO_SOUND;
+        length:                   (position_in_vehid_chain % 2) == 0 ? 1 : 8;
+        visual_effect_and_powered:sw_Comet_IV_smoke;
+        articulated_part:         sw_Comet_IV_Cab_articulated;
+        default:                  sw_Comet_IV_Cab_graphics_articulated;
+    }
+}
+
+item (FEAT_TRAINS, item_Comet_IV_Car, 623) {
+  property {
+    name:                         string(STR_Comet_IV_Car_Name);
+    climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+    introduction_date:            date(1996, 1, 1);
+    model_life:                   24;
+    vehicle_life:                 23;
+    refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+    non_refittable_cargo_classes: bitmask();
+    loading_speed:                14;
+    cost_factor:                  135;
+    running_cost_factor:          7;
+    sprite_id:                    SPRITE_ID_NEW_TRAIN;
+    speed:                        185 km/h;
+    misc_flags:                   bitmask();
+    refit_cost:                   0;
+    track_type:                   RAIL;
+    ai_special_flag:              AI_FLAG_PASSENGER;
+    power:                        0;
+    cargo_capacity:               60;
+    weight:                       26 ton;
+    ai_engine_rank:               0;
+    tractive_effort_coefficient:  0.3;
+    air_drag_coefficient:         0.06;
+    visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+    extra_weight_per_wagon:       0;
+    bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_Comet_IV_Car_purchase;
+        additional_text:          return string(STR_Obsolete_Desc);
+        length:                   (position_in_vehid_chain % 2) == 0 ? 1 : 8;
+        articulated_part:         sw_Comet_IV_Car_articulated;
+        default:                  sw_Comet_IV_Car_graphics_articulated;
+    }
+}
+
+switch (FEAT_TRAINS, SELF, sw_Comet_V_Cab_graphics, position_in_consist) {
+  0:  spriteset_Comet_V_Cab_f;
+  spriteset_Comet_V_Cab_b;
+}
+
+switch(FEAT_TRAINS, PARENT, sw_push_pull_Comet_V_F40PH, vehicle_is_reversed) {
+  0:  sw_Comet_V_Cab_graphics;
+  sw_F40PH_graphics_for_Push_Pull;
+}
+switch(FEAT_TRAINS, PARENT, sw_push_pull_Comet_V_P32AC_DM, vehicle_is_reversed) {
+  0:  sw_Comet_V_Cab_graphics;
+  sw_P32AC_DM_graphics_for_Push_Pull;
+}
+switch(FEAT_TRAINS, PARENT, sw_push_pull_Comet_V_ALP_46, vehicle_is_reversed) {
+  0:  sw_Comet_V_Cab_graphics;
+  spriteset_ALP_46_b;
+}
+switch(FEAT_TRAINS, PARENT, sw_push_pull_Comet_V, vehicle_type_id) {
+  item_P32AC_DM:  sw_push_pull_Comet_V_P32AC_DM;
+  item_ALP_46:  sw_push_pull_Comet_V_ALP_46;
+  item_F40PH:  sw_push_pull_Comet_V_F40PH;
+  sw_Comet_V_Cab_graphics;
+}
+
+switch(FEAT_TRAINS, SELF, sw_Comet_V_Cab_graphics_articulated, position_in_vehid_chain % 2) {
+  0:  spriteset_obsolete;
+  sw_push_pull_Comet_V;
+}
+switch(FEAT_TRAINS, PARENT, sw_Comet_V_Car_flipping_F40PH, vehicle_is_reversed) {
+  0:  spriteset_Comet_V_Car;
+  spriteset_Comet_V_Car_rev_F40PH;
+}
+switch(FEAT_TRAINS, PARENT, sw_Comet_V_Car_flipping_normal, vehicle_is_reversed) {
+  0:  spriteset_Comet_V_Car;
+  spriteset_Comet_V_Car_rev;
+}
+switch(FEAT_TRAINS, PARENT, sw_Comet_V_Car_flipping, count_veh_id(215)) {
+  0:  sw_Comet_V_Car_flipping_normal;
+  sw_Comet_V_Car_flipping_F40PH;
+}
+
+switch(FEAT_TRAINS, SELF, sw_Comet_V_Car_graphics_articulated, position_in_vehid_chain % 2) {
+  0:  spriteset_obsolete;
+  sw_Comet_V_Car_flipping;
+}
+switch(FEAT_TRAINS, SELF, sw_Comet_V_Cab_articulated, extra_callback_info1) {
+  1:  item_Comet_V_Cab;
+  CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+switch(FEAT_TRAINS, SELF, sw_Comet_V_Car_articulated, extra_callback_info1) {
+  1:  item_Comet_V_Car;
+  CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+switch(FEAT_TRAINS, PARENT, sw_Comet_V_smoke2, vehicle_is_reversed) {
+  0:  visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+  visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER);
+}
+switch(FEAT_TRAINS, PARENT, sw_Comet_V_smoke, count_veh_id(215)) {
+  0:  visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+  sw_Comet_V_smoke2;
+}
+
+item (FEAT_TRAINS, item_Comet_V_Cab, 624) {
+  property {
+    name:                         string(STR_Comet_V_Cab_Name);
+    climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+    introduction_date:            date(2002, 1, 1);
+    model_life:                   VEHICLE_NEVER_EXPIRES;
+    vehicle_life:                 28;
+    refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+    non_refittable_cargo_classes: bitmask();
+    loading_speed:                16;
+    cost_factor:                  40;
+    running_cost_factor:          40;
+    sprite_id:                    SPRITE_ID_NEW_TRAIN;
+    speed:                        190 km/h;
+    misc_flags:                   bitmask();
+    refit_cost:                   0;
+    track_type:                   RAIL;
+    ai_special_flag:              AI_FLAG_PASSENGER;
+    power:                        1;
+    cargo_capacity:               62;
+    weight:                       29 ton;
+    ai_engine_rank:               0;
+    tractive_effort_coefficient:  0.3;
+    air_drag_coefficient:         0.06;
+    visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER);
+    extra_weight_per_wagon:       0;
+    bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_Comet_V_purchase;
+        additional_text:          return string(STR_Comet_V_Cab_Desc);
+        length:                   (position_in_vehid_chain % 2) == 0 ? 1 : 8;
+        sound_effect:             CB_RESULT_NO_SOUND;
+        visual_effect_and_powered:sw_Comet_V_smoke;
+        articulated_part:         sw_Comet_V_Cab_articulated;
+        default:                  sw_Comet_V_Cab_graphics_articulated;
+    }
+}
+
+item (FEAT_TRAINS, item_Comet_V_Car, 625) {
+  property {
+    name:                         string(STR_Comet_V_Car_Name);
+    climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+    introduction_date:            date(2002, 1, 1);
+    model_life:                   VEHICLE_NEVER_EXPIRES;
+    vehicle_life:                 28;
+    refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+    non_refittable_cargo_classes: bitmask();
+    loading_speed:                16;
+    cost_factor:                  140;
+    running_cost_factor:          10;
+    sprite_id:                    SPRITE_ID_NEW_TRAIN;
+    speed:                        190 km/h;
+    misc_flags:                   bitmask();
+    refit_cost:                   0;
+    track_type:                   RAIL;
+    ai_special_flag:              AI_FLAG_PASSENGER;
+    power:                        0;
+    cargo_capacity:               65;
+    weight:                       28 ton;
+    ai_engine_rank:               0;
+    tractive_effort_coefficient:  0.3;
+    air_drag_coefficient:         0.06;
+    visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+    extra_weight_per_wagon:       0;
+    bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_Comet_V_Car_purchase;
+        additional_text:          return string(STR_Comet_V_Car_Desc);
+        length:                   (position_in_vehid_chain % 2) == 0 ? 1 : 8;
+        articulated_part:         sw_Comet_V_Car_articulated;
+        default:                  sw_Comet_V_Car_graphics_articulated;
+    }
+}
+
+switch (FEAT_TRAINS, SELF, sw_Multilevel_Cab_graphics, position_in_consist) {
+  0:  spriteset_Multilevel_Cab_f;
+  spriteset_Multilevel_Cab_b;
+}
+switch(FEAT_TRAINS, PARENT, sw_push_pull_Multilevel_P32AC_DM, vehicle_is_reversed) {
+  0:  sw_Multilevel_Cab_graphics;
+  sw_P32AC_DM_graphics_for_Push_Pull;
+}
+switch(FEAT_TRAINS, PARENT, sw_push_pull_Multilevel_ALP_46, vehicle_is_reversed) {
+  0:  sw_Multilevel_Cab_graphics;
+  spriteset_ALP_46_b;
+}
+switch(FEAT_TRAINS, PARENT, sw_push_pull_Multilevel, vehicle_type_id) {
+  item_ALP_46:  sw_push_pull_Multilevel_ALP_46;
+  item_P32AC_DM:  sw_push_pull_Multilevel_P32AC_DM;
+  sw_Multilevel_Cab_graphics;
+}
+
+item (FEAT_TRAINS, item_Multilevel_Cab, 612) {
+  property {
+    name:                         string(STR_Multilevel_Cab_Name);
+    climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+    introduction_date:            date(2002, 1, 1);
+    model_life:                   VEHICLE_NEVER_EXPIRES;
+    vehicle_life:                 28;
+    refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+    non_refittable_cargo_classes: bitmask();
+    loading_speed:                16;
+    cost_factor:                  40;
+    running_cost_factor:          40;
+    sprite_id:                    SPRITE_ID_NEW_TRAIN;
+    speed:                        190 km/h;
+    misc_flags:                   bitmask();
+    refit_cost:                   0;
+    track_type:                   RAIL;
+    ai_special_flag:              AI_FLAG_PASSENGER;
+    power:                        1;
+    cargo_capacity:               109;
+    weight:                       45 ton;
+    ai_engine_rank:               0;
+    tractive_effort_coefficient:  0.3;
+    air_drag_coefficient:         0.06;
+    visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+    extra_weight_per_wagon:       0;
+    bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_Multilevel_purchase;
+        additional_text:          return string(STR_Multilevel_Cab_Desc);
+        length:                   8;
+        default:                  sw_push_pull_Multilevel;
+    }
+}
+
+item (FEAT_TRAINS, item_Multilevel_Car, 613) {
+  property {
+    name:                         string(STR_Multilevel_Car_Name);
+    climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+    introduction_date:            date(2002, 1, 1);
+    model_life:                   VEHICLE_NEVER_EXPIRES;
+    vehicle_life:                 28;
+    refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+    non_refittable_cargo_classes: bitmask();
+    loading_speed:                16;
+    cost_factor:                  140;
+    running_cost_factor:          10;
+    sprite_id:                    SPRITE_ID_NEW_TRAIN;
+    speed:                        190 km/h;
+    misc_flags:                   bitmask();
+    refit_cost:                   0;
+    track_type:                   RAIL;
+    ai_special_flag:              AI_FLAG_PASSENGER;
+    power:                        0;
+    cargo_capacity:               114;
+    weight:                       45 ton;
+    ai_engine_rank:               0;
+    tractive_effort_coefficient:  0.3;
+    air_drag_coefficient:         0.06;
+    visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+    extra_weight_per_wagon:       0;
+    bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_Multilevel_Car_purchase;
+        additional_text:          return string(STR_Obsolete_Desc);
+        length:                   8;
+        default:                  spriteset_Multilevel_Car;
+    }
+}
+
+switch(FEAT_TRAINS,SELF,sw_F40PH_switching_diesel_effect,vehicle_is_reversed) {
+    0:  visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER);
+    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+}
+
+switch(FEAT_TRAINS,SELF,sw_F40PH_diesel,(count_veh_id(616)+count_veh_id(618)+count_veh_id(620)+count_veh_id(622)+count_veh_id(624))) {
+    0:  visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER);
+    sw_F40PH_switching_diesel_effect;
+}
+
+item (FEAT_TRAINS, item_F40PH, 215) {
+  property {
+    name:                         string(STR_F40PH_Name);
+    climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+    introduction_date:            date(1975, 1, 1);
+    model_life:                   VEHICLE_NEVER_EXPIRES;
+    vehicle_life:                 40;
+    reliability_decay:            11;
+    refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+    non_refittable_cargo_classes: bitmask();
+    loading_speed:                0;
+    cost_factor:                  42;
+    running_cost_factor:          142;
+    sprite_id:                    SPRITE_ID_NEW_TRAIN;
+    speed:                        110 mph;
+    misc_flags:                   bitmask();
+    refit_cost:                   0;
+    track_type:                   RAIL;
+    ai_special_flag:              AI_FLAG_PASSENGER;
+    power:                        3200 hp;
+    running_cost_base:            RUNNING_COST_DIESEL;
+    dual_headed:                  0;
+    cargo_capacity:               1;
+    weight:                       118 ton;
+    ai_engine_rank:               0;
+    engine_class:                 ENGINE_CLASS_DIESEL;
+    extra_power_per_wagon:        0;
+    tractive_effort_coefficient:  0.3;
+    air_drag_coefficient:         7/177;
+    visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER);
+    extra_weight_per_wagon:       0;
+    bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 sw_F40PH_purchase;
+        additional_text:          return string(STR_F40PH_Desc);
+        length:                   7;
+        cargo_capacity:           0;
+        visual_effect_and_powered:sw_F40PH_diesel;
+        cargo_subtype_text:       sw_F40PH_livery;
+        default:                  sw_F40PH_detect_1;
+    }
+}
+
+switch(FEAT_TRAINS,SELF,sw_P32AC_DM_visual_effect_and_powered,vehicle_is_reversed) {
+  0:  visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER);
+  visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+}
+
+item (FEAT_TRAINS, item_P32AC_DM, 409) {
+  property {
+    name:                         string(STR_P32AC_DM_Name);
+    climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+    introduction_date:            date(1993, 1, 1);
+    model_life:                   VEHICLE_NEVER_EXPIRES;
+    vehicle_life:                 30;
+    reliability_decay:            12;
+    refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+    non_refittable_cargo_classes: bitmask();
+    loading_speed:                5;
+    cost_factor:                  56;
+    running_cost_factor:          156;
+    sprite_id:                    SPRITE_ID_NEW_TRAIN;
+    speed:                        180 km/h;
+    misc_flags:                   bitmask(TRAIN_FLAG_MU);
+    refit_cost:                   0;
+    track_type:                   RAIL;
+    ai_special_flag:              AI_FLAG_PASSENGER;
+    power:                        2400 kW;
+    running_cost_base:            RUNNING_COST_ELECTRIC;
+    dual_headed:                  0;
+    cargo_capacity:               1;
+    weight:                       125 ton;
+    ai_engine_rank:               0;
+    engine_class:                 ENGINE_CLASS_DIESEL;
+    extra_power_per_wagon:        0;
+    tractive_effort_coefficient:  0.3;
+    air_drag_coefficient:         0.06;
+    visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER);
+    extra_weight_per_wagon:       0;
+    bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 sw_P32AC_DM_purchase;
+        additional_text:          return string(STR_P32AC_DM_Desc);
+        length:                   8;
+        cargo_subtype_text:       sw_P32AC_DM_livery;
+        visual_effect_and_powered:sw_P32AC_DM_visual_effect_and_powered;
+        default:                  sw_P32AC_DM_detect_1;
+    }
+}
+
+item (FEAT_TRAINS, item_ALP_46, 404) {
+  property {
+    name:                         string(STR_ALP_46_Name);
+    climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+    introduction_date:            date(2005, 1, 16);
+    model_life:                   49;
+    vehicle_life:                 34;
+    reliability_decay:            15;
+    refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+    non_refittable_cargo_classes: bitmask();
+    loading_speed:                7;
+    cost_factor:                  68;
+    running_cost_factor:          168;
+    sprite_id:                    SPRITE_ID_NEW_TRAIN;
+    speed:                        160 km/h;
+    misc_flags:                   bitmask(TRAIN_FLAG_MU);
+    refit_cost:                   0;
+    track_type:                   ELRL;
+    ai_special_flag:              AI_FLAG_PASSENGER;
+    power:                        5300 kW;
+    running_cost_base:            RUNNING_COST_ELECTRIC;
+    dual_headed:                  0;
+    cargo_capacity:               1;
+    weight:                       90 ton;
+    ai_engine_rank:               0;
+    engine_class:                 ENGINE_CLASS_ELECTRIC;
+    extra_power_per_wagon:        0;
+    tractive_effort_coefficient:  0.3;
+    air_drag_coefficient:         0.06;
+    visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 2, DISABLE_WAGON_POWER);
+    extra_weight_per_wagon:       0;
+    bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_purchase_ALP_46;
+        additional_text:          return string(STR_ALP_46_Desc);
+        length:                   8;
+        default:                  sw_ALP_46_detect_1;
+    }
+}
+
