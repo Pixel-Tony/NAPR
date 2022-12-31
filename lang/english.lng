@@ -1,7 +1,7 @@
 ##grflangid 0x01
 
 STR_GRF_NAME                                      :North American Passenger Railroads (NAPR) {GRAY}0.15
-STR_GRF_DESC                                      :North American Passenger Railroads (NAPR) is a train set, which includes passenger part of the north american class I railroads: passeger locomotives, coaches and multiple units.{}Tony Pixel {COPYRIGHT} 2018-2021.{}Licensed under GPLv3
+STR_GRF_DESC                                      :North American Passenger Railroads (NAPR) is a train set, which includes passenger part of the north american class I railroads: passeger locomotives, coaches and multiple units.{}Tony Pixel {COPYRIGHT} 2018-2022.{}Licensed under GPLv3
 
 STR_Parameter_Running_Costs_NAME                  :Running costs factor
 STR_Parameter_Running_Costs_DESC                  :What should base running costs be multiplied on
@@ -24,7 +24,6 @@ STR_Parameter_Wagon_Costs_8                       :8x
 STR_Parameter_Wagon_Costs_16                      :16x
 
 
-
 #Vehicles
 STR_Attach_Wagon_Disallow                         :You can't couple these traincars.
 
@@ -42,6 +41,8 @@ STR_Livery_ATSF                                   : (Atchison, Topeka and Santa 
 STR_Livery_ATSF_Super_Chief                       : (ATSF Super Chief)
 STR_Livery_ATSF_Red_Warbonnet                     : (ATSF Red Warbonnet)
 STR_Livery_ATSF_Blue_Warbonnet                    : (ATSF Blue Warbonnet)
+STR_Livery_BN                                     : (Burlington Northern)
+STR_Livery_CBnQ                                   : (CB&Q)
 STR_Livery_CNR                                    : (Canadian National Railway)
 STR_Livery_CPR                                    : (Canadian Pacific Railway)
 STR_Livery_CPR_Can                                : (CPR The Canadian)
@@ -86,10 +87,10 @@ STR_NYC_S_Motor_Desc                              :Power Supply: {LTBLUE}3rd Rai
 STR_MP54_Name                                     :PRR MP54 Motor Car Pair
 STR_MP54_Single_Name                              :PRR MP54 Motor Car Single
 STR_MP54_Desc                                     :Power Supply: {LTBLUE}Catenary{}{BLACK}Type of service: {BLUE}Commuter
-STR_MP54B_Name                                    :LIRR MP54B 
+STR_MP54B_Name                                    :LIRR MP54B
 STR_MP54B_Desc                                    :Power Supply: {LTBLUE}3rd Rail{}{BLACK}Type of service: {BLUE}Commuter
 
-STR_Erie_Motor_Name                               :Erie Lackawanna MU Motor Car 
+STR_Erie_Motor_Name                               :Erie Lackawanna MU Motor Car
 STR_Erie_Motor_Desc                               :Power Supply: {LTBLUE}Catenary{}{BLACK}Type of service: {BLUE}Commuter
 
 STR_Erie_High_Roof_Trailer_Name                   :Erie Lackawanna MU High Roof Trailer
@@ -116,115 +117,115 @@ STR_Budd_M1_Desc                                  :Power Supply: {LTBLUE}3rd Rai
 STR_Budd_M3_Name                                  :Budd M3/A "Metropolitan"
 STR_Budd_M3_Desc                                  :Power Supply: {LTBLUE}3rd Rail{}{BLACK}Type of service: {BLUE}Commuter
 
-STR_PRR_GG1_Name                                  :PRR GG1 
+STR_PRR_GG1_Name                                  :PRR GG1
 STR_PRR_GG1_Desc                                  :Power Supply: {LTBLUE}Catenary{}{BLACK}Type of service: {BLUE}Freight and Passenger
 
-STR_CN_EMU_Name                                   :CN Electric Multiple Unit 
+STR_CN_EMU_Name                                   :CN Electric Multiple Unit
 STR_CN_EMU_Desc                                   :Power Supply: {LTBLUE}Catenary{}{BLACK}Type of service: {BLUE}Commuter
 
-STR_Metroliner_I_Name                             :Budd Metroliner I 
+STR_Metroliner_I_Name                             :Budd Metroliner I
 STR_Metroliner_I_Desc                             :Power Supply: {LTBLUE}Catenary{}{BLACK}Type of service: {BLUE}High-speed Intercity
 
-STR_Turboliner_Name                               :RTG Turboliner 
+STR_Turboliner_Name                               :RTG Turboliner
 STR_Turboliner_Desc                               :Type of service: {BLUE}High-speed Intercity
 
-STR_Turbotrain_Name                               :UAC Turbotrain 
+STR_Turbotrain_Name                               :UAC Turbotrain
 STR_Turbotrain_Desc                               :Type of service: {BLUE}High-speed Intercity
 STR_Turbotrain_livery_1                           : (Amtrak, 5-car)
 STR_Turbotrain_livery_2                           : (CN, 7-car)
 STR_Turbotrain_livery_3                           : (CN, 9-car)
 STR_Turbotrain_livery_4                           : (VIA Rail, 9-car)
 
-STR_Pioneer_Zephyr_Name                           :Budd Pioneer Zephyr 
+STR_Pioneer_Zephyr_Name                           :Budd Pioneer Zephyr
 STR_Pioneer_Zephyr_Desc                           :Type of service: {BLUE}High-speed Intercity
 
-STR_Highliner_I_Name                              :Metra Highliner I 
+STR_Highliner_I_Name                              :Metra Highliner I
 STR_Highliner_I_Desc                              :Power Supply: {LTBLUE}Catenary{}{BLACK}Type of service: {BLUE}Commuter
 
-STR_Highliner_II_Name                             :Metra Highliner II 
+STR_Highliner_II_Name                             :Metra Highliner II
 STR_Highliner_II_Desc                             :Power Supply: {LTBLUE}Catenary{}{BLACK}Type of service: {BLUE}Commuter
 
-STR_Arrow_I_Name                                  :PRR Arrow I 
+STR_Arrow_I_Name                                  :PRR Arrow I
 STR_Arrow_I_Desc                                  :Power Supply: {LTBLUE}Catenary{}{BLACK}Type of service: {BLUE}Commuter
 
-STR_ALCO_PA_Name                                  :Alco PA 
+STR_ALCO_PA_Name                                  :Alco PA
 STR_ALCO_PA_Desc                                  :Type of service: {BLUE}Freight and Passenger
 
-STR_HHP8_Name                                     :Bombardier–Alstom HHP-8 
+STR_HHP8_Name                                     :Bombardier-Alstom HHP-8
 STR_HHP8_Desc                                     :Power Supply: {LTBLUE}Catenary{}{BLACK}Type of service: {BLUE}High-speed
 
-STR_Acela_Name                                    :Bombardier–Alstom Acela Express 
+STR_Acela_Name                                    :Bombardier-Alstom Acela Express
 STR_Acela_Desc                                    :Power Supply: {LTBLUE}Catenary{}{BLACK}Type of service: {BLUE}High-speed
 
-STR_Arrow_III_Name                                :NJT Arrow III 
+STR_Arrow_III_Name                                :NJT Arrow III
 STR_Arrow_III_Desc                                :Power Supply: {LTBLUE}Catenary{}{BLACK}Type of service: {BLUE}Commuter
 
-STR_Arrow_III_Single_Name                         :NJT Arrow III Single 
+STR_Arrow_III_Single_Name                         :NJT Arrow III Single
 STR_Arrow_III_Single_Desc                         :Power Supply: {LTBLUE}Catenary{}{BLACK}Type of service: {BLUE}Commuter
 
-STR_MN_M2_Name                                    :Metro-North M2 "Cosmopolitan" 
+STR_MN_M2_Name                                    :Metro-North M2 "Cosmopolitan"
 STR_MN_M2_Desc                                    :Power Supply: {LTBLUE}Catenary/3rd Rail{}{BLACK}Type of service: {BLUE}Commuter
 
-STR_MN_M7_Name                                    :Metro-North M7 
+STR_MN_M7_Name                                    :Metro-North M7
 STR_MN_M7_Desc                                    :Power Supply: {LTBLUE}3rd Rail{}{BLACK}Type of service: {BLUE}Commuter
 
-STR_MN_M8_Name                                    :Metro-North M8 
+STR_MN_M8_Name                                    :Metro-North M8
 STR_MN_M8_Desc                                    :Power Supply: {LTBLUE}Catenary/3rd Rail{}{BLACK}Type of service: {BLUE}Commuter
 
-STR_MR90_Name                                     :Canada MR-90 
+STR_MR90_Name                                     :Canada MR-90
 STR_MR90_Desc                                     :Power Supply: {LTBLUE}Catenary{}{BLACK}Type of service: {BLUE}Commuter
 
 STR_MR90_Trailer_Name                             :Canada MR-90 Trailer
 STR_MR90_Trailer_Desc                             :Place between two MR-90 parts to form an operable unit
 
-STR_Silverliner_II_Name                           :SEPT Silverliner II 
+STR_Silverliner_II_Name                           :SEPT Silverliner II
 STR_Silverliner_II_Desc                           :Power Supply: {LTBLUE}Catenary{}{BLACK}Type of service: {BLUE}Commuter
 
-STR_SPV2000_Name                                  :Budd SPV-2000 
+STR_SPV2000_Name                                  :Budd SPV-2000
 STR_SPV2000_Desc                                  :Type of service: {BLUE}Commuter
 
-STR_RDC_Name                                      :Budd RDC 
+STR_RDC_Name                                      :Budd RDC
 STR_RDC_Desc                                      :Type of service: {BLUE}Commuter
 
-STR_E7_Name                                       :EMD E7 
+STR_E7_Name                                       :EMD E7
 STR_E7_Desc                                       :Type of service: {BLUE}Passenger
 
-STR_E8_Name                                       :EMD E8 
+STR_E8_Name                                       :EMD E8
 STR_E8_Desc                                       :Type of service: {BLUE}Passenger
 
-STR_E9_Name                                       :EMD E9 
+STR_E9_Name                                       :EMD E9
 STR_E9_Desc                                       :Type of service: {BLUE}Passenger
 
-STR_F3_Name                                       :EMD F3 
+STR_F3_Name                                       :EMD F3
 STR_F3_Desc                                       :Type of service: {BLUE}Freight and Passenger
 
-STR_F7_Name                                       :EMD F7 
+STR_F7_Name                                       :EMD F7
 STR_F7_Desc                                       :Type of service: {BLUE}Freight and Passenger
 
-STR_F9_Name                                       :EMD F9 
+STR_F9_Name                                       :EMD F9
 STR_F9_Desc                                       :Type of service: {BLUE}Freight and Passenger
 
-STR_FP45_Name                                     :EMD FP45 
+STR_FP45_Name                                     :EMD FP45
 STR_FP45_Desc                                     :Type of service: {BLUE}Freight and Passenger
 
-STR_F40PH_Name                                    :EMD F40PH 
+STR_F40PH_Name                                    :EMD F40PH
 STR_F40PH_Desc                                    :Type of service: {BLUE}Freight and Passenger
 
-STR_P32AC_DM_Name                                 :GE P32AC-DM 
+STR_P32AC_DM_Name                                 :GE P32AC-DM
 STR_P32AC_DM_Desc                                 :Type of service: {BLUE}Commuter{}{BLACK}Available Push-Pull Operation with: {GOLD}Comet {BLACK}and {GOLD}Multilevel {BLACK}cab cars
 
 STR_MP40PH_3C_Name                                :MPI MPXpress
 STR_MP40PH_3C_Desc                                :Type of service: {BLUE}Commuter{}{BLACK}Livery: {GOLD}GO Transit
 
-STR_F59PHI_Name                                   :EMD F59PHI 
+STR_F59PHI_Name                                   :EMD F59PHI
 STR_F59PHI_Desc                                   :Type of service: {BLUE}Commuter{}{BLACK}Livery: {GOLD}Amtrak California
 
-STR_ALP_46_Name                                   :NJT ALP-46 
+STR_ALP_46_Name                                   :NJT ALP-46
 STR_ALP_46_Desc                                   :Power Supply: {LTBLUE}Catenary{}{BLACK}Type of service: {BLUE}Commuter{}{BLACK}Available Push-Pull Operation with: {GOLD}Comet {BLACK}and {GOLD}Multilevel {BLACK}cab cars
 
 STR_Amtrak_Baggage_Name                           :Amtrak Baggage Car
 
-STR_Metra_Bilevel_Cab_Name                        :Metra Bilevel Coach Cab 
+STR_Metra_Bilevel_Cab_Name                        :Metra Bilevel Coach Cab
 STR_Metra_Bilevel_Cab_Desc                        :Type of service: {BLUE}Commuter{}{BLACK}Livery: {GOLD}Metra
 
 STR_Metra_Bilevel_Car_Name                        :Metra Bilevel Coach Car
@@ -233,13 +234,13 @@ STR_Metra_Bilevel_Car_Desc                        :Livery: {GOLD}Metra
 STR_Metra_F40c_Name                               :EMD F40C
 STR_Metra_F40c_Desc                               :Type of service: {BLUE}Commuter{}{BLACK}Livery: {GOLD}Metra
 
-STR_Bombardier_Bilevel_Cab_Name                   :Bombardier Bilevel Coach Cab 
+STR_Bombardier_Bilevel_Cab_Name                   :Bombardier Bilevel Coach Cab
 STR_Bombardier_Bilevel_Cab_Desc                   :Type of service: {BLUE}Commuter{}{BLACK}Livery: {GOLD}GO Transit
 
 STR_Bombardier_Bilevel_Car_Name                   :Bombardier Bilevel Coach
 STR_Bombardier_Bilevel_Car_Desc                   :Livery: {GOLD}GO Transit
 
-STR_California_Cab_Name                           :Amtrak California Car Cab 
+STR_California_Cab_Name                           :Amtrak California Car Cab
 STR_California_Cab_Desc                           :Type of service: {BLUE}Commuter{}{BLACK}Livery: {GOLD}Amtrak California
 
 STR_California_Car_Name                           :Amtrak California Car Coach
@@ -249,7 +250,7 @@ STR_Comet_I_Cab_Name                              :NJT Comet I Cab
 STR_Comet_II_Cab_Name                             :NJT Comet II Cab
 STR_Comet_III_Cab_Name                            :NJT Comet III Cab
 STR_Comet_IV_Cab_Name                             :NJT Comet IV Cab
-STR_Comet_V_Cab_Name                              :Alstom Comet V Cab 
+STR_Comet_V_Cab_Name                              :Alstom Comet V Cab
 STR_Comet_I_IV_Cab_Desc                           :Type of service: {BLUE}Commuter{}{BLACK}Livery: {GOLD}NJ Transit{}{BLACK}Operable with:{GOLD}EMD F40PH{BLACK}, {GOLD}GE P32AC-DM{BLACK}, {GOLD}Alstom ALP-46
 STR_Comet_V_Cab_Desc                              :Type of service: {BLUE}Commuter{}{BLACK}Livery: {GOLD}NJ Transit{BLACK}, {GOLD}Metro-North{}{BLACK}Operable with:{GOLD}EMD F40PH{BLACK}, {GOLD}GE P32AC-DM{BLACK}, {GOLD}Alstom ALP-46
 
@@ -303,19 +304,19 @@ STR_Budd_Lightweight_Dome_Obs_Name                :Budd Lightweight Dome-Observa
 STR_Budd_Lightweight_Observation_Name             :Budd Lightweight Observation Car
 
 STR_CNR_TC_Coach_Name                             :CNR/VIA Lightweight Coach
-STR_CNR_TC_Coach_Desc                             :Livery:{GOLD}The Canadian
+STR_CNR_TC_Coach_Desc                             :Livery: {GOLD}The Canadian
 STR_CNR_TC_Diner_Name                             :CNR/VIA Lightweight Diner
-STR_CNR_TC_Diner_Desc                             :Livery:{GOLD}The Canadian
+STR_CNR_TC_Diner_Desc                             :Livery: {GOLD}The Canadian
 STR_CNR_TC_Manor_Name                             :CNR/VIA Lightweight Manor series Sleeper
-STR_CNR_TC_Manor_Desc                             :Livery:{GOLD}The Canadian
+STR_CNR_TC_Manor_Desc                             :Livery: {GOLD}The Canadian
 STR_CNR_TC_Chateau_Name                           :CNR/VIA Lightweight Chateau series Sleeper
-STR_CNR_TC_Chateau_Desc                           :Livery:{GOLD}The Canadian
+STR_CNR_TC_Chateau_Desc                           :Livery: {GOLD}The Canadian
 STR_CNR_TC_Baggage_Name                           :CNR/VIA Lightweight Baggage
-STR_CNR_TC_Baggage_Desc                           :Livery:{GOLD}The Canadian
+STR_CNR_TC_Baggage_Desc                           :Livery: {GOLD}The Canadian
 STR_CNR_TC_Skyline_ss_Name                        :CNR/VIA Lightweight Skyline series
-STR_CNR_TC_Skyline_ss_Desc                        :Livery:{GOLD}The Canadian
+STR_CNR_TC_Skyline_ss_Desc                        :Livery: {GOLD}The Canadian
 STR_CNR_TC_Park_ss_Name                           :CNR/VIA Lightweight Park series
-STR_CNR_TC_Park_ss_Desc                           :Livery:{GOLD}The Canadian
+STR_CNR_TC_Park_ss_Desc                           :Livery: {GOLD}The Canadian
 
 STR_NYC_Heavyweight_Coach_Name                    :NYC Pullman Heavyweight Coach
 STR_NYC_Heavyweight_Combine_Name                  :NYC Pullman Heavyweight Combine Car
