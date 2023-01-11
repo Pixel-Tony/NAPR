@@ -234,8 +234,8 @@ STR_Metra_Bilevel_Cab_Desc                          :Type of service: {BLUE}Comm
 STR_Metra_Bilevel_Car_Name                          :Metra Bilevel Coach Car
 STR_Metra_Bilevel_Car_Desc                          :Livery: {GOLD}Metra
 
-STR_Metra_F40c_Name                                 :EMD F40C
-STR_Metra_F40c_Desc                                 :Type of service: {BLUE}Commuter{}{BLACK}Livery: {GOLD}Metra
+STR_F40C_Name                                       :EMD F40C
+STR_F40C_Desc                                       :Type of service: {BLUE}Commuter{}{BLACK}Livery: {GOLD}Metra
 
 STR_Bombardier_Bilevel_Cab_Name                     :Bombardier Bilevel Coach Cab
 STR_Bombardier_Bilevel_Cab_Desc                     :Type of service: {BLUE}Commuter{}{BLACK}Livery: {GOLD}GO Transit
