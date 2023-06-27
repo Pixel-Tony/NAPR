@@ -68,10 +68,11 @@ STR_Livery_Pennsylvania_Railroad_GG1_3              : (Amtrak 1 stripe Scheme)
 STR_Livery_Pennsylvania_Railroad_GG1_4              : (Broadband Scheme - Congressional)
 STR_Livery_Pennsylvania_Railroad_GG1_5              : (Conrail Blue)
 STR_Livery_Penn_Central                             : (Penn Central)
-STR_Livery_Southern_Pacific_Daylight                : (SP Daylight)
-STR_Livery_Freedom_Train                            : (SP "Freedom Train")
+STR_Livery_SP_Daylight                              : (SP Daylight)
 STR_Livery_VIA                                      : (VIA Rail)
 STR_Livery_Caltrain                                 : (Caltrain)
+STR_Livery_UP                                       : (Union Pacific Railroad)
+STR_Livery_DnH                                      : (Delaware and Hudson Railway)
 
 STR_Obsolete_Desc                                   :
 

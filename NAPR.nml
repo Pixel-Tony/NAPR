@@ -470,6 +470,11 @@ switch(FEAT_TRAINS,SELF,sw_Metroliner_I_capacity, position_in_consist % 3) {
     0;
 }
 
+switch(FEAT_TRAINS, SELF, sw_Metroliner_I_length, position_in_vehid_chain % 3) {
+    1:  1;
+    4;
+}
+
 item(FEAT_TRAINS, item_Metroliner_I, 301) {
     property {
     name:                               string(STR_Metroliner_I_Name);
@@ -507,7 +512,7 @@ item(FEAT_TRAINS, item_Metroliner_I, 301) {
         purchase:                       spriteset_purchase_Metroliner_I;
         additional_text:                return string(STR_Metroliner_I_Desc);
         articulated_part:               sw_Metroliner_I_articulated_part;
-        length:                         (position_in_vehid_chain % 3) == 1 ? 1 : 4;
+        length:                         sw_Metroliner_I_length;
         cargo_capacity:                 sw_Metroliner_I_capacity;
         cargo_subtype_text:             sw_Metroliner_I_livery;
         default:                        sw_Metroliner_I_grapfics;
@@ -697,30 +702,30 @@ spriteset (spriteset_purchase_ALP_46, "gfx/USA_NJT_ALP-46.png") { [4,  66,  87, 
 
 spriteset (spriteset_purchase_HHP8, "gfx/USA_Alstom_HHP_8.png") { [4,  66,  87,  16,  -15,  -12] }
 
-spriteset (spriteset_Comet_I_purchase,"gfx/USA_NJT_Comet_I.png") { [4,  103,  87,  12,  -19,  -8] }
-spriteset (spriteset_Comet_II_purchase,"gfx/USA_NJT_Comet_II.png") { [4,  103,  87,  12,  -19,  -8] }
-spriteset (spriteset_Comet_III_purchase,"gfx/USA_NJT_Comet_III.png") { [4,  103,  87,  12,  -19,  -8] }
-spriteset (spriteset_Comet_IV_purchase,"gfx/USA_NJT_Comet_IV.png")     { [4,  103,  87,  12,  -19,  -8] }
-spriteset (spriteset_Comet_IV_Car_purchase,"gfx/USA_NJT_Comet_IV.png") { [100,  103, 87,  12,  -19,  -8] }
-spriteset (spriteset_Comet_V_purchase,"gfx/USA_Alstom_Comet_V.png")     { [4,  103,  87,  12,  -19,  -8] }
-spriteset (spriteset_Comet_V_Car_purchase,"gfx/USA_Alstom_Comet_V.png") { [100, 103,  87,  12,  -19,  -8] }
+spriteset (spriteset_Comet_I_purchase, "gfx/USA_NJT_Comet_I.png")        { [4,   103,  87,  12,  -19,  -8] }
+spriteset (spriteset_Comet_II_purchase, "gfx/USA_NJT_Comet_II.png")      { [4,   103,  87,  12,  -19,  -8] }
+spriteset (spriteset_Comet_III_purchase, "gfx/USA_NJT_Comet_III.png")    { [4,   103,  87,  12,  -19,  -8] }
+spriteset (spriteset_Comet_IV_purchase, "gfx/USA_NJT_Comet_IV.png")      { [4,   103,  87,  12,  -19,  -8] }
+spriteset (spriteset_Comet_IV_Car_purchase, "gfx/USA_NJT_Comet_IV.png")  { [100, 103,  87,  12,  -19,  -8] }
+spriteset (spriteset_Comet_V_purchase, "gfx/USA_Alstom_Comet_V.png")     { [4,   103,  87,  12,  -19,  -8] }
+spriteset (spriteset_Comet_V_Car_purchase, "gfx/USA_Alstom_Comet_V.png") { [100, 103,  87,  12,  -19,  -8] }
 
-spriteset (spriteset_Metroliner_Cab_purchase_Phase_III,"gfx/USA_Amtrak_Metroliner_Cab_Car.png") { [38,  4,  36,  16,  -19,  -12] }
-spriteset (spriteset_Metroliner_Cab_purchase_Phase_IV,"gfx/USA_Amtrak_Metroliner_Cab_Car.png") { [38,  70,  36,  16,  -19,  -12] }
-spriteset (spriteset_Metroliner_Cab_purchase_Phase_V,"gfx/USA_Amtrak_Metroliner_Cab_Car.png") { [38,  136,  36,  16,  -19,  -12] }
+spriteset (spriteset_Metroliner_Cab_purchase_Phase_III, "gfx/USA_Amtrak_Metroliner_Cab_Car.png") { [38,  4,  36,  16,  -19,  -12] }
+spriteset (spriteset_Metroliner_Cab_purchase_Phase_IV, "gfx/USA_Amtrak_Metroliner_Cab_Car.png") { [38,  70,  36,  16,  -19,  -12] }
+spriteset (spriteset_Metroliner_Cab_purchase_Phase_V, "gfx/USA_Amtrak_Metroliner_Cab_Car.png") { [38,  136,  36,  16,  -19,  -12] }
 
-spriteset (spriteset_Amfleet_Coach_purchase_Phase_II,"gfx/USA_Amtrak_Amfleet.png")  { [38, 4, 36, 16, -19, -12] }
-spriteset (spriteset_Amfleet_Coach_purchase_Phase_III,"gfx/USA_Amtrak_Amfleet.png") { [38, 37, 36, 16, -19, -12] }
-spriteset (spriteset_Amfleet_Coach_purchase_Phase_IVa,"gfx/USA_Amtrak_Amfleet.png") { [38, 70, 36, 16, -19, -12] }
-spriteset (spriteset_Amfleet_Coach_purchase_Phase_V,"gfx/USA_Amtrak_Amfleet.png")   { [38, 103, 36, 16, -19, -12] }
+spriteset (spriteset_Amfleet_Coach_purchase_Phase_II, "gfx/USA_Amtrak_Amfleet.png")  { [38, 4, 36, 16, -19, -12] }
+spriteset (spriteset_Amfleet_Coach_purchase_Phase_III, "gfx/USA_Amtrak_Amfleet.png") { [38, 37, 36, 16, -19, -12] }
+spriteset (spriteset_Amfleet_Coach_purchase_Phase_IVa, "gfx/USA_Amtrak_Amfleet.png") { [38, 70, 36, 16, -19, -12] }
+spriteset (spriteset_Amfleet_Coach_purchase_Phase_V, "gfx/USA_Amtrak_Amfleet.png")   { [38, 103, 36, 16, -19, -12] }
 
-spriteset (spriteset_Amfleet_Cafe_purchase_Phase_II,"gfx/USA_Amtrak_Amfleet.png")  { [134, 4, 36, 16, -19, -12] }
-spriteset (spriteset_Amfleet_Cafe_purchase_Phase_III,"gfx/USA_Amtrak_Amfleet.png") { [134, 37, 36, 16, -19, -12] }
-spriteset (spriteset_Amfleet_Cafe_purchase_Phase_IVa,"gfx/USA_Amtrak_Amfleet.png") { [134, 70, 36, 16, -19, -12] }
-spriteset (spriteset_Amfleet_Cafe_purchase_Phase_V,"gfx/USA_Amtrak_Amfleet.png")   { [134, 103, 36, 16, -19, -12] }
+spriteset (spriteset_Amfleet_Cafe_purchase_Phase_II, "gfx/USA_Amtrak_Amfleet.png")  { [134, 4, 36, 16, -19, -12] }
+spriteset (spriteset_Amfleet_Cafe_purchase_Phase_III, "gfx/USA_Amtrak_Amfleet.png") { [134, 37, 36, 16, -19, -12] }
+spriteset (spriteset_Amfleet_Cafe_purchase_Phase_IVa, "gfx/USA_Amtrak_Amfleet.png") { [134, 70, 36, 16, -19, -12] }
+spriteset (spriteset_Amfleet_Cafe_purchase_Phase_V, "gfx/USA_Amtrak_Amfleet.png")   { [134, 103, 36, 16, -19, -12] }
 
-spriteset (spriteset_Multilevel_purchase,"gfx/USA_Bombardier_Multilevel.png")     { [4,   103,  87,  13,  -19,  -9] }
-spriteset (spriteset_Multilevel_Car_purchase,"gfx/USA_Bombardier_Multilevel.png") { [100, 103,  87,  13,  -19,  -9] }
+spriteset (spriteset_Multilevel_purchase, "gfx/USA_Bombardier_Multilevel.png")     { [4,   103,  87,  13,  -19,  -9] }
+spriteset (spriteset_Multilevel_Car_purchase, "gfx/USA_Bombardier_Multilevel.png") { [100, 103,  87,  13,  -19,  -9] }
 
 spriteset (spriteset_Gallery_Cab_purchase, "gfx/USA_Gallery_Car.png") { [4, 103,  87,  14,  -19,  -9] }
 spriteset (spriteset_Gallery_Car_purchase, "gfx/USA_Gallery_Car.png") { [100, 103,  87,  14,  -19,  -9] }
@@ -742,7 +747,7 @@ switch(FEAT_TRAINS, SELF, sw_P32AC_DM_purchase, current_year) {
     spriteset_purchase_P32AC_DM_Amtrak;
 }
 
-spriteset (spriteset_F40C_purchase,"gfx/USA_EMD_F40C.png") { [4,  97,  87,  13,  -15,  -9] }
+spriteset (spriteset_F40C_purchase, "gfx/USA_EMD_F40C.png") { [4,  97,  87,  13,  -15,  -9] }
 
 template tmpl_F40C(x, y) {
     [x,      y,  8, 24,      -3,    -10]
@@ -758,10 +763,10 @@ template tmpl_F40C_2(x, y) {
     [x + 65, y, 22, 20,      -8,    -11]
 }
 
-spriteset (spriteset_F40C_f, "gfx/USA_EMD_F40C.png") { tmpl_F40C(4, 4) tmpl_F40C_2(92, 4) }
-spriteset (spriteset_F40C_f_off, "gfx/USA_EMD_F40C.png") { tmpl_F40C(4, 66) tmpl_F40C_2(92, 66) }
+spriteset (spriteset_F40C_f, "gfx/USA_EMD_F40C.png") { tmpl_F40C(4, 4)         tmpl_F40C_2(92, 4) }
+spriteset (spriteset_F40C_f_off, "gfx/USA_EMD_F40C.png") { tmpl_F40C(4, 66)    tmpl_F40C_2(92, 66) }
 spriteset (spriteset_F40C_b_off, "gfx/USA_EMD_F40C.png") { tmpl_F40C_2(92, 66) tmpl_F40C(4, 66) }
-spriteset (spriteset_F40C_b, "gfx/USA_EMD_F40C.png") { tmpl_F40C_2(92, 35) tmpl_F40C_2(4, 35) }
+spriteset (spriteset_F40C_b, "gfx/USA_EMD_F40C.png") { tmpl_F40C_2(92, 35)     tmpl_F40C_2(4, 35) }
 
 template tmpl_F40PH(x, y) {
     [x,       y, 8,  24,     -3,    -10]
@@ -902,149 +907,151 @@ template tmpl_L_nine_high_for_7_2(x, y) {
     [x + 71, y, 24, 21,     -12,    -14]
 }
 
-/* Gallery cabs/cars */
-spriteset (spriteset_Gallery_Cab_default_f, "gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_1(4, 4) tmpl_L_nine_high_2(100, 4) }
+/* * * * * * * * * * *
+ * Gallery cabs/cars
+ */
+spriteset (spriteset_Gallery_Cab_default_f, "gfx/USA_Gallery_Car.png")     { tmpl_L_nine_high_1(4, 4) tmpl_L_nine_high_2(100, 4) }
 spriteset (spriteset_Gallery_Cab_default_f_rev, "gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_2(4, 4) tmpl_L_nine_high_1(100, 4) }
-spriteset (spriteset_Gallery_Cab_default_b, "gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_1(100, 37) tmpl_L_nine_high_2(4, 37) }
+spriteset (spriteset_Gallery_Cab_default_b, "gfx/USA_Gallery_Car.png")     { tmpl_L_nine_high_1(100, 37) tmpl_L_nine_high_2(4, 37) }
 
-spriteset (spriteset_Gallery_Car_default,"gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_1(4, 70) tmpl_L_nine_high_2(100, 70) }
-spriteset (spriteset_Gallery_Car_default_rev,"gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_2(100, 70) tmpl_L_nine_high_1(4, 70) }
-spriteset (spriteset_Gallery_Car_default_rev_F40PH,"gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_for_7_2(100, 70) tmpl_L_nine_high_for_7_1(4, 70) }
+spriteset (spriteset_Gallery_Car_default, "gfx/USA_Gallery_Car.png")           { tmpl_L_nine_high_1(4, 70) tmpl_L_nine_high_2(100, 70) }
+spriteset (spriteset_Gallery_Car_default_rev, "gfx/USA_Gallery_Car.png")       { tmpl_L_nine_high_2(100, 70) tmpl_L_nine_high_1(4, 70) }
+spriteset (spriteset_Gallery_Car_default_rev_F40PH, "gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_for_7_2(100, 70) tmpl_L_nine_high_for_7_1(4, 70) }
 
-spriteset (spriteset_Gallery_Cab_CnNW_f, "gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_1(4, 124) tmpl_L_nine_high_2(100, 124) }
+spriteset (spriteset_Gallery_Cab_CnNW_f, "gfx/USA_Gallery_Car.png")     { tmpl_L_nine_high_1(4, 124) tmpl_L_nine_high_2(100, 124) }
 spriteset (spriteset_Gallery_Cab_CnNW_f_rev, "gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_2(4, 124) tmpl_L_nine_high_1(100, 124) }
-spriteset (spriteset_Gallery_Cab_CnNW_b, "gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_1(100, 157) tmpl_L_nine_high_2(4, 157) }
+spriteset (spriteset_Gallery_Cab_CnNW_b, "gfx/USA_Gallery_Car.png")     { tmpl_L_nine_high_1(100, 157) tmpl_L_nine_high_2(4, 157) }
 
-spriteset (spriteset_Gallery_Car_CnNW,"gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_1(4, 190) tmpl_L_nine_high_2(100, 190) }
-spriteset (spriteset_Gallery_Car_CnNW_rev,"gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_2(100, 190) tmpl_L_nine_high_1(4, 190) }
-spriteset (spriteset_Gallery_Car_CnNW_rev_F40PH,"gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_for_7_2(100, 190) tmpl_L_nine_high_for_7_1(4, 190) }
+spriteset (spriteset_Gallery_Car_CnNW, "gfx/USA_Gallery_Car.png")           { tmpl_L_nine_high_1(4, 190) tmpl_L_nine_high_2(100, 190) }
+spriteset (spriteset_Gallery_Car_CnNW_rev, "gfx/USA_Gallery_Car.png")       { tmpl_L_nine_high_2(100, 190) tmpl_L_nine_high_1(4, 190) }
+spriteset (spriteset_Gallery_Car_CnNW_rev_F40PH, "gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_for_7_2(100, 190) tmpl_L_nine_high_for_7_1(4, 190) }
 
-spriteset (spriteset_Gallery_Cab_Metra_old_f, "gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_1(4, 223) tmpl_L_nine_high_2(100, 223) }
+spriteset (spriteset_Gallery_Cab_Metra_old_f, "gfx/USA_Gallery_Car.png")     { tmpl_L_nine_high_1(4, 223) tmpl_L_nine_high_2(100, 223) }
 spriteset (spriteset_Gallery_Cab_Metra_old_f_rev, "gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_2(4, 223) tmpl_L_nine_high_1(100, 223) }
-spriteset (spriteset_Gallery_Cab_Metra_old_b, "gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_1(100, 256) tmpl_L_nine_high_2(4, 256) }
+spriteset (spriteset_Gallery_Cab_Metra_old_b, "gfx/USA_Gallery_Car.png")     { tmpl_L_nine_high_1(100, 256) tmpl_L_nine_high_2(4, 256) }
 
-spriteset (spriteset_Gallery_Car_Metra_old,"gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_1(4, 289) tmpl_L_nine_high_2(100, 289) }
-spriteset (spriteset_Gallery_Car_Metra_old_rev,"gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_2(100, 289) tmpl_L_nine_high_1(4, 289) }
-spriteset (spriteset_Gallery_Car_Metra_old_rev_F40PH,"gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_for_7_2(100, 289) tmpl_L_nine_high_for_7_1(4, 289) }
+spriteset (spriteset_Gallery_Car_Metra_old, "gfx/USA_Gallery_Car.png")           { tmpl_L_nine_high_1(4, 289) tmpl_L_nine_high_2(100, 289) }
+spriteset (spriteset_Gallery_Car_Metra_old_rev, "gfx/USA_Gallery_Car.png")       { tmpl_L_nine_high_2(100, 289) tmpl_L_nine_high_1(4, 289) }
+spriteset (spriteset_Gallery_Car_Metra_old_rev_F40PH, "gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_for_7_2(100, 289) tmpl_L_nine_high_for_7_1(4, 289) }
 
-spriteset (spriteset_Gallery_Cab_Metra_f, "gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_1(4, 322) tmpl_L_nine_high_2(100, 322) }
+spriteset (spriteset_Gallery_Cab_Metra_f, "gfx/USA_Gallery_Car.png")     { tmpl_L_nine_high_1(4, 322) tmpl_L_nine_high_2(100, 322) }
 spriteset (spriteset_Gallery_Cab_Metra_f_rev, "gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_2(4, 322) tmpl_L_nine_high_1(100, 322) }
-spriteset (spriteset_Gallery_Cab_Metra_b, "gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_1(100, 355) tmpl_L_nine_high_2(4, 355) }
+spriteset (spriteset_Gallery_Cab_Metra_b, "gfx/USA_Gallery_Car.png")     { tmpl_L_nine_high_1(100, 355) tmpl_L_nine_high_2(4, 355) }
 
-spriteset (spriteset_Gallery_Car_Metra,"gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_1(4, 388)  tmpl_L_nine_high_2(100, 388) }
-spriteset (spriteset_Gallery_Car_Metra_rev,"gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_2(100, 388)  tmpl_L_nine_high_1(4, 388) }
-spriteset (spriteset_Gallery_Car_Metra_rev_F40PH,"gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_for_7_2(100, 388)  tmpl_L_nine_high_for_7_1(4, 388) }
+spriteset (spriteset_Gallery_Car_Metra, "gfx/USA_Gallery_Car.png")           { tmpl_L_nine_high_1(4, 388)  tmpl_L_nine_high_2(100, 388) }
+spriteset (spriteset_Gallery_Car_Metra_rev, "gfx/USA_Gallery_Car.png")       { tmpl_L_nine_high_2(100, 388)  tmpl_L_nine_high_1(4, 388) }
+spriteset (spriteset_Gallery_Car_Metra_rev_F40PH, "gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_for_7_2(100, 388)  tmpl_L_nine_high_for_7_1(4, 388) }
 
-spriteset (spriteset_Gallery_Cab_Caltrain_f, "gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_1(4, 421) tmpl_L_nine_high_2(100, 421) }
+spriteset (spriteset_Gallery_Cab_Caltrain_f, "gfx/USA_Gallery_Car.png")     { tmpl_L_nine_high_1(4, 421) tmpl_L_nine_high_2(100, 421) }
 spriteset (spriteset_Gallery_Cab_Caltrain_f_rev, "gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_2(100, 421) tmpl_L_nine_high_1(4, 421) }
-spriteset (spriteset_Gallery_Cab_Caltrain_b, "gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_1(100, 454) tmpl_L_nine_high_2(4, 454) }
+spriteset (spriteset_Gallery_Cab_Caltrain_b, "gfx/USA_Gallery_Car.png")     { tmpl_L_nine_high_1(100, 454) tmpl_L_nine_high_2(4, 454) }
 
-spriteset (spriteset_Gallery_Car_Caltrain,"gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_1(4, 487)  tmpl_L_nine_high_2(100, 487) }
-spriteset (spriteset_Gallery_Car_Caltrain_rev,"gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_2(100, 487)  tmpl_L_nine_high_1(4, 487) }
-spriteset (spriteset_Gallery_Car_Caltrain_rev_F40PH,"gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_for_7_2(100, 487)  tmpl_L_nine_high_for_7_1(4, 487) }
+spriteset (spriteset_Gallery_Car_Caltrain, "gfx/USA_Gallery_Car.png")           { tmpl_L_nine_high_1(4, 487)  tmpl_L_nine_high_2(100, 487) }
+spriteset (spriteset_Gallery_Car_Caltrain_rev, "gfx/USA_Gallery_Car.png")       { tmpl_L_nine_high_2(100, 487)  tmpl_L_nine_high_1(4, 487) }
+spriteset (spriteset_Gallery_Car_Caltrain_rev_F40PH, "gfx/USA_Gallery_Car.png") { tmpl_L_nine_high_for_7_2(100, 487)  tmpl_L_nine_high_for_7_1(4, 487) }
 
 /*
  * Comet railcars
  */
-spriteset (spriteset_Comet_I_Cab_f,"gfx/USA_NJT_Comet_I.png") { tmpl_L_nine_1(4, 4) tmpl_L_nine_2(100, 4) }
-spriteset (spriteset_Comet_I_Cab_f_rev,"gfx/USA_NJT_Comet_I.png") { tmpl_L_nine_2(4, 4) tmpl_L_nine_1(100, 4) }
-spriteset (spriteset_Comet_I_Cab_b,"gfx/USA_NJT_Comet_I.png") { tmpl_L_nine_1(100, 37) tmpl_L_nine_2(4, 37) }
+spriteset (spriteset_Comet_I_Cab_f, "gfx/USA_NJT_Comet_I.png")     { tmpl_L_nine_1(4, 4) tmpl_L_nine_2(100, 4) }
+spriteset (spriteset_Comet_I_Cab_f_rev, "gfx/USA_NJT_Comet_I.png") { tmpl_L_nine_2(4, 4) tmpl_L_nine_1(100, 4) }
+spriteset (spriteset_Comet_I_Cab_b, "gfx/USA_NJT_Comet_I.png")     { tmpl_L_nine_1(100, 37) tmpl_L_nine_2(4, 37) }
 
-spriteset (spriteset_Comet_I_Car,"gfx/USA_NJT_Comet_I.png") { tmpl_L_nine_1(4, 70) tmpl_L_nine_2(100, 70) }
-spriteset (spriteset_Comet_I_Car_rev,"gfx/USA_NJT_Comet_I.png") { tmpl_L_nine_2(100, 70) tmpl_L_nine_1(4, 70) }
-spriteset (spriteset_Comet_I_Car_rev_F40PH,"gfx/USA_NJT_Comet_I.png") { tmpl_L_nine_for_7_2(100, 70) tmpl_L_nine_for_7_1(4, 70) }
+spriteset (spriteset_Comet_I_Car, "gfx/USA_NJT_Comet_I.png")           { tmpl_L_nine_1(4, 70) tmpl_L_nine_2(100, 70) }
+spriteset (spriteset_Comet_I_Car_rev, "gfx/USA_NJT_Comet_I.png")       { tmpl_L_nine_2(100, 70) tmpl_L_nine_1(4, 70) }
+spriteset (spriteset_Comet_I_Car_rev_F40PH, "gfx/USA_NJT_Comet_I.png") { tmpl_L_nine_for_7_2(100, 70) tmpl_L_nine_for_7_1(4, 70) }
 
-spriteset (spriteset_Comet_II_Cab_f,"gfx/USA_NJT_Comet_II.png") { tmpl_L_nine_1(4, 4) tmpl_L_nine_2(100, 4) }
-spriteset (spriteset_Comet_II_Cab_f_rev,"gfx/USA_NJT_Comet_II.png") { tmpl_L_nine_2(4, 4) tmpl_L_nine_1(100, 4) }
-spriteset (spriteset_Comet_II_Cab_b,"gfx/USA_NJT_Comet_II.png") { tmpl_L_nine_1(100, 37) tmpl_L_nine_2(4, 37) }
+spriteset (spriteset_Comet_II_Cab_f, "gfx/USA_NJT_Comet_II.png")     { tmpl_L_nine_1(4, 4) tmpl_L_nine_2(100, 4) }
+spriteset (spriteset_Comet_II_Cab_f_rev, "gfx/USA_NJT_Comet_II.png") { tmpl_L_nine_2(4, 4) tmpl_L_nine_1(100, 4) }
+spriteset (spriteset_Comet_II_Cab_b, "gfx/USA_NJT_Comet_II.png")     { tmpl_L_nine_1(100, 37) tmpl_L_nine_2(4, 37) }
 
-spriteset (spriteset_Comet_II_Car,"gfx/USA_NJT_Comet_II.png") { tmpl_L_nine_1(4, 70) tmpl_L_nine_2(100, 70) }
-spriteset (spriteset_Comet_II_Car_rev,"gfx/USA_NJT_Comet_II.png") { tmpl_L_nine_2(100, 70) tmpl_L_nine_1(4, 70) }
-spriteset (spriteset_Comet_II_Car_rev_F40PH,"gfx/USA_NJT_Comet_II.png") { tmpl_L_nine_for_7_2(100, 70) tmpl_L_nine_for_7_1(4, 70) }
+spriteset (spriteset_Comet_II_Car, "gfx/USA_NJT_Comet_II.png")           { tmpl_L_nine_1(4, 70) tmpl_L_nine_2(100, 70) }
+spriteset (spriteset_Comet_II_Car_rev, "gfx/USA_NJT_Comet_II.png")       { tmpl_L_nine_2(100, 70) tmpl_L_nine_1(4, 70) }
+spriteset (spriteset_Comet_II_Car_rev_F40PH, "gfx/USA_NJT_Comet_II.png") { tmpl_L_nine_for_7_2(100, 70) tmpl_L_nine_for_7_1(4, 70) }
 
-spriteset (spriteset_Comet_III_Cab_f,"gfx/USA_NJT_Comet_III.png") { tmpl_L_nine_1(4, 4) tmpl_L_nine_2(100, 4) }
-spriteset (spriteset_Comet_III_Cab_f_rev,"gfx/USA_NJT_Comet_III.png") { tmpl_L_nine_2(4, 4) tmpl_L_nine_1(100, 4) }
-spriteset (spriteset_Comet_III_Cab_b,"gfx/USA_NJT_Comet_III.png") { tmpl_L_nine_1(100, 37) tmpl_L_nine_2(4, 37) }
+spriteset (spriteset_Comet_III_Cab_f, "gfx/USA_NJT_Comet_III.png")     { tmpl_L_nine_1(4, 4) tmpl_L_nine_2(100, 4) }
+spriteset (spriteset_Comet_III_Cab_f_rev, "gfx/USA_NJT_Comet_III.png") { tmpl_L_nine_2(4, 4) tmpl_L_nine_1(100, 4) }
+spriteset (spriteset_Comet_III_Cab_b, "gfx/USA_NJT_Comet_III.png")     { tmpl_L_nine_1(100, 37) tmpl_L_nine_2(4, 37) }
 
-spriteset (spriteset_Comet_III_Car,"gfx/USA_NJT_Comet_III.png") { tmpl_L_nine_1(4, 70) tmpl_L_nine_2(100, 70) }
-spriteset (spriteset_Comet_III_Car_rev,"gfx/USA_NJT_Comet_III.png") { tmpl_L_nine_2(100, 70) tmpl_L_nine_1(4, 70) }
-spriteset (spriteset_Comet_III_Car_rev_F40PH,"gfx/USA_NJT_Comet_III.png") { tmpl_L_nine_for_7_2(100, 70) tmpl_L_nine_for_7_1(4, 70) }
+spriteset (spriteset_Comet_III_Car, "gfx/USA_NJT_Comet_III.png")           { tmpl_L_nine_1(4, 70) tmpl_L_nine_2(100, 70) }
+spriteset (spriteset_Comet_III_Car_rev, "gfx/USA_NJT_Comet_III.png")       { tmpl_L_nine_2(100, 70) tmpl_L_nine_1(4, 70) }
+spriteset (spriteset_Comet_III_Car_rev_F40PH, "gfx/USA_NJT_Comet_III.png") { tmpl_L_nine_for_7_2(100, 70) tmpl_L_nine_for_7_1(4, 70) }
 
-spriteset (spriteset_Comet_IV_Cab_f,"gfx/USA_NJT_Comet_IV.png") { tmpl_L_nine_1(4, 4) tmpl_L_nine_2(100, 4) }
-spriteset (spriteset_Comet_IV_Cab_f_rev,"gfx/USA_NJT_Comet_IV.png") { tmpl_L_nine_2(4, 4) tmpl_L_nine_1(100, 4) }
-spriteset (spriteset_Comet_IV_Cab_b,"gfx/USA_NJT_Comet_IV.png") { tmpl_L_nine_1(100, 37) tmpl_L_nine_2(4, 37) }
+spriteset (spriteset_Comet_IV_Cab_f, "gfx/USA_NJT_Comet_IV.png")     { tmpl_L_nine_1(4, 4) tmpl_L_nine_2(100, 4) }
+spriteset (spriteset_Comet_IV_Cab_f_rev, "gfx/USA_NJT_Comet_IV.png") { tmpl_L_nine_2(4, 4) tmpl_L_nine_1(100, 4) }
+spriteset (spriteset_Comet_IV_Cab_b, "gfx/USA_NJT_Comet_IV.png")     { tmpl_L_nine_1(100, 37) tmpl_L_nine_2(4, 37) }
 
-spriteset (spriteset_Comet_IV_Car,"gfx/USA_NJT_Comet_IV.png") { tmpl_L_nine_1(4, 70) tmpl_L_nine_2(100, 70) }
-spriteset (spriteset_Comet_IV_Car_rev,"gfx/USA_NJT_Comet_IV.png") { tmpl_L_nine_2(100, 70) tmpl_L_nine_1(4, 70) }
-spriteset (spriteset_Comet_IV_Car_rev_F40PH,"gfx/USA_NJT_Comet_IV.png") { tmpl_L_nine_for_7_2(100, 70) tmpl_L_nine_for_7_1(4, 70) }
+spriteset (spriteset_Comet_IV_Car, "gfx/USA_NJT_Comet_IV.png")           { tmpl_L_nine_1(4, 70) tmpl_L_nine_2(100, 70) }
+spriteset (spriteset_Comet_IV_Car_rev, "gfx/USA_NJT_Comet_IV.png")       { tmpl_L_nine_2(100, 70) tmpl_L_nine_1(4, 70) }
+spriteset (spriteset_Comet_IV_Car_rev_F40PH, "gfx/USA_NJT_Comet_IV.png") { tmpl_L_nine_for_7_2(100, 70) tmpl_L_nine_for_7_1(4, 70) }
 /*
- * Comet V (NJT/MN)
+ * Comet V (NJT+MN)
  */
-spriteset (spriteset_Comet_V_Cab_NJT_f,"gfx/USA_Alstom_Comet_V.png") { tmpl_L_nine_1(4, 4) tmpl_L_nine_2(100, 4) }
-spriteset (spriteset_Comet_V_Cab_NJT_f_rev,"gfx/USA_Alstom_Comet_V.png") { tmpl_L_nine_2(4, 4) tmpl_L_nine_1(100, 4) }
-spriteset (spriteset_Comet_V_Cab_NJT_b,"gfx/USA_Alstom_Comet_V.png") { tmpl_L_nine_1(100, 37) tmpl_L_nine_2(4, 37) }
+spriteset (spriteset_Comet_V_Cab_NJT_f, "gfx/USA_Alstom_Comet_V.png") { tmpl_L_nine_1(4, 4) tmpl_L_nine_2(100, 4) }
+spriteset (spriteset_Comet_V_Cab_NJT_f_rev, "gfx/USA_Alstom_Comet_V.png") { tmpl_L_nine_2(4, 4) tmpl_L_nine_1(100, 4) }
+spriteset (spriteset_Comet_V_Cab_NJT_b, "gfx/USA_Alstom_Comet_V.png") { tmpl_L_nine_1(100, 37) tmpl_L_nine_2(4, 37) }
 
-spriteset (spriteset_Comet_V_Car_NJT,"gfx/USA_Alstom_Comet_V.png") { tmpl_L_nine_1(4, 70) tmpl_L_nine_2(100, 70) }
-spriteset (spriteset_Comet_V_Car_NJT_rev,"gfx/USA_Alstom_Comet_V.png") { tmpl_L_nine_2(100, 70) tmpl_L_nine_1(4, 70) }
-spriteset (spriteset_Comet_V_Car_NJT_rev_F40PH,"gfx/USA_Alstom_Comet_V.png") { tmpl_L_nine_for_7_2(100, 70) tmpl_L_nine_for_7_1(4, 70) }
+spriteset (spriteset_Comet_V_Car_NJT, "gfx/USA_Alstom_Comet_V.png") { tmpl_L_nine_1(4, 70) tmpl_L_nine_2(100, 70) }
+spriteset (spriteset_Comet_V_Car_NJT_rev, "gfx/USA_Alstom_Comet_V.png") { tmpl_L_nine_2(100, 70) tmpl_L_nine_1(4, 70) }
+spriteset (spriteset_Comet_V_Car_NJT_rev_F40PH, "gfx/USA_Alstom_Comet_V.png") { tmpl_L_nine_for_7_2(100, 70) tmpl_L_nine_for_7_1(4, 70) }
 
-spriteset (spriteset_Comet_V_Cab_MN_f,"gfx/USA_Alstom_Comet_V.png") { tmpl_L_nine_1(4, 122) tmpl_L_nine_2(100, 122) }
-spriteset (spriteset_Comet_V_Cab_MN_f_rev,"gfx/USA_Alstom_Comet_V.png") { tmpl_L_nine_2(4, 122) tmpl_L_nine_1(100, 122) }
-spriteset (spriteset_Comet_V_Cab_MN_b,"gfx/USA_Alstom_Comet_V.png") { tmpl_L_nine_1(100, 155) tmpl_L_nine_2(4, 155) }
+spriteset (spriteset_Comet_V_Cab_MN_f, "gfx/USA_Alstom_Comet_V.png") { tmpl_L_nine_1(4, 122) tmpl_L_nine_2(100, 122) }
+spriteset (spriteset_Comet_V_Cab_MN_f_rev, "gfx/USA_Alstom_Comet_V.png") { tmpl_L_nine_2(4, 122) tmpl_L_nine_1(100, 122) }
+spriteset (spriteset_Comet_V_Cab_MN_b, "gfx/USA_Alstom_Comet_V.png") { tmpl_L_nine_1(100, 155) tmpl_L_nine_2(4, 155) }
 
-spriteset (spriteset_Comet_V_Car_MN,"gfx/USA_Alstom_Comet_V.png") { tmpl_L_nine_1(4, 188) tmpl_L_nine_2(100, 188) }
-spriteset (spriteset_Comet_V_Car_MN_rev,"gfx/USA_Alstom_Comet_V.png") { tmpl_L_nine_2(100, 188) tmpl_L_nine_1(4, 188) }
-spriteset (spriteset_Comet_V_Car_MN_rev_F40PH,"gfx/USA_Alstom_Comet_V.png") { tmpl_L_nine_for_7_2(100, 188) tmpl_L_nine_for_7_1(4, 188) }
+spriteset (spriteset_Comet_V_Car_MN, "gfx/USA_Alstom_Comet_V.png") { tmpl_L_nine_1(4, 188) tmpl_L_nine_2(100, 188) }
+spriteset (spriteset_Comet_V_Car_MN_rev, "gfx/USA_Alstom_Comet_V.png") { tmpl_L_nine_2(100, 188) tmpl_L_nine_1(4, 188) }
+spriteset (spriteset_Comet_V_Car_MN_rev_F40PH, "gfx/USA_Alstom_Comet_V.png") { tmpl_L_nine_for_7_2(100, 188) tmpl_L_nine_for_7_1(4, 188) }
 
-spriteset (spriteset_Metroliner_Cab_Phase_III_f,"gfx/USA_Amtrak_Metroliner_Cab_Car.png") { tmpl_L_nine_1(4, 4) tmpl_L_nine_2(100, 4) }
-spriteset (spriteset_Metroliner_Cab_Phase_III_b,"gfx/USA_Amtrak_Metroliner_Cab_Car.png") { tmpl_L_nine_1(100, 37) tmpl_L_nine_2(4, 37) }
-spriteset (spriteset_Metroliner_Cab_Phase_III_f_rev,"gfx/USA_Amtrak_Metroliner_Cab_Car.png") { tmpl_L_nine_2(4, 4) tmpl_L_nine_1(100, 4) }
+spriteset (spriteset_Metroliner_Cab_Phase_III_f, "gfx/USA_Amtrak_Metroliner_Cab_Car.png") { tmpl_L_nine_1(4, 4) tmpl_L_nine_2(100, 4) }
+spriteset (spriteset_Metroliner_Cab_Phase_III_b, "gfx/USA_Amtrak_Metroliner_Cab_Car.png") { tmpl_L_nine_1(100, 37) tmpl_L_nine_2(4, 37) }
+spriteset (spriteset_Metroliner_Cab_Phase_III_f_rev, "gfx/USA_Amtrak_Metroliner_Cab_Car.png") { tmpl_L_nine_2(4, 4) tmpl_L_nine_1(100, 4) }
 
-spriteset (spriteset_Metroliner_Cab_Phase_IVa_f,"gfx/USA_Amtrak_Metroliner_Cab_Car.png") { tmpl_L_nine_1(4, 70) tmpl_L_nine_2(100, 70) }
-spriteset (spriteset_Metroliner_Cab_Phase_IVa_b,"gfx/USA_Amtrak_Metroliner_Cab_Car.png") { tmpl_L_nine_1(100, 103) tmpl_L_nine_2(4, 103) }
-spriteset (spriteset_Metroliner_Cab_Phase_IVa_f_rev,"gfx/USA_Amtrak_Metroliner_Cab_Car.png") { tmpl_L_nine_2(4, 70) tmpl_L_nine_1(100, 70) }
+spriteset (spriteset_Metroliner_Cab_Phase_IVa_f, "gfx/USA_Amtrak_Metroliner_Cab_Car.png") { tmpl_L_nine_1(4, 70) tmpl_L_nine_2(100, 70) }
+spriteset (spriteset_Metroliner_Cab_Phase_IVa_b, "gfx/USA_Amtrak_Metroliner_Cab_Car.png") { tmpl_L_nine_1(100, 103) tmpl_L_nine_2(4, 103) }
+spriteset (spriteset_Metroliner_Cab_Phase_IVa_f_rev, "gfx/USA_Amtrak_Metroliner_Cab_Car.png") { tmpl_L_nine_2(4, 70) tmpl_L_nine_1(100, 70) }
 
-spriteset (spriteset_Metroliner_Cab_Phase_V_f,"gfx/USA_Amtrak_Metroliner_Cab_Car.png") { tmpl_L_nine_1(4, 136) tmpl_L_nine_2(100, 136) }
-spriteset (spriteset_Metroliner_Cab_Phase_V_b,"gfx/USA_Amtrak_Metroliner_Cab_Car.png") { tmpl_L_nine_1(100, 169) tmpl_L_nine_2(4, 169) }
-spriteset (spriteset_Metroliner_Cab_Phase_V_f_rev,"gfx/USA_Amtrak_Metroliner_Cab_Car.png") { tmpl_L_nine_2(4, 136) tmpl_L_nine_1(100, 136) }
+spriteset (spriteset_Metroliner_Cab_Phase_V_f, "gfx/USA_Amtrak_Metroliner_Cab_Car.png") { tmpl_L_nine_1(4, 136) tmpl_L_nine_2(100, 136) }
+spriteset (spriteset_Metroliner_Cab_Phase_V_b, "gfx/USA_Amtrak_Metroliner_Cab_Car.png") { tmpl_L_nine_1(100, 169) tmpl_L_nine_2(4, 169) }
+spriteset (spriteset_Metroliner_Cab_Phase_V_f_rev, "gfx/USA_Amtrak_Metroliner_Cab_Car.png") { tmpl_L_nine_2(4, 136) tmpl_L_nine_1(100, 136) }
 
-spriteset (spriteset_Amfleet_Coach_Phase_II,"gfx/USA_Amtrak_Amfleet.png")  { tmpl_L_nine_1(4,4) tmpl_L_nine_2(4,4) }
-spriteset (spriteset_Amfleet_Coach_Phase_III,"gfx/USA_Amtrak_Amfleet.png") { tmpl_L_nine_1(4,37) tmpl_L_nine_2(4,37) }
-spriteset (spriteset_Amfleet_Coach_Phase_IVa,"gfx/USA_Amtrak_Amfleet.png") { tmpl_L_nine_1(4,70) tmpl_L_nine_2(4,70) }
-spriteset (spriteset_Amfleet_Coach_Phase_V,"gfx/USA_Amtrak_Amfleet.png")   { tmpl_L_nine_1(4,103) tmpl_L_nine_2(4,103) }
+spriteset (spriteset_Amfleet_Coach_Phase_II, "gfx/USA_Amtrak_Amfleet.png")  { tmpl_L_nine_1(4,4) tmpl_L_nine_2(4,4) }
+spriteset (spriteset_Amfleet_Coach_Phase_III, "gfx/USA_Amtrak_Amfleet.png") { tmpl_L_nine_1(4,37) tmpl_L_nine_2(4,37) }
+spriteset (spriteset_Amfleet_Coach_Phase_IVa, "gfx/USA_Amtrak_Amfleet.png") { tmpl_L_nine_1(4,70) tmpl_L_nine_2(4,70) }
+spriteset (spriteset_Amfleet_Coach_Phase_V, "gfx/USA_Amtrak_Amfleet.png")   { tmpl_L_nine_1(4,103) tmpl_L_nine_2(4,103) }
 
-spriteset (spriteset_Amfleet_Cafe_Phase_II,"gfx/USA_Amtrak_Amfleet.png")  { tmpl_L_nine_1(100,4) tmpl_L_nine_2(100,4) }
-spriteset (spriteset_Amfleet_Cafe_Phase_III,"gfx/USA_Amtrak_Amfleet.png") { tmpl_L_nine_1(100,37) tmpl_L_nine_2(100,37) }
-spriteset (spriteset_Amfleet_Cafe_Phase_IVa,"gfx/USA_Amtrak_Amfleet.png") { tmpl_L_nine_1(100,70) tmpl_L_nine_2(100,70) }
-spriteset (spriteset_Amfleet_Cafe_Phase_V,"gfx/USA_Amtrak_Amfleet.png")   { tmpl_L_nine_1(100,103) tmpl_L_nine_2(100,103) }
+spriteset (spriteset_Amfleet_Cafe_Phase_II, "gfx/USA_Amtrak_Amfleet.png")  { tmpl_L_nine_1(100,4) tmpl_L_nine_2(100,4) }
+spriteset (spriteset_Amfleet_Cafe_Phase_III, "gfx/USA_Amtrak_Amfleet.png") { tmpl_L_nine_1(100,37) tmpl_L_nine_2(100,37) }
+spriteset (spriteset_Amfleet_Cafe_Phase_IVa, "gfx/USA_Amtrak_Amfleet.png") { tmpl_L_nine_1(100,70) tmpl_L_nine_2(100,70) }
+spriteset (spriteset_Amfleet_Cafe_Phase_V, "gfx/USA_Amtrak_Amfleet.png")   { tmpl_L_nine_1(100,103) tmpl_L_nine_2(100,103) }
 
-spriteset (spriteset_Amfleet_Coach_Phase_II_rev,"gfx/USA_Amtrak_Amfleet.png")  { tmpl_L_nine_2(4,4) tmpl_L_nine_1(4,4) }
-spriteset (spriteset_Amfleet_Coach_Phase_III_rev,"gfx/USA_Amtrak_Amfleet.png") { tmpl_L_nine_2(4,37) tmpl_L_nine_1(4,37) }
-spriteset (spriteset_Amfleet_Coach_Phase_IVa_rev,"gfx/USA_Amtrak_Amfleet.png") { tmpl_L_nine_2(4,70) tmpl_L_nine_1(4,70) }
-spriteset (spriteset_Amfleet_Coach_Phase_V_rev,"gfx/USA_Amtrak_Amfleet.png")   { tmpl_L_nine_2(4,103) tmpl_L_nine_1(4,103) }
+spriteset (spriteset_Amfleet_Coach_Phase_II_rev, "gfx/USA_Amtrak_Amfleet.png")  { tmpl_L_nine_2(4,4) tmpl_L_nine_1(4,4) }
+spriteset (spriteset_Amfleet_Coach_Phase_III_rev, "gfx/USA_Amtrak_Amfleet.png") { tmpl_L_nine_2(4,37) tmpl_L_nine_1(4,37) }
+spriteset (spriteset_Amfleet_Coach_Phase_IVa_rev, "gfx/USA_Amtrak_Amfleet.png") { tmpl_L_nine_2(4,70) tmpl_L_nine_1(4,70) }
+spriteset (spriteset_Amfleet_Coach_Phase_V_rev, "gfx/USA_Amtrak_Amfleet.png")   { tmpl_L_nine_2(4,103) tmpl_L_nine_1(4,103) }
 
-spriteset (spriteset_Amfleet_Cafe_Phase_II_rev,"gfx/USA_Amtrak_Amfleet.png")  { tmpl_L_nine_2(100,4) tmpl_L_nine_1(100,4) }
-spriteset (spriteset_Amfleet_Cafe_Phase_III_rev,"gfx/USA_Amtrak_Amfleet.png") { tmpl_L_nine_2(100,37) tmpl_L_nine_1(100,37) }
-spriteset (spriteset_Amfleet_Cafe_Phase_IVa_rev,"gfx/USA_Amtrak_Amfleet.png") { tmpl_L_nine_2(100,70) tmpl_L_nine_1(100,70) }
-spriteset (spriteset_Amfleet_Cafe_Phase_V_rev,"gfx/USA_Amtrak_Amfleet.png")   { tmpl_L_nine_2(100,103) tmpl_L_nine_1(100,103) }
+spriteset (spriteset_Amfleet_Cafe_Phase_II_rev, "gfx/USA_Amtrak_Amfleet.png")  { tmpl_L_nine_2(100,4) tmpl_L_nine_1(100,4) }
+spriteset (spriteset_Amfleet_Cafe_Phase_III_rev, "gfx/USA_Amtrak_Amfleet.png") { tmpl_L_nine_2(100,37) tmpl_L_nine_1(100,37) }
+spriteset (spriteset_Amfleet_Cafe_Phase_IVa_rev, "gfx/USA_Amtrak_Amfleet.png") { tmpl_L_nine_2(100,70) tmpl_L_nine_1(100,70) }
+spriteset (spriteset_Amfleet_Cafe_Phase_V_rev, "gfx/USA_Amtrak_Amfleet.png")   { tmpl_L_nine_2(100,103) tmpl_L_nine_1(100,103) }
 
-spriteset (spriteset_Amfleet_Coach_Phase_II_rev_F40PH,"gfx/USA_Amtrak_Amfleet.png")  { tmpl_L_nine_for_7_2(4,4) tmpl_L_nine_for_7_1(4,4) }
-spriteset (spriteset_Amfleet_Coach_Phase_III_rev_F40PH,"gfx/USA_Amtrak_Amfleet.png") { tmpl_L_nine_for_7_2(4,37) tmpl_L_nine_for_7_1(4,37) }
-spriteset (spriteset_Amfleet_Coach_Phase_IVa_rev_F40PH,"gfx/USA_Amtrak_Amfleet.png") { tmpl_L_nine_for_7_2(4,70) tmpl_L_nine_for_7_1(4,70) }
-spriteset (spriteset_Amfleet_Coach_Phase_V_rev_F40PH,"gfx/USA_Amtrak_Amfleet.png")   { tmpl_L_nine_for_7_2(4,103) tmpl_L_nine_for_7_1(4,103) }
+spriteset (spriteset_Amfleet_Coach_Phase_II_rev_F40PH, "gfx/USA_Amtrak_Amfleet.png")  { tmpl_L_nine_for_7_2(4,4) tmpl_L_nine_for_7_1(4,4) }
+spriteset (spriteset_Amfleet_Coach_Phase_III_rev_F40PH, "gfx/USA_Amtrak_Amfleet.png") { tmpl_L_nine_for_7_2(4,37) tmpl_L_nine_for_7_1(4,37) }
+spriteset (spriteset_Amfleet_Coach_Phase_IVa_rev_F40PH, "gfx/USA_Amtrak_Amfleet.png") { tmpl_L_nine_for_7_2(4,70) tmpl_L_nine_for_7_1(4,70) }
+spriteset (spriteset_Amfleet_Coach_Phase_V_rev_F40PH, "gfx/USA_Amtrak_Amfleet.png")   { tmpl_L_nine_for_7_2(4,103) tmpl_L_nine_for_7_1(4,103) }
 
-spriteset (spriteset_Amfleet_Cafe_Phase_II_rev_F40PH,"gfx/USA_Amtrak_Amfleet.png")  { tmpl_L_nine_for_7_2(100,4) tmpl_L_nine_for_7_1(100,4) }
-spriteset (spriteset_Amfleet_Cafe_Phase_III_rev_F40PH,"gfx/USA_Amtrak_Amfleet.png") { tmpl_L_nine_for_7_2(100,37) tmpl_L_nine_for_7_1(100,37) }
-spriteset (spriteset_Amfleet_Cafe_Phase_IVa_rev_F40PH,"gfx/USA_Amtrak_Amfleet.png") { tmpl_L_nine_for_7_2(100,70) tmpl_L_nine_for_7_1(100,70) }
-spriteset (spriteset_Amfleet_Cafe_Phase_V_rev_F40PH,"gfx/USA_Amtrak_Amfleet.png")   { tmpl_L_nine_for_7_2(100,103) tmpl_L_nine_for_7_1(100,103) }
+spriteset (spriteset_Amfleet_Cafe_Phase_II_rev_F40PH, "gfx/USA_Amtrak_Amfleet.png")  { tmpl_L_nine_for_7_2(100,4) tmpl_L_nine_for_7_1(100,4) }
+spriteset (spriteset_Amfleet_Cafe_Phase_III_rev_F40PH, "gfx/USA_Amtrak_Amfleet.png") { tmpl_L_nine_for_7_2(100,37) tmpl_L_nine_for_7_1(100,37) }
+spriteset (spriteset_Amfleet_Cafe_Phase_IVa_rev_F40PH, "gfx/USA_Amtrak_Amfleet.png") { tmpl_L_nine_for_7_2(100,70) tmpl_L_nine_for_7_1(100,70) }
+spriteset (spriteset_Amfleet_Cafe_Phase_V_rev_F40PH, "gfx/USA_Amtrak_Amfleet.png")   { tmpl_L_nine_for_7_2(100,103) tmpl_L_nine_for_7_1(100,103) }
 
-spriteset (spriteset_Multilevel_Cab_f,"gfx/USA_Bombardier_Multilevel.png") { tmpl_L_nine_1(4, 4) tmpl_L_nine_2(100, 4) }
-spriteset (spriteset_Multilevel_Cab_f_rev,"gfx/USA_Bombardier_Multilevel.png") { tmpl_L_nine_2(4, 4) tmpl_L_nine_1(100, 4) }
-spriteset (spriteset_Multilevel_Cab_b,"gfx/USA_Bombardier_Multilevel.png") { tmpl_L_nine_1(100, 37) tmpl_L_nine_2(4, 37) }
+spriteset (spriteset_Multilevel_Cab_f, "gfx/USA_Bombardier_Multilevel.png") { tmpl_L_nine_1(4, 4) tmpl_L_nine_2(100, 4) }
+spriteset (spriteset_Multilevel_Cab_f_rev, "gfx/USA_Bombardier_Multilevel.png") { tmpl_L_nine_2(4, 4) tmpl_L_nine_1(100, 4) }
+spriteset (spriteset_Multilevel_Cab_b, "gfx/USA_Bombardier_Multilevel.png") { tmpl_L_nine_1(100, 37) tmpl_L_nine_2(4, 37) }
 
-spriteset (spriteset_Multilevel_Car,"gfx/USA_Bombardier_Multilevel.png")   { tmpl_L_nine_1(4, 70) tmpl_L_nine_2(100, 70) }
-spriteset (spriteset_Multilevel_Car_rev,"gfx/USA_Bombardier_Multilevel.png")   { tmpl_L_nine_2(100, 70) tmpl_L_nine_1(4, 70) }
-spriteset (spriteset_Multilevel_Car_rev_F40PH,"gfx/USA_Bombardier_Multilevel.png")   { tmpl_L_nine_for_7_2(100, 70) tmpl_L_nine_for_7_1(4, 70) }
+spriteset (spriteset_Multilevel_Car, "gfx/USA_Bombardier_Multilevel.png")   { tmpl_L_nine_1(4, 70) tmpl_L_nine_2(100, 70) }
+spriteset (spriteset_Multilevel_Car_rev, "gfx/USA_Bombardier_Multilevel.png")   { tmpl_L_nine_2(100, 70) tmpl_L_nine_1(4, 70) }
+spriteset (spriteset_Multilevel_Car_rev_F40PH, "gfx/USA_Bombardier_Multilevel.png")   { tmpl_L_nine_for_7_2(100, 70) tmpl_L_nine_for_7_1(4, 70) }
 
 /* * * * * * * *
  * Cab/loco graphics for use as pseudo-sprite in push-pull reverse locomotives/cars
@@ -2681,7 +2688,7 @@ item(FEAT_TRAINS, item_F40C, 214) {
 
 //--------------------------------------------------------------------------------------------------MP40PH-3C---Bombardier Bilevel
 spriteset (spriteset_purchase_MP40PH_3C, "gfx/Canada_MPI_MP40PH_3C.png") { [4,  66,  87,  13,  -15,  -9] }
-spriteset (spriteset_Bombardier_Bilevel_purchase,"gfx/USA_Bombardier_Bilevel.png")   { [4,  97,  87,  14,  -15,  -10] }
+spriteset (spriteset_Bombardier_Bilevel_purchase, "gfx/USA_Bombardier_Bilevel.png")   { [4,  97,  87,  14,  -15,  -10] }
 
 template tmpl_MP40PH_3C(x,y) {
     [x,      y,    8,     24,     -3,    -10]
@@ -2735,9 +2742,9 @@ template tmpl_Bombardier_Bilevel(x, y) {
     [x+65,   y,    22,    20,     -8,    -11]
 }
 
-spriteset (spriteset_Bombardier_Bilevel_Cab_f,"gfx/USA_Bombardier_Bilevel.png") { tmpl_Bombardier_Bilevel(4,4)   tmpl_Bombardier_Bilevel(92,4) }
-spriteset (spriteset_Bombardier_Bilevel_Cab_b,"gfx/USA_Bombardier_Bilevel.png") { tmpl_Bombardier_Bilevel(92,35) tmpl_Bombardier_Bilevel(4,35) }
-spriteset (spriteset_Bombardier_Bilevel_Car,"gfx/USA_Bombardier_Bilevel.png")   { tmpl_Bombardier_Bilevel(4,66)  tmpl_Bombardier_Bilevel(92,66) }
+spriteset (spriteset_Bombardier_Bilevel_Cab_f, "gfx/USA_Bombardier_Bilevel.png") { tmpl_Bombardier_Bilevel(4,4)   tmpl_Bombardier_Bilevel(92,4) }
+spriteset (spriteset_Bombardier_Bilevel_Cab_b, "gfx/USA_Bombardier_Bilevel.png") { tmpl_Bombardier_Bilevel(92,35) tmpl_Bombardier_Bilevel(4,35) }
+spriteset (spriteset_Bombardier_Bilevel_Car, "gfx/USA_Bombardier_Bilevel.png")   { tmpl_Bombardier_Bilevel(4,66)  tmpl_Bombardier_Bilevel(92,66) }
 
 switch (FEAT_TRAINS, SELF, sw_Bombardier_Bilevel_Cab_graphics, position_in_consist) {
     0:  spriteset_Bombardier_Bilevel_Cab_f;
@@ -3148,90 +3155,90 @@ template tmpl_NYC_Budd_Lightweight(x,y) {
     [x+32,   y,    32,    16,     -16,   -11]
     [x+65,   y,    22,    20,     -8,    -11]
 }
-spriteset (spriteset_NYC_Budd_Lightweight_Coach_purchase,"gfx/USA_NYC_Budd_Lightweight.png")   { [36, 4, 32, 16, -15, -11] }
-spriteset (spriteset_NYC_Budd_Lightweight_Baggage_purchase,"gfx/USA_NYC_Budd_Lightweight.png") { [36, 35, 32, 16, -15, -11] }
+spriteset(spriteset_NYC_Budd_Lightweight_Coach_purchase, "gfx/USA_NYC_Budd_Lightweight.png")   { [36, 4, 32, 16, -15, -11] }
+spriteset(spriteset_NYC_Budd_Lightweight_Baggage_purchase, "gfx/USA_NYC_Budd_Lightweight.png") { [36, 35, 32, 16, -15, -11] }
 
-spriteset (spriteset_NYC_Budd_Lightweight_Coach,"gfx/USA_NYC_Budd_Lightweight.png")   { tmpl_NYC_Budd_Lightweight(4,4)  tmpl_NYC_Budd_Lightweight(92,4) }
-spriteset (spriteset_NYC_Budd_Lightweight_Baggage,"gfx/USA_NYC_Budd_Lightweight.png") { tmpl_NYC_Budd_Lightweight(4,35) tmpl_NYC_Budd_Lightweight(92,35) }
+spriteset(spriteset_NYC_Budd_Lightweight_Coach, "gfx/USA_NYC_Budd_Lightweight.png")   { tmpl_NYC_Budd_Lightweight(4,4)  tmpl_NYC_Budd_Lightweight(92,4) }
+spriteset(spriteset_NYC_Budd_Lightweight_Baggage, "gfx/USA_NYC_Budd_Lightweight.png") { tmpl_NYC_Budd_Lightweight(4,35) tmpl_NYC_Budd_Lightweight(92,35) }
 
 item(FEAT_TRAINS, item_NYC_Budd_Lightweight_Coach, 720) {
     property {
-        name:                         string(STR_NYC_Budd_Lightweight_Coach_Name);
-        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
-        introduction_date:            date(1923, 1, 1);
-        model_life:                   VEHICLE_NEVER_EXPIRES;
-        vehicle_life:                 30;
-        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
-        non_refittable_cargo_classes: bitmask();
-        loading_speed:                10;
-        cost_factor:                  120;
-        running_cost_factor:          0;
-        sprite_id:                    SPRITE_ID_NEW_TRAIN;
-        speed:                        100 mph;
-        misc_flags:                   bitmask();
-        refit_cost:                   0;
-        track_type:                   RAIL;
-        ai_special_flag:              AI_FLAG_PASSENGER;
-        power:                        0;
-        cargo_capacity:               44;
-        weight:                       33 ton;
-        ai_engine_rank:               0;
-        tractive_effort_coefficient:  0.3;
-        air_drag_coefficient:         0.06;
-        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
-        extra_weight_per_wagon:       0;
-        bitmask_vehicle_info:         0;
+        name:                           string(STR_NYC_Budd_Lightweight_Coach_Name);
+        climates_available:             bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:              date(1923, 1, 1);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   30;
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   bitmask();
+        loading_speed:                  10;
+        cost_factor:                    120;
+        running_cost_factor:            0;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        speed:                          100 mph;
+        misc_flags:                     bitmask();
+        refit_cost:                     0;
+        track_type:                     RAIL;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        power:                          0;
+        cargo_capacity:                 44;
+        weight:                         33 ton;
+        ai_engine_rank:                 0;
+        tractive_effort_coefficient:    0.3;
+        air_drag_coefficient:           0.06;
+        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:         0;
+        bitmask_vehicle_info:           0;
     }
     graphics {
-        purchase:                 spriteset_NYC_Budd_Lightweight_Coach_purchase;
-        additional_text:          return string(STR_Obsolete_Desc);
-        length:                   8;
-        default:                  spriteset_NYC_Budd_Lightweight_Coach;
+        purchase:                       spriteset_NYC_Budd_Lightweight_Coach_purchase;
+        additional_text:                return string(STR_Obsolete_Desc);
+        length:                         8;
+        default:                        spriteset_NYC_Budd_Lightweight_Coach;
     }
 }
 
 item(FEAT_TRAINS, item_NYC_Budd_Lightweight_Baggage, 721) {
     property {
-        name:                         string(STR_NYC_Budd_Lightweight_Baggage_Name);
-        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
-        introduction_date:            date(1923, 1, 1);
-        model_life:                   VEHICLE_NEVER_EXPIRES;
-        vehicle_life:                 28;
-        refittable_cargo_classes:     bitmask(CC_MAIL,CC_ARMOURED);
-        non_refittable_cargo_classes: bitmask();
-        loading_speed:                10;
-        cost_factor:                  116;
-        running_cost_factor:          0;
-        sprite_id:                    SPRITE_ID_NEW_TRAIN;
-        speed:                        100 mph;
-        misc_flags:                   bitmask();
-        refit_cost:                   0;
-        track_type:                   RAIL;
-        ai_special_flag:              AI_FLAG_PASSENGER;
-        power:                        0;
-        cargo_capacity:               72;
-        weight:                       31 ton;
-        ai_engine_rank:               0;
-        tractive_effort_coefficient:  0.3;
-        air_drag_coefficient:         0.06;
-        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
-        extra_weight_per_wagon:       0;
-        bitmask_vehicle_info:         0;
+        name:                           string(STR_NYC_Budd_Lightweight_Baggage_Name);
+        climates_available:             bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:              date(1923, 1, 1);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   28;
+        refittable_cargo_classes:       bitmask(CC_MAIL,CC_ARMOURED);
+        non_refittable_cargo_classes:   bitmask();
+        loading_speed:                  10;
+        cost_factor:                    116;
+        running_cost_factor:            0;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        speed:                          100 mph;
+        misc_flags:                     bitmask();
+        refit_cost:                     0;
+        track_type:                     RAIL;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        power:                          0;
+        cargo_capacity:                 72;
+        weight:                         31 ton;
+        ai_engine_rank:                 0;
+        tractive_effort_coefficient:    0.3;
+        air_drag_coefficient:           0.06;
+        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:         0;
+        bitmask_vehicle_info:           0;
     }
     graphics {
-        purchase:                 spriteset_NYC_Budd_Lightweight_Baggage_purchase;
-        additional_text:          return string(STR_Obsolete_Desc);
-        length:                   8;
-        default:                  spriteset_NYC_Budd_Lightweight_Baggage;
+        purchase:                       spriteset_NYC_Budd_Lightweight_Baggage_purchase;
+        additional_text:                return string(STR_Obsolete_Desc);
+        length:                         8;
+        default:                        spriteset_NYC_Budd_Lightweight_Baggage;
     }
 }
 
 //--------------------------------------------------------------------------------------------------Horizon
-spriteset (spriteset_Horizon_Coach_Ph3_purchase,"gfx/USA_Amtrak_Horizon.png") { [38, 4, 36, 16, -19, -12] }
-spriteset (spriteset_Horizon_Coach_Ph4_purchase,"gfx/USA_Amtrak_Horizon.png") { [38, 37, 36, 16, -19, -12] }
+spriteset (spriteset_Horizon_Coach_Ph3_purchase, "gfx/USA_Amtrak_Horizon.png") { [38, 4, 36, 16, -19, -12] }
+spriteset (spriteset_Horizon_Coach_Ph4_purchase, "gfx/USA_Amtrak_Horizon.png") { [38, 37, 36, 16, -19, -12] }
 
-spriteset (spriteset_Horizon_Cafe_Ph3_purchase,"gfx/USA_Amtrak_Horizon.png") { [134, 4, 36, 16, -19, -12] }
-spriteset (spriteset_Horizon_Cafe_Ph4_purchase,"gfx/USA_Amtrak_Horizon.png") { [134, 37, 36, 16, -19, -12] }
+spriteset (spriteset_Horizon_Cafe_Ph3_purchase, "gfx/USA_Amtrak_Horizon.png") { [134, 4, 36, 16, -19, -12] }
+spriteset (spriteset_Horizon_Cafe_Ph4_purchase, "gfx/USA_Amtrak_Horizon.png") { [134, 37, 36, 16, -19, -12] }
 
 switch(FEAT_TRAINS, SELF, sw_Horizon_Coach_purchase, current_year) {
     0..1992:    spriteset_Horizon_Coach_Ph3_purchase;
@@ -3242,20 +3249,20 @@ switch(FEAT_TRAINS, SELF, sw_Horizon_Cafe_purchase, current_year) {
     spriteset_Horizon_Cafe_Ph4_purchase;
 }
 
-spriteset (spriteset_Horizon_Coach_Phase_III,"gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_1(4, 4) tmpl_L_nine_2(4, 4) }
-spriteset (spriteset_Horizon_Coach_Phase_IV,"gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_1(4, 37) tmpl_L_nine_2(4, 37) }
-spriteset (spriteset_Horizon_Cafe_Phase_III,"gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_1(100, 4) tmpl_L_nine_2(100, 4) }
-spriteset (spriteset_Horizon_Cafe_Phase_IV,"gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_1(100, 37) tmpl_L_nine_2(100, 37) }
+spriteset (spriteset_Horizon_Coach_Phase_III, "gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_1(4, 4) tmpl_L_nine_2(4, 4) }
+spriteset (spriteset_Horizon_Coach_Phase_IV, "gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_1(4, 37) tmpl_L_nine_2(4, 37) }
+spriteset (spriteset_Horizon_Cafe_Phase_III, "gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_1(100, 4) tmpl_L_nine_2(100, 4) }
+spriteset (spriteset_Horizon_Cafe_Phase_IV, "gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_1(100, 37) tmpl_L_nine_2(100, 37) }
 
-spriteset (spriteset_Horizon_Coach_Phase_III_rev,"gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_2(4, 4) tmpl_L_nine_1(4, 4) }
-spriteset (spriteset_Horizon_Coach_Phase_IV_rev,"gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_2(4, 37) tmpl_L_nine_1(4, 37) }
-spriteset (spriteset_Horizon_Cafe_Phase_III_rev,"gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_2(100, 4) tmpl_L_nine_1(100, 4) }
-spriteset (spriteset_Horizon_Cafe_Phase_IV_rev,"gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_2(100, 37) tmpl_L_nine_1(100, 37) }
+spriteset (spriteset_Horizon_Coach_Phase_III_rev, "gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_2(4, 4) tmpl_L_nine_1(4, 4) }
+spriteset (spriteset_Horizon_Coach_Phase_IV_rev, "gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_2(4, 37) tmpl_L_nine_1(4, 37) }
+spriteset (spriteset_Horizon_Cafe_Phase_III_rev, "gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_2(100, 4) tmpl_L_nine_1(100, 4) }
+spriteset (spriteset_Horizon_Cafe_Phase_IV_rev, "gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_2(100, 37) tmpl_L_nine_1(100, 37) }
 
-spriteset (spriteset_Horizon_Coach_Phase_III_rev_F40PH,"gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_for_7_2(4, 4) tmpl_L_nine_for_7_1(4, 4) }
-spriteset (spriteset_Horizon_Coach_Phase_IV_rev_F40PH,"gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_for_7_2(4, 37) tmpl_L_nine_for_7_1(4, 37) }
-spriteset (spriteset_Horizon_Cafe_Phase_III_rev_F40PH,"gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_for_7_2(100, 4) tmpl_L_nine_for_7_1(100, 4) }
-spriteset (spriteset_Horizon_Cafe_Phase_IV_rev_F40PH,"gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_for_7_2(100, 37) tmpl_L_nine_for_7_1(100, 37) }
+spriteset (spriteset_Horizon_Coach_Phase_III_rev_F40PH, "gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_for_7_2(4, 4) tmpl_L_nine_for_7_1(4, 4) }
+spriteset (spriteset_Horizon_Coach_Phase_IV_rev_F40PH, "gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_for_7_2(4, 37) tmpl_L_nine_for_7_1(4, 37) }
+spriteset (spriteset_Horizon_Cafe_Phase_III_rev_F40PH, "gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_for_7_2(100, 4) tmpl_L_nine_for_7_1(100, 4) }
+spriteset (spriteset_Horizon_Cafe_Phase_IV_rev_F40PH, "gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_for_7_2(100, 37) tmpl_L_nine_for_7_1(100, 37) }
 
 // Normal sprites
 switch(FEAT_TRAINS, SELF, sw_Horizon_Phase_III, vehicle_type_id) {
@@ -3414,6 +3421,7 @@ item(FEAT_TRAINS, item_Horizon_Cafe, 707) {
         default:                        sw_Horizon_graphics;
     }
 }
+
 //--------------------------------------------------------------------------------------------------EMD E7
 spriteset (spriteset_purchase_E7, "gfx/USA_EMD_E7_PRR.png") { [4,  66,  87,  12,  -27,  -8] }
 
@@ -3626,35 +3634,35 @@ item(FEAT_TRAINS, item_E8, 211) {
 }
 
 //--------------------------------------------------------------------------------------------------EMD E9
-spriteset(spriteset_purchase_E9, "gfx/USA_EMD_E9.png") { [4,  97,  87,  12,  -15,  -8] }
+spriteset(sset_p_E9, "gfx/USA_EMD_E9.png") { [4, 97, 87, 12, -15, -8] }
 
 template tmpl_E9(x, y) {
-    [x,      y,    8,     24,     -3,    -11]
-    [x+9,    y,    22,    20,     -14,   -10]
-    [x+32,   y,    32,    16,     -16,   -12]
-    [x+65,   y,    22,    20,     -8,    -11]
+    [x,      y,  8, 24,      -3,    -11]
+    [x + 9,  y, 22, 20,     -14,    -10]
+    [x + 32, y, 32, 16,     -16,    -12]
+    [x + 65, y, 22, 20,      -8,    -11]
 }
 
-spriteset(spriteset_E9_BN_front_on, "gfx/USA_EMD_E9.png") { tmpl_E9(4, 4) tmpl_E9(92, 4) }
-spriteset(spriteset_E9_BN_front_off, "gfx/USA_EMD_E9.png") { tmpl_E9(4, 66) tmpl_E9(92, 66) }
-spriteset(spriteset_E9_BN_back_off, "gfx/USA_EMD_E9.png") { tmpl_E9(92, 66) tmpl_E9(4, 66) }
-spriteset(spriteset_E9_BN_back_red, "gfx/USA_EMD_E9.png") { tmpl_E9(92, 35) tmpl_E9(4, 35) }
+spriteset(sset_E9_BN_front_on, "gfx/USA_EMD_E9.png")  { tmpl_E9(4, 4)   tmpl_E9(92, 4) }
+spriteset(sset_E9_BN_front_off, "gfx/USA_EMD_E9.png") { tmpl_E9(4, 66)  tmpl_E9(92, 66) }
+spriteset(sset_E9_BN_back_off, "gfx/USA_EMD_E9.png")  { tmpl_E9(92, 66) tmpl_E9(4, 66) }
+spriteset(sset_E9_BN_back_red, "gfx/USA_EMD_E9.png")  { tmpl_E9(92, 35) tmpl_E9(4, 35) }
 
 switch(FEAT_TRAINS, SELF, sw_E9_front_on, cargo_subtype) {
-    0:  spriteset_E9_BN_front_on;
-    spriteset_E9_BN_front_on;
+    0:  sset_E9_BN_front_on;
+    sset_E9_BN_front_on;
 }
 switch(FEAT_TRAINS, SELF, sw_E9_front_off, cargo_subtype) {
-    0:  spriteset_E9_BN_front_off;
-    spriteset_E9_BN_front_off;
+    0:  sset_E9_BN_front_off;
+    sset_E9_BN_front_off;
 }
 switch(FEAT_TRAINS, SELF, sw_E9_back_off, cargo_subtype) {
-    0:  spriteset_E9_BN_back_off;
-    spriteset_E9_BN_back_off;
+    0:  sset_E9_BN_back_off;
+    sset_E9_BN_back_off;
 }
 switch(FEAT_TRAINS, SELF, sw_E9_back_red, cargo_subtype) {
-    0:  spriteset_E9_BN_back_red;
-    spriteset_E9_BN_back_red;
+    0:  sset_E9_BN_back_red;
+    sset_E9_BN_back_red;
 }
 
 switch(FEAT_TRAINS, SELF, sw_E9_graphics3, position_in_vehid_chain % 2) {
@@ -3715,7 +3723,7 @@ item(FEAT_TRAINS, item_E9, 212) {
         bitmask_vehicle_info:           0;
     }
     graphics {
-        purchase:                       spriteset_purchase_E9;
+        purchase:                       sset_p_E9;
         additional_text:                return string(STR_E9_Desc);
         length:                         8;
         cargo_capacity:                 0;
@@ -3726,7 +3734,7 @@ item(FEAT_TRAINS, item_E9, 212) {
 
 //--------------------------------------------------------------------------------------------------Budd RDC
 template tmpl_RDC(x,y) {
-      [x,      y,    8,     24,     -3,    -10]
+    [x,      y,    8,     24,     -3,    -10]
     [x+9,    y,    22,    20,     -14,   -11]
     [x+32,   y,    32,    16,     -16,   -12]
     [x+65,   y,    22,    20,     -8,    -11]
@@ -3737,52 +3745,52 @@ spriteset (spriteset_purchase_RDC, "gfx/USA_Budd_RDC.png") { [4,  35,  87,  13, 
 
 item(FEAT_TRAINS, item_RDC, 205) {
     property {
-        name:                         string(STR_RDC_Name);
-        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
-        introduction_date:            date(1978, 1, 6);
-        model_life:                   VEHICLE_NEVER_EXPIRES;
-        vehicle_life:                 30;
-        reliability_decay:            14;
-        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
-        non_refittable_cargo_classes: bitmask();
-        loading_speed:                10;
-        cost_factor:                  36;
-        running_cost_factor:          136;
-        sprite_id:                    SPRITE_ID_NEW_TRAIN;
-        speed:                        137 km/h;
-        misc_flags:                   bitmask(TRAIN_FLAG_MU);
-        refit_cost:                   0;
-        track_type:                   RAIL;
-        ai_special_flag:              AI_FLAG_PASSENGER;
-        power:                        410 kW;
-        running_cost_base:            RUNNING_COST_ELECTRIC;
-        dual_headed:                  0;
-        cargo_capacity:               109;
-        weight:                       51 ton;
-        ai_engine_rank:               0;
-        engine_class:                 ENGINE_CLASS_DIESEL;
-        extra_power_per_wagon:        0;
-        tractive_effort_coefficient:  0.3;
-        air_drag_coefficient:         0.06;
-        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DIESEL, -1, DISABLE_WAGON_POWER);
-        extra_weight_per_wagon:       0;
-        bitmask_vehicle_info:         0;
+        name:                           string(STR_RDC_Name);
+        climates_available:             bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:              date(1978, 1, 6);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   30;
+        reliability_decay:              14;
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   bitmask();
+        loading_speed:                  10;
+        cost_factor:                    36;
+        running_cost_factor:            136;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        speed:                          137 km/h;
+        misc_flags:                     bitmask(TRAIN_FLAG_MU);
+        refit_cost:                     0;
+        track_type:                     RAIL;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        power:                          410 kW;
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+        dual_headed:                    0;
+        cargo_capacity:                 109;
+        weight:                         51 ton;
+        ai_engine_rank:                 0;
+        engine_class:                   ENGINE_CLASS_DIESEL;
+        extra_power_per_wagon:          0;
+        tractive_effort_coefficient:    0.3;
+        air_drag_coefficient:           0.06;
+        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DIESEL, -1, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:         0;
+        bitmask_vehicle_info:           0;
     }
     graphics {
-        purchase:                 spriteset_purchase_RDC;
-        additional_text:          return string(STR_RDC_Desc);
-        length:                   8;
-        default:                  spriteset_RDC;
+        purchase:                       spriteset_purchase_RDC;
+        additional_text:                return string(STR_RDC_Desc);
+        length:                         8;
+        default:                        spriteset_RDC;
     }
 }
 
 //--------------------------------------------------------------------------------------------------Silverliner II
 spriteset (spriteset_purchase_Silverliner_II, "gfx/USA_SEPT_Silverliner_II.png") { [4,  66,  87,  15,  -15,  -11] }
 template tmpl_Silverliner_II(x,y) {
-      [x,      y,    8,     24,     -3,    -11]
-    [x+9,    y,    22,    20,     -14,   -10]
-    [x+32,   y,    32,    16,     -16,   -12]
-    [x+65,   y,    22,    20,     -8,    -11]
+    [x,      y,  8, 24,      -3,    -11]
+    [x + 9,  y, 22, 20,     -14,    -10]
+    [x + 32, y, 32, 16,     -16,    -12]
+    [x + 65, y, 22, 20,      -8,    -11]
 }
 spriteset (spriteset_Silverliner_II_front, "gfx/USA_SEPT_Silverliner_II.png") { tmpl_Silverliner_II(4,4) tmpl_Silverliner_II(92,4) }
 spriteset (spriteset_Silverliner_II_middle, "gfx/USA_SEPT_Silverliner_II.png") { tmpl_Silverliner_II(4,35) tmpl_Silverliner_II(92,35) }
@@ -3964,7 +3972,7 @@ item(FEAT_TRAINS, item_MR90, 322) {
         purchase:                 spriteset_purchase_MR90;
         additional_text:          return string(STR_MR90_Desc);
         length:                   8;
-        cargo_capacity:           ( position_in_vehid_chain % 2 == 0) ? 88 : 80;
+        cargo_capacity:           (position_in_vehid_chain % 2 == 0) ? 88 : 80;
         can_attach_wagon:         sw_MR90_can_attach_wagon;
         default:                  sw_MR90_grapfics;
     }
@@ -4021,15 +4029,15 @@ template tmpl_Superliner_I(x,y) {
     [x+65,   y,    22,    20,     -8,    -12]
 }
 
-spriteset (spriteset_Superliner_I_Coach,"gfx/USA_Amtrak_Superliner_I.png")   { tmpl_Superliner_I(4,4)  tmpl_Superliner_I(92,4) }
-spriteset (spriteset_Superliner_I_Dining,"gfx/USA_Amtrak_Superliner_I.png")  { tmpl_Superliner_I(4,35) tmpl_Superliner_I(92,35) }
-spriteset (spriteset_Superliner_I_Sleeper,"gfx/USA_Amtrak_Superliner_I.png") { tmpl_Superliner_I(4,66) tmpl_Superliner_I(92,66) }
-spriteset (spriteset_Superliner_I_Lounge,"gfx/USA_Amtrak_Superliner_I.png")  { tmpl_Superliner_I(4,97) tmpl_Superliner_I(92,97) }
+spriteset (spriteset_Superliner_I_Coach, "gfx/USA_Amtrak_Superliner_I.png")   { tmpl_Superliner_I(4,4)  tmpl_Superliner_I(92,4) }
+spriteset (spriteset_Superliner_I_Dining, "gfx/USA_Amtrak_Superliner_I.png")  { tmpl_Superliner_I(4,35) tmpl_Superliner_I(92,35) }
+spriteset (spriteset_Superliner_I_Sleeper, "gfx/USA_Amtrak_Superliner_I.png") { tmpl_Superliner_I(4,66) tmpl_Superliner_I(92,66) }
+spriteset (spriteset_Superliner_I_Lounge, "gfx/USA_Amtrak_Superliner_I.png")  { tmpl_Superliner_I(4,97) tmpl_Superliner_I(92,97) }
 
-spriteset (spriteset_Superliner_I_Coach_purchase,"gfx/USA_Amtrak_Superliner_I.png")   { [36,   4,    32,    16,   -15,   -12] }
-spriteset (spriteset_Superliner_I_Dining_purchase,"gfx/USA_Amtrak_Superliner_I.png")  { [36,   35,   32,    16,   -15,   -12] }
-spriteset (spriteset_Superliner_I_Sleeper_purchase,"gfx/USA_Amtrak_Superliner_I.png") { [36,   66,   32,    16,   -15,   -12] }
-spriteset (spriteset_Superliner_I_Lounge_purchase,"gfx/USA_Amtrak_Superliner_I.png")  { [36,   97,   32,    16,   -15,   -12] }
+spriteset (spriteset_Superliner_I_Coach_purchase, "gfx/USA_Amtrak_Superliner_I.png")   { [36,   4,    32,    16,   -15,   -12] }
+spriteset (spriteset_Superliner_I_Dining_purchase, "gfx/USA_Amtrak_Superliner_I.png")  { [36,   35,   32,    16,   -15,   -12] }
+spriteset (spriteset_Superliner_I_Sleeper_purchase, "gfx/USA_Amtrak_Superliner_I.png") { [36,   66,   32,    16,   -15,   -12] }
+spriteset (spriteset_Superliner_I_Lounge_purchase, "gfx/USA_Amtrak_Superliner_I.png")  { [36,   97,   32,    16,   -15,   -12] }
 
 item(FEAT_TRAINS, item_Superliner_I_Coach, 708) {
     property {
@@ -4177,14 +4185,14 @@ item(FEAT_TRAINS, item_Superliner_I_Lounge, 711) {
 
 //--------------------------------------------------------------------------------------------------F59PHI---California Car
 spriteset (spriteset_purchase_F59PHI, "gfx/USA_EMD_F59PHI.png") { [4,  66,  87,  14,  -15,  -10] }
-spriteset (spriteset_purchase_California_Car,"gfx/USA_Amtrak_California_Car.png") { [4,  97,  87,  14,  -15,  -10] }
+spriteset (spriteset_purchase_California_Car, "gfx/USA_Amtrak_California_Car.png") { [4,  97,  87,  14,  -15,  -10] }
 
 template tmpl_F59PHI(x,y) {
-      [x,      y,    8,     24,     -3,    -10]
+    [x,      y,    8,     24,     -3,    -10]
     [x+9,    y,    22,    20,     -14,   -10]
     [x+32,   y,    32,    16,     -16,   -12]
     [x+65,   y,    22,    20,     -8,    -12]
-      [x+88,   y,    8,     24,     -3,    -10]
+    [x+88,   y,    8,     24,     -3,    -10]
     [x+97,   y,    22,    20,     -14,   -11]
     [x+120,  y,    32,    16,     -16,   -12]
     [x+153,  y,    22,    20,     -8,    -11]
@@ -4203,13 +4211,13 @@ template tmpl_F59PHI2(x,y) {
 spriteset (spriteset_F59PHI_f, "gfx/USA_EMD_F59PHI.png") { tmpl_F59PHI(4,4) }
 spriteset (spriteset_F59PHI_b, "gfx/USA_EMD_F59PHI.png") { tmpl_F59PHI2(4,35) }
 
-spriteset (spriteset_California_Cab_f,"gfx/USA_Amtrak_California_Car.png") { tmpl_Superliner_I(4,4)   tmpl_Superliner_I(92,4) }
-spriteset (spriteset_California_Cab_b,"gfx/USA_Amtrak_California_Car.png") { tmpl_Superliner_I(92,35) tmpl_Superliner_I(4,35) }  //Use same tmpl as Superliner
-spriteset (spriteset_California_Car,"gfx/USA_Amtrak_California_Car.png")   { tmpl_Superliner_I(4,66) tmpl_Superliner_I(92,66) }
+spriteset (spriteset_California_Cab_f, "gfx/USA_Amtrak_California_Car.png") { tmpl_Superliner_I(4,4)   tmpl_Superliner_I(92,4) }
+spriteset (spriteset_California_Cab_b, "gfx/USA_Amtrak_California_Car.png") { tmpl_Superliner_I(92,35) tmpl_Superliner_I(4,35) }  //Use same tmpl as Superliner
+spriteset (spriteset_California_Car, "gfx/USA_Amtrak_California_Car.png")   { tmpl_Superliner_I(4,66) tmpl_Superliner_I(92,66) }
 
-spriteset (spriteset_Surfliner_Cab_f,"gfx/USA_Amtrak_Surfliner_Car.png") { tmpl_Superliner_I(4,4)   tmpl_Superliner_I(92,4) }
-spriteset (spriteset_Surfliner_Cab_b,"gfx/USA_Amtrak_Surfliner_Car.png") { tmpl_Superliner_I(92,35) tmpl_Superliner_I(4,35) }  //Use same tmpl as Superliner
-spriteset (spriteset_Surfliner_Car,"gfx/USA_Amtrak_Surfliner_Car.png")   { tmpl_Superliner_I(4,66) tmpl_Superliner_I(92,66) }
+spriteset (spriteset_Surfliner_Cab_f, "gfx/USA_Amtrak_Surfliner_Car.png") { tmpl_Superliner_I(4,4)   tmpl_Superliner_I(92,4) }
+spriteset (spriteset_Surfliner_Cab_b, "gfx/USA_Amtrak_Surfliner_Car.png") { tmpl_Superliner_I(92,35) tmpl_Superliner_I(4,35) }  //Use same tmpl as Superliner
+spriteset (spriteset_Surfliner_Car, "gfx/USA_Amtrak_Surfliner_Car.png")   { tmpl_Superliner_I(4,66) tmpl_Superliner_I(92,66) }
 
 //---------------------------------------------------------------------------------P32AC-DM graphics
 switch(FEAT_TRAINS,SELF,sw_F59PHI_grapfics3, position_in_consist % 2) {
@@ -4371,7 +4379,7 @@ item(FEAT_TRAINS, item_F59PHI, 405) {
     }
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------RTG Turboliner
+//------------------------------------------------------------------------------------------------------RTG Turboliner
 spriteset(spriteset_purchase_Turboliner, "gfx/USA_RTG_Turboliner.png") { [4, 97, 87, 13, -27, -9] }
 
 template tmpl_Turboliner(x,y) {
@@ -4481,33 +4489,54 @@ item(FEAT_TRAINS, item_Turboliner_secret, 1500) {
 spriteset (spriteset_purchase_ALCO_PA, "gfx/USA_ALCO_PA_ATSF_Red_Warbonnet.png") { [4,  128,  87,  12,  -27,  -8] }
 
 template tmpl_ALCO_PA(x,y) {
-    [x,      y,    8,     24,     -3,    -12]
-    [x+9,    y,    22,    20,     -14,   -10]
-    [x+32,   y,    32,    16,     -16,   -12]
-    [x+65,   y,    22,    20,     -8,    -11]
+    [x,      y,  8, 24,      -3,    -12]
+    [x + 9,  y, 22, 20,     -14,    -10]
+    [x + 32, y, 32, 16,     -16,    -12]
+    [x + 65, y, 22, 20,      -8,    -11]
 }
 
 spriteset (spriteset_ALCO_PA_f_on_ATSF, "gfx/USA_ALCO_PA_ATSF_Red_Warbonnet.png") { tmpl_ALCO_PA(4, 4) tmpl_ALCO_PA(92, 4) }
-spriteset (spriteset_ALCO_PA_f_off_ATSF, "gfx/USA_ALCO_PA_ATSF_Red_Warbonnet.png") { tmpl_ALCO_PA(4, 66) tmpl_ALCO_PA(92, 66) }
+spriteset (spriteset_ALCO_PA_f_off_ATSF,"gfx/USA_ALCO_PA_ATSF_Red_Warbonnet.png") { tmpl_ALCO_PA(4, 66) tmpl_ALCO_PA(92, 66) }
 spriteset (spriteset_ALCO_PA_b_on_ATSF, "gfx/USA_ALCO_PA_ATSF_Red_Warbonnet.png") { tmpl_ALCO_PA(92, 35) tmpl_ALCO_PA(4, 35) }
-spriteset (spriteset_ALCO_PA_b_off_ATSF, "gfx/USA_ALCO_PA_ATSF_Red_Warbonnet.png") { tmpl_ALCO_PA(92, 66) tmpl_ALCO_PA(4, 66) }
-spriteset (spriteset_ALCO_PB_ATSF, "gfx/USA_ALCO_PA_ATSF_Red_Warbonnet.png") { tmpl_ALCO_PA(4, 97) tmpl_ALCO_PA(92, 97) }
+spriteset (spriteset_ALCO_PA_b_off_ATSF,"gfx/USA_ALCO_PA_ATSF_Red_Warbonnet.png") { tmpl_ALCO_PA(92, 66) tmpl_ALCO_PA(4, 66) }
+spriteset (spriteset_ALCO_PB_ATSF,      "gfx/USA_ALCO_PA_ATSF_Red_Warbonnet.png") { tmpl_ALCO_PA(4, 97) tmpl_ALCO_PA(92, 97) }
+
+spriteset (spriteset_ALCO_PA_f_on_DnH,  "gfx/USA_ALCO_PA_D&H.png") { tmpl_ALCO_PA(4, 4) tmpl_ALCO_PA(92, 4) }
+spriteset (spriteset_ALCO_PA_f_off_DnH, "gfx/USA_ALCO_PA_D&H.png") { tmpl_ALCO_PA(4, 66) tmpl_ALCO_PA(92, 66) }
+spriteset (spriteset_ALCO_PA_b_on_DnH,  "gfx/USA_ALCO_PA_D&H.png") { tmpl_ALCO_PA(92, 35) tmpl_ALCO_PA(4, 35) }
+spriteset (spriteset_ALCO_PA_b_off_DnH, "gfx/USA_ALCO_PA_D&H.png") { tmpl_ALCO_PA(92, 66) tmpl_ALCO_PA(4, 66) }
+spriteset (spriteset_ALCO_PB_DnH,       "gfx/USA_ALCO_PA_D&H.png") { tmpl_ALCO_PA(4, 97) tmpl_ALCO_PA(92, 97) }
+
+spriteset (spriteset_ALCO_PA_f_on_UP,   "gfx/USA_ALCO_PA_UP.png") { tmpl_ALCO_PA(4, 4) tmpl_ALCO_PA(92, 4) }
+spriteset (spriteset_ALCO_PA_f_off_UP,  "gfx/USA_ALCO_PA_UP.png") { tmpl_ALCO_PA(4, 66) tmpl_ALCO_PA(92, 66) }
+spriteset (spriteset_ALCO_PA_b_on_UP,   "gfx/USA_ALCO_PA_UP.png") { tmpl_ALCO_PA(92, 35) tmpl_ALCO_PA(4, 35) }
+spriteset (spriteset_ALCO_PA_b_off_UP,  "gfx/USA_ALCO_PA_UP.png") { tmpl_ALCO_PA(92, 66) tmpl_ALCO_PA(4, 66) }
+spriteset (spriteset_ALCO_PB_UP,        "gfx/USA_ALCO_PA_UP.png") { tmpl_ALCO_PA(4, 97) tmpl_ALCO_PA(92, 97) }
 
 switch(FEAT_TRAINS,SELF,sw_ALCO_PA_f_on, cargo_subtype) {
     0:  spriteset_ALCO_PA_f_on_ATSF;
-    return spriteset_ALCO_PA_f_on_ATSF;
+    1:  spriteset_ALCO_PA_f_on_DnH;
+    2:  spriteset_ALCO_PA_f_on_UP;
 }
 switch(FEAT_TRAINS,SELF,sw_ALCO_PA_f_off, cargo_subtype) {
-    return spriteset_ALCO_PA_f_off_ATSF;
+    0:  spriteset_ALCO_PA_f_off_ATSF;
+    1:  spriteset_ALCO_PA_f_off_DnH;
+    2:  spriteset_ALCO_PA_f_off_UP;
 }
 switch(FEAT_TRAINS,SELF,sw_ALCO_PA_b_on, cargo_subtype) {
-    return spriteset_ALCO_PA_b_on_ATSF;
+    0:  spriteset_ALCO_PA_b_on_ATSF;
+    1:  spriteset_ALCO_PA_b_on_DnH;
+    2:  spriteset_ALCO_PA_b_on_UP;
 }
 switch(FEAT_TRAINS,SELF,sw_ALCO_PA_b_off, cargo_subtype) {
-    return spriteset_ALCO_PA_b_off_ATSF;
+    0:  spriteset_ALCO_PA_b_off_ATSF;
+    1:  spriteset_ALCO_PA_b_off_DnH;
+    2:  spriteset_ALCO_PA_b_off_UP;
 }
 switch(FEAT_TRAINS,SELF,sw_ALCO_PB, cargo_subtype) {
-    return spriteset_ALCO_PB_ATSF;
+    0:  spriteset_ALCO_PB_ATSF;
+    1:  spriteset_ALCO_PB_DnH;
+    2:  spriteset_ALCO_PB_UP;
 }
 
 switch(FEAT_TRAINS, SELF, sw_ALCO_PA_graphics3, position_in_consist_from_end) {
@@ -4525,6 +4554,8 @@ switch(FEAT_TRAINS, SELF, sw_ALCO_PA_graphics, position_in_vehid_chain) {
 
 switch(FEAT_TRAINS,SELF,sw_ALCO_PA_livery, cargo_subtype) {
     0:  return string(STR_Livery_ATSF_Red_Warbonnet);
+    1:  return string(STR_Livery_DnH);
+    2:  return string(STR_Livery_UP);
 }
 
 item(FEAT_TRAINS, item_ALCO_PA, 202) {
@@ -4564,9 +4595,9 @@ item(FEAT_TRAINS, item_ALCO_PA, 202) {
         purchase:                       spriteset_purchase_ALCO_PA;
         additional_text:                return string(STR_ALCO_PA_Desc);
         length:                         8;
+        cargo_capacity:                 0;
         cargo_subtype_text:             sw_ALCO_PA_livery;
         default:                        sw_ALCO_PA_graphics;
-        cargo_capacity:                 0;
     }
 }
 
@@ -4892,18 +4923,18 @@ template tmpl_NYC_Heavyweight(x,y) {
     [x+32,   y,    32,    16,     -16,   -12]
     [x+65,   y,    22,    20,     -8,    -12]
 }
-spriteset (spriteset_NYC_Heavyweight_Coach_purchase,"gfx/USA_NYC_Pullman_Heavyweight.png") { [36, 4, 32, 16, -15, -12] }
-spriteset (spriteset_NYC_Heavyweight_Combine_purchase,"gfx/USA_NYC_Pullman_Heavyweight.png") { [36, 35, 32, 16, -15, -12] }
-spriteset (spriteset_NYC_Heavyweight_Baggage_purchase,"gfx/USA_NYC_Pullman_Heavyweight.png") { [36, 66, 32, 16, -15, -12] }
-spriteset (spriteset_NYC_Heavyweight_Sleeper_purchase,"gfx/USA_NYC_Pullman_Heavyweight.png") { [36, 97, 32, 16, -15, -12] }
-spriteset (spriteset_NYC_Heavyweight_Observation_purchase,"gfx/USA_NYC_Pullman_Heavyweight.png") { [36, 128, 32, 16, -15, -12] }
+spriteset (spriteset_NYC_Heavyweight_Coach_purchase, "gfx/USA_NYC_Pullman_Heavyweight.png") { [36, 4, 32, 16, -15, -12] }
+spriteset (spriteset_NYC_Heavyweight_Combine_purchase, "gfx/USA_NYC_Pullman_Heavyweight.png") { [36, 35, 32, 16, -15, -12] }
+spriteset (spriteset_NYC_Heavyweight_Baggage_purchase, "gfx/USA_NYC_Pullman_Heavyweight.png") { [36, 66, 32, 16, -15, -12] }
+spriteset (spriteset_NYC_Heavyweight_Sleeper_purchase, "gfx/USA_NYC_Pullman_Heavyweight.png") { [36, 97, 32, 16, -15, -12] }
+spriteset (spriteset_NYC_Heavyweight_Observation_purchase, "gfx/USA_NYC_Pullman_Heavyweight.png") { [36, 128, 32, 16, -15, -12] }
 
-spriteset (spriteset_obsolete,"gfx/USA_NYC_Pullman_Heavyweight.png") { [36, 4, 1, 1, -15, -11] }
-spriteset (spriteset_NYC_Heavyweight_Coach,"gfx/USA_NYC_Pullman_Heavyweight.png")       { tmpl_NYC_Heavyweight(4,4)   tmpl_NYC_Heavyweight(92,4) }
-spriteset (spriteset_NYC_Heavyweight_Combine,"gfx/USA_NYC_Pullman_Heavyweight.png")     { tmpl_NYC_Heavyweight(4,35)  tmpl_NYC_Heavyweight(92,35) }
-spriteset (spriteset_NYC_Heavyweight_Baggage,"gfx/USA_NYC_Pullman_Heavyweight.png")     { tmpl_NYC_Heavyweight(4,66)  tmpl_NYC_Heavyweight(92,66) }
-spriteset (spriteset_NYC_Heavyweight_Sleeper,"gfx/USA_NYC_Pullman_Heavyweight.png")     { tmpl_NYC_Heavyweight(4,97)  tmpl_NYC_Heavyweight(92,97) }
-spriteset (spriteset_NYC_Heavyweight_Observation,"gfx/USA_NYC_Pullman_Heavyweight.png") { tmpl_NYC_Heavyweight(4,128) tmpl_NYC_Heavyweight(92,128) }
+spriteset (spriteset_obsolete, "gfx/USA_NYC_Pullman_Heavyweight.png") { [36, 4, 1, 1, -15, -11] }
+spriteset (spriteset_NYC_Heavyweight_Coach, "gfx/USA_NYC_Pullman_Heavyweight.png")       { tmpl_NYC_Heavyweight(4,4)   tmpl_NYC_Heavyweight(92,4) }
+spriteset (spriteset_NYC_Heavyweight_Combine, "gfx/USA_NYC_Pullman_Heavyweight.png")     { tmpl_NYC_Heavyweight(4,35)  tmpl_NYC_Heavyweight(92,35) }
+spriteset (spriteset_NYC_Heavyweight_Baggage, "gfx/USA_NYC_Pullman_Heavyweight.png")     { tmpl_NYC_Heavyweight(4,66)  tmpl_NYC_Heavyweight(92,66) }
+spriteset (spriteset_NYC_Heavyweight_Sleeper, "gfx/USA_NYC_Pullman_Heavyweight.png")     { tmpl_NYC_Heavyweight(4,97)  tmpl_NYC_Heavyweight(92,97) }
+spriteset (spriteset_NYC_Heavyweight_Observation, "gfx/USA_NYC_Pullman_Heavyweight.png") { tmpl_NYC_Heavyweight(4,128) tmpl_NYC_Heavyweight(92,128) }
 
 item(FEAT_TRAINS, item_NYC_Heavyweight_Coach, 743) {
     property {
@@ -5127,7 +5158,7 @@ item(FEAT_TRAINS, item_NYC_Heavyweight_Observation, 747) {
 }
 
 //--------------------------------------------------------------------------------------------------Budd Pioneer Zephyr
-spriteset (spriteset_Pioneer_Zephyr_purchase,"gfx/USA_Pioneer_Zephyr.png") { [4, 97, 87, 13, -27, -9] }
+spriteset (spriteset_Pioneer_Zephyr_purchase, "gfx/USA_Pioneer_Zephyr.png") { [4, 97, 87, 13, -27, -9] }
 
 template tmpl_Pioneer_Zephyr(x,y) {
       [x,      y,    8,     24,     -3,    -12]
@@ -5142,9 +5173,9 @@ template tmpl_Pioneer_Zephyr_tail(x,y) {
     [x+68,   y,    22,    20,     -8,    -12]
 }
 
-spriteset (spriteset_Pioneer_Zephyr_front,"gfx/USA_Pioneer_Zephyr.png") { tmpl_Pioneer_Zephyr(4,4)  tmpl_Pioneer_Zephyr(95,4) }
-spriteset (spriteset_Pioneer_Zephyr_mid,"gfx/USA_Pioneer_Zephyr.png")   { tmpl_Pioneer_Zephyr(4,35) tmpl_Pioneer_Zephyr(95,35) }
-spriteset (spriteset_Pioneer_Zephyr_end,"gfx/USA_Pioneer_Zephyr.png")   { tmpl_Pioneer_Zephyr(4,66) tmpl_Pioneer_Zephyr(95,66) }
+spriteset (spriteset_Pioneer_Zephyr_front, "gfx/USA_Pioneer_Zephyr.png") { tmpl_Pioneer_Zephyr(4,4)  tmpl_Pioneer_Zephyr(95,4) }
+spriteset (spriteset_Pioneer_Zephyr_mid, "gfx/USA_Pioneer_Zephyr.png")   { tmpl_Pioneer_Zephyr(4,35) tmpl_Pioneer_Zephyr(95,35) }
+spriteset (spriteset_Pioneer_Zephyr_end, "gfx/USA_Pioneer_Zephyr.png")   { tmpl_Pioneer_Zephyr(4,66) tmpl_Pioneer_Zephyr(95,66) }
 
 switch(FEAT_TRAINS,SELF,sw_Pioneer_Zephyr_articulated_part, extra_callback_info1) {
     1:  item_Pioneer_Zephyr;
@@ -5335,27 +5366,27 @@ item(FEAT_TRAINS, item_F7, 219) {
     }
 }
 
-//--------------------------------------------------------------------------------------------------NYC Budd Lightweight 20th Cent. Ltd
+//--------------------------------------------------------------NYC Budd Lightweight 20th Cent. Ltd
 template tmpl_NYC_Budd_Lightweight_20(x,y) {
       [x,      y,    8,     24,     -3,    -12]
     [x+9,    y,    22,    20,     -14,   -10]
     [x+32,   y,    32,    16,     -16,   -11]
     [x+65,   y,    22,    20,     -8,    -11]
 }
-spriteset (spriteset_NYC_Budd_Lightweight_Coach_20th_purchase,"gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")       { [36, 4, 32, 16, -15, -11] }
-spriteset (spriteset_NYC_Budd_Lightweight_Sleeper_20th_purchase,"gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")     { [36, 35, 32, 16, -15, -11] }
-spriteset (spriteset_NYC_Budd_Lightweight_Baggage_20th_purchase,"gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")     { [36, 66, 32, 16, -15, -11] }
-spriteset (spriteset_NYC_Budd_Lightweight_Kitchen_20th_purchase,"gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")     { [36, 97, 32, 16, -15, -11] }
-spriteset (spriteset_NYC_Budd_Lightweight_Diner_20th_purchase,"gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")       { [36, 128, 32, 16, -15, -11] }
-spriteset (spriteset_NYC_Budd_Lightweight_Observation_20th_purchase,"gfx/USA_NYC_20th_Century_Ltd_Lightweight.png") { [36, 159, 32, 16, -15, -11] }
+spriteset (spriteset_NYC_Budd_Lightweight_Coach_20th_purchase, "gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")       { [36, 4, 32, 16, -15, -11] }
+spriteset (spriteset_NYC_Budd_Lightweight_Sleeper_20th_purchase, "gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")     { [36, 35, 32, 16, -15, -11] }
+spriteset (spriteset_NYC_Budd_Lightweight_Baggage_20th_purchase, "gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")     { [36, 66, 32, 16, -15, -11] }
+spriteset (spriteset_NYC_Budd_Lightweight_Kitchen_20th_purchase, "gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")     { [36, 97, 32, 16, -15, -11] }
+spriteset (spriteset_NYC_Budd_Lightweight_Diner_20th_purchase, "gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")       { [36, 128, 32, 16, -15, -11] }
+spriteset (spriteset_NYC_Budd_Lightweight_Observation_20th_purchase, "gfx/USA_NYC_20th_Century_Ltd_Lightweight.png") { [36, 159, 32, 16, -15, -11] }
 
 
-spriteset (spriteset_NYC_Budd_Lightweight_Coach_20th,"gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")       { tmpl_NYC_Budd_Lightweight_20(4,4)   tmpl_NYC_Budd_Lightweight_20(92,4) }
-spriteset (spriteset_NYC_Budd_Lightweight_Sleeper_20th,"gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")     { tmpl_NYC_Budd_Lightweight_20(4,35)  tmpl_NYC_Budd_Lightweight_20(92,35) }
-spriteset (spriteset_NYC_Budd_Lightweight_Baggage_20th,"gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")     { tmpl_NYC_Budd_Lightweight_20(4,66)  tmpl_NYC_Budd_Lightweight_20(92,66) }
-spriteset (spriteset_NYC_Budd_Lightweight_Kitchen_20th,"gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")     { tmpl_NYC_Budd_Lightweight_20(4,97)  tmpl_NYC_Budd_Lightweight_20(92,97) }
-spriteset (spriteset_NYC_Budd_Lightweight_Diner_20th,"gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")       { tmpl_NYC_Budd_Lightweight_20(4,128) tmpl_NYC_Budd_Lightweight_20(92,128) }
-spriteset (spriteset_NYC_Budd_Lightweight_Observation_20th,"gfx/USA_NYC_20th_Century_Ltd_Lightweight.png") { tmpl_NYC_Budd_Lightweight_20(4,159) tmpl_NYC_Budd_Lightweight_20(92,159) }
+spriteset (spriteset_NYC_Budd_Lightweight_Coach_20th, "gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")       { tmpl_NYC_Budd_Lightweight_20(4,4)   tmpl_NYC_Budd_Lightweight_20(92,4) }
+spriteset (spriteset_NYC_Budd_Lightweight_Sleeper_20th, "gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")     { tmpl_NYC_Budd_Lightweight_20(4,35)  tmpl_NYC_Budd_Lightweight_20(92,35) }
+spriteset (spriteset_NYC_Budd_Lightweight_Baggage_20th, "gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")     { tmpl_NYC_Budd_Lightweight_20(4,66)  tmpl_NYC_Budd_Lightweight_20(92,66) }
+spriteset (spriteset_NYC_Budd_Lightweight_Kitchen_20th, "gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")     { tmpl_NYC_Budd_Lightweight_20(4,97)  tmpl_NYC_Budd_Lightweight_20(92,97) }
+spriteset (spriteset_NYC_Budd_Lightweight_Diner_20th, "gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")       { tmpl_NYC_Budd_Lightweight_20(4,128) tmpl_NYC_Budd_Lightweight_20(92,128) }
+spriteset (spriteset_NYC_Budd_Lightweight_Observation_20th, "gfx/USA_NYC_20th_Century_Ltd_Lightweight.png") { tmpl_NYC_Budd_Lightweight_20(4,159) tmpl_NYC_Budd_Lightweight_20(92,159) }
 
 item(FEAT_TRAINS, item_NYC_Budd_Lightweight_Coach_20th, 726) {
     property {
@@ -5574,14 +5605,14 @@ item(FEAT_TRAINS, item_NYC_Budd_Lightweight_Observation_20th, 731) {
 }
 
 //--------------------------------------------------------------------------------------------------ATSF Budd Lightweight Super Chief
-spriteset (spriteset_Budd_Lightweight_Coach_purchase,"gfx/USA_Budd_Lightweight.png")       { [40, 4,   40, 16, -19, -12] }
-spriteset (spriteset_Budd_Lightweight_Diner_purchase,"gfx/USA_Budd_Lightweight.png")       { [40, 39,  40, 16, -19, -12] }
-spriteset (spriteset_Budd_Lightweight_Sleeper_purchase,"gfx/USA_Budd_Lightweight.png")     { [40, 74,  40, 16, -19, -12] }
-spriteset (spriteset_Budd_Lightweight_Baggage_purchase,"gfx/USA_Budd_Lightweight.png")     { [40, 109, 40, 16, -19, -12] }
-spriteset (spriteset_Budd_Lightweight_RPO_purchase,"gfx/USA_Budd_Lightweight.png")         { [40, 144, 40, 16, -19, -12] }
-spriteset (spriteset_Budd_Lightweight_Dome_purchase,"gfx/USA_Budd_Lightweight.png")        { [40, 179, 40, 16, -19, -12] }
-spriteset (spriteset_Budd_Lightweight_Dome_Obs_purchase,"gfx/USA_Budd_Lightweight.png")    { [40, 214, 40, 16, -19, -12] }
-spriteset (spriteset_Budd_Lightweight_Observation_purchase,"gfx/USA_Budd_Lightweight.png") { [40, 249, 40, 16, -19, -12] }
+spriteset (spriteset_Budd_Lightweight_Coach_purchase, "gfx/USA_Budd_Lightweight.png")       { [40, 4,   40, 16, -19, -12] }
+spriteset (spriteset_Budd_Lightweight_Diner_purchase, "gfx/USA_Budd_Lightweight.png")       { [40, 39,  40, 16, -19, -12] }
+spriteset (spriteset_Budd_Lightweight_Sleeper_purchase, "gfx/USA_Budd_Lightweight.png")     { [40, 74,  40, 16, -19, -12] }
+spriteset (spriteset_Budd_Lightweight_Baggage_purchase, "gfx/USA_Budd_Lightweight.png")     { [40, 109, 40, 16, -19, -12] }
+spriteset (spriteset_Budd_Lightweight_RPO_purchase, "gfx/USA_Budd_Lightweight.png")         { [40, 144, 40, 16, -19, -12] }
+spriteset (spriteset_Budd_Lightweight_Dome_purchase, "gfx/USA_Budd_Lightweight.png")        { [40, 179, 40, 16, -19, -12] }
+spriteset (spriteset_Budd_Lightweight_Dome_Obs_purchase, "gfx/USA_Budd_Lightweight.png")    { [40, 214, 40, 16, -19, -12] }
+spriteset (spriteset_Budd_Lightweight_Observation_purchase, "gfx/USA_Budd_Lightweight.png") { [40, 249, 40, 16, -19, -12] }
 
 template tmpl_Budd_Lightweight(x,y) {
     [x,      y,    8,     28,     -3,    -10]
@@ -5608,14 +5639,14 @@ template tmpl_Budd_Lightweight2_Short(x,y) {
     [x+36,   y,    40,    16,     -20,   -12]
     [x+77,   y,    26,    22,     -8,    -11]
 }
-spriteset (spriteset_Budd_Lightweight_Coach,"gfx/USA_Budd_Lightweight.png")       { tmpl_Budd_Lightweight(4,4) tmpl_Budd_Lightweight2(108,4) }
-spriteset (spriteset_Budd_Lightweight_Diner,"gfx/USA_Budd_Lightweight.png")       { tmpl_Budd_Lightweight(4,39) tmpl_Budd_Lightweight2(108,39) }
-spriteset (spriteset_Budd_Lightweight_Sleeper,"gfx/USA_Budd_Lightweight.png")     { tmpl_Budd_Lightweight(4,74) tmpl_Budd_Lightweight2(108,74) }
-spriteset (spriteset_Budd_Lightweight_Baggage,"gfx/USA_Budd_Lightweight.png")     { tmpl_Budd_Lightweight_Short(4,109) tmpl_Budd_Lightweight2_Short(108,109) }
-spriteset (spriteset_Budd_Lightweight_RPO,"gfx/USA_Budd_Lightweight.png")         { tmpl_Budd_Lightweight_Short(4,144) tmpl_Budd_Lightweight2_Short(108,144) }
-spriteset (spriteset_Budd_Lightweight_Dome,"gfx/USA_Budd_Lightweight.png")        { tmpl_Budd_Lightweight(4,179) tmpl_Budd_Lightweight2(108,179) }
-spriteset (spriteset_Budd_Lightweight_Dome_Obs,"gfx/USA_Budd_Lightweight.png")    { tmpl_Budd_Lightweight(4,214) tmpl_Budd_Lightweight2(108,214) }
-spriteset (spriteset_Budd_Lightweight_Observation,"gfx/USA_Budd_Lightweight.png") { tmpl_Budd_Lightweight(4,249) tmpl_Budd_Lightweight2(108,249) }
+spriteset (spriteset_Budd_Lightweight_Coach, "gfx/USA_Budd_Lightweight.png")       { tmpl_Budd_Lightweight(4,4) tmpl_Budd_Lightweight2(108,4) }
+spriteset (spriteset_Budd_Lightweight_Diner, "gfx/USA_Budd_Lightweight.png")       { tmpl_Budd_Lightweight(4,39) tmpl_Budd_Lightweight2(108,39) }
+spriteset (spriteset_Budd_Lightweight_Sleeper, "gfx/USA_Budd_Lightweight.png")     { tmpl_Budd_Lightweight(4,74) tmpl_Budd_Lightweight2(108,74) }
+spriteset (spriteset_Budd_Lightweight_Baggage, "gfx/USA_Budd_Lightweight.png")     { tmpl_Budd_Lightweight_Short(4,109) tmpl_Budd_Lightweight2_Short(108,109) }
+spriteset (spriteset_Budd_Lightweight_RPO, "gfx/USA_Budd_Lightweight.png")         { tmpl_Budd_Lightweight_Short(4,144) tmpl_Budd_Lightweight2_Short(108,144) }
+spriteset (spriteset_Budd_Lightweight_Dome, "gfx/USA_Budd_Lightweight.png")        { tmpl_Budd_Lightweight(4,179) tmpl_Budd_Lightweight2(108,179) }
+spriteset (spriteset_Budd_Lightweight_Dome_Obs, "gfx/USA_Budd_Lightweight.png")    { tmpl_Budd_Lightweight(4,214) tmpl_Budd_Lightweight2(108,214) }
+spriteset (spriteset_Budd_Lightweight_Observation, "gfx/USA_Budd_Lightweight.png") { tmpl_Budd_Lightweight(4,249) tmpl_Budd_Lightweight2(108,249) }
 
 switch(FEAT_TRAINS,SELF,sw_Budd_Lightweight_Coach_graphics, position_in_vehid_chain % 2) {
     0:  spriteset_Budd_Lightweight_Coach;
@@ -5977,11 +6008,10 @@ item(FEAT_TRAINS, item_Budd_Lightweight_Observation, 742) {
     }
 }
 
-
 //--------------------------------------------------------------------------------------------------Amtrak Baggage
-spriteset (spriteset_Amtrak_Baggage_purchase_Phase_III,"gfx/USA_Amtrak_Baggage.png") { [4,  97,   87,  12,  -15,  -9] }
-spriteset (spriteset_Amtrak_Baggage_purchase_Phase_IVa,"gfx/USA_Amtrak_Baggage.png") { [92, 97,   87,  12,  -15,  -9] }
-spriteset (spriteset_Amtrak_Baggage_purchase_Phase_V,"gfx/USA_Amtrak_Baggage.png")   { [4,  116,  87,  12,  -15,  -9] }
+spriteset (spriteset_Amtrak_Baggage_purchase_Phase_III, "gfx/USA_Amtrak_Baggage.png") { [4,  97,   87,  12,  -15,  -9] }
+spriteset (spriteset_Amtrak_Baggage_purchase_Phase_IVa, "gfx/USA_Amtrak_Baggage.png") { [92, 97,   87,  12,  -15,  -9] }
+spriteset (spriteset_Amtrak_Baggage_purchase_Phase_V, "gfx/USA_Amtrak_Baggage.png")   { [4,  116,  87,  12,  -15,  -9] }
 
 template tmpl_Amtrak_Baggage(x,y) {
       [x,      y,    8,     24,     -3,    -12]
@@ -5990,9 +6020,9 @@ template tmpl_Amtrak_Baggage(x,y) {
     [x+65,   y,    22,    20,     -8,    -12]
 }
 
-spriteset (spriteset_Amtrak_Baggage_Phase_III,"gfx/USA_Amtrak_Baggage.png") { tmpl_Amtrak_Baggage(4,4)  tmpl_Amtrak_Baggage(92,4) }
-spriteset (spriteset_Amtrak_Baggage_Phase_IVa,"gfx/USA_Amtrak_Baggage.png") { tmpl_Amtrak_Baggage(4,35) tmpl_Amtrak_Baggage(92,35) }
-spriteset (spriteset_Amtrak_Baggage_Phase_V,"gfx/USA_Amtrak_Baggage.png")   { tmpl_Amtrak_Baggage(4,66) tmpl_Amtrak_Baggage(92,66) }
+spriteset (spriteset_Amtrak_Baggage_Phase_III, "gfx/USA_Amtrak_Baggage.png") { tmpl_Amtrak_Baggage(4,4)  tmpl_Amtrak_Baggage(92,4) }
+spriteset (spriteset_Amtrak_Baggage_Phase_IVa, "gfx/USA_Amtrak_Baggage.png") { tmpl_Amtrak_Baggage(4,35) tmpl_Amtrak_Baggage(92,35) }
+spriteset (spriteset_Amtrak_Baggage_Phase_V, "gfx/USA_Amtrak_Baggage.png")   { tmpl_Amtrak_Baggage(4,66) tmpl_Amtrak_Baggage(92,66) }
 
 switch(FEAT_TRAINS, SELF, sw_Amtrak_Baggage_purchase, current_year) {
     0..1992:  spriteset_Amtrak_Baggage_purchase_Phase_III;
@@ -6382,25 +6412,25 @@ item(FEAT_TRAINS, item_PRR_GG1, 426) {
     }
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------UAC Turbotrain
+//------------------------------------------------------UAC Turbotrain
 spriteset(spriteset_purchase_Turbotrain_CN, "gfx/Canada_UAC_Turbotrain_CN.png") { [4, 97, 87, 13, -27, -9] }
 
 template tmpl_Turbotrain(x,y) {
-      [x,       y,     8,      24,     -3,      -12]
+    [x,       y,     8,      24,     -3,      -12]
     [x+9,     y,     22,     20,     -14,     -9]
     [x+32,    y,     32,     16,     -16,     -12]
     [x+65,    y,     22,     20,     -8,      -11]
 }
 
 template tmpl_Turbotrain_coach_1(x,y) {
-      [x,      y,    8,     24,     -3,    -12]
+    [x,      y,    8,     24,     -3,    -12]
     [x+9,    y,    22,    20,     -14,   -10]
     [x+32,   y,    32,    16,     -16,   -12]
     [x+65,   y,    22,    20,     -6,    -11]
 }
 
 template tmpl_Turbotrain_coach_2(x,y) {
-      [x,      y,    8,     24,     -3,   -10]
+    [x,      y,    8,     24,     -3,   -10]
     [x+9,    y,    22,    20,     -16,   -9]
     [x+32,   y,    32,    16,     -20,  -12]
     [x+65,   y,    22,    20,     -8,   -12]
@@ -6558,7 +6588,6 @@ item(FEAT_TRAINS, item_Turbotrain, 501) {
     }
 }
 
-//--------------------------------------------------------------------------------------------------ATSF Budd Lightweight Super Chief
 template tmpl_Canada_TC_Lightweight_SC(x,y) {
       [x,      y,    8,     24,     -3,    -12]
     [x+9,    y,    22,    20,     -14,   -10]
@@ -6571,21 +6600,21 @@ template tmpl_Canada_TC_Lightweight_SC_2(x,y) {
     [x+32,   y,    32,    16,     -16,   -11]
     [x+65,   y,    22,    20,     -8,    -11]
 }
-spriteset (spriteset_CNR_TC_Coach_purchase,"gfx/Canada_The_Canadian_Lightweight.png")      { [36, 4,   32, 16, -15, -11] }
-spriteset (spriteset_CNR_TC_Diner_purchase,"gfx/Canada_The_Canadian_Lightweight.png")      { [36, 35,  32, 16, -15, -11] }
-spriteset (spriteset_CNR_TC_Manor_purchase,"gfx/Canada_The_Canadian_Lightweight.png")      { [36, 66,  32, 16, -15, -11] }
-spriteset (spriteset_CNR_TC_Chateau_purchase,"gfx/Canada_The_Canadian_Lightweight.png")    { [36, 97,  32, 16, -15, -11] }
-spriteset (spriteset_CNR_TC_Baggage_purchase,"gfx/Canada_The_Canadian_Lightweight.png")    { [36, 128, 32, 16, -15, -11] }
-spriteset (spriteset_CNR_TC_Skyline_ss_purchase,"gfx/Canada_The_Canadian_Lightweight.png") { [36, 159, 32, 16, -15, -11] }
-spriteset (spriteset_CNR_TC_Park_ss_purchase,"gfx/Canada_The_Canadian_Lightweight.png")    { [36, 190, 32, 16, -15, -11] }
+spriteset (spriteset_CNR_TC_Coach_purchase, "gfx/Canada_The_Canadian_Lightweight.png")      { [36, 4,   32, 16, -15, -11] }
+spriteset (spriteset_CNR_TC_Diner_purchase, "gfx/Canada_The_Canadian_Lightweight.png")      { [36, 35,  32, 16, -15, -11] }
+spriteset (spriteset_CNR_TC_Manor_purchase, "gfx/Canada_The_Canadian_Lightweight.png")      { [36, 66,  32, 16, -15, -11] }
+spriteset (spriteset_CNR_TC_Chateau_purchase, "gfx/Canada_The_Canadian_Lightweight.png")    { [36, 97,  32, 16, -15, -11] }
+spriteset (spriteset_CNR_TC_Baggage_purchase, "gfx/Canada_The_Canadian_Lightweight.png")    { [36, 128, 32, 16, -15, -11] }
+spriteset (spriteset_CNR_TC_Skyline_ss_purchase, "gfx/Canada_The_Canadian_Lightweight.png") { [36, 159, 32, 16, -15, -11] }
+spriteset (spriteset_CNR_TC_Park_ss_purchase, "gfx/Canada_The_Canadian_Lightweight.png")    { [36, 190, 32, 16, -15, -11] }
 
-spriteset (spriteset_CNR_TC_Coach,"gfx/Canada_The_Canadian_Lightweight.png")      { tmpl_Canada_TC_Lightweight_SC(4,4)   tmpl_Canada_TC_Lightweight_SC_2(92,4) }
-spriteset (spriteset_CNR_TC_Diner,"gfx/Canada_The_Canadian_Lightweight.png")      { tmpl_Canada_TC_Lightweight_SC(4,35)  tmpl_Canada_TC_Lightweight_SC_2(92,35) }
-spriteset (spriteset_CNR_TC_Manor,"gfx/Canada_The_Canadian_Lightweight.png")      { tmpl_Canada_TC_Lightweight_SC(4,66)  tmpl_Canada_TC_Lightweight_SC_2(92,66) }
-spriteset (spriteset_CNR_TC_Chateau,"gfx/Canada_The_Canadian_Lightweight.png")    { tmpl_Canada_TC_Lightweight_SC(4,97)  tmpl_Canada_TC_Lightweight_SC_2(92,97) }
-spriteset (spriteset_CNR_TC_Baggage,"gfx/Canada_The_Canadian_Lightweight.png")    { tmpl_Canada_TC_Lightweight_SC(4,128) tmpl_Canada_TC_Lightweight_SC_2(92,128) }
-spriteset (spriteset_CNR_TC_Skyline_ss,"gfx/Canada_The_Canadian_Lightweight.png") { tmpl_Canada_TC_Lightweight_SC(4,159) tmpl_Canada_TC_Lightweight_SC_2(92,159) }
-spriteset (spriteset_CNR_TC_Park_ss,"gfx/Canada_The_Canadian_Lightweight.png")    { tmpl_Canada_TC_Lightweight_SC(4,190) tmpl_Canada_TC_Lightweight_SC_2(92,190) }
+spriteset (spriteset_CNR_TC_Coach, "gfx/Canada_The_Canadian_Lightweight.png")      { tmpl_Canada_TC_Lightweight_SC(4,4)   tmpl_Canada_TC_Lightweight_SC_2(92,4) }
+spriteset (spriteset_CNR_TC_Diner, "gfx/Canada_The_Canadian_Lightweight.png")      { tmpl_Canada_TC_Lightweight_SC(4,35)  tmpl_Canada_TC_Lightweight_SC_2(92,35) }
+spriteset (spriteset_CNR_TC_Manor, "gfx/Canada_The_Canadian_Lightweight.png")      { tmpl_Canada_TC_Lightweight_SC(4,66)  tmpl_Canada_TC_Lightweight_SC_2(92,66) }
+spriteset (spriteset_CNR_TC_Chateau, "gfx/Canada_The_Canadian_Lightweight.png")    { tmpl_Canada_TC_Lightweight_SC(4,97)  tmpl_Canada_TC_Lightweight_SC_2(92,97) }
+spriteset (spriteset_CNR_TC_Baggage, "gfx/Canada_The_Canadian_Lightweight.png")    { tmpl_Canada_TC_Lightweight_SC(4,128) tmpl_Canada_TC_Lightweight_SC_2(92,128) }
+spriteset (spriteset_CNR_TC_Skyline_ss, "gfx/Canada_The_Canadian_Lightweight.png") { tmpl_Canada_TC_Lightweight_SC(4,159) tmpl_Canada_TC_Lightweight_SC_2(92,159) }
+spriteset (spriteset_CNR_TC_Park_ss, "gfx/Canada_The_Canadian_Lightweight.png")    { tmpl_Canada_TC_Lightweight_SC(4,190) tmpl_Canada_TC_Lightweight_SC_2(92,190) }
 
 
 item(FEAT_TRAINS, item_CNR_TC_Coach, 753) {
@@ -7224,14 +7253,14 @@ item(FEAT_TRAINS, item_erie_club) {
 spriteset (spriteset_purchase_NYC_S_Motor, "gfx/USA_NYC_S_Motor.png") { [4,  66,  86,  13,  -7,  -9] }
 
 template tmpl_NYC_S_Motor(x,y) {
-      [x,      y,    8,     24,     -3,    -12]
+    [x,      y,    8,     24,     -3,    -12]
     [x+9,    y,    22,    20,     -10,   -12]
     [x+32,   y,    32,    16,     -16,   -12]
     [x+65,   y,    22,    20,     -8,    -11]
 }
 
 template tmpl_NYC_S_Motor2(x,y) {
-      [x,      y,    8,     24,     -3,    -6]
+    [x,      y,    8,     24,     -3,    -6]
     [x+9,    y,    22,    20,     -14,   -10]
     [x+32,   y,    32,    16,     -24,   -12]
     [x+65,   y,    22,    20,     -12,   -13]
@@ -7436,23 +7465,23 @@ template tmpl_PRR_Heavyweight_short_second(x,y) {
     [x+71,   y,    24,    21,     -12,   -13]
 }
 
-spriteset (spriteset_PRR_Heavyweight_Coach_purchase,"gfx/USA_PRR_Heavyweight.png")       { [38, 4, 36, 16, -19, -12] }
-spriteset (spriteset_PRR_Heavyweight_Lunch_purchase,"gfx/USA_PRR_Heavyweight.png")       { [38, 37, 36, 16, -19, -12] }
-spriteset (spriteset_PRR_Heavyweight_Diner_purchase,"gfx/USA_PRR_Heavyweight.png")       { [38, 70, 36, 16, -19, -12] }
-spriteset (spriteset_PRR_Heavyweight_Combine_purchase,"gfx/USA_PRR_Heavyweight.png")     { [38, 103, 36, 16, -19, -12] }
-spriteset (spriteset_PRR_Heavyweight_Baggage_purchase,"gfx/USA_PRR_Heavyweight.png")     { [38, 136, 36, 16, -11, -12] }
-spriteset (spriteset_PRR_Heavyweight_Baggage_RPO_purchase,"gfx/USA_PRR_Heavyweight.png") { [38, 169, 36, 16, -15, -12] }
+spriteset (spriteset_PRR_Heavyweight_Coach_purchase, "gfx/USA_PRR_Heavyweight.png")       { [38, 4, 36, 16, -19, -12] }
+spriteset (spriteset_PRR_Heavyweight_Lunch_purchase, "gfx/USA_PRR_Heavyweight.png")       { [38, 37, 36, 16, -19, -12] }
+spriteset (spriteset_PRR_Heavyweight_Diner_purchase, "gfx/USA_PRR_Heavyweight.png")       { [38, 70, 36, 16, -19, -12] }
+spriteset (spriteset_PRR_Heavyweight_Combine_purchase, "gfx/USA_PRR_Heavyweight.png")     { [38, 103, 36, 16, -19, -12] }
+spriteset (spriteset_PRR_Heavyweight_Baggage_purchase, "gfx/USA_PRR_Heavyweight.png")     { [38, 136, 36, 16, -11, -12] }
+spriteset (spriteset_PRR_Heavyweight_Baggage_RPO_purchase, "gfx/USA_PRR_Heavyweight.png") { [38, 169, 36, 16, -15, -12] }
 spriteset (spriteset_PRR_Heavyweight_Sleeper_purchase, "gfx/USA_PRR_Heavyweight.png")    { [38, 202, 36, 16, -19, -12] }
-spriteset (spriteset_PRR_Heavyweight_Observation_purchase,"gfx/USA_PRR_Heavyweight.png") { [38, 235, 36, 16, -19, -12] }
+spriteset (spriteset_PRR_Heavyweight_Observation_purchase, "gfx/USA_PRR_Heavyweight.png") { [38, 235, 36, 16, -19, -12] }
 
-spriteset (spriteset_PRR_Heavyweight_Coach,"gfx/USA_PRR_Heavyweight.png")       { tmpl_PRR_Heavyweight_long(4,4)    tmpl_PRR_Heavyweight_long_second(100,4) }
-spriteset (spriteset_PRR_Heavyweight_Lunch,"gfx/USA_PRR_Heavyweight.png")       { tmpl_PRR_Heavyweight_long(4,37)   tmpl_PRR_Heavyweight_long_second(100,37) }
-spriteset (spriteset_PRR_Heavyweight_Diner,"gfx/USA_PRR_Heavyweight.png")       { tmpl_PRR_Heavyweight_long(4,70)   tmpl_PRR_Heavyweight_long_second(100,70) }
-spriteset (spriteset_PRR_Heavyweight_Combine,"gfx/USA_PRR_Heavyweight.png")     { tmpl_PRR_Heavyweight_long(4,103)  tmpl_PRR_Heavyweight_long_second(100,103) }
-spriteset (spriteset_PRR_Heavyweight_Baggage,"gfx/USA_PRR_Heavyweight.png")     { tmpl_PRR_Heavyweight_short(4,136) tmpl_PRR_Heavyweight_short_second(100,136) }
-spriteset (spriteset_PRR_Heavyweight_Baggage_RPO,"gfx/USA_PRR_Heavyweight.png") { tmpl_PRR_Heavyweight(4,169)       tmpl_PRR_Heavyweight(100,169) }
+spriteset (spriteset_PRR_Heavyweight_Coach, "gfx/USA_PRR_Heavyweight.png")       { tmpl_PRR_Heavyweight_long(4,4)    tmpl_PRR_Heavyweight_long_second(100,4) }
+spriteset (spriteset_PRR_Heavyweight_Lunch, "gfx/USA_PRR_Heavyweight.png")       { tmpl_PRR_Heavyweight_long(4,37)   tmpl_PRR_Heavyweight_long_second(100,37) }
+spriteset (spriteset_PRR_Heavyweight_Diner, "gfx/USA_PRR_Heavyweight.png")       { tmpl_PRR_Heavyweight_long(4,70)   tmpl_PRR_Heavyweight_long_second(100,70) }
+spriteset (spriteset_PRR_Heavyweight_Combine, "gfx/USA_PRR_Heavyweight.png")     { tmpl_PRR_Heavyweight_long(4,103)  tmpl_PRR_Heavyweight_long_second(100,103) }
+spriteset (spriteset_PRR_Heavyweight_Baggage, "gfx/USA_PRR_Heavyweight.png")     { tmpl_PRR_Heavyweight_short(4,136) tmpl_PRR_Heavyweight_short_second(100,136) }
+spriteset (spriteset_PRR_Heavyweight_Baggage_RPO, "gfx/USA_PRR_Heavyweight.png") { tmpl_PRR_Heavyweight(4,169)       tmpl_PRR_Heavyweight(100,169) }
 spriteset (spriteset_PRR_Heavyweight_Sleeper, "gfx/USA_PRR_Heavyweight.png")    { tmpl_PRR_Heavyweight_long(4, 202) tmpl_PRR_Heavyweight_long_second(100, 202) }
-spriteset (spriteset_PRR_Heavyweight_Observation,"gfx/USA_PRR_Heavyweight.png") { tmpl_PRR_Heavyweight_long(4,235)  tmpl_PRR_Heavyweight_long_second(100,235) }
+spriteset (spriteset_PRR_Heavyweight_Observation, "gfx/USA_PRR_Heavyweight.png") { tmpl_PRR_Heavyweight_long(4,235)  tmpl_PRR_Heavyweight_long_second(100,235) }
 
 switch(FEAT_TRAINS,SELF,sw_PRR_Heavyweight_Coach_articulated, extra_callback_info1) {
     1:  item_PRR_Heavyweight_Coach;
@@ -8072,17 +8101,11 @@ item(FEAT_TRAINS, item_Budd_M3, 3072) {
     }
 }
 
-//		TRAINS
-//	STEAMERS
 sort (FEAT_TRAINS, [
     item_K4s,
     item_GS4,
-    item_4_6_4_Hudson
-]);
+    item_4_6_4_Hudson,
 
-//	DIESEL
-sort (FEAT_TRAINS, [
-//  Diesel
     item_ALCO_PA,
     item_E7,
     item_E8,
@@ -8096,20 +8119,18 @@ sort (FEAT_TRAINS, [
     item_P32AC_DM,
     item_F59PHI,
     item_MP40PH_3C,
-//	DMU
     item_SPV2000,
     item_RDC,
+
     item_Pioneer_Zephyr,
     item_Turboliner,
     item_Turbotrain,
 
-//	Electric
     item_NYC_S_Motor,
     item_PRR_GG1,
     item_ALP_46,
     item_HHP8,
 
-//	EMU
     item_Silverliner_II,
     item_mp54,
     item_mp54_single,
@@ -8130,7 +8151,6 @@ sort (FEAT_TRAINS, [
     item_Acela_express
 ]);
 
-//	Wagons
 sort (FEAT_TRAINS, [
     item_PRR_Heavyweight_Coach,
     item_PRR_Heavyweight_Sleeper,
