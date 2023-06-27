@@ -1,0 +1,195 @@
+//--------------------------------------------------------------------------------------------------F59PHI---California Car
+spriteset (spriteset_purchase_F59PHI, "gfx/USA_EMD_F59PHI.png") { [4,  66,  87,  14,  -15,  -10] }
+spriteset (spriteset_purchase_California_Car, "gfx/USA_Amtrak_California_Car.png") { [4,  97,  87,  14,  -15,  -10] }
+
+template tmpl_F59PHI(x,y) {
+    [x,      y,    8,     24,     -3,    -10]
+    [x+9,    y,    22,    20,     -14,   -10]
+    [x+32,   y,    32,    16,     -16,   -12]
+    [x+65,   y,    22,    20,     -8,    -12]
+    [x+88,   y,    8,     24,     -3,    -10]
+    [x+97,   y,    22,    20,     -14,   -11]
+    [x+120,  y,    32,    16,     -16,   -12]
+    [x+153,  y,    22,    20,     -8,    -11]
+}
+template tmpl_F59PHI2(x,y) {
+      [x+88,   y,    8,     24,     -3,    -10]
+    [x+97,   y,    22,    20,     -14,   -11]
+    [x+120,  y,    32,    16,     -16,   -12]
+    [x+153,  y,    22,    20,     -8,    -11]
+      [x,      y,    8,     24,     -3,    -10]
+    [x+9,    y,    22,    20,     -14,   -10]
+    [x+32,   y,    32,    16,     -16,   -12]
+    [x+65,   y,    22,    20,     -8,    -12]
+}
+
+spriteset (spriteset_F59PHI_f, "gfx/USA_EMD_F59PHI.png") { tmpl_F59PHI(4,4) }
+spriteset (spriteset_F59PHI_b, "gfx/USA_EMD_F59PHI.png") { tmpl_F59PHI2(4,35) }
+
+spriteset (spriteset_California_Cab_f, "gfx/USA_Amtrak_California_Car.png") { tmpl_Superliner_I(4,4)   tmpl_Superliner_I(92,4) }
+spriteset (spriteset_California_Cab_b, "gfx/USA_Amtrak_California_Car.png") { tmpl_Superliner_I(92,35) tmpl_Superliner_I(4,35) }  //Use same tmpl as Superliner
+spriteset (spriteset_California_Car, "gfx/USA_Amtrak_California_Car.png")   { tmpl_Superliner_I(4,66) tmpl_Superliner_I(92,66) }
+
+spriteset (spriteset_Surfliner_Cab_f, "gfx/USA_Amtrak_Surfliner_Car.png") { tmpl_Superliner_I(4,4)   tmpl_Superliner_I(92,4) }
+spriteset (spriteset_Surfliner_Cab_b, "gfx/USA_Amtrak_Surfliner_Car.png") { tmpl_Superliner_I(92,35) tmpl_Superliner_I(4,35) }  //Use same tmpl as Superliner
+spriteset (spriteset_Surfliner_Car, "gfx/USA_Amtrak_Surfliner_Car.png")   { tmpl_Superliner_I(4,66) tmpl_Superliner_I(92,66) }
+
+//---------------------------------------------------------------------------------P32AC-DM graphics
+switch(FEAT_TRAINS,SELF,sw_F59PHI_grapfics3, position_in_consist % 2) {
+    0:  spriteset_F59PHI_f;
+    spriteset_F59PHI_b;
+}
+switch(FEAT_TRAINS,SELF,sw_F59PHI_grapfics2, position_in_consist_from_end) {
+    0:  spriteset_F59PHI_b;
+    sw_F59PHI_grapfics3;
+}
+switch(FEAT_TRAINS,SELF,sw_F59PHI_graphics, position_in_consist) {
+    0:  spriteset_F59PHI_f;
+    sw_F59PHI_grapfics2;
+}
+
+switch(FEAT_TRAINS,SELF,sw_F59PHI_graphics_California_Cab, vehicle_is_reversed) {
+    0:  sw_F59PHI_graphics;
+    spriteset_California_Cab_f;
+}
+
+switch(FEAT_TRAINS,SELF,sw_F59PHI_graphics_detect,count_veh_id(607)) {
+    0:  sw_F59PHI_graphics;
+    sw_F59PHI_graphics_California_Cab;
+}
+
+switch (FEAT_TRAINS, SELF, sw_California_Cab_graphics, position_in_consist) {
+    0:  spriteset_California_Cab_f;
+    spriteset_California_Cab_b;
+}
+switch(FEAT_TRAINS, PARENT, sw_push_pull_California_Cab_F59PHI, vehicle_is_reversed) {
+    0:  sw_California_Cab_graphics;
+    sw_F59PHI_graphics;
+}
+
+switch(FEAT_TRAINS, PARENT, sw_push_pull_California_Cab, vehicle_type_id) {
+    item_F59PHI:  sw_push_pull_California_Cab_F59PHI;
+    sw_California_Cab_graphics;
+}
+
+
+item(FEAT_TRAINS, item_California_Cab, 607) {
+    property {
+        name:                         string(STR_California_Cab_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1996, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 28;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                10;
+        cost_factor:                  25;
+        running_cost_factor:          25;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        201 km/h;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        1;
+        cargo_capacity:               90;
+        weight:                       74 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         8/201;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_purchase_California_Car;
+        additional_text:          return string(STR_California_Cab_Desc);
+        length:                   8;
+        sound_effect:             CB_RESULT_NO_SOUND;
+        default:                  sw_push_pull_California_Cab;
+    }
+}
+
+item(FEAT_TRAINS, item_California_Car) {
+    property {
+        name:                         string(STR_California_Car_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1996, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 28;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                10;
+        cost_factor:                  125;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        201 km/h;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               90;
+        weight:                       74 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_purchase_California_Car;
+        additional_text:          return string(STR_California_Car_Name);
+        length:                   8;
+        default:                  spriteset_California_Car;
+    }
+}
+
+switch(FEAT_TRAINS,SELF,sw_F59PHI_visual_effect_and_powered,vehicle_is_reversed) {
+    0:  visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER);
+    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+}
+
+item(FEAT_TRAINS, item_F59PHI, 405) {
+    property {
+        name:                           string(STR_F59PHI_Name);
+        climates_available:             bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:              date(1994, 1, 1);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   34;
+        reliability_decay:              11;
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   bitmask();
+        loading_speed:                  1;
+        cost_factor:                    53;
+        running_cost_factor:            153;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        speed:                          177 km/h;
+        misc_flags:                     bitmask();
+        refit_cost:                     0;
+        track_type:                     RAIL;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        power:                          2300 kW;
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+        dual_headed:                    0;
+        cargo_capacity:                 1;
+        weight:                         120 ton;
+        ai_engine_rank:                 0;
+        engine_class:                   ENGINE_CLASS_DIESEL;
+        extra_power_per_wagon:          0;
+        tractive_effort_coefficient:    0.3;
+        air_drag_coefficient:           8/177;
+        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:         0;
+        bitmask_vehicle_info:           0;
+    }
+    graphics {
+        purchase:                       spriteset_purchase_F59PHI;
+        additional_text:                return string(STR_F59PHI_Desc);
+        length:                         8;
+        cargo_capacity:                 0;
+        visual_effect_and_powered:      sw_F59PHI_visual_effect_and_powered;
+        default:                        sw_F59PHI_graphics_detect;
+    }
+}

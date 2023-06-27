@@ -1,0 +1,73 @@
+//--------------------------------------------------------------------------------------------------Acela Express
+spriteset (spriteset_purchase_Acela_express, "gfx/USA_Amtrak_Acela_Express.png") { [4, 97, 87, 16, -27, -12] }
+
+template tmpl_Acela(x,y) {
+      [x,      y,    8,     24,     -3,    -12]
+    [x+9,    y,    22,    20,     -14,   -11]
+    [x+32,   y,    32,    16,     -16,   -12]
+    [x+65,   y,    22,    20,     -8,    -12]
+}
+
+spriteset (spriteset_Acela_Power_f, "gfx/USA_Amtrak_Acela_Express.png") { tmpl_Acela(4,4)  tmpl_Acela(92,4)  }
+spriteset (spriteset_Acela_Power_b, "gfx/USA_Amtrak_Acela_Express.png") { tmpl_Acela(92,4) tmpl_Acela(4,4)   }
+spriteset (spriteset_Acela_Wagon_b, "gfx/USA_Amtrak_Acela_Express.png") { tmpl_Acela(4,35) tmpl_Acela(92,35) }
+spriteset (spriteset_Acela_Wagon_c, "gfx/USA_Amtrak_Acela_Express.png") { tmpl_Acela(4,66) tmpl_Acela(92,66) }
+
+switch(FEAT_TRAINS, SELF, sw_Acela_articulated_part, extra_callback_info1) {
+    1..7:  item_Acela_express;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+switch(FEAT_TRAINS, SELF, sw_Acela_graphics_3, position_in_vehid_chain) {
+    3:  spriteset_Acela_Wagon_c;
+    spriteset_Acela_Wagon_b;
+}
+switch(FEAT_TRAINS, SELF, sw_Acela_graphics_2, position_in_vehid_chain_from_end) {
+    0:  spriteset_Acela_Power_b;
+    sw_Acela_graphics_3;
+}
+switch(FEAT_TRAINS, SELF, sw_Acela_graphics, position_in_vehid_chain) {
+    0:  spriteset_Acela_Power_f;
+    sw_Acela_graphics_2;
+}
+
+item(FEAT_TRAINS, item_Acela_express, 300) {
+    property {
+        name:                         string(STR_Acela_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(2000, 10, 11);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 35;
+        reliability_decay:            10;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                15;
+        cost_factor:                  57;
+        running_cost_factor:          157;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        150 mph;
+        misc_flags:                   bitmask(TRAIN_FLAG_MU);
+        refit_cost:                   0;
+        track_type:                   ELRL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        9200 kW;
+        running_cost_base:            RUNNING_COST_ELECTRIC;
+        dual_headed:                  0;
+        cargo_capacity:               38;
+        weight:                       565 ton;
+        ai_engine_rank:               0;
+        engine_class:                 ENGINE_CLASS_ELECTRIC;
+        extra_power_per_wagon:        0;
+        tractive_effort_coefficient:  0.08;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_purchase_Acela_express;
+        additional_text:          return string(STR_Acela_Desc);
+        articulated_part:         sw_Acela_articulated_part;
+        length:                   8;
+        default:                  sw_Acela_graphics;
+    }
+}

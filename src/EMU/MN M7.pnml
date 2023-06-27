@@ -1,0 +1,71 @@
+//--------------------------------------------------------------------------------------------------Metro-North M7A
+spriteset (spriteset_purchase_MN_M7, "gfx/USA_Metro_North_M7A.png") { [4,  97,  87,  12,  -27,  -8] }
+template tmpl_MN_M7(x,y) {
+    [x,      y,    8,     24,     -3,    -11]
+    [x+9,    y,    22,    20,     -14,   -10]
+    [x+32,   y,    32,    16,     -16,   -12]
+    [x+65,   y,    22,    20,     -8,    -10]
+}
+spriteset (spriteset_MN_M7_front, "gfx/USA_Metro_North_M7A.png") { tmpl_MN_M7(4,4)  tmpl_MN_M7(92,4) }
+spriteset (spriteset_MN_M7_front_in, "gfx/USA_Metro_North_M7A.png") { tmpl_MN_M7(4,35) tmpl_MN_M7(92,35) }
+spriteset (spriteset_MN_M7_rear, "gfx/USA_Metro_North_M7A.png") { tmpl_MN_M7(92,35) tmpl_MN_M7(4,35) }
+spriteset (spriteset_MN_M7_back, "gfx/USA_Metro_North_M7A.png") { tmpl_MN_M7(92,66) tmpl_MN_M7(4,66) }
+
+switch(FEAT_TRAINS, SELF, sw_MN_M7_articulated_part, extra_callback_info1) {
+    1:  item_MN_M7;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+switch(FEAT_TRAINS,SELF,sw_MN_M7_graphics3, position_in_consist % 2) {
+    0:  spriteset_MN_M7_front_in;
+    spriteset_MN_M7_rear;
+}
+switch(FEAT_TRAINS,SELF,sw_MN_M7_grapfics2, position_in_consist) {
+    0:  spriteset_MN_M7_front;
+    sw_MN_M7_graphics3;
+}
+switch(FEAT_TRAINS,SELF,sw_MN_M7_grapfics, position_in_consist_from_end) {
+    0:  spriteset_MN_M7_back;
+    sw_MN_M7_grapfics2;
+}
+
+item(FEAT_TRAINS, item_MN_M7, 309) {
+    property {
+        name:                         string(STR_MN_M7_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(2003, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 35;
+        reliability_decay:            12;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                25;
+        cost_factor:                  58;
+        running_cost_factor:          158;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        161 km/h;
+        misc_flags:                   bitmask(TRAIN_FLAG_MU);
+        refit_cost:                   0;
+        track_type:                   RT_3RD;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        1600 kW;
+        running_cost_base:            RUNNING_COST_ELECTRIC;
+        dual_headed:                  0;
+        cargo_capacity:               106;
+        weight:                       63 ton;
+        ai_engine_rank:               0;
+        engine_class:                 ENGINE_CLASS_ELECTRIC;
+        extra_power_per_wagon:        0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 3, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_purchase_MN_M7;
+        additional_text:          return string(STR_MN_M7_Desc);
+        length:                   8;
+        articulated_part:         sw_MN_M7_articulated_part;
+        default:                  sw_MN_M7_grapfics;
+    }
+}

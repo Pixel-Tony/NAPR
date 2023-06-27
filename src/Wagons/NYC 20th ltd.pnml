@@ -1,0 +1,237 @@
+//--------------------------------------------------------------NYC Budd Lightweight 20th Cent. Ltd
+template tmpl_NYC_Budd_Lightweight_20(x,y) {
+      [x,      y,    8,     24,     -3,    -12]
+    [x+9,    y,    22,    20,     -14,   -10]
+    [x+32,   y,    32,    16,     -16,   -11]
+    [x+65,   y,    22,    20,     -8,    -11]
+}
+spriteset (spriteset_NYC_Budd_Lightweight_Coach_20th_purchase, "gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")       { [36, 4, 32, 16, -15, -11] }
+spriteset (spriteset_NYC_Budd_Lightweight_Sleeper_20th_purchase, "gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")     { [36, 35, 32, 16, -15, -11] }
+spriteset (spriteset_NYC_Budd_Lightweight_Baggage_20th_purchase, "gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")     { [36, 66, 32, 16, -15, -11] }
+spriteset (spriteset_NYC_Budd_Lightweight_Kitchen_20th_purchase, "gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")     { [36, 97, 32, 16, -15, -11] }
+spriteset (spriteset_NYC_Budd_Lightweight_Diner_20th_purchase, "gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")       { [36, 128, 32, 16, -15, -11] }
+spriteset (spriteset_NYC_Budd_Lightweight_Observation_20th_purchase, "gfx/USA_NYC_20th_Century_Ltd_Lightweight.png") { [36, 159, 32, 16, -15, -11] }
+
+
+spriteset (spriteset_NYC_Budd_Lightweight_Coach_20th, "gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")       { tmpl_NYC_Budd_Lightweight_20(4,4)   tmpl_NYC_Budd_Lightweight_20(92,4) }
+spriteset (spriteset_NYC_Budd_Lightweight_Sleeper_20th, "gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")     { tmpl_NYC_Budd_Lightweight_20(4,35)  tmpl_NYC_Budd_Lightweight_20(92,35) }
+spriteset (spriteset_NYC_Budd_Lightweight_Baggage_20th, "gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")     { tmpl_NYC_Budd_Lightweight_20(4,66)  tmpl_NYC_Budd_Lightweight_20(92,66) }
+spriteset (spriteset_NYC_Budd_Lightweight_Kitchen_20th, "gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")     { tmpl_NYC_Budd_Lightweight_20(4,97)  tmpl_NYC_Budd_Lightweight_20(92,97) }
+spriteset (spriteset_NYC_Budd_Lightweight_Diner_20th, "gfx/USA_NYC_20th_Century_Ltd_Lightweight.png")       { tmpl_NYC_Budd_Lightweight_20(4,128) tmpl_NYC_Budd_Lightweight_20(92,128) }
+spriteset (spriteset_NYC_Budd_Lightweight_Observation_20th, "gfx/USA_NYC_20th_Century_Ltd_Lightweight.png") { tmpl_NYC_Budd_Lightweight_20(4,159) tmpl_NYC_Budd_Lightweight_20(92,159) }
+
+item(FEAT_TRAINS, item_NYC_Budd_Lightweight_Coach_20th, 726) {
+    property {
+        name:                         string(STR_NYC_Budd_Lightweight_Coach_20th_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1938, 2, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 30;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                12;
+        cost_factor:                  132;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        108 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               46;
+        weight:                       32 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_NYC_Budd_Lightweight_Coach_20th_purchase;
+        additional_text:          return string(STR_Obsolete_Desc);
+        length:                   8;
+        default:                  spriteset_NYC_Budd_Lightweight_Coach_20th;
+    }
+}
+
+item(FEAT_TRAINS, item_NYC_Budd_Lightweight_Sleeper_20th, 727) {
+    property {
+        name:                         string(STR_NYC_Budd_Lightweight_Sleeper_20th_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1938, 2, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 30;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                12;
+        cost_factor:                  133;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        108 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               24;
+        weight:                       30 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_NYC_Budd_Lightweight_Sleeper_20th_purchase;
+        additional_text:          return string(STR_Obsolete_Desc);
+        length:                   8;
+        default:                  spriteset_NYC_Budd_Lightweight_Sleeper_20th;
+    }
+}
+
+item(FEAT_TRAINS, item_NYC_Budd_Lightweight_Baggage_20th, 728) {
+    property {
+        name:                         string(STR_NYC_Budd_Lightweight_Baggage_20th_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1938, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 28;
+        refittable_cargo_classes:     bitmask(CC_MAIL,CC_ARMOURED);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                10;
+        cost_factor:                  116;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        100 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               60;
+        weight:                       32 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_NYC_Budd_Lightweight_Baggage_20th_purchase;
+        additional_text:          return string(STR_Obsolete_Desc);
+        length:                   8;
+        default:                  spriteset_NYC_Budd_Lightweight_Baggage_20th;
+    }
+}
+
+item(FEAT_TRAINS, item_NYC_Budd_Lightweight_Kitchen_20th, 729) {
+    property {
+        name:                         string(STR_NYC_Budd_Lightweight_Kitchen_20th_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1938, 2, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 30;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                12;
+        cost_factor:                  132;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        108 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               46;
+        weight:                       31 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_NYC_Budd_Lightweight_Kitchen_20th_purchase;
+        additional_text:          return string(STR_Obsolete_Desc);
+        length:                   8;
+        default:                  spriteset_NYC_Budd_Lightweight_Kitchen_20th;
+    }
+}
+
+item(FEAT_TRAINS, item_NYC_Budd_Lightweight_Diner_20th, 730) {
+    property {
+        name:                         string(STR_NYC_Budd_Lightweight_Diner_20th_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1938, 2, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 30;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                12;
+        cost_factor:                  134;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        108 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               34;
+        weight:                       32 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_NYC_Budd_Lightweight_Diner_20th_purchase;
+        additional_text:          return string(STR_Obsolete_Desc);
+        length:                   8;
+        default:                  spriteset_NYC_Budd_Lightweight_Diner_20th;
+    }
+}
+
+item(FEAT_TRAINS, item_NYC_Budd_Lightweight_Observation_20th, 731) {
+    property {
+        name:                         string(STR_NYC_Budd_Lightweight_Observation_20th_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1938, 2, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 30;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                12;
+        cost_factor:                  134;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        108 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               38;
+        weight:                       32 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_NYC_Budd_Lightweight_Observation_20th_purchase;
+        additional_text:          return string(STR_Obsolete_Desc);
+        length:                   8;
+        default:                  spriteset_NYC_Budd_Lightweight_Observation_20th;
+    }
+}

@@ -1,0 +1,322 @@
+/* * * * * * * * * *
+ * PRR MP54
+ */
+spriteset(spriteset_purchase_mp54, "gfx/USA_PC_MP54_Green.png") {
+    [] [] [4, 130, 87, 15, -42, -11] [] [] [] [13,  4,  1,  1,  0,  0] []
+}
+spriteset(spriteset_purchase_mp54_single, "gfx/USA_PC_MP54_Green.png") { [92, 130, 87, 15, -15, -11] }
+spriteset(spriteset_purchase_mp54_coach, "gfx/USA_PC_MP54_Green.png") { [36, 67, 32, 16, -15, -12] }
+spriteset(spriteset_purchase_mp54_mail, "gfx/USA_PC_MP54_Green.png") { [36, 98, 32, 16, -15, -12] }
+spriteset(spriteset_purchase_mp54b, "gfx/USA_LIRR_MP54B.png") { [4, 66, 87, 12, -27, -8] }
+
+template tmpl_MP54(x,y) {
+    [x,    y, 8,  24,      -3,      -12]
+    [x+9,  y, 22, 20,      -12,     -13]
+    [x+32, y, 32, 17,      -16,     -13]
+    [x+65, y, 22, 20,      -8,      -13]
+}
+
+template tmpl_MP54B(x,y) {
+    [x,    y, 8,  24,      -3,      -12]
+    [x+9,  y, 22, 20,      -12,     -12]
+    [x+32, y, 32, 16,      -16,     -12]
+    [x+65, y, 22, 20,      -8,      -12]
+}
+
+template tmpl_MP54_depot(x,y) {
+    [x,    y, 8,  24,      -3,      -12]
+    [x+9,  y, 22, 20,      -12,     -13]
+    [x+32, y, 32, 17,      -16,     -10]
+    [x+65, y, 22, 20,      -8,      -12]
+}
+
+spriteset(spriteset_mp54_m_f, "gfx/USA_PRR_MP54_Tuscan_Red.png") { tmpl_MP54(4, 4)  tmpl_MP54(92, 4)  }
+spriteset(spriteset_mp54_m_b, "gfx/USA_PRR_MP54_Tuscan_Red.png") { tmpl_MP54(4, 35) tmpl_MP54(92, 35) }
+spriteset(spriteset_mp54_t_p, "gfx/USA_PRR_MP54_Tuscan_Red.png") { tmpl_MP54(4, 66) tmpl_MP54(92, 66) }
+spriteset(spriteset_mp54_t_m, "gfx/USA_PRR_MP54_Tuscan_Red.png") { tmpl_MP54(4, 97) tmpl_MP54(92, 97) }
+
+spriteset(spriteset_mp54_m_f_PC, "gfx/USA_PC_MP54_Green.png") { tmpl_MP54(4, 4)  tmpl_MP54(92, 4)  }
+spriteset(spriteset_mp54_m_b_PC, "gfx/USA_PC_MP54_Green.png") { tmpl_MP54(4, 35) tmpl_MP54(92, 35) }
+spriteset(spriteset_mp54_t_p_PC, "gfx/USA_PC_MP54_Green.png") { tmpl_MP54(4, 66) tmpl_MP54(92, 66) }
+spriteset(spriteset_mp54_t_m_PC, "gfx/USA_PC_MP54_Green.png") { tmpl_MP54(4, 97) tmpl_MP54(92, 97) }
+
+spriteset(spriteset_mp54_m_f_LIRR_Tichy, "gfx/USA_LIRR_MP54_Tichy.png") { tmpl_MP54(4, 4)  tmpl_MP54(92, 4)  }
+spriteset(spriteset_mp54_m_b_LIRR_Tichy, "gfx/USA_LIRR_MP54_Tichy.png") { tmpl_MP54(4, 35) tmpl_MP54(92, 35) }
+spriteset(spriteset_mp54_t_p_LIRR_Tichy, "gfx/USA_LIRR_MP54_Tichy.png") { tmpl_MP54(4, 66) tmpl_MP54(92, 66) }
+spriteset(spriteset_mp54_t_m_LIRR_Tichy, "gfx/USA_LIRR_MP54_Tichy.png") { tmpl_MP54(4, 97) tmpl_MP54(92, 97) }
+
+spriteset(spriteset_mp54_m_f_LIRR, "gfx/USA_LIRR_MP54.png") { tmpl_MP54(4, 4)  tmpl_MP54(92, 4)  }
+spriteset(spriteset_mp54_m_b_LIRR, "gfx/USA_LIRR_MP54.png") { tmpl_MP54(4, 35) tmpl_MP54(92, 35) }
+spriteset(spriteset_mp54_t_p_LIRR, "gfx/USA_LIRR_MP54.png") { tmpl_MP54(4, 66) tmpl_MP54(92, 66) }
+spriteset(spriteset_mp54_t_m_LIRR, "gfx/USA_LIRR_MP54.png") { tmpl_MP54(4, 97) tmpl_MP54(92, 97) }
+
+spriteset(spriteset_mp54b_m_f, "gfx/USA_LIRR_MP54B.png") { tmpl_MP54B(4, 4) tmpl_MP54B(92, 4) }
+spriteset(spriteset_mp54b_m_b, "gfx/USA_LIRR_MP54B.png") { tmpl_MP54B(4, 35) tmpl_MP54B(92, 35) }
+
+switch(FEAT_TRAINS, SELF, sw_spriteset_mp54_m_f, cargo_subtype) {
+    0:  spriteset_mp54_m_f;
+    1:  spriteset_mp54_m_f_PC;
+    2:  spriteset_mp54_m_f_LIRR_Tichy;
+    spriteset_mp54_m_f_LIRR;
+}
+switch(FEAT_TRAINS, SELF, sw_spriteset_mp54_m_b, cargo_subtype) {
+    0:  spriteset_mp54_m_b;
+    1:  spriteset_mp54_m_b_PC;
+    2:  spriteset_mp54_m_b_LIRR_Tichy;
+    spriteset_mp54_m_b_LIRR;
+}
+switch(FEAT_TRAINS, SELF, sw_spriteset_mp54_t_p, cargo_subtype) {
+    0:  spriteset_mp54_t_p;
+    1:  spriteset_mp54_t_p_PC;
+    2:  spriteset_mp54_t_p_LIRR_Tichy;
+    spriteset_mp54_t_p_LIRR;
+}
+switch(FEAT_TRAINS, SELF, sw_spriteset_mp54_t_m, cargo_subtype) {
+    0:  spriteset_mp54_t_m;
+    1:  spriteset_mp54_t_m_PC;
+    2:  spriteset_mp54_t_m_LIRR_Tichy;
+    spriteset_mp54_t_m_LIRR;
+}
+switch(FEAT_TRAINS, SELF, sw_mp54_graphics2, position_in_consist) {
+    0:  sw_spriteset_mp54_m_f;
+    sw_spriteset_mp54_m_b;
+}
+switch(FEAT_TRAINS, SELF, sw_mp54_graphics, position_in_consist_from_end) {
+    0:  sw_spriteset_mp54_m_b;
+    sw_mp54_graphics2;
+}
+switch(FEAT_TRAINS, SELF, sw_mp54_single_graphics, position_in_consist) {
+    0:  sw_spriteset_mp54_m_f;
+    sw_spriteset_mp54_m_b;
+}
+switch(FEAT_TRAINS, SELF, sw_mp54_can_attach_wagon, vehicle_type_id) {
+    item_mp54:         return CB_RESULT_ATTACH_ALLOW;
+    item_mp54_single:  return CB_RESULT_ATTACH_ALLOW;
+    item_mp54_coach:   return CB_RESULT_ATTACH_ALLOW;
+    item_mp54_mail:    return CB_RESULT_ATTACH_ALLOW;
+    return string (STR_Attach_Wagon_Disallow);
+}
+switch(FEAT_TRAINS, SELF, sw_mp54_livery_name, cargo_subtype) {
+    0:  return string(STR_Livery_Pennsylvania_Railroad);
+    1:  return string(STR_Livery_Penn_Central);
+    2:  return string(STR_Livery_LIRR_Tichy);
+    return string(STR_Livery_LIRR);
+}
+
+item(FEAT_TRAINS, item_mp54, 313) {
+    property {
+        name:                         	string(STR_MP54_Name);
+        climates_available:           	bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:				date(1908, 1, 1);
+        model_life:                   	64;
+        vehicle_life:                 	20;
+        reliability_decay:            	13;
+        refittable_cargo_classes:     	bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: 	bitmask();
+        loading_speed:                	8;
+        cost_factor:                  	28;
+        running_cost_factor:          	28;
+        sprite_id:                    	SPRITE_ID_NEW_TRAIN;
+        speed:                        	65 mph;
+        misc_flags:                   	bitmask(TRAIN_FLAG_MU);
+        refit_cost:                   	0;
+        track_type:                   	ELRL;
+        ai_special_flag:              	AI_FLAG_PASSENGER;
+        power:                        	592 kW;
+        running_cost_base:            	RUNNING_COST_ELECTRIC;
+        dual_headed:                  	1;
+        cargo_capacity:               	166;
+        weight:                       	36 ton;
+        ai_engine_rank:               	0;
+        engine_class:                 	ENGINE_CLASS_ELECTRIC;
+        extra_power_per_wagon:        	0;
+        tractive_effort_coefficient:  	0.3;
+        air_drag_coefficient:         	0.06;
+        visual_effect_and_powered:    	visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       	0;
+        bitmask_vehicle_info:         	0;
+    }
+    graphics {
+        purchase:                 		spriteset_purchase_mp54;
+        additional_text:          		return string(STR_MP54_Desc);
+        can_attach_wagon:         		sw_mp54_can_attach_wagon;
+        length:                   		8;
+        cargo_subtype_text:       		sw_mp54_livery_name;
+        default:                  		sw_mp54_graphics;
+    }
+}
+
+item(FEAT_TRAINS, item_mp54_single, 314) {
+    property {
+        name:                         	string(STR_MP54_Single_Name);
+        climates_available:           	bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            	date(1908, 1, 1);
+        model_life:                   	64;
+        vehicle_life:                 	14;
+        reliability_decay:            	13;
+        refittable_cargo_classes:     	bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: 	bitmask();
+        loading_speed:                	8;
+        cost_factor:                  	14;
+        running_cost_factor:          	14;
+        sprite_id:                    	SPRITE_ID_NEW_TRAIN;
+        speed:                        	65 mph;
+        misc_flags:                   	bitmask(TRAIN_FLAG_MU);
+        refit_cost:                   	0;
+        track_type:                   	ELRL;
+        ai_special_flag:              	AI_FLAG_PASSENGER;
+        power:                        	392 kW;
+        running_cost_base:            	RUNNING_COST_ELECTRIC;
+        dual_headed:                  	0;
+        cargo_capacity:               	166;
+        weight:                       	36 ton;
+        ai_engine_rank:               	0;
+        engine_class:                 	ENGINE_CLASS_ELECTRIC;
+        extra_power_per_wagon:        	0;
+        tractive_effort_coefficient:  	0.3;
+        air_drag_coefficient:         	0.06;
+        visual_effect_and_powered:    	visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       	0;
+        bitmask_vehicle_info:         	0;
+    }
+    graphics {
+        purchase:                 		spriteset_purchase_mp54_single;
+        additional_text:          		return string(STR_MP54_Desc);
+        can_attach_wagon:         		sw_mp54_can_attach_wagon;
+        length:                   		8;
+        cargo_subtype_text:       		sw_mp54_livery_name;
+        default:                  		sw_mp54_single_graphics;
+    }
+}
+
+item(FEAT_TRAINS, item_mp54_coach) {
+    property {
+        name:                         	string(STR_MP54_Coach_Name);
+        climates_available:           	bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            	date(1908, 1, 1);
+        model_life:                   	64;
+        vehicle_life:                 	20;
+        reliability_decay:            	13;
+        refittable_cargo_classes:     	bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: 	bitmask();
+        loading_speed:                	8;
+        cost_factor:                  	128;
+        running_cost_factor:          	0;
+        sprite_id:                    	SPRITE_ID_NEW_TRAIN;
+        speed:                        	65 mph;
+        misc_flags:                   	bitmask();
+        refit_cost:                   	0;
+        track_type:                   	ELRL;
+        ai_special_flag:              	0;
+        power:                        	0;
+        running_cost_base:            	RUNNING_COST_ELECTRIC;
+        dual_headed:                  	0;
+        cargo_capacity:               	166;
+        weight:                       	36 ton;
+        ai_engine_rank:               	0;
+        engine_class:                 	ENGINE_CLASS_ELECTRIC;
+        extra_power_per_wagon:        	9;
+        tractive_effort_coefficient:  	0.3;
+        air_drag_coefficient:         	0.06;
+        visual_effect_and_powered:    	visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       	0;
+        bitmask_vehicle_info:         	0;
+    }
+    graphics {
+        purchase:                 		spriteset_purchase_mp54_coach;
+        additional_text:          		return string(STR_MP54_Coach_Desc);
+        can_attach_wagon:         		sw_mp54_can_attach_wagon;
+        length:                   		8;
+        cargo_subtype_text:       		sw_mp54_livery_name;
+        default:                  		sw_spriteset_mp54_t_p;
+    }
+}
+
+item(FEAT_TRAINS, item_mp54_mail) {
+    property {
+        name:                         	string(STR_MP54_Mail_Name);
+        climates_available:           	bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            	date(1908, 1, 1);
+        model_life:                   	64;
+        vehicle_life:                 	20;
+        reliability_decay:            	13;
+        refittable_cargo_classes:     	bitmask(CC_MAIL);
+        non_refittable_cargo_classes: 	bitmask();
+        loading_speed:                	8;
+        cost_factor:                  	128;
+        running_cost_factor:          	0;
+        sprite_id:                    	SPRITE_ID_NEW_TRAIN;
+        speed:                        	65 mph;
+        misc_flags:                   	bitmask();
+        refit_cost:                   	0;
+        track_type:                   	ELRL;
+        ai_special_flag:              	0;
+        power:                        	0;
+        running_cost_base:            	RUNNING_COST_ELECTRIC;
+        dual_headed:                  	0;
+        cargo_capacity:               	154;
+        weight:                       	36 ton;
+        ai_engine_rank:               	0;
+        engine_class:                 	ENGINE_CLASS_ELECTRIC;
+        extra_power_per_wagon:        	9;
+        tractive_effort_coefficient:  	0.3;
+        air_drag_coefficient:         	0.06;
+        visual_effect_and_powered:    	visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       	0;
+        bitmask_vehicle_info:         	0;
+    }
+    graphics {
+        purchase:                 		spriteset_purchase_mp54_mail;
+        additional_text:          		return string(STR_MP54_Mail_Desc);
+        can_attach_wagon:         		sw_mp54_can_attach_wagon;
+        length:                   		8;
+        cargo_subtype_text:       		sw_mp54_livery_name;
+        default:                  		sw_spriteset_mp54_t_m;
+    }
+}
+
+switch(FEAT_TRAINS, SELF, sw_mp54b_graphics, position_in_consist) {
+    0:  spriteset_mp54b_m_f;
+    spriteset_mp54b_m_b;
+}
+
+item(FEAT_TRAINS, item_mp54b, 315) {
+    property {
+        name:                           string(STR_MP54B_Name);
+        climates_available:             bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:              date(1908, 1, 1);
+        model_life:                     62;
+        vehicle_life:                   24;
+        reliability_decay:              12;
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   bitmask();
+        loading_speed:                  9;
+        cost_factor:                    15;
+        running_cost_factor:            30;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        speed:                          65 mph;
+        misc_flags:                     bitmask(TRAIN_FLAG_MU);
+        refit_cost:                     0;
+        track_type:                     RT_3RD;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        power:                          430 hp;
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+        dual_headed:                    0;
+        cargo_capacity:                 166;
+        weight:                         36 ton;
+        ai_engine_rank:                 0;
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+        extra_power_per_wagon:          0;
+        tractive_effort_coefficient:    0.3;
+        air_drag_coefficient:           0.06;
+        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:         0;
+        bitmask_vehicle_info:           0;
+    }
+    graphics {
+        purchase:                       spriteset_purchase_mp54b;
+        additional_text:                return string(STR_MP54B_Desc);
+        length:                         8;
+        default:                        sw_mp54b_graphics;
+    }
+}

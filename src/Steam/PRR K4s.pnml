@@ -1,0 +1,102 @@
+//--------------------------------------------------------------------------------------------------PRR K4s
+spriteset (spriteset_purchase_K4s, "gfx/USA_PRR_K4s.png") { [4,  97,  87,  14,  -27,  -10] }
+
+template tmpl_K4s_Locomotive_1(x,y) {
+    [x,      y,    8,     24,     -3,    -12]
+    [x+9,    y,    22,    20,     -14,   -10]
+    [x+31,   y,    33,    16,     -17,   -12]
+    [x+65,   y,    22,    20,     -8,    -11]
+}
+
+template tmpl_K4s_Locomotive_2(x,y) {
+    [x,      y,    8,     24,     -3,    -12]
+    [x+9,    y,    22,    20,     -14,   -10]
+    [x+32,   y,    32,    16,     -16,   -12]
+    [x+65,   y,    22,    20,     -8,    -11]
+}
+
+template tmpl_K4s_Tender_1(x,y) {
+    [x,      y,    8,     24,     -3,    -11]
+    [x+9,    y,    22,    20,     -8,    -13]
+    [x+32,   y,    32,    16,     -16,   -12]
+    [x+65,   y,    22,    20,     -8,    -11]
+}
+
+template tmpl_K4s_Tender_2(x,y) {
+    [x,      y,    8,     24,     -3,    -6]
+    [x+9,    y,    22,    20,     -14,   -10]
+    [x+32,   y,    32,    16,     -17,   -12]
+    [x+65,   y,    22,    20,     -14,   -14]
+}
+
+spriteset (spriteset_K4s_Locomotive, "gfx/USA_PRR_K4s.png") { tmpl_K4s_Locomotive_1(4,4)   tmpl_K4s_Locomotive_2(92,4) }
+spriteset (spriteset_K4s_Locomotive_second, "gfx/USA_PRR_K4s.png") { tmpl_K4s_Locomotive_1(4,35)   tmpl_K4s_Locomotive_2(92,35) }
+spriteset (spriteset_K4s_Tender, "gfx/USA_PRR_K4s.png") { tmpl_K4s_Tender_1(4,66) tmpl_K4s_Tender_2(92,66) }
+
+switch(FEAT_TRAINS,SELF,sw_K4s_articulated_part, extra_callback_info1) {
+    1:  return item_K4s;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+switch(FEAT_TRAINS,SELF,sw_K4s_Locomotive_animation, motion_counter % 2) {
+    0:  spriteset_K4s_Locomotive;
+    spriteset_K4s_Locomotive_second;
+}
+
+switch(FEAT_TRAINS,SELF,sw_K4s_grapfics, position_in_vehid_chain % 2) {
+    0:  sw_K4s_Locomotive_animation;
+    spriteset_K4s_Tender;
+}
+
+switch(FEAT_TRAINS,SELF, sw_K4s_length, position_in_vehid_chain % 2) {
+    0:  8;
+    5;
+}
+
+switch(FEAT_TRAINS,SELF, sw_K4s_effect, position_in_vehid_chain % 2) {
+    0:  visual_effect_and_powered(VISUAL_EFFECT_STEAM, -3, DISABLE_WAGON_POWER);
+    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, -3, DISABLE_WAGON_POWER);
+}
+
+item(FEAT_TRAINS, item_K4s, 13) {
+    property {
+        name:                         string(STR_K4s_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1914, 1, 1);
+        model_life:                   43;
+        vehicle_life:                 30;
+        reliability_decay:            12;
+        refittable_cargo_classes:     bitmask();
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                0;
+        cost_factor:                  30;
+        running_cost_factor:          130;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        85 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        3286 hp;
+        running_cost_base:            RUNNING_COST_STEAM;
+        dual_headed:                  0;
+        cargo_capacity:               0;
+        weight:                       212 ton;
+        ai_engine_rank:               0;
+        engine_class:                 ENGINE_CLASS_STEAM;
+        extra_power_per_wagon:        0;
+        tractive_effort_coefficient:  0.0933;
+        air_drag_coefficient:         14/137;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_STEAM, -7, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_purchase_K4s;
+        additional_text:          return string(STR_K4s_Desc);
+        articulated_part:         sw_K4s_articulated_part;
+        length:                   sw_K4s_length;
+        cargo_capacity:           0;
+        visual_effect_and_powered:sw_K4s_effect;
+        default:                  sw_K4s_grapfics;
+    }
+}

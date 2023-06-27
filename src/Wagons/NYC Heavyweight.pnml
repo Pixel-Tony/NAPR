@@ -1,0 +1,240 @@
+//--------------------------------------------------------------------------------------------------NYC Heavyweight
+template tmpl_NYC_Heavyweight(x,y) {
+      [x,      y,    8,     24,     -3,    -12]
+    [x+9,    y,    22,    20,     -14,   -11]
+    [x+32,   y,    32,    16,     -16,   -12]
+    [x+65,   y,    22,    20,     -8,    -12]
+}
+spriteset (spriteset_NYC_Heavyweight_Coach_purchase, "gfx/USA_NYC_Pullman_Heavyweight.png") { [36, 4, 32, 16, -15, -12] }
+spriteset (spriteset_NYC_Heavyweight_Combine_purchase, "gfx/USA_NYC_Pullman_Heavyweight.png") { [36, 35, 32, 16, -15, -12] }
+spriteset (spriteset_NYC_Heavyweight_Baggage_purchase, "gfx/USA_NYC_Pullman_Heavyweight.png") { [36, 66, 32, 16, -15, -12] }
+spriteset (spriteset_NYC_Heavyweight_Sleeper_purchase, "gfx/USA_NYC_Pullman_Heavyweight.png") { [36, 97, 32, 16, -15, -12] }
+spriteset (spriteset_NYC_Heavyweight_Observation_purchase, "gfx/USA_NYC_Pullman_Heavyweight.png") { [36, 128, 32, 16, -15, -12] }
+
+spriteset (spriteset_obsolete, "gfx/USA_NYC_Pullman_Heavyweight.png") { [36, 4, 1, 1, -15, -11] }
+spriteset (spriteset_NYC_Heavyweight_Coach, "gfx/USA_NYC_Pullman_Heavyweight.png")       { tmpl_NYC_Heavyweight(4,4)   tmpl_NYC_Heavyweight(92,4) }
+spriteset (spriteset_NYC_Heavyweight_Combine, "gfx/USA_NYC_Pullman_Heavyweight.png")     { tmpl_NYC_Heavyweight(4,35)  tmpl_NYC_Heavyweight(92,35) }
+spriteset (spriteset_NYC_Heavyweight_Baggage, "gfx/USA_NYC_Pullman_Heavyweight.png")     { tmpl_NYC_Heavyweight(4,66)  tmpl_NYC_Heavyweight(92,66) }
+spriteset (spriteset_NYC_Heavyweight_Sleeper, "gfx/USA_NYC_Pullman_Heavyweight.png")     { tmpl_NYC_Heavyweight(4,97)  tmpl_NYC_Heavyweight(92,97) }
+spriteset (spriteset_NYC_Heavyweight_Observation, "gfx/USA_NYC_Pullman_Heavyweight.png") { tmpl_NYC_Heavyweight(4,128) tmpl_NYC_Heavyweight(92,128) }
+
+item(FEAT_TRAINS, item_NYC_Heavyweight_Coach, 743) {
+    property {
+        name:                         string(STR_NYC_Heavyweight_Coach_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1850, 1, 1);
+        model_life:                   118;
+        vehicle_life:                 25;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                13;
+        cost_factor:                  128;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        55 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               88;
+        weight:                       90 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_NYC_Heavyweight_Coach_purchase;
+        additional_text:          return string(STR_Obsolete_Desc);
+        length:                   8;
+        default:                  spriteset_NYC_Heavyweight_Coach;
+    }
+}
+
+switch(FEAT_TRAINS, SELF, sw_NYC_HW_Combine_articulated, extra_callback_info1) {
+  1:  item_NYC_Heavyweight_Combine_secret;
+  return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+item(FEAT_TRAINS, item_NYC_Heavyweight_Combine, 744) {
+    property {
+        name:                         string(STR_NYC_Heavyweight_Combine_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1850, 1, 1);
+        model_life:                   118;
+        vehicle_life:                 25;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                12;
+        cost_factor:                  129;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        55 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               60;
+        weight:                       88 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_NYC_Heavyweight_Combine_purchase;
+        articulated_part:         sw_NYC_HW_Combine_articulated;
+        additional_text:          return string(STR_Obsolete_Desc);
+        length:                   7;
+        default:                  spriteset_NYC_Heavyweight_Combine;
+    }
+}
+
+item(FEAT_TRAINS, item_NYC_Heavyweight_Combine_secret, 1744) {
+    property {
+        name:                         string(STR_NYC_Heavyweight_Combine_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(5000000, 1, 1);
+        model_life:                   1;
+        vehicle_life:                 2;
+        refittable_cargo_classes:     bitmask(CC_MAIL);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                12;
+        cost_factor:                  129;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        55 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               20;
+        weight:                       88 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_NYC_Heavyweight_Combine_purchase;
+        length:                   1;
+        default:                  spriteset_obsolete;
+    }
+}
+
+item(FEAT_TRAINS, item_NYC_Heavyweight_Baggage, 745) {
+    property {
+        name:                         string(STR_NYC_Heavyweight_Baggage_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1850, 1, 1);
+        model_life:                   118;
+        vehicle_life:                 25;
+        refittable_cargo_classes:     bitmask(CC_MAIL);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                12;
+        cost_factor:                  135;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        55 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               72;
+        weight:                       90 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_NYC_Heavyweight_Baggage_purchase;
+        additional_text:          return string(STR_Obsolete_Desc);
+        length:                   8;
+        default:                  spriteset_NYC_Heavyweight_Baggage;
+    }
+}
+
+item(FEAT_TRAINS, item_NYC_Heavyweight_Sleeper, 746) {
+    property {
+        name:                         string(STR_NYC_Heavyweight_Sleeper_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1850, 1, 1);
+        model_life:                   118;
+        vehicle_life:                 25;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                12;
+        cost_factor:                  131;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        55 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               54;
+        weight:                       93 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_NYC_Heavyweight_Sleeper_purchase;
+        additional_text:          return string(STR_Obsolete_Desc);
+        length:                   8;
+        default:                  spriteset_NYC_Heavyweight_Sleeper;
+    }
+}
+
+item(FEAT_TRAINS, item_NYC_Heavyweight_Observation, 747) {
+    property {
+        name:                         string(STR_NYC_Heavyweight_Observation_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1850, 1, 1);
+        model_life:                   118;
+        vehicle_life:                 25;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                12;
+        cost_factor:                  134;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        55 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               76;
+        weight:                       88 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_NYC_Heavyweight_Observation_purchase;
+        additional_text:          return string(STR_Obsolete_Desc);
+        length:                   8;
+        default:                  spriteset_NYC_Heavyweight_Observation;
+    }
+}

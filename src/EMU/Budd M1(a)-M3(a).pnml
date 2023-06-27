@@ -1,0 +1,237 @@
+//--------------------------------------------------------------------------------------------------Budd M1/A - M3/A
+spriteset (spriteset_purchase_Budd_M1, "gfx/USA_Budd_M1.png") { [4,  103,  95,  12,  -27,  -8] }
+spriteset (spriteset_purchase_Budd_M3, "gfx/USA_Budd_M3.png") { [4,  103,  95,  12,  -27,  -8] }
+
+template tmpl_Budd_M1_M3(x,y) {
+    [x,      y,    8,     26,     -3,    -9]
+    [x+9,    y,    24,    21,     -16,   -10]
+    [x+34,   y,    36,    16,     -16,   -12]
+    [x+71,   y,    24,    21,     -10,   -12]
+}
+
+template tmpl_Budd_M1_M3_second(x,y) {
+    [x,      y,    8,     26,     -3,    -11]
+    [x+9,    y,    24,    21,     -14,   -11]
+    [x+34,   y,    36,    16,     -16,   -12]
+    [x+71,   y,    24,    21,     -8,    -11]
+}
+
+spriteset (spriteset_Budd_M1_f_LIRR, "gfx/USA_Budd_M1.png") { tmpl_Budd_M1_M3(4,4) tmpl_Budd_M1_M3_second(100,4) }
+spriteset (spriteset_Budd_M1_b_LIRR, "gfx/USA_Budd_M1.png") { tmpl_Budd_M1_M3(100,37) tmpl_Budd_M1_M3_second(4,37) }
+spriteset (spriteset_Budd_M1_f_n_l_LIRR, "gfx/USA_Budd_M1.png") { tmpl_Budd_M1_M3(4,70) tmpl_Budd_M1_M3_second(100,70) }
+spriteset (spriteset_Budd_M1_b_n_l_LIRR, "gfx/USA_Budd_M1.png") { tmpl_Budd_M1_M3(100,70) tmpl_Budd_M1_M3_second(4,70) }
+
+spriteset (spriteset_Budd_M1_f_MN, "gfx/USA_Budd_M1.png") { tmpl_Budd_M1_M3(4,122) tmpl_Budd_M1_M3_second(100,122) }
+spriteset (spriteset_Budd_M1_b_MN, "gfx/USA_Budd_M1.png") { tmpl_Budd_M1_M3(100,155) tmpl_Budd_M1_M3_second(4,155) }
+spriteset (spriteset_Budd_M1_f_n_l_MN, "gfx/USA_Budd_M1.png") { tmpl_Budd_M1_M3(4,188) tmpl_Budd_M1_M3_second(100,188) }
+spriteset (spriteset_Budd_M1_b_n_l_MN, "gfx/USA_Budd_M1.png") { tmpl_Budd_M1_M3(100,188) tmpl_Budd_M1_M3_second(4,188) }
+
+spriteset (spriteset_Budd_M3_f_LIRR, "gfx/USA_Budd_M3.png") { tmpl_Budd_M1_M3(4,4) tmpl_Budd_M1_M3_second(100,4) }
+spriteset (spriteset_Budd_M3_b_LIRR, "gfx/USA_Budd_M3.png") { tmpl_Budd_M1_M3(100,37) tmpl_Budd_M1_M3_second(4,37) }
+spriteset (spriteset_Budd_M3_f_n_l_LIRR, "gfx/USA_Budd_M3.png") { tmpl_Budd_M1_M3(4,70) tmpl_Budd_M1_M3_second(100,70) }
+spriteset (spriteset_Budd_M3_b_n_l_LIRR, "gfx/USA_Budd_M3.png") { tmpl_Budd_M1_M3(100,70) tmpl_Budd_M1_M3_second(4,70) }
+
+spriteset (spriteset_Budd_M3_f_MN, "gfx/USA_Budd_M3.png") { tmpl_Budd_M1_M3(4,122) tmpl_Budd_M1_M3_second(100,122) }
+spriteset (spriteset_Budd_M3_b_MN, "gfx/USA_Budd_M3.png") { tmpl_Budd_M1_M3(100,155) tmpl_Budd_M1_M3_second(4,155) }
+spriteset (spriteset_Budd_M3_f_n_l_MN, "gfx/USA_Budd_M3.png") { tmpl_Budd_M1_M3(4,188) tmpl_Budd_M1_M3_second(100,188) }
+spriteset (spriteset_Budd_M3_b_n_l_MN, "gfx/USA_Budd_M3.png") { tmpl_Budd_M1_M3(100,188) tmpl_Budd_M1_M3_second(4,188) }
+
+switch(FEAT_TRAINS, SELF, sw_Budd_M1_articulated_part, extra_callback_info1) {
+    1..5:  item_Budd_M1;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+switch(FEAT_TRAINS,SELF,sw_Budd_M1_f, cargo_subtype) {
+    0:  spriteset_Budd_M1_f_LIRR;
+    spriteset_Budd_M1_f_MN;
+}
+switch(FEAT_TRAINS,SELF,sw_Budd_M1_b, cargo_subtype) {
+    0:  spriteset_Budd_M1_b_LIRR;
+    spriteset_Budd_M1_b_MN;
+}
+switch(FEAT_TRAINS,SELF,sw_Budd_M1_f_n_l, cargo_subtype) {
+    0:  spriteset_Budd_M1_f_n_l_LIRR;
+    spriteset_Budd_M1_f_n_l_MN;
+}
+switch(FEAT_TRAINS,SELF,sw_Budd_M1_b_n_l, cargo_subtype) {
+    0:  spriteset_Budd_M1_b_n_l_LIRR;
+    spriteset_Budd_M1_b_n_l_MN;
+}
+
+switch(FEAT_TRAINS,SELF,sw_Budd_M1_grapfics_front, position_in_vehid_chain % 3) {
+    0:  sw_Budd_M1_f;
+    spriteset_obsolete;
+}
+switch(FEAT_TRAINS,SELF,sw_Budd_M1_grapfics_rear, position_in_vehid_chain % 3) {
+    0:  sw_Budd_M1_b;
+    spriteset_obsolete;
+}
+switch(FEAT_TRAINS,SELF,sw_Budd_M1_grapfics_middle_front, position_in_vehid_chain % 3) {
+    0:  sw_Budd_M1_f_n_l;
+    spriteset_obsolete;
+}
+switch(FEAT_TRAINS,SELF,sw_Budd_M1_grapfics_middle_rear, position_in_vehid_chain % 3) {
+    0:  sw_Budd_M1_b_n_l;
+    spriteset_obsolete;
+}
+
+switch(FEAT_TRAINS,SELF,sw_Budd_M1_grapfics3, position_in_consist % 6) {
+    0..2:  sw_Budd_M1_grapfics_middle_front;
+    sw_Budd_M1_grapfics_middle_rear;
+}
+switch(FEAT_TRAINS,SELF,sw_Budd_M1_grapfics2, position_in_consist_from_end) {
+    0..2:  sw_Budd_M1_grapfics_rear;
+    sw_Budd_M1_grapfics3;
+}
+switch(FEAT_TRAINS,SELF,sw_Budd_M1_grapfics, position_in_consist) {
+    0..2:  sw_Budd_M1_grapfics_front;
+    sw_Budd_M1_grapfics2;
+}
+
+switch(FEAT_TRAINS,SELF,sw_Budd_M1_livery, cargo_subtype) {
+    0:  return string(STR_Livery_LIRR);
+    return string(STR_Livery_MN);
+}
+
+item(FEAT_TRAINS, item_Budd_M1, 3071) {
+    property {
+        name:                         string(STR_Budd_M1_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1968, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 30;
+        reliability_decay:            15;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                28;
+        cost_factor:                  45;
+        running_cost_factor:          145;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        90 mph;
+        misc_flags:                   bitmask(TRAIN_FLAG_MU);
+        refit_cost:                   0;
+        track_type:                   RT_3RD;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        592 hp;
+        running_cost_base:            RUNNING_COST_ELECTRIC;
+        dual_headed:                  0;
+        cargo_capacity:               60;
+        weight:                       89 ton;
+        ai_engine_rank:               0;
+        engine_class:                 ENGINE_CLASS_ELECTRIC;
+        extra_power_per_wagon:        0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 3, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_purchase_Budd_M1;
+        additional_text:          return string(STR_Budd_M1_Desc);
+        length:                   (position_in_vehid_chain % 3) == 1 ? 1 : 4;
+        cargo_subtype_text:       sw_Budd_M1_livery;
+        articulated_part:         sw_Budd_M1_articulated_part;
+        default:                  sw_Budd_M1_grapfics;
+    }
+}
+
+switch(FEAT_TRAINS, SELF, sw_Budd_M3_articulated_part, extra_callback_info1) {
+    1..5:  item_Budd_M3;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+switch(FEAT_TRAINS, SELF, sw_Budd_M3_f, cargo_subtype) {
+    0:  spriteset_Budd_M3_f_LIRR;
+    spriteset_Budd_M3_f_MN;
+}
+switch(FEAT_TRAINS, SELF, sw_Budd_M3_b, cargo_subtype) {
+    0:  spriteset_Budd_M3_b_LIRR;
+    spriteset_Budd_M3_b_MN;
+}
+switch(FEAT_TRAINS, SELF, sw_Budd_M3_f_n_l, cargo_subtype) {
+    0:  spriteset_Budd_M3_f_n_l_LIRR;
+    spriteset_Budd_M3_f_n_l_MN;
+}
+switch(FEAT_TRAINS, SELF, sw_Budd_M3_b_n_l, cargo_subtype) {
+    0:  spriteset_Budd_M3_b_n_l_LIRR;
+    spriteset_Budd_M3_b_n_l_MN;
+}
+
+switch(FEAT_TRAINS, SELF, sw_Budd_M3_grapfics_front, position_in_vehid_chain % 3) {
+    0:  sw_Budd_M3_f;
+    spriteset_obsolete;
+}
+switch(FEAT_TRAINS, SELF, sw_Budd_M3_grapfics_rear, position_in_vehid_chain % 3) {
+    0:  sw_Budd_M3_b;
+    spriteset_obsolete;
+}
+switch(FEAT_TRAINS, SELF, sw_Budd_M3_grapfics_middle_front, position_in_vehid_chain % 3) {
+    0:  sw_Budd_M3_f_n_l;
+    spriteset_obsolete;
+}
+switch(FEAT_TRAINS, SELF, sw_Budd_M3_grapfics_middle_rear, position_in_vehid_chain % 3) {
+    0:  sw_Budd_M3_b_n_l;
+    spriteset_obsolete;
+}
+
+switch(FEAT_TRAINS, SELF, sw_Budd_M3_grapfics3, position_in_consist % 6) {
+    0..2:  sw_Budd_M3_grapfics_middle_front;
+    sw_Budd_M3_grapfics_middle_rear;
+}
+switch(FEAT_TRAINS, SELF, sw_Budd_M3_grapfics2, position_in_consist_from_end) {
+    0..2:  sw_Budd_M3_grapfics_rear;
+    sw_Budd_M3_grapfics3;
+}
+switch(FEAT_TRAINS,SELF,sw_Budd_M3_grapfics, position_in_consist) {
+    0..2:  sw_Budd_M3_grapfics_front;
+    sw_Budd_M3_grapfics2;
+}
+
+switch(FEAT_TRAINS,SELF,sw_Budd_M3_livery, cargo_subtype) {
+    0:  return string(STR_Livery_LIRR);
+    return string(STR_Livery_MN);
+}
+
+item(FEAT_TRAINS, item_Budd_M3, 3072) {
+    property {
+        name:                         string(STR_Budd_M3_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1985, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 30;
+        reliability_decay:            15;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                28;
+        cost_factor:                  47;
+        running_cost_factor:          147;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        90 mph;
+        misc_flags:                   bitmask(TRAIN_FLAG_MU);
+        refit_cost:                   0;
+        track_type:                   RT_3RD;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        640 hp;
+        running_cost_base:            RUNNING_COST_ELECTRIC;
+        dual_headed:                  0;
+        cargo_capacity:               60;
+        weight:                       91 ton;
+        ai_engine_rank:               0;
+        engine_class:                 ENGINE_CLASS_ELECTRIC;
+        extra_power_per_wagon:        0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 3, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_purchase_Budd_M3;
+        additional_text:          return string(STR_Budd_M3_Desc);
+        length:                   (position_in_vehid_chain % 3) == 1 ? 1 : 4;
+        cargo_subtype_text:       sw_Budd_M3_livery;
+        articulated_part:         sw_Budd_M3_articulated_part;
+        default:                  sw_Budd_M3_grapfics;
+    }
+}

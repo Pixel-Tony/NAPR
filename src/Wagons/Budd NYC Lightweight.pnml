@@ -1,0 +1,84 @@
+//--------------------------------------------------------------------------------------------------NYC Budd Lightweight
+template tmpl_NYC_Budd_Lightweight(x,y) {
+    [x,      y,    8,     24,     -3,    -12]
+    [x+9,    y,    22,    20,     -14,   -10]
+    [x+32,   y,    32,    16,     -16,   -11]
+    [x+65,   y,    22,    20,     -8,    -11]
+}
+spriteset(spriteset_NYC_Budd_Lightweight_Coach_purchase, "gfx/USA_NYC_Budd_Lightweight.png")   { [36, 4, 32, 16, -15, -11] }
+spriteset(spriteset_NYC_Budd_Lightweight_Baggage_purchase, "gfx/USA_NYC_Budd_Lightweight.png") { [36, 35, 32, 16, -15, -11] }
+
+spriteset(spriteset_NYC_Budd_Lightweight_Coach, "gfx/USA_NYC_Budd_Lightweight.png")   { tmpl_NYC_Budd_Lightweight(4,4)  tmpl_NYC_Budd_Lightweight(92,4) }
+spriteset(spriteset_NYC_Budd_Lightweight_Baggage, "gfx/USA_NYC_Budd_Lightweight.png") { tmpl_NYC_Budd_Lightweight(4,35) tmpl_NYC_Budd_Lightweight(92,35) }
+
+item(FEAT_TRAINS, item_NYC_Budd_Lightweight_Coach, 720) {
+    property {
+        name:                           string(STR_NYC_Budd_Lightweight_Coach_Name);
+        climates_available:             bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:              date(1923, 1, 1);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   30;
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   bitmask();
+        loading_speed:                  10;
+        cost_factor:                    120;
+        running_cost_factor:            0;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        speed:                          100 mph;
+        misc_flags:                     bitmask();
+        refit_cost:                     0;
+        track_type:                     RAIL;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        power:                          0;
+        cargo_capacity:                 44;
+        weight:                         33 ton;
+        ai_engine_rank:                 0;
+        tractive_effort_coefficient:    0.3;
+        air_drag_coefficient:           0.06;
+        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:         0;
+        bitmask_vehicle_info:           0;
+    }
+    graphics {
+        purchase:                       spriteset_NYC_Budd_Lightweight_Coach_purchase;
+        additional_text:                return string(STR_Obsolete_Desc);
+        length:                         8;
+        default:                        spriteset_NYC_Budd_Lightweight_Coach;
+    }
+}
+
+item(FEAT_TRAINS, item_NYC_Budd_Lightweight_Baggage, 721) {
+    property {
+        name:                           string(STR_NYC_Budd_Lightweight_Baggage_Name);
+        climates_available:             bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:              date(1923, 1, 1);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   28;
+        refittable_cargo_classes:       bitmask(CC_MAIL,CC_ARMOURED);
+        non_refittable_cargo_classes:   bitmask();
+        loading_speed:                  10;
+        cost_factor:                    116;
+        running_cost_factor:            0;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        speed:                          100 mph;
+        misc_flags:                     bitmask();
+        refit_cost:                     0;
+        track_type:                     RAIL;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        power:                          0;
+        cargo_capacity:                 72;
+        weight:                         31 ton;
+        ai_engine_rank:                 0;
+        tractive_effort_coefficient:    0.3;
+        air_drag_coefficient:           0.06;
+        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:         0;
+        bitmask_vehicle_info:           0;
+    }
+    graphics {
+        purchase:                       spriteset_NYC_Budd_Lightweight_Baggage_purchase;
+        additional_text:                return string(STR_Obsolete_Desc);
+        length:                         8;
+        default:                        spriteset_NYC_Budd_Lightweight_Baggage;
+    }
+}

@@ -1,0 +1,72 @@
+//--------------------------------------------------------------------------------------------------NYC S-Motor
+spriteset (spriteset_purchase_NYC_S_Motor, "gfx/USA_NYC_S_Motor.png") { [4,  66,  86,  13,  -7,  -9] }
+
+template tmpl_NYC_S_Motor(x,y) {
+    [x,      y,    8,     24,     -3,    -12]
+    [x+9,    y,    22,    20,     -10,   -12]
+    [x+32,   y,    32,    16,     -16,   -12]
+    [x+65,   y,    22,    20,     -8,    -11]
+}
+
+template tmpl_NYC_S_Motor2(x,y) {
+    [x,      y,    8,     24,     -3,    -6]
+    [x+9,    y,    22,    20,     -14,   -10]
+    [x+32,   y,    32,    16,     -24,   -12]
+    [x+65,   y,    22,    20,     -12,   -13]
+}
+
+spriteset (spriteset_NYC_S_Motor_Grey, "gfx/USA_NYC_S_Motor.png")  { tmpl_NYC_S_Motor(4,4)   tmpl_NYC_S_Motor2(92,4)  }
+spriteset (spriteset_NYC_S_Motor_Green, "gfx/USA_NYC_S_Motor.png") { tmpl_NYC_S_Motor(4,35)  tmpl_NYC_S_Motor2(92,35) }
+
+switch(FEAT_TRAINS, SELF, sw_NYC_S_Motor_graphics, cargo_subtype) {
+    0:  spriteset_NYC_S_Motor_Grey;
+    spriteset_NYC_S_Motor_Green;
+}
+
+switch(FEAT_TRAINS, SELF, sw_NYC_S_Motor_livery, cargo_subtype) {
+    0:  return string(STR_Livery_NYC_Grey);
+    return string(STR_Livery_NYC_Green);
+}
+
+item(FEAT_TRAINS, item_NYC_S_Motor, 421) {
+    property {
+        name:                           string(STR_NYC_S_Motor_Name);
+        climates_available:             bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:              date(1904, 1, 1);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   30;
+        reliability_decay:              12;
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   bitmask();
+        loading_speed:                  20;
+        cost_factor:                    46;
+        running_cost_factor:            146;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        speed:                          60 mph;
+        misc_flags:                     bitmask(TRAIN_FLAG_MU);
+        refit_cost:                     0;
+        track_type:                     RT_3RD;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        power:                          1695 hp;
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+        dual_headed:                    0;
+        cargo_capacity:                 1;
+        weight:                         105 ton;
+        ai_engine_rank:                 0;
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+        extra_power_per_wagon:          0;
+        tractive_effort_coefficient:    160/(9.81*105);
+        air_drag_coefficient:           8/97;
+        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:         0;
+        bitmask_vehicle_info:           0;
+    }
+    graphics {
+        purchase:                       spriteset_purchase_NYC_S_Motor;
+        additional_text:                return string(STR_NYC_S_Motor_Desc);
+        length:                         6;
+        cargo_subtype_text:             sw_NYC_S_Motor_livery;
+        cargo_capacity:                 0;
+        default:                        sw_NYC_S_Motor_graphics;
+    }
+}

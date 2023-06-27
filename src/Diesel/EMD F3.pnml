@@ -1,0 +1,111 @@
+//--------------------------------------------------------------------------------------------------EMD F3
+spriteset (spriteset_purchase_F3, "gfx/USA_EMD_F3_ATSF_Red_Warbonnet.png") { [4,  66,  87,  12,  -23,  -8] }
+
+template tmpl_F3_A_first(x,y) {
+    [x,      y,    8,     24,     -3,    -12]
+    [x+9,    y,    22,    20,     -14,   -10]
+    [x+32,   y,    32,    16,     -16,   -12]
+    [x+65,   y,    22,    20,     -8,    -11]
+}
+template tmpl_F3_A_second(x,y) {
+    [x,      y,    8,     24,     -3,    -12]
+    [x+9,    y,    22,    20,     -14,   -10]
+    [x+32,   y,    32,    16,     -20,   -12]
+    [x+65,   y,    22,    20,     -8,    -11]
+}
+template tmpl_F3_B(x,y) {
+    [x,      y,    8,     24,     -3,    -12]
+    [x+9,    y,    22,    20,     -14,   -10]
+    [x+32,   y,    32,    16,     -16,   -12]
+    [x+65,   y,    22,    20,     -8,    -11]
+    [x+88,   y,    8,     24,     -3,    -12]
+    [x+97,   y,    22,    20,     -14,   -10]
+    [x+120,  y,    32,    16,     -20,   -12]
+    [x+153,  y,    22,    20,     -8,    -11]
+}
+
+spriteset(spriteset_F3_ATSF_RW_A_front, "gfx/USA_EMD_F3_ATSF_Red_Warbonnet.png") { tmpl_F3_A_first(4,4) tmpl_F3_A_second(92,4) }
+spriteset(spriteset_F3_ATSF_RW_A_back, "gfx/USA_EMD_F3_ATSF_Red_Warbonnet.png") { tmpl_F3_A_first(92,4) tmpl_F3_A_second(4,4) }
+spriteset(spriteset_F3_ATSF_RW_B, "gfx/USA_EMD_F3_ATSF_Red_Warbonnet.png") { tmpl_F3_B(4,35) }
+
+spriteset(spriteset_F3_ATSF_BW_A_front, "gfx/USA_EMD_F3_ATSF_Blue_Warbonnet.png") { tmpl_F3_A_first(4,4) tmpl_F3_A_second(92,4) }
+spriteset(spriteset_F3_ATSF_BW_A_back, "gfx/USA_EMD_F3_ATSF_Blue_Warbonnet.png") { tmpl_F3_A_first(92,4) tmpl_F3_A_second(4,4) }
+spriteset(spriteset_F3_ATSF_BW_B, "gfx/USA_EMD_F3_ATSF_Blue_Warbonnet.png") { tmpl_F3_B(4,35) }
+
+spriteset(spriteset_F3_NYC_A_front, "gfx/USA_EMD_F3_NYC.png") { tmpl_F3_A_first(4,4) tmpl_F3_A_second(92,4) }
+spriteset(spriteset_F3_NYC_A_back, "gfx/USA_EMD_F3_NYC.png") { tmpl_F3_A_first(92,4) tmpl_F3_A_second(4,4) }
+spriteset(spriteset_F3_NYC_B, "gfx/USA_EMD_F3_NYC.png") { tmpl_F3_B(4,35) }
+
+switch(FEAT_TRAINS, SELF, sw_F3_A_front, cargo_subtype) {
+    0:  spriteset_F3_ATSF_RW_A_front;
+    1:  spriteset_F3_ATSF_BW_A_front;
+    spriteset_F3_NYC_A_front;
+}
+switch(FEAT_TRAINS, SELF, sw_F3_A_back, cargo_subtype) {
+    0:  spriteset_F3_ATSF_RW_A_back;
+    1:  spriteset_F3_ATSF_BW_A_back;
+    spriteset_F3_NYC_A_back;
+}
+switch(FEAT_TRAINS, SELF, sw_F3_B, cargo_subtype) {
+    0:  spriteset_F3_ATSF_RW_B;
+    1:  spriteset_F3_ATSF_BW_B;
+    spriteset_F3_NYC_B;
+}
+
+switch(FEAT_TRAINS, SELF, sw_F3_graphics2, position_in_vehid_chain_from_end) {
+    0:  sw_F3_A_back;
+    sw_F3_B;
+}
+switch(FEAT_TRAINS, SELF, sw_F3_graphics, position_in_consist) {
+    0:  sw_F3_A_front;
+    1:  sw_F3_B;
+    sw_F3_graphics2;
+}
+switch(FEAT_TRAINS, SELF, sw_F3_livery, cargo_subtype) {
+    0:  return string(STR_Livery_ATSF_Red_Warbonnet);
+    1:  return string(STR_Livery_ATSF_Blue_Warbonnet);
+    return string(STR_Livery_NYC_20);
+}
+
+item(FEAT_TRAINS, item_F3, 213) {
+    property {
+        name:                           string(STR_F3_Name);
+        climates_available:             bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:              date(1945, 7, 1);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   34;
+        reliability_decay:              14;
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   bitmask();
+        loading_speed:                  0;
+        cost_factor:                    37;
+        running_cost_factor:            137;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        speed:                          166 km/h;
+        misc_flags:                     bitmask();
+        refit_cost:                     0;
+        track_type:                     RAIL;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        power:                          1500 hp;
+        running_cost_base:              RUNNING_COST_DIESEL;
+        dual_headed:                    0;
+        cargo_capacity:                 1;
+        weight:                         106 ton;
+        ai_engine_rank:                 0;
+        engine_class:                   ENGINE_CLASS_DIESEL;
+        extra_power_per_wagon:          0;
+        tractive_effort_coefficient:    0.3;
+        air_drag_coefficient:           0.06;
+        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:         0;
+        bitmask_vehicle_info:           0;
+    }
+    graphics {
+        purchase:                       spriteset_purchase_F3;
+        additional_text:                return string(STR_F3_Desc);
+        length:                         7;
+        cargo_subtype_text:             sw_F3_livery;
+        cargo_capacity:                 0;
+        default:                        sw_F3_graphics;
+    }
+}

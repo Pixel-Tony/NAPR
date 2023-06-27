@@ -1,0 +1,105 @@
+//--------------------------------------------------------------------------------------------------EMD E7
+spriteset (spriteset_purchase_E7, "gfx/USA_EMD_E7_PRR.png") { [4,  66,  87,  12,  -27,  -8] }
+
+template tmpl_E7_A(x,y) {
+    [x,      y,    8,     24,     -3,    -12]
+    [x+9,    y,    22,    20,     -14,   -9]
+    [x+32,   y,    32,    16,     -16,   -12]
+    [x+65,   y,    22,    20,     -8,    -11]
+    [x+88,   y,    8,     24,     -3,    -12]
+    [x+97,   y,    22,    20,     -14,   -10]
+    [x+120,  y,    32,    16,     -16,   -12]
+    [x+153,  y,    22,    20,     -8,    -10]
+}
+template tmpl_E7_A2(x,y) {
+    [x+88,   y,    8,     24,     -3,    -12]
+    [x+97,   y,    22,    20,     -14,   -10]
+    [x+120,  y,    32,    16,     -16,   -12]
+    [x+153,  y,    22,    20,     -8,    -10]
+    [x,      y,    8,     24,     -3,    -12]
+    [x+9,    y,    22,    20,     -14,   -9]
+    [x+32,   y,    32,    16,     -16,   -12]
+    [x+65,   y,    22,    20,     -8,    -11]
+
+}
+template tmpl_E7_B(x,y) {
+    [x,      y,    8,     24,     -3,    -12]
+    [x+9,    y,    22,    20,     -14,   -10]
+    [x+32,   y,    32,    16,     -16,   -12]
+    [x+65,   y,    22,    20,     -8,    -11]
+    [x+88,   y,    8,     24,     -3,    -12]
+    [x+97,   y,    22,    20,     -14,   -10]
+    [x+120,  y,    32,    16,     -16,   -12]
+    [x+153,  y,    22,    20,     -8,    -11]
+}
+
+spriteset (spriteset_E7_A_f_PRR, "gfx/USA_EMD_E7_PRR.png") { tmpl_E7_A(4,4) }
+spriteset (spriteset_E7_A_b_PRR, "gfx/USA_EMD_E7_PRR.png") { tmpl_E7_A2(4,4) }
+spriteset (spriteset_E7_B_PRR, "gfx/USA_EMD_E7_PRR.png") { tmpl_E7_B(4,35) }
+
+spriteset (spriteset_E7_A_f_NYC_20, "gfx/USA_EMD_E7_NYC.png") { tmpl_E7_A(4,4) }
+spriteset (spriteset_E7_A_b_NYC_20, "gfx/USA_EMD_E7_NYC.png") { tmpl_E7_A2(4,4) }
+spriteset (spriteset_E7_B_NYC_20, "gfx/USA_EMD_E7_NYC.png") { tmpl_E7_B(4,35) }
+
+
+switch(FEAT_TRAINS,SELF,sw_E7_graphics_PRR, position_in_vehid_chain % 4) {
+    0:  spriteset_E7_A_f_PRR;
+    1..2:  spriteset_E7_B_PRR;
+    spriteset_E7_A_b_PRR;
+}
+switch(FEAT_TRAINS,SELF,sw_E7_graphics_NYC, position_in_vehid_chain % 4) {
+    0:  spriteset_E7_A_f_NYC_20;
+    1..2:  spriteset_E7_B_NYC_20;
+    spriteset_E7_A_b_NYC_20;
+}
+switch(FEAT_TRAINS,SELF,sw_E7_graphics, cargo_subtype) {
+    0:  sw_E7_graphics_PRR;
+    sw_E7_graphics_NYC;
+}
+switch(FEAT_TRAINS,SELF,sw_E7_livery, cargo_subtype) {
+    0:  return string(STR_Livery_Pennsylvania_Railroad);
+    return string(STR_Livery_NYC_20);
+}
+
+item(FEAT_TRAINS, item_E7, 210) {
+    property {
+        name:                           string(STR_E7_Name);
+        climates_available:             bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:              date(1945, 8, 1);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   36;
+        reliability_decay:              15;
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   bitmask();
+        loading_speed:                  0;
+        cost_factor:                    34;
+        running_cost_factor:            134;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        speed:                          137 km/h;
+        misc_flags:                     bitmask();
+        refit_cost:                     0;
+        track_type:                     RAIL;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        power:                          1500 hp;
+        running_cost_base:              RUNNING_COST_DIESEL;
+        dual_headed:                    0;
+        cargo_capacity:                 1;
+        weight:                         143 ton;
+        ai_engine_rank:                 0;
+        engine_class:                   ENGINE_CLASS_DIESEL;
+        extra_power_per_wagon:          0;
+        tractive_effort_coefficient:    0.3;
+        air_drag_coefficient:           8 / 137;
+        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:         0;
+        bitmask_vehicle_info:           0;
+    }
+    graphics {
+        purchase:                       spriteset_purchase_E7;
+        additional_text:                return string(STR_E7_Desc);
+        length:                         8;
+        default:                        sw_E7_graphics;
+        cargo_capacity:                 0;
+        cargo_subtype_text:             sw_E7_livery;
+    }
+}

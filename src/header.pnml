@@ -1,0 +1,71 @@
+grf {
+    grfid: "TP\02\01";
+    name: string(STR_GRF_NAME);
+    desc: string(STR_GRF_DESC);
+    version: 15;
+    min_compatible_version: 15;
+    param 1 {
+        param_running_costs {
+            type: int;
+            name: string(STR_Parameter_Running_Costs_NAME);
+            desc: string(STR_Parameter_Running_Costs_DESC);
+            min_value: 0;
+            max_value: 6;
+            def_value: 2;
+            names: {
+                0: string(STR_Parameter_Running_Costs_1_4);
+                1: string(STR_Parameter_Running_Costs_1_2);
+                2: string(STR_Parameter_Running_Costs_1);
+                3: string(STR_Parameter_Running_Costs_2);
+                4: string(STR_Parameter_Running_Costs_4);
+                5: string(STR_Parameter_Running_Costs_8);
+                6: string(STR_Parameter_Running_Costs_16);
+            };
+        }
+    }
+    param 2 {
+        param_wagon_costs {
+            type: int;
+            name: string(STR_Parameter_Wagon_Costs_NAME);
+            desc: string(STR_Parameter_Wagon_Costs_DESC);
+            min_value: 0;
+            max_value: 6;
+            def_value: 2;
+            names: {
+                0: string(STR_Parameter_Wagon_Costs_1_4);
+                1: string(STR_Parameter_Wagon_Costs_1_2);
+                2: string(STR_Parameter_Wagon_Costs_1);
+                3: string(STR_Parameter_Wagon_Costs_2);
+                4: string(STR_Parameter_Wagon_Costs_4);
+                5: string(STR_Parameter_Wagon_Costs_8);
+                6: string(STR_Parameter_Wagon_Costs_16);
+            };
+        }
+    }
+}
+
+basecost {
+    PR_RUNNING: (param_running_costs - 2);
+    PR_BUILD_VEHICLE_WAGON: 3;
+}
+
+railtypetable {
+    RAIL,
+    ELRL,
+    // 3rd rail
+    RT_3RD: [
+        MTRO,
+        "3RDR",
+        "3RDC",
+        "3LOW",
+        CLOW,
+        "3MED",
+        CMED,
+        ELRL
+    ]
+}
+
+train_width_32_px = 1;
+traininfo_y_offset = 3;
+
+disable_item(FEAT_TRAINS);
