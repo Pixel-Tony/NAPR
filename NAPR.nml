@@ -399,114 +399,115 @@ item(FEAT_TRAINS, item_mp54b, 315) {
 spriteset (spriteset_purchase_Metroliner_I, "gfx/USA_Amtrak_Metroliner_I.png") { [4,  136,  95,  16,  -27,  -12] }
 
 template tmpl_Metroliner_I(x,y) {
-    [x,      y,    8,     26,     -3,    -9]
-    [x+9,    y,    24,    21,     -16,   -10]
-    [x+34,   y,    36,    16,     -20,   -12]
-    [x+71,   y,    24,    21,     -10,   -12]
+    [x,      y,  8, 26,  -3,  -9]
+    [x + 9,  y, 24, 21, -16, -10]
+    [x + 34, y, 36, 16, -20, -12]
+    [x + 71, y, 24, 21, -10, -12]
 }
 
 template tmpl_Metroliner_I_second(x,y) {
-    [x,      y,    8,     26,     -3,    -11]
-    [x+9,    y,    24,    21,     -14,   -11]
-    [x+34,   y,    36,    16,     -16,   -12]
-    [x+71,   y,    24,    21,     -8,    -11]
+    [x,      y,  8, 26,  -3, -11]
+    [x + 9,  y, 24, 21, -14, -11]
+    [x + 34, y, 36, 16, -16, -12]
+    [x + 71, y, 24, 21,  -8, -11]
 }
 
-spriteset(spriteset_Metroliner_I_f_y, "gfx/USA_Amtrak_Metroliner_I.png") { tmpl_Metroliner_I(4,4)     tmpl_Metroliner_I_second(100,4) }
-spriteset(spriteset_Metroliner_I_f_n, "gfx/USA_Amtrak_Metroliner_I.png") { tmpl_Metroliner_I(4,37)    tmpl_Metroliner_I_second(100,37) }
-spriteset(spriteset_Metroliner_I_b_n, "gfx/USA_Amtrak_Metroliner_I.png") { tmpl_Metroliner_I(100,70)  tmpl_Metroliner_I_second(4,70) }
-spriteset(spriteset_Metroliner_I_b_r, "gfx/USA_Amtrak_Metroliner_I.png") { tmpl_Metroliner_I(100,103) tmpl_Metroliner_I_second(4,103) }
+spriteset(spriteset_Metroliner_I_f_yellow, "gfx/USA_Amtrak_Metroliner_I.png") { tmpl_Metroliner_I(4,4)     tmpl_Metroliner_I_second(100,4) }
+spriteset(spriteset_Metroliner_I_f_none, "gfx/USA_Amtrak_Metroliner_I.png") { tmpl_Metroliner_I(4,37)    tmpl_Metroliner_I_second(100,37) }
+spriteset(spriteset_Metroliner_I_b_none, "gfx/USA_Amtrak_Metroliner_I.png") { tmpl_Metroliner_I(100,70)  tmpl_Metroliner_I_second(4,70) }
+spriteset(spriteset_Metroliner_I_b_red, "gfx/USA_Amtrak_Metroliner_I.png") { tmpl_Metroliner_I(100,103) tmpl_Metroliner_I_second(4,103) }
 
-spriteset(spriteset_Metroliner_I_f_y_PC, "gfx/USA_PC_Metroliner_I.png") { tmpl_Metroliner_I(4,4)     tmpl_Metroliner_I_second(100,4) }
-spriteset(spriteset_Metroliner_I_f_n_PC, "gfx/USA_PC_Metroliner_I.png") { tmpl_Metroliner_I(4,37)    tmpl_Metroliner_I_second(100,37) }
-spriteset(spriteset_Metroliner_I_b_n_PC, "gfx/USA_PC_Metroliner_I.png") { tmpl_Metroliner_I(100,70)  tmpl_Metroliner_I_second(4,70) }
-spriteset(spriteset_Metroliner_I_b_r_PC, "gfx/USA_PC_Metroliner_I.png") { tmpl_Metroliner_I(100,103) tmpl_Metroliner_I_second(4,103) }
+spriteset(spriteset_Metroliner_I_f_yellow_PC, "gfx/USA_PC_Metroliner_I.png") { tmpl_Metroliner_I(4,4)     tmpl_Metroliner_I_second(100,4) }
+spriteset(spriteset_Metroliner_I_f_none_PC, "gfx/USA_PC_Metroliner_I.png") { tmpl_Metroliner_I(4,37)    tmpl_Metroliner_I_second(100,37) }
+spriteset(spriteset_Metroliner_I_b_none_PC, "gfx/USA_PC_Metroliner_I.png") { tmpl_Metroliner_I(100,70)  tmpl_Metroliner_I_second(4,70) }
+spriteset(spriteset_Metroliner_I_b_red_PC, "gfx/USA_PC_Metroliner_I.png") { tmpl_Metroliner_I(100,103) tmpl_Metroliner_I_second(4,103) }
 
-switch(FEAT_TRAINS,SELF,sw_Metroliner_I_f_y, cargo_subtype) {
-    0:  spriteset_Metroliner_I_f_y;
-    spriteset_Metroliner_I_f_y_PC;
+switch(FEAT_TRAINS, SELF, sw_Metroliner_I_f_y, cargo_subtype) {
+    0: spriteset_Metroliner_I_f_yellow;
+    spriteset_Metroliner_I_f_yellow_PC;
 }
-switch(FEAT_TRAINS,SELF, sw_Metroliner_I_f_n, cargo_subtype) {
-    0:  spriteset_Metroliner_I_f_n;
-    spriteset_Metroliner_I_f_n_PC;
+switch(FEAT_TRAINS, SELF, sw_Metroliner_I_f_n, cargo_subtype) {
+    0: spriteset_Metroliner_I_f_none;
+    spriteset_Metroliner_I_f_none_PC;
 }
-switch(FEAT_TRAINS,SELF,sw_Metroliner_I_b_n, cargo_subtype) {
-    0:  spriteset_Metroliner_I_b_n;
-    spriteset_Metroliner_I_b_n_PC;
+switch(FEAT_TRAINS, SELF, sw_Metroliner_I_b_n, cargo_subtype) {
+    0: spriteset_Metroliner_I_b_none;
+    spriteset_Metroliner_I_b_none_PC;
 }
 switch(FEAT_TRAINS, SELF, sw_Metroliner_I_b_r, cargo_subtype) {
-    0:  spriteset_Metroliner_I_b_r;
-    spriteset_Metroliner_I_b_r_PC;
+    0: spriteset_Metroliner_I_b_red;
+    spriteset_Metroliner_I_b_red_PC;
 }
 
 switch(FEAT_TRAINS, SELF, sw_Metroliner_I_articulated_part, extra_callback_info1) {
-    1..5:  item_Metroliner_I;
+    1..5: item_Metroliner_I;
     CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 }
-switch(FEAT_TRAINS, SELF, sw_Metroliner_I_grapfics4, position_in_consist % 6) {
-    0:  sw_Metroliner_I_f_n;
-    3:  sw_Metroliner_I_b_n;
+switch(FEAT_TRAINS, SELF, sw_Metroliner_I_grapfics4, position_in_vehid_chain % 6) {
+    0: sw_Metroliner_I_f_n;
+    3: sw_Metroliner_I_b_n;
+    spriteset_obsolete; // is never returned, see first switch in chain
 }
-switch(FEAT_TRAINS, SELF, sw_Metroliner_I_grapfics3, position_in_consist_from_end) {
-    2:  sw_Metroliner_I_b_r;
+switch(FEAT_TRAINS, SELF, sw_Metroliner_I_grapfics3, position_in_vehid_chain_from_end) {
+    2: sw_Metroliner_I_b_r;
     sw_Metroliner_I_grapfics4;
 }
-switch(FEAT_TRAINS, SELF, sw_Metroliner_I_grapfics2, position_in_consist) {
-    0:  sw_Metroliner_I_f_y;
+switch(FEAT_TRAINS, SELF, sw_Metroliner_I_grapfics2, position_in_vehid_chain) {
+    0: sw_Metroliner_I_f_y;
     sw_Metroliner_I_grapfics3;
 }
 switch(FEAT_TRAINS, SELF, sw_Metroliner_I_grapfics, position_in_vehid_chain % 3) {
-    0:  sw_Metroliner_I_grapfics2;
+    0: sw_Metroliner_I_grapfics2;
     spriteset_obsolete;
 }
 
 switch(FEAT_TRAINS,SELF, sw_Metroliner_I_livery, cargo_subtype) {
-    0:  return string(STR_Livery_AMTR);
-    return string(STR_Livery_Penn_Central);
+    0: string(STR_Livery_AMTR);
+    string(STR_Livery_Penn_Central);
 }
 
-switch(FEAT_TRAINS,SELF,sw_Metroliner_I_capacity, position_in_consist % 3) {
+switch(FEAT_TRAINS, SELF, sw_Metroliner_I_capacity, position_in_vehid_chain % 3) {
     0: 115;
     0;
 }
 
 switch(FEAT_TRAINS, SELF, sw_Metroliner_I_length, position_in_vehid_chain % 3) {
-    1:  1;
+    1: 1;
     4;
 }
 
 item(FEAT_TRAINS, item_Metroliner_I, 301) {
     property {
-    name:                               string(STR_Metroliner_I_Name);
-    climates_available:                 bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
-    introduction_date:                  date(1969, 1, 16);
-    model_life:                         20;
-    vehicle_life:                       30;
-    reliability_decay:                  12;
-    refittable_cargo_classes:           bitmask(CC_PASSENGERS);
-    non_refittable_cargo_classes:       bitmask();
-    loading_speed:                      5;
-    cost_factor:                        32;
-    running_cost_factor:                32;
-    sprite_id:                          SPRITE_ID_NEW_TRAIN;
-    speed:                              180 km/h;
-    misc_flags:                         bitmask(TRAIN_FLAG_MU);
-    refit_cost:                         0;
-    track_type:                         ELRL;
-    ai_special_flag:                    AI_FLAG_PASSENGER;
-    power:                              825 kW;
-    running_cost_base:                  RUNNING_COST_ELECTRIC;
-    dual_headed:                        0;
-    cargo_capacity:                     115;
-    weight:                             75 ton;
-    ai_engine_rank:                     0;
-    engine_class:                       ENGINE_CLASS_DIESEL;
-    extra_power_per_wagon:              0;
-    tractive_effort_coefficient:        0.3;
-    air_drag_coefficient:               0.06;
-    visual_effect_and_powered:          visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 3, DISABLE_WAGON_POWER);
-    extra_weight_per_wagon:             0;
-    bitmask_vehicle_info:               0;
+        name:                           string(STR_Metroliner_I_Name);
+        climates_available:             bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:              date(1969, 1, 16);
+        model_life:                     20;
+        vehicle_life:                   30;
+        reliability_decay:              12;
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   bitmask();
+        loading_speed:                  5;
+        cost_factor:                    32;
+        running_cost_factor:            32;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        speed:                          180 km/h;
+        misc_flags:                     bitmask(TRAIN_FLAG_MU);
+        refit_cost:                     0;
+        track_type:                     ELRL;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        power:                          825 kW;
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+        dual_headed:                    0;
+        cargo_capacity:                 115;
+        weight:                         75 ton;
+        ai_engine_rank:                 0;
+        engine_class:                   ENGINE_CLASS_DIESEL;
+        extra_power_per_wagon:          0;
+        tractive_effort_coefficient:    0.3;
+        air_drag_coefficient:           0.06;
+        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 3, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:         0;
+        bitmask_vehicle_info:           0;
     }
     graphics {
         purchase:                       spriteset_purchase_Metroliner_I;
@@ -1216,7 +1217,7 @@ switch(FEAT_TRAINS, SELF, sw_Amfleet_rev_F40PH_sprite, cargo_subtype) {
 }
 
 // Graphics
-switch(FEAT_TRAINS, PARENT, sw_Amfleet_reverse, count_veh_id(215)) {
+switch(FEAT_TRAINS, PARENT, sw_Amfleet_reverse, count_veh_id(item_F40PH)) {
     0:  sw_Amfleet_rev_sprite;
     sw_Amfleet_rev_F40PH_sprite;
 }
@@ -1414,14 +1415,14 @@ switch(FEAT_TRAINS, SELF, sw_Comet_Car_reverse_as_F40PH, vehicle_type_id) {
     625:  sw_Comet_V_Car_rev_F40PH;
 }
 
-switch(FEAT_TRAINS, PARENT, sw_Comet_Car_flipping_reverse, count_veh_id(215)) {
+switch(FEAT_TRAINS, PARENT, sw_Comet_Car_flipping_reverse, count_veh_id(item_F40PH)) {
     0: sw_Comet_Car_rev;
     sw_Comet_Car_reverse_as_F40PH;
 }
 switch(FEAT_TRAINS, PARENT, sw_Comet_Car_flipping, (
     vehicle_is_reversed
     && ((count_veh_id(616) + count_veh_id(618) + count_veh_id(620) + count_veh_id(622) + count_veh_id(624)) == 2)
-    && ((count_veh_id(404) + count_veh_id(409) + count_veh_id(215)) == 1)
+    && ((count_veh_id(404) + count_veh_id(409) + count_veh_id(item_F40PH)) == 1)
 )) {
     0:  sw_Comet_Car;
     sw_Comet_Car_flipping_reverse;
@@ -1850,7 +1851,7 @@ switch(FEAT_TRAINS, SELF, sw_Multilevel_Cab_graphics, position_in_vehid_chain % 
 /*
  * Car graphics
  */
-switch(FEAT_TRAINS, PARENT, sw_Multilevel_Car_flipping_reverse, count_veh_id(215)) {
+switch(FEAT_TRAINS, PARENT, sw_Multilevel_Car_flipping_reverse, count_veh_id(item_F40PH)) {
     0: spriteset_Multilevel_Car_rev;
     spriteset_Multilevel_Car_rev_F40PH;
 }
@@ -1951,7 +1952,7 @@ item(FEAT_TRAINS, item_Multilevel_Car, 613) {
     }
     graphics {
         purchase:                       spriteset_Multilevel_Car_purchase;
-        additional_text:                return string(STR_Obsolete_Desc);
+        additional_text:                string(STR_Obsolete_Desc);
         length:                         (position_in_vehid_chain % 2) == 0 ? 1 : 8;
         articulated_part:               sw_One_more_articulated;
         default:                        sw_Multilevel_Car_graphics;
@@ -2064,7 +2065,7 @@ item(FEAT_TRAINS, item_Metroliner_Cab, 638) {
     }
     graphics {
         purchase:                       sw_Metroliner_Cab_purchase;
-        additional_text:                return string(STR_Metroliner_Cab_Desc);
+        additional_text:                string(STR_Metroliner_Cab_Desc);
         sound_effect:                   CB_RESULT_NO_SOUND;
         length:                         (position_in_vehid_chain % 2) == 0 ? 1 : 8;
         visual_effect_and_powered:      sw_Metroliner_effect;
@@ -2160,14 +2161,14 @@ switch(FEAT_TRAINS, SELF, sw_Gallery_Car_rev_as_F40PH, cargo_subtype) {
     spriteset_Gallery_Car_Caltrain_rev_F40PH;
 }
 
-switch(FEAT_TRAINS, PARENT, sw_Gallery_Car_flipping_reverse, count_veh_id(215)) {
+switch(FEAT_TRAINS, PARENT, sw_Gallery_Car_flipping_reverse, count_veh_id(item_F40PH)) {
     0: sw_Gallery_Car_rev;
     sw_Gallery_Car_rev_as_F40PH;
 }
 switch(FEAT_TRAINS, PARENT, sw_Gallery_Car_flipping, (
     vehicle_is_reversed
-    && count_veh_id(640)
-    && (count_veh_id(214) || count_veh_id(215) || count_veh_id(409))
+    && count_veh_id(item_Gallery_Cab)
+    && (count_veh_id(item_F40C) || count_veh_id(item_F40PH) || count_veh_id(409))
 )) {
     0:  sw_Gallery_Car;
     sw_Gallery_Car_flipping_reverse;
@@ -3634,59 +3635,37 @@ item(FEAT_TRAINS, item_E8, 211) {
 }
 
 //--------------------------------------------------------------------------------------------------EMD E9
-spriteset(sset_p_E9, "gfx/USA_EMD_E9.png") { [4, 97, 87, 12, -15, -8] }
+spriteset(spriteset_p_E9, "gfx/USA_EMD_E9.png") {
+    [4, 97, 87, 12, -15, -8]
+}
 
 template tmpl_E9(x, y) {
-    [x,      y,  8, 24,      -3,    -11]
-    [x + 9,  y, 22, 20,     -14,    -10]
-    [x + 32, y, 32, 16,     -16,    -12]
-    [x + 65, y, 22, 20,      -8,    -11]
+    [x,      y,  8, 24,  -3, -11]
+    [x + 9,  y, 22, 20, -14, -10]
+    [x + 32, y, 32, 16, -16, -12]
+    [x + 65, y, 22, 20,  -8, -11]
 }
 
-spriteset(sset_E9_BN_front_on, "gfx/USA_EMD_E9.png")  { tmpl_E9(4, 4)   tmpl_E9(92, 4) }
-spriteset(sset_E9_BN_front_off, "gfx/USA_EMD_E9.png") { tmpl_E9(4, 66)  tmpl_E9(92, 66) }
-spriteset(sset_E9_BN_back_off, "gfx/USA_EMD_E9.png")  { tmpl_E9(92, 66) tmpl_E9(4, 66) }
-spriteset(sset_E9_BN_back_red, "gfx/USA_EMD_E9.png")  { tmpl_E9(92, 35) tmpl_E9(4, 35) }
-
-switch(FEAT_TRAINS, SELF, sw_E9_front_on, cargo_subtype) {
-    0:  sset_E9_BN_front_on;
-    sset_E9_BN_front_on;
-}
-switch(FEAT_TRAINS, SELF, sw_E9_front_off, cargo_subtype) {
-    0:  sset_E9_BN_front_off;
-    sset_E9_BN_front_off;
-}
-switch(FEAT_TRAINS, SELF, sw_E9_back_off, cargo_subtype) {
-    0:  sset_E9_BN_back_off;
-    sset_E9_BN_back_off;
-}
-switch(FEAT_TRAINS, SELF, sw_E9_back_red, cargo_subtype) {
-    0:  sset_E9_BN_back_red;
-    sset_E9_BN_back_red;
-}
+spriteset(spriteset_E9_BN_front_on, "gfx/USA_EMD_E9.png")  { tmpl_E9(4, 4)   tmpl_E9(92, 4) }
+spriteset(spriteset_E9_BN_front_off, "gfx/USA_EMD_E9.png") { tmpl_E9(4, 66)  tmpl_E9(92, 66) }
+spriteset(spriteset_E9_BN_back_off, "gfx/USA_EMD_E9.png")  { tmpl_E9(92, 66) tmpl_E9(4, 66) }
+spriteset(spriteset_E9_BN_back_red, "gfx/USA_EMD_E9.png")  { tmpl_E9(92, 35) tmpl_E9(4, 35) }
 
 switch(FEAT_TRAINS, SELF, sw_E9_graphics3, position_in_vehid_chain % 2) {
-    0: sw_E9_front_off;
-    sw_E9_back_off;
+    0: spriteset_E9_BN_front_off;
+    spriteset_E9_BN_back_off;
 }
-
 switch(FEAT_TRAINS, SELF, sw_E9_graphics_last, position_in_vehid_chain % 2) {
-    0: sw_E9_front_off;
-    sw_E9_back_red;
+    0: spriteset_E9_BN_front_off;
+    spriteset_E9_BN_back_red;
 }
-
 switch(FEAT_TRAINS, SELF, sw_E9_graphics2, position_in_vehid_chain_from_end) {
     0: sw_E9_graphics_last;
     sw_E9_graphics3;
 }
-
 switch(FEAT_TRAINS, SELF, sw_E9_graphics, position_in_vehid_chain) {
-    0:  sw_E9_front_on;
+    0: spriteset_E9_BN_front_on;
     sw_E9_graphics2;
-}
-switch(FEAT_TRAINS, SELF, sw_E9_livery_name, cargo_subtype) {
-    0:  return string(STR_Livery_BN);
-    return string(STR_Livery_CBnQ);
 }
 
 item(FEAT_TRAINS, item_E9, 212) {
@@ -3711,7 +3690,7 @@ item(FEAT_TRAINS, item_E9, 212) {
         power:                          1790 kW;
         running_cost_base:              RUNNING_COST_DIESEL;
         dual_headed:                    0;
-        cargo_capacity:                 1;
+        cargo_capacity:                 0;
         weight:                         143 ton;
         ai_engine_rank:                 0;
         engine_class:                   ENGINE_CLASS_DIESEL;
@@ -3723,11 +3702,9 @@ item(FEAT_TRAINS, item_E9, 212) {
         bitmask_vehicle_info:           0;
     }
     graphics {
-        purchase:                       sset_p_E9;
-        additional_text:                return string(STR_E9_Desc);
+        purchase:                       spriteset_p_E9;
+        additional_text:                string(STR_E9_Desc);
         length:                         8;
-        cargo_capacity:                 0;
-        cargo_subtype_text:             sw_E9_livery_name;
         default:                        sw_E9_graphics;
     }
 }
@@ -6647,7 +6624,7 @@ item(FEAT_TRAINS, item_CNR_TC_Coach, 753) {
     }
     graphics {
         purchase:                 spriteset_CNR_TC_Coach_purchase;
-        additional_text:          return string(STR_CNR_TC_Coach_Name);
+        additional_text:          string(STR_CNR_The_Canadian_Desc);
         length:                   8;
         default:                  spriteset_CNR_TC_Coach;
     }
@@ -6683,7 +6660,7 @@ item(FEAT_TRAINS, item_CNR_TC_Diner, 754) {
     }
     graphics {
         purchase:                 spriteset_CNR_TC_Diner_purchase;
-        additional_text:          return string(STR_CNR_TC_Diner_Desc);
+        additional_text:          string(STR_CNR_The_Canadian_Desc);
         length:                   8;
         default:                  spriteset_CNR_TC_Diner;
     }
@@ -6719,7 +6696,7 @@ item(FEAT_TRAINS, item_CNR_TC_Manor, 755) {
     }
     graphics {
         purchase:                 spriteset_CNR_TC_Manor_purchase;
-        additional_text:          return string(STR_CNR_TC_Manor_Desc);
+        additional_text:          string(STR_CNR_The_Canadian_Desc);
         length:                   8;
         default:                  spriteset_CNR_TC_Manor;
     }
@@ -6755,7 +6732,7 @@ item(FEAT_TRAINS, item_CNR_TC_Chateau, 756) {
     }
     graphics {
         purchase:                 spriteset_CNR_TC_Chateau_purchase;
-        additional_text:          return string(STR_CNR_TC_Chateau_Desc);
+        additional_text:          string(STR_CNR_The_Canadian_Desc);
         length:                   8;
         default:                  spriteset_CNR_TC_Chateau;
     }
@@ -6791,7 +6768,7 @@ item(FEAT_TRAINS, item_CNR_TC_Baggage, 757) {
     }
     graphics {
         purchase:                 spriteset_CNR_TC_Baggage_purchase;
-        additional_text:          return string(STR_CNR_TC_Baggage_Desc);
+        additional_text:          string(STR_CNR_The_Canadian_Desc);
         length:                   8;
         default:                  spriteset_CNR_TC_Baggage;
     }
@@ -6827,7 +6804,7 @@ item(FEAT_TRAINS, item_CNR_TC_Skyline_ss, 758) {
     }
     graphics {
         purchase:                 spriteset_CNR_TC_Skyline_ss_purchase;
-        additional_text:          return string(STR_CNR_TC_Skyline_ss_Desc);
+        additional_text:          string(STR_CNR_The_Canadian_Desc);
         length:                   8;
         default:                  spriteset_CNR_TC_Skyline_ss;
     }
@@ -6863,7 +6840,7 @@ item(FEAT_TRAINS, item_CNR_TC_Park_ss, 759) {
     }
     graphics {
         purchase:                 spriteset_CNR_TC_Park_ss_purchase;
-        additional_text:          return string(STR_CNR_TC_Park_ss_Desc);
+        additional_text:          string(STR_CNR_The_Canadian_Desc);
         length:                   8;
         default:                  spriteset_CNR_TC_Park_ss;
     }

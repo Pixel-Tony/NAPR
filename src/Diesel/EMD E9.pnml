@@ -1,57 +1,35 @@
 //--------------------------------------------------------------------------------------------------EMD E9
-spriteset(sset_p_E9, "gfx/USA_EMD_E9.png") { [4, 97, 87, 12, -15, -8] }
+spriteset(spriteset_p_E9, "gfx/USA_EMD_E9.png") {
+    [4, 97, 87, 12, -15, -8]
+}
 
 template tmpl_E9(x, y) {
-    [x,      y,  8, 24,      -3,    -11]
-    [x + 9,  y, 22, 20,     -14,    -10]
-    [x + 32, y, 32, 16,     -16,    -12]
-    [x + 65, y, 22, 20,      -8,    -11]
+    [x,      y,  8, 24,  -3, -11]
+    [x + 9,  y, 22, 20, -14, -10]
+    [x + 32, y, 32, 16, -16, -12]
+    [x + 65, y, 22, 20,  -8, -11]
 }
 
-spriteset(sset_E9_BN_front_on, "gfx/USA_EMD_E9.png")  { tmpl_E9(4, 4)   tmpl_E9(92, 4) }
-spriteset(sset_E9_BN_front_off, "gfx/USA_EMD_E9.png") { tmpl_E9(4, 66)  tmpl_E9(92, 66) }
-spriteset(sset_E9_BN_back_off, "gfx/USA_EMD_E9.png")  { tmpl_E9(92, 66) tmpl_E9(4, 66) }
-spriteset(sset_E9_BN_back_red, "gfx/USA_EMD_E9.png")  { tmpl_E9(92, 35) tmpl_E9(4, 35) }
-
-switch(FEAT_TRAINS, SELF, sw_E9_front_on, cargo_subtype) {
-    0:  sset_E9_BN_front_on;
-    sset_E9_BN_front_on;
-}
-switch(FEAT_TRAINS, SELF, sw_E9_front_off, cargo_subtype) {
-    0:  sset_E9_BN_front_off;
-    sset_E9_BN_front_off;
-}
-switch(FEAT_TRAINS, SELF, sw_E9_back_off, cargo_subtype) {
-    0:  sset_E9_BN_back_off;
-    sset_E9_BN_back_off;
-}
-switch(FEAT_TRAINS, SELF, sw_E9_back_red, cargo_subtype) {
-    0:  sset_E9_BN_back_red;
-    sset_E9_BN_back_red;
-}
+spriteset(spriteset_E9_BN_front_on, "gfx/USA_EMD_E9.png")  { tmpl_E9(4, 4)   tmpl_E9(92, 4) }
+spriteset(spriteset_E9_BN_front_off, "gfx/USA_EMD_E9.png") { tmpl_E9(4, 66)  tmpl_E9(92, 66) }
+spriteset(spriteset_E9_BN_back_off, "gfx/USA_EMD_E9.png")  { tmpl_E9(92, 66) tmpl_E9(4, 66) }
+spriteset(spriteset_E9_BN_back_red, "gfx/USA_EMD_E9.png")  { tmpl_E9(92, 35) tmpl_E9(4, 35) }
 
 switch(FEAT_TRAINS, SELF, sw_E9_graphics3, position_in_vehid_chain % 2) {
-    0: sw_E9_front_off;
-    sw_E9_back_off;
+    0: spriteset_E9_BN_front_off;
+    spriteset_E9_BN_back_off;
 }
-
 switch(FEAT_TRAINS, SELF, sw_E9_graphics_last, position_in_vehid_chain % 2) {
-    0: sw_E9_front_off;
-    sw_E9_back_red;
+    0: spriteset_E9_BN_front_off;
+    spriteset_E9_BN_back_red;
 }
-
 switch(FEAT_TRAINS, SELF, sw_E9_graphics2, position_in_vehid_chain_from_end) {
     0: sw_E9_graphics_last;
     sw_E9_graphics3;
 }
-
 switch(FEAT_TRAINS, SELF, sw_E9_graphics, position_in_vehid_chain) {
-    0:  sw_E9_front_on;
+    0: spriteset_E9_BN_front_on;
     sw_E9_graphics2;
-}
-switch(FEAT_TRAINS, SELF, sw_E9_livery_name, cargo_subtype) {
-    0:  return string(STR_Livery_BN);
-    return string(STR_Livery_CBnQ);
 }
 
 item(FEAT_TRAINS, item_E9, 212) {
@@ -76,7 +54,7 @@ item(FEAT_TRAINS, item_E9, 212) {
         power:                          1790 kW;
         running_cost_base:              RUNNING_COST_DIESEL;
         dual_headed:                    0;
-        cargo_capacity:                 1;
+        cargo_capacity:                 0;
         weight:                         143 ton;
         ai_engine_rank:                 0;
         engine_class:                   ENGINE_CLASS_DIESEL;
@@ -88,11 +66,9 @@ item(FEAT_TRAINS, item_E9, 212) {
         bitmask_vehicle_info:           0;
     }
     graphics {
-        purchase:                       sset_p_E9;
-        additional_text:                return string(STR_E9_Desc);
+        purchase:                       spriteset_p_E9;
+        additional_text:                string(STR_E9_Desc);
         length:                         8;
-        cargo_capacity:                 0;
-        cargo_subtype_text:             sw_E9_livery_name;
         default:                        sw_E9_graphics;
     }
 }

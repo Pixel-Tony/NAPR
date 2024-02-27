@@ -535,7 +535,7 @@ switch(FEAT_TRAINS, SELF, sw_Amfleet_rev_F40PH_sprite, cargo_subtype) {
 }
 
 // Graphics
-switch(FEAT_TRAINS, PARENT, sw_Amfleet_reverse, count_veh_id(215)) {
+switch(FEAT_TRAINS, PARENT, sw_Amfleet_reverse, count_veh_id(item_F40PH)) {
     0:  sw_Amfleet_rev_sprite;
     sw_Amfleet_rev_F40PH_sprite;
 }
@@ -733,14 +733,14 @@ switch(FEAT_TRAINS, SELF, sw_Comet_Car_reverse_as_F40PH, vehicle_type_id) {
     625:  sw_Comet_V_Car_rev_F40PH;
 }
 
-switch(FEAT_TRAINS, PARENT, sw_Comet_Car_flipping_reverse, count_veh_id(215)) {
+switch(FEAT_TRAINS, PARENT, sw_Comet_Car_flipping_reverse, count_veh_id(item_F40PH)) {
     0: sw_Comet_Car_rev;
     sw_Comet_Car_reverse_as_F40PH;
 }
 switch(FEAT_TRAINS, PARENT, sw_Comet_Car_flipping, (
     vehicle_is_reversed
     && ((count_veh_id(616) + count_veh_id(618) + count_veh_id(620) + count_veh_id(622) + count_veh_id(624)) == 2)
-    && ((count_veh_id(404) + count_veh_id(409) + count_veh_id(215)) == 1)
+    && ((count_veh_id(404) + count_veh_id(409) + count_veh_id(item_F40PH)) == 1)
 )) {
     0:  sw_Comet_Car;
     sw_Comet_Car_flipping_reverse;
@@ -1169,7 +1169,7 @@ switch(FEAT_TRAINS, SELF, sw_Multilevel_Cab_graphics, position_in_vehid_chain % 
 /*
  * Car graphics
  */
-switch(FEAT_TRAINS, PARENT, sw_Multilevel_Car_flipping_reverse, count_veh_id(215)) {
+switch(FEAT_TRAINS, PARENT, sw_Multilevel_Car_flipping_reverse, count_veh_id(item_F40PH)) {
     0: spriteset_Multilevel_Car_rev;
     spriteset_Multilevel_Car_rev_F40PH;
 }
@@ -1270,7 +1270,7 @@ item(FEAT_TRAINS, item_Multilevel_Car, 613) {
     }
     graphics {
         purchase:                       spriteset_Multilevel_Car_purchase;
-        additional_text:                return string(STR_Obsolete_Desc);
+        additional_text:                string(STR_Obsolete_Desc);
         length:                         (position_in_vehid_chain % 2) == 0 ? 1 : 8;
         articulated_part:               sw_One_more_articulated;
         default:                        sw_Multilevel_Car_graphics;
@@ -1383,7 +1383,7 @@ item(FEAT_TRAINS, item_Metroliner_Cab, 638) {
     }
     graphics {
         purchase:                       sw_Metroliner_Cab_purchase;
-        additional_text:                return string(STR_Metroliner_Cab_Desc);
+        additional_text:                string(STR_Metroliner_Cab_Desc);
         sound_effect:                   CB_RESULT_NO_SOUND;
         length:                         (position_in_vehid_chain % 2) == 0 ? 1 : 8;
         visual_effect_and_powered:      sw_Metroliner_effect;
@@ -1479,14 +1479,14 @@ switch(FEAT_TRAINS, SELF, sw_Gallery_Car_rev_as_F40PH, cargo_subtype) {
     spriteset_Gallery_Car_Caltrain_rev_F40PH;
 }
 
-switch(FEAT_TRAINS, PARENT, sw_Gallery_Car_flipping_reverse, count_veh_id(215)) {
+switch(FEAT_TRAINS, PARENT, sw_Gallery_Car_flipping_reverse, count_veh_id(item_F40PH)) {
     0: sw_Gallery_Car_rev;
     sw_Gallery_Car_rev_as_F40PH;
 }
 switch(FEAT_TRAINS, PARENT, sw_Gallery_Car_flipping, (
     vehicle_is_reversed
-    && count_veh_id(640)
-    && (count_veh_id(214) || count_veh_id(215) || count_veh_id(409))
+    && count_veh_id(item_Gallery_Cab)
+    && (count_veh_id(item_F40C) || count_veh_id(item_F40PH) || count_veh_id(409))
 )) {
     0:  sw_Gallery_Car;
     sw_Gallery_Car_flipping_reverse;
