@@ -1,0 +1,175 @@
+//------------------------------------------------------UAC Turbotrain
+spriteset(spriteset_purchase_Turbotrain_CN, "gfx/Canada_UAC_Turbotrain_CN.png") { [4, 97, 87, 13, -27, -9] }
+
+template tmpl_Turbotrain(x,y) {
+    [x,       y,     8,      24,     -3,      -12]
+    [x+9,     y,     22,     20,     -14,     -9]
+    [x+32,    y,     32,     16,     -16,     -12]
+    [x+65,    y,     22,     20,     -8,      -11]
+}
+
+template tmpl_Turbotrain_coach_1(x,y) {
+    [x,      y,    8,     24,     -3,    -12]
+    [x+9,    y,    22,    20,     -14,   -10]
+    [x+32,   y,    32,    16,     -16,   -12]
+    [x+65,   y,    22,    20,     -6,    -11]
+}
+
+template tmpl_Turbotrain_coach_2(x,y) {
+    [x,      y,    8,     24,     -3,   -10]
+    [x+9,    y,    22,    20,     -16,   -9]
+    [x+32,   y,    32,    16,     -20,  -12]
+    [x+65,   y,    22,    20,     -8,   -12]
+}
+
+spriteset (spriteset_Turbotrain_f, "gfx/Canada_UAC_Turbotrain_CN.png") { tmpl_Turbotrain(4,4) tmpl_Turbotrain(92,4) }
+spriteset (spriteset_Turbotrain_b, "gfx/Canada_UAC_Turbotrain_CN.png") { tmpl_Turbotrain(92,35) tmpl_Turbotrain(4,35) }
+spriteset (spriteset_Turbotrain_w, "gfx/Canada_UAC_Turbotrain_CN.png") { tmpl_Turbotrain_coach_1(4,66) tmpl_Turbotrain_coach_2(92,66)}
+spriteset (spriteset_Turbotrain_f_VIA, "gfx/Canada_UAC_Turbotrain_VIA.png") { tmpl_Turbotrain(4,4) tmpl_Turbotrain(92,4) }
+spriteset (spriteset_Turbotrain_b_VIA, "gfx/Canada_UAC_Turbotrain_VIA.png") { tmpl_Turbotrain(92,35) tmpl_Turbotrain(4,35) }
+spriteset (spriteset_Turbotrain_w_VIA, "gfx/Canada_UAC_Turbotrain_VIA.png") { tmpl_Turbotrain_coach_1(4,66) tmpl_Turbotrain_coach_2(92,66)}
+spriteset (spriteset_Turbotrain_f_AMTK, "gfx/USA_Amtrak_UAC_Turbotrain.png") { tmpl_Turbotrain(4,4) tmpl_Turbotrain(92,4) }
+spriteset (spriteset_Turbotrain_b_AMTK, "gfx/USA_Amtrak_UAC_Turbotrain.png") { tmpl_Turbotrain(92,35) tmpl_Turbotrain(4,35) }
+spriteset (spriteset_Turbotrain_w_AMTK, "gfx/USA_Amtrak_UAC_Turbotrain.png") { tmpl_Turbotrain_coach_1(4,66) tmpl_Turbotrain_coach_2(92,66)}
+spriteset (spriteset_invi, "gfx/Canada_UAC_Turbotrain_CN.png")         { [4, 4, 1, 1, -3, -12] }
+
+switch(FEAT_TRAINS, SELF, sw_Turbotrain_articulated_part, extra_callback_info1) {
+    1..8:  return item_Turbotrain;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+switch(FEAT_TRAINS, SELF, sw_Turbotrain_livery, cargo_subtype) {
+    0:  return string(STR_Turbotrain_livery_1);
+    1:  return string(STR_Turbotrain_livery_2);
+    2:  return string(STR_Turbotrain_livery_3);
+    string(STR_Turbotrain_livery_4);
+}
+
+switch(FEAT_TRAINS, SELF, sw_Turbotrain_length_1, position_in_articulated_veh) {
+    0:  8;
+    1..2:  3;
+    3:  1;
+    4..5:  3;
+    6:  1;
+    7:  7;
+    8;
+}
+switch(FEAT_TRAINS, SELF, sw_Turbotrain_length_2, position_in_articulated_veh) {
+    0:  8;
+    1:  6;
+    2:  1;
+    3:  6;
+    4:  1;
+    5..7:  7;
+    8;
+}
+switch(FEAT_TRAINS, SELF, sw_Turbotrain_length_3, position_in_articulated_veh) {
+    1..7:  7;
+    8;
+}
+switch(FEAT_TRAINS, SELF, sw_Turbotrain_length, cargo_subtype) {
+    0:  sw_Turbotrain_length_1;
+    1:  sw_Turbotrain_length_2;
+    sw_Turbotrain_length_3;
+}
+
+switch(FEAT_TRAINS, SELF, sw_Turbotrain_capacity_1, position_in_articulated_veh) {
+    0:  46;
+    1..2:  0;
+    3:  46;
+    4..5:  0;
+    46;
+}
+switch(FEAT_TRAINS, SELF, sw_Turbotrain_capacity_2, position_in_articulated_veh) {
+    0..1:  46;
+    2:  0;
+    3:  46;
+    4:  0;
+    46;
+}
+switch(FEAT_TRAINS, SELF, sw_Turbotrain_capacity, cargo_subtype) {
+    0:  sw_Turbotrain_capacity_1;
+    1:  sw_Turbotrain_capacity_2;
+    46;
+}
+
+switch(FEAT_TRAINS, SELF, sw_Turbotrain_graphics_1, position_in_articulated_veh) {
+    0:  spriteset_Turbotrain_f_AMTK;
+    1:  spriteset_Turbotrain_w_AMTK;
+    2..3:  spriteset_invi;
+    4:  spriteset_Turbotrain_w_AMTK;
+    5..6:  spriteset_invi;
+    7:  spriteset_Turbotrain_w_AMTK;
+    spriteset_Turbotrain_b_AMTK;
+}
+switch(FEAT_TRAINS, SELF, sw_Turbotrain_graphics_2, position_in_articulated_veh) {
+    0:  spriteset_Turbotrain_f;
+    1:  spriteset_Turbotrain_w;
+    2:  spriteset_invi;
+    3:  spriteset_Turbotrain_w;
+    4:  spriteset_invi;
+    5..7:  spriteset_Turbotrain_w;
+    spriteset_Turbotrain_b;
+}
+switch(FEAT_TRAINS, SELF, sw_Turbotrain_graphics_3, position_in_articulated_veh) {
+    0:  spriteset_Turbotrain_f;
+    1..7:  spriteset_Turbotrain_w;
+    spriteset_Turbotrain_b;
+}
+
+switch(FEAT_TRAINS, SELF, sw_Turbotrain_graphics_4, position_in_articulated_veh) {
+    0:  spriteset_Turbotrain_f_VIA;
+    1..7:  spriteset_Turbotrain_w_VIA;
+    spriteset_Turbotrain_b_VIA;
+}
+
+switch(FEAT_TRAINS, SELF, sw_Turbotrain_graphics, cargo_subtype) {
+    0:  sw_Turbotrain_graphics_1;
+    1:  sw_Turbotrain_graphics_2;
+    2:  sw_Turbotrain_graphics_3;
+    sw_Turbotrain_graphics_4;
+}
+
+
+item(FEAT_TRAINS, item_Turbotrain, 501) {
+    property {
+        name:                         string(STR_Turbotrain_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1968, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 25;
+        reliability_decay:            14;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                19;
+        cost_factor:                  89;
+        running_cost_factor:          189;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        145 mph;
+        misc_flags:                   bitmask(TRAIN_FLAG_MU);
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        2000 hp;
+        running_cost_base:            RUNNING_COST_DIESEL;
+        dual_headed:                  0;
+        cargo_capacity:               46;
+        weight:                       168 ton;
+        ai_engine_rank:               0;
+        engine_class:                 ENGINE_CLASS_DIESEL;
+        extra_power_per_wagon:        0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_purchase_Turbotrain_CN;
+        additional_text:          return string(STR_Turboliner_Desc);
+        articulated_part:         sw_Turbotrain_articulated_part;
+        cargo_subtype_text:       sw_Turbotrain_livery;
+        length:                   sw_Turbotrain_length;
+        cargo_capacity:           sw_Turbotrain_capacity;
+        default:                  sw_Turbotrain_graphics;
+    }
+}

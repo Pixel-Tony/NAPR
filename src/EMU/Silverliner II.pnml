@@ -1,0 +1,56 @@
+//--------------------------------------------------------------------------------------------------Silverliner II
+spriteset (spriteset_purchase_Silverliner_II, "gfx/USA_SEPT_Silverliner_II.png") { [4,  66,  87,  15,  -15,  -11] }
+template tmpl_Silverliner_II(x,y) {
+    [x,      y,  8, 24,      -3,    -11]
+    [x + 9,  y, 22, 20,     -14,    -10]
+    [x + 32, y, 32, 16,     -16,    -12]
+    [x + 65, y, 22, 20,      -8,    -11]
+}
+spriteset (spriteset_Silverliner_II_front, "gfx/USA_SEPT_Silverliner_II.png") { tmpl_Silverliner_II(4,4) tmpl_Silverliner_II(92,4) }
+spriteset (spriteset_Silverliner_II_middle, "gfx/USA_SEPT_Silverliner_II.png") { tmpl_Silverliner_II(4,35) tmpl_Silverliner_II(92,35) }
+
+switch(FEAT_TRAINS, SELF, sw_Silverliner_II_graphics, position_in_consist) {
+    0:  spriteset_Silverliner_II_front;
+    spriteset_Silverliner_II_middle;
+}
+
+item(FEAT_TRAINS, item_Silverliner_II, 317) {
+    property {
+        name:                         string(STR_Silverliner_II_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1963, 1, 16);
+        model_life:                   49;
+        vehicle_life:                 34;
+        reliability_decay:            15;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                7;
+        cost_factor:                  40;
+        running_cost_factor:          140;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        145 km/h;
+        misc_flags:                   bitmask(TRAIN_FLAG_MU);
+        refit_cost:                   0;
+        track_type:                   ELRL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        410 kW;
+        running_cost_base:            RUNNING_COST_ELECTRIC;
+        dual_headed:                  0;
+        cargo_capacity:               126;
+        weight:                       46 ton;
+        ai_engine_rank:               0;
+        engine_class:                 ENGINE_CLASS_ELECTRIC;
+        extra_power_per_wagon:        0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 2, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_purchase_Silverliner_II;
+        additional_text:          return string(STR_Silverliner_II_Desc);
+        length:                   8;
+        default:                  sw_Silverliner_II_graphics;
+    }
+}

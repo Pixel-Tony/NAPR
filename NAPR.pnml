@@ -1,0 +1,46 @@
+#add src/header
+#add src/EMU/MP54
+#add src/EMU/Budd Metroliner I
+#add src/EMU/Arrow III
+#add src/Diesel/SPV-2000
+#add src/Push-Pull
+#add src/Push-Pull 2
+#add src/Diesel/EMD F3
+#add src/EMU/Highliner I
+#add src/EMU/Highliner II
+#add src/Wagons/Budd NYC Lightweight
+#add src/Wagons/Horizon
+#add src/Diesel/EMD E7
+#add src/Diesel/EMD E8
+#add src/Diesel/EMD E9
+#add src/Diesel/Budd RDC
+#add src/EMU/Silverliner II
+#add src/EMU/MN M2
+#add src/EMU/Canada MR-90
+#add src/Wagons/Budd Superliner I
+#add src/Push-Pull 3
+#add src/DMU/RTG Turboliner
+#add src/Diesel/ALCO PA
+#add src/EMU/MN M7
+#add src/EMU/MN M8
+#add src/EMU/Acela Express
+#add src/EMU/Canada CN EMU
+#add src/Wagons/NYC Heavyweight
+#add src/DMU/Pioneer Zephyr
+#add src/Diesel/EMD F7
+#add src/Wagons/NYC 20th ltd
+#add src/Wagons/Budd ATSF LW
+#add src/Wagons/Amtrak Baggage
+#add src/Diesel/EMD FP45
+#add src/Diesel/EMD F9
+#add src/Steam/SP GS-4
+#add src/Electric/PRR GG1
+#add src/DMU/UAC Turbotrain
+#add src/Wagons/The Canadian
+#add src/Steam/NYC Hudson
+#add src/EMU/Erie Lackawanna
+#add src/Electric/NYC S-Motor
+#add src/Steam/PRR K4s
+#add src/Wagons/PRR HW
+#add src/EMU/Budd M1(a)-M3(a)
+#add src/sort

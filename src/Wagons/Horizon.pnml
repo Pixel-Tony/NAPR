@@ -1,0 +1,188 @@
+//--------------------------------------------------------------------------------------------------Horizon
+spriteset (spriteset_Horizon_Coach_Ph3_purchase, "gfx/USA_Amtrak_Horizon.png") { [38, 4, 36, 16, -19, -12] }
+spriteset (spriteset_Horizon_Coach_Ph4_purchase, "gfx/USA_Amtrak_Horizon.png") { [38, 37, 36, 16, -19, -12] }
+
+spriteset (spriteset_Horizon_Cafe_Ph3_purchase, "gfx/USA_Amtrak_Horizon.png") { [134, 4, 36, 16, -19, -12] }
+spriteset (spriteset_Horizon_Cafe_Ph4_purchase, "gfx/USA_Amtrak_Horizon.png") { [134, 37, 36, 16, -19, -12] }
+
+switch(FEAT_TRAINS, SELF, sw_Horizon_Coach_purchase, current_year) {
+    0..1992:    spriteset_Horizon_Coach_Ph3_purchase;
+    spriteset_Horizon_Coach_Ph4_purchase;
+}
+switch(FEAT_TRAINS, SELF, sw_Horizon_Cafe_purchase, current_year) {
+    0..1992:    spriteset_Horizon_Cafe_Ph3_purchase;
+    spriteset_Horizon_Cafe_Ph4_purchase;
+}
+
+spriteset (spriteset_Horizon_Coach_Phase_III, "gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_1(4, 4) tmpl_L_nine_2(4, 4) }
+spriteset (spriteset_Horizon_Coach_Phase_IV, "gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_1(4, 37) tmpl_L_nine_2(4, 37) }
+spriteset (spriteset_Horizon_Cafe_Phase_III, "gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_1(100, 4) tmpl_L_nine_2(100, 4) }
+spriteset (spriteset_Horizon_Cafe_Phase_IV, "gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_1(100, 37) tmpl_L_nine_2(100, 37) }
+
+spriteset (spriteset_Horizon_Coach_Phase_III_rev, "gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_2(4, 4) tmpl_L_nine_1(4, 4) }
+spriteset (spriteset_Horizon_Coach_Phase_IV_rev, "gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_2(4, 37) tmpl_L_nine_1(4, 37) }
+spriteset (spriteset_Horizon_Cafe_Phase_III_rev, "gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_2(100, 4) tmpl_L_nine_1(100, 4) }
+spriteset (spriteset_Horizon_Cafe_Phase_IV_rev, "gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_2(100, 37) tmpl_L_nine_1(100, 37) }
+
+spriteset (spriteset_Horizon_Coach_Phase_III_rev_F40PH, "gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_for_7_2(4, 4) tmpl_L_nine_for_7_1(4, 4) }
+spriteset (spriteset_Horizon_Coach_Phase_IV_rev_F40PH, "gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_for_7_2(4, 37) tmpl_L_nine_for_7_1(4, 37) }
+spriteset (spriteset_Horizon_Cafe_Phase_III_rev_F40PH, "gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_for_7_2(100, 4) tmpl_L_nine_for_7_1(100, 4) }
+spriteset (spriteset_Horizon_Cafe_Phase_IV_rev_F40PH, "gfx/USA_Amtrak_Horizon.png") { tmpl_L_nine_for_7_2(100, 37) tmpl_L_nine_for_7_1(100, 37) }
+
+// Normal sprites
+switch(FEAT_TRAINS, SELF, sw_Horizon_Phase_III, vehicle_type_id) {
+    706:    spriteset_Horizon_Coach_Phase_III;
+    707:    spriteset_Horizon_Cafe_Phase_III;
+}
+switch(FEAT_TRAINS, SELF, sw_Horizon_Phase_IV, vehicle_type_id) {
+    706:    spriteset_Horizon_Coach_Phase_IV;
+    707:    spriteset_Horizon_Cafe_Phase_IV;
+}
+switch(FEAT_TRAINS, SELF, sw_Horizon_sprite_by_year, current_year) {
+    0..1992: sw_Horizon_Phase_III;
+    sw_Horizon_Phase_IV;
+}
+switch(FEAT_TRAINS, SELF, sw_Horizon_sprite, cargo_subtype) {
+    0:  sw_Horizon_sprite_by_year;
+    1:  sw_Horizon_Phase_III;
+    sw_Horizon_Phase_IV;
+}
+
+// Reverse sprites
+switch(FEAT_TRAINS, SELF, sw_Horizon_Phase_III_rev, vehicle_type_id) {
+    706:    spriteset_Horizon_Coach_Phase_III_rev;
+    707:    spriteset_Horizon_Cafe_Phase_III_rev;
+}
+switch(FEAT_TRAINS, SELF, sw_Horizon_Phase_IV_rev, vehicle_type_id) {
+    706:    spriteset_Horizon_Coach_Phase_IV_rev;
+    707:    spriteset_Horizon_Cafe_Phase_IV_rev;
+}
+switch(FEAT_TRAINS, SELF, sw_Horizon_rev_sprite_by_year, current_year) {
+    0..1992: sw_Horizon_Phase_III_rev;
+    sw_Horizon_Phase_IV_rev;
+}
+switch(FEAT_TRAINS, SELF, sw_Horizon_rev_sprite, cargo_subtype) {
+    0:  sw_Horizon_rev_sprite_by_year;
+    1:  sw_Horizon_Phase_III_rev;
+    sw_Horizon_Phase_IV_rev;
+}
+
+// Reverse with leading F40PH sprites
+switch(FEAT_TRAINS, SELF, sw_Horizon_Phase_III_rev_F40PH, vehicle_type_id) {
+    706:    spriteset_Horizon_Coach_Phase_III_rev_F40PH;
+    707:    spriteset_Horizon_Cafe_Phase_III_rev_F40PH;
+}
+switch(FEAT_TRAINS, SELF, sw_Horizon_Phase_IV_rev_F40PH, vehicle_type_id) {
+    706:    spriteset_Horizon_Coach_Phase_IV_rev_F40PH;
+    707:    spriteset_Horizon_Cafe_Phase_IV_rev_F40PH;
+}
+switch(FEAT_TRAINS, SELF, sw_Horizon_rev_F40PH_sprite_by_year, current_year) {
+    0..1992: sw_Horizon_Phase_III_rev_F40PH;
+    sw_Horizon_Phase_IV_rev_F40PH;
+}
+switch(FEAT_TRAINS, SELF, sw_Horizon_rev_F40PH_sprite, cargo_subtype) {
+    0:  sw_Horizon_rev_F40PH_sprite_by_year;
+    1:  sw_Horizon_Phase_III_rev_F40PH;
+    sw_Horizon_Phase_IV_rev_F40PH;
+}
+
+// Main logic
+switch(FEAT_TRAINS, PARENT, sw_Horizon_reverse, count_veh_id(215)) {
+    0:  sw_Horizon_rev_sprite;
+    sw_Horizon_rev_F40PH_sprite;
+}
+switch(FEAT_TRAINS, PARENT, sw_Horizon_graphics2, vehicle_is_reversed && count_veh_id(638)) {
+    0:  sw_Horizon_sprite;
+    sw_Horizon_reverse;
+}
+switch(FEAT_TRAINS, SELF, sw_Horizon_graphics, position_in_vehid_chain % 2) {
+    0:  spriteset_obsolete;
+    sw_Horizon_graphics2;
+}
+// Refit text and choice
+switch(FEAT_TRAINS, SELF, sw_Horizon_livery_names2, cargo_subtype) {
+    0:  string(STR_Livery_Auto);
+    1:  string(STR_Amtrak_Phase_III);
+    2:  string(STR_Amtrak_Phase_IV);
+}
+switch(FEAT_TRAINS, SELF, sw_Horizon_livery_names, current_year) {
+    0..1992:  string(STR_Livery_Auto);
+    sw_Horizon_livery_names2;
+}
+
+item(FEAT_TRAINS, item_Horizon_Coach, 706) {
+    property {
+        name:                           string(STR_Horizon_Coach_Name);
+        climates_available:             bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:              date(1989, 1, 6);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   20;
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   bitmask();
+        loading_speed:                  13;
+        cost_factor:                    121;
+        running_cost_factor:            1;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        speed:                          201 km/h;
+        misc_flags:                     bitmask();
+        refit_cost:                     0;
+        track_type:                     RAIL;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        power:                          0;
+        cargo_capacity:                 42;
+        weight:                         49 ton;
+        ai_engine_rank:                 0;
+        tractive_effort_coefficient:    0.3;
+        air_drag_coefficient:           0.06;
+        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:         0;
+        bitmask_vehicle_info:           0;
+    }
+    graphics {
+        purchase:                       sw_Horizon_Coach_purchase;
+        additional_text:                return string(STR_Horizon_Desc);
+        length:                         (position_in_vehid_chain % 2 == 0) ? 1 : 8;
+        cargo_subtype_text:             sw_Horizon_livery_names;
+        purchase_cargo_capacity:        84;
+        articulated_part:               sw_One_more_articulated;
+        default:                        sw_Horizon_graphics;
+    }
+}
+item(FEAT_TRAINS, item_Horizon_Cafe, 707) {
+    property {
+        name:                           string(STR_Horizon_Cafe_Name);
+        climates_available:             bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:              date(1989, 1, 6);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   20;
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   bitmask();
+        loading_speed:                  13;
+        cost_factor:                    121;
+        running_cost_factor:            1;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        speed:                          201 km/h;
+        misc_flags:                     bitmask();
+        refit_cost:                     0;
+        track_type:                     RAIL;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        power:                          0;
+        cargo_capacity:                 34;
+        weight:                         49 ton;
+        ai_engine_rank:                 0;
+        tractive_effort_coefficient:    0.3;
+        air_drag_coefficient:           0.06;
+        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:         0;
+        bitmask_vehicle_info:           0;
+    }
+    graphics {
+        purchase:                       sw_Horizon_Cafe_purchase;
+        additional_text:                return string(STR_Horizon_Desc);
+        length:                         (position_in_vehid_chain % 2 == 0) ? 1 : 8;
+        purchase_cargo_capacity:        68;
+        cargo_subtype_text:             sw_Horizon_livery_names;
+        articulated_part:               sw_One_more_articulated;
+        default:                        sw_Horizon_graphics;
+    }
+}

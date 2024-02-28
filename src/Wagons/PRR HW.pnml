@@ -1,0 +1,437 @@
+//--------------------------------------------------------------------------------------------------PRR Heavyweight
+template tmpl_PRR_Heavyweight_long(x,y) {
+    [x,      y,    8,     26,     -3,    -14]
+    [x+9,    y,    24,    21,     -16,   -10]
+    [x+34,   y,    36,    16,     -20,   -12]
+    [x+71,   y,    24,    21,     -10,   -12]
+}
+template tmpl_PRR_Heavyweight_long_second(x,y) {
+    [x,      y,    8,     26,     -3,    -12]
+    [x+9,    y,    24,    21,     -14,   -11]
+    [x+34,   y,    36,    16,     -16,   -12]
+    [x+71,   y,    24,    21,     -8,    -11]
+}
+template tmpl_PRR_Heavyweight(x,y) {
+    [x,      y,    8,     26,     -3,    -10]
+    [x+9,    y,    24,    21,     -14,   -11]
+    [x+34,   y,    36,    16,     -16,   -12]
+    [x+71,   y,    24,    21,     -10,   -12]
+}
+
+template tmpl_PRR_Heavyweight2(x,y) {
+    [x,      y,    8,     26,     -3,    -10]
+    [x+9,    y,    24,    21,     -14,   -11]
+    [x+34,   y,    36,    16,     -16,   -12]
+    [x+71,   y,    24,    21,     -8,    -12]
+}
+template tmpl_PRR_Heavyweight_short(x,y) {
+    [x,      y,    8,     26,     -3,    -8]
+    [x+9,    y,    24,    21,     -12,   -12]
+    [x+34,   y,    36,    16,     -12,   -12]
+    [x+71,   y,    24,    21,     -10,   -12]
+}
+
+template tmpl_PRR_Heavyweight_short_second(x,y) {
+    [x,      y,    8,     26,     -3,    -8]
+    [x+9,    y,    24,    21,     -14,   -11]
+    [x+34,   y,    36,    16,     -16,   -12]
+    [x+71,   y,    24,    21,     -12,   -13]
+}
+
+spriteset (spriteset_PRR_Heavyweight_Coach_purchase, "gfx/USA_PRR_Heavyweight.png")       { [38, 4, 36, 16, -19, -12] }
+spriteset (spriteset_PRR_Heavyweight_Lunch_purchase, "gfx/USA_PRR_Heavyweight.png")       { [38, 37, 36, 16, -19, -12] }
+spriteset (spriteset_PRR_Heavyweight_Diner_purchase, "gfx/USA_PRR_Heavyweight.png")       { [38, 70, 36, 16, -19, -12] }
+spriteset (spriteset_PRR_Heavyweight_Combine_purchase, "gfx/USA_PRR_Heavyweight.png")     { [38, 103, 36, 16, -19, -12] }
+spriteset (spriteset_PRR_Heavyweight_Baggage_purchase, "gfx/USA_PRR_Heavyweight.png")     { [38, 136, 36, 16, -11, -12] }
+spriteset (spriteset_PRR_Heavyweight_Baggage_RPO_purchase, "gfx/USA_PRR_Heavyweight.png") { [38, 169, 36, 16, -15, -12] }
+spriteset (spriteset_PRR_Heavyweight_Sleeper_purchase, "gfx/USA_PRR_Heavyweight.png")    { [38, 202, 36, 16, -19, -12] }
+spriteset (spriteset_PRR_Heavyweight_Observation_purchase, "gfx/USA_PRR_Heavyweight.png") { [38, 235, 36, 16, -19, -12] }
+
+spriteset (spriteset_PRR_Heavyweight_Coach, "gfx/USA_PRR_Heavyweight.png")       { tmpl_PRR_Heavyweight_long(4,4)    tmpl_PRR_Heavyweight_long_second(100,4) }
+spriteset (spriteset_PRR_Heavyweight_Lunch, "gfx/USA_PRR_Heavyweight.png")       { tmpl_PRR_Heavyweight_long(4,37)   tmpl_PRR_Heavyweight_long_second(100,37) }
+spriteset (spriteset_PRR_Heavyweight_Diner, "gfx/USA_PRR_Heavyweight.png")       { tmpl_PRR_Heavyweight_long(4,70)   tmpl_PRR_Heavyweight_long_second(100,70) }
+spriteset (spriteset_PRR_Heavyweight_Combine, "gfx/USA_PRR_Heavyweight.png")     { tmpl_PRR_Heavyweight_long(4,103)  tmpl_PRR_Heavyweight_long_second(100,103) }
+spriteset (spriteset_PRR_Heavyweight_Baggage, "gfx/USA_PRR_Heavyweight.png")     { tmpl_PRR_Heavyweight_short(4,136) tmpl_PRR_Heavyweight_short_second(100,136) }
+spriteset (spriteset_PRR_Heavyweight_Baggage_RPO, "gfx/USA_PRR_Heavyweight.png") { tmpl_PRR_Heavyweight(4,169)       tmpl_PRR_Heavyweight(100,169) }
+spriteset (spriteset_PRR_Heavyweight_Sleeper, "gfx/USA_PRR_Heavyweight.png")    { tmpl_PRR_Heavyweight_long(4, 202) tmpl_PRR_Heavyweight_long_second(100, 202) }
+spriteset (spriteset_PRR_Heavyweight_Observation, "gfx/USA_PRR_Heavyweight.png") { tmpl_PRR_Heavyweight_long(4,235)  tmpl_PRR_Heavyweight_long_second(100,235) }
+
+switch(FEAT_TRAINS,SELF,sw_PRR_Heavyweight_Coach_articulated, extra_callback_info1) {
+    1:  item_PRR_Heavyweight_Coach;
+    CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+switch(FEAT_TRAINS,SELF,sw_PRR_Heavyweight_Coach_graphics, position_in_vehid_chain % 2) {
+    0:  spriteset_PRR_Heavyweight_Coach;
+    spriteset_obsolete;
+}
+
+item(FEAT_TRAINS, item_PRR_Heavyweight_Coach, 760) {
+    property {
+        name:                         string(STR_PRR_Heavyweight_Coach_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1880, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 22;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                12;
+        cost_factor:                  140;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        80 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               34;
+        weight:                       60 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_PRR_Heavyweight_Coach_purchase;
+        additional_text:          return string(STR_Obsolete_Desc);
+        articulated_part:         sw_PRR_Heavyweight_Coach_articulated;
+        length:                   (position_in_vehid_chain % 2) == 0 ? 8 : 1;
+        default:                  sw_PRR_Heavyweight_Coach_graphics;
+    }
+}
+
+switch(FEAT_TRAINS,SELF,sw_PRR_Heavyweight_Lunch_articulated, extra_callback_info1) {
+    1:  item_PRR_Heavyweight_Lunch;
+    CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+switch(FEAT_TRAINS,SELF,sw_PRR_Heavyweight_Lunch_graphics, position_in_vehid_chain % 2) {
+    0:  spriteset_PRR_Heavyweight_Lunch;
+    spriteset_obsolete;
+}
+
+item(FEAT_TRAINS, item_PRR_Heavyweight_Lunch, 761) {
+    property {
+        name:                         string(STR_PRR_Heavyweight_Lunch_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1880, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 22;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                12;
+        cost_factor:                  145;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        80 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               28;
+        weight:                       63 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_PRR_Heavyweight_Lunch_purchase;
+        articulated_part:         sw_PRR_Heavyweight_Lunch_articulated;
+        additional_text:          return string(STR_Obsolete_Desc);
+        length:                   (position_in_vehid_chain % 2) == 0 ? 8 : 1;
+        default:                  sw_PRR_Heavyweight_Lunch_graphics;
+    }
+}
+
+switch(FEAT_TRAINS,SELF,sw_PRR_Heavyweight_Diner_articulated, extra_callback_info1) {
+    1:  item_PRR_Heavyweight_Diner;
+    CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+switch(FEAT_TRAINS,SELF,sw_PRR_Heavyweight_Diner_graphics, position_in_vehid_chain % 2) {
+    0:  spriteset_PRR_Heavyweight_Diner;
+    spriteset_obsolete;
+}
+
+item(FEAT_TRAINS, item_PRR_Heavyweight_Diner, 762) {
+    property {
+        name:                         string(STR_PRR_Heavyweight_Diner_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1880, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 24;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                14;
+        cost_factor:                  150;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        80 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               27;
+        weight:                       64 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_PRR_Heavyweight_Diner_purchase;
+        articulated_part:         sw_PRR_Heavyweight_Diner_articulated;
+        additional_text:          return string(STR_Obsolete_Desc);
+        length:                   (position_in_vehid_chain % 2) == 0 ? 8 : 1;
+        default:                  sw_PRR_Heavyweight_Diner_graphics;
+    }
+}
+
+switch(FEAT_TRAINS, SELF, sw_PRR_Heavyweight_Combine_articulated, extra_callback_info1) {
+    1:  item_PRR_Heavyweight_Combine_secret;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+item(FEAT_TRAINS, item_PRR_Heavyweight_Combine, 763) {
+    property {
+        name:                         string(STR_PRR_Heavyweight_Combine_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1880, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 24;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                12;
+        cost_factor:                  145;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        80 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               32;
+        weight:                       62 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_PRR_Heavyweight_Combine_purchase;
+        articulated_part:         sw_PRR_Heavyweight_Combine_articulated;
+        additional_text:          return string(STR_Obsolete_Desc);
+        length:                   8;
+        default:                  spriteset_PRR_Heavyweight_Combine;
+    }
+}
+
+item(FEAT_TRAINS, item_PRR_Heavyweight_Combine_secret, 1763) {
+    property {
+        name:                         string(STR_PRR_Heavyweight_Combine_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(5000000, 1, 1);
+        model_life:                   1;
+        vehicle_life:                 24;
+        refittable_cargo_classes:     bitmask(CC_MAIL);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                12;
+        cost_factor:                  145;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        80 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               40;
+        weight:                       1 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_PRR_Heavyweight_Combine_purchase;
+        additional_text:          return string(STR_Obsolete_Desc);
+        length:                   1;
+        default:                  spriteset_obsolete;
+    }
+}
+
+item(FEAT_TRAINS, item_PRR_Heavyweight_Baggage, 764) {
+    property {
+        name:                         string(STR_PRR_Heavyweight_Baggage_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1880, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 27;
+        refittable_cargo_classes:     bitmask(CC_MAIL);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                20;
+        cost_factor:                  145;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        80 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               90;
+        weight:                       58 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_PRR_Heavyweight_Baggage_purchase;
+        additional_text:          return string(STR_Obsolete_Desc);
+        length:                   7;
+        default:                  spriteset_PRR_Heavyweight_Baggage;
+    }
+}
+
+item(FEAT_TRAINS, item_PRR_Heavyweight_Baggage_RPO, 765) {
+    property {
+        name:                         string(STR_PRR_Heavyweight_Baggage_RPO_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1880, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 27;
+        refittable_cargo_classes:     bitmask(CC_MAIL);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                20;
+        cost_factor:                  148;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        80 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               86;
+        weight:                       55 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_PRR_Heavyweight_Baggage_RPO_purchase;
+        additional_text:          return string(STR_Obsolete_Desc);
+        length:                   8;
+        default:                  spriteset_PRR_Heavyweight_Baggage_RPO;
+    }
+}
+
+switch(FEAT_TRAINS,SELF,sw_PRR_Heavyweight_Sleeper_articulated, extra_callback_info1) {
+    1:  item_PRR_Heavyweight_Sleeper;
+    CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+switch(FEAT_TRAINS,SELF,sw_PRR_Heavyweight_Sleeper_graphics, position_in_vehid_chain % 2) {
+    0:  spriteset_PRR_Heavyweight_Sleeper;
+    spriteset_obsolete;
+}
+
+item(FEAT_TRAINS, item_PRR_Heavyweight_Sleeper, 766) {
+    property {
+        name:                         string(STR_PRR_Heavyweight_Sleeper_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1880, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 25;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                11;
+        cost_factor:                  155;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        80 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               36;
+        weight:                       62 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_PRR_Heavyweight_Sleeper_purchase;
+        additional_text:          return string(STR_Obsolete_Desc);
+        articulated_part:         sw_PRR_Heavyweight_Sleeper_articulated;
+        length:                   (position_in_vehid_chain % 2) == 0 ? 8 : 1;
+        default:                  sw_PRR_Heavyweight_Sleeper_graphics;
+    }
+}
+
+switch(FEAT_TRAINS,SELF,sw_PRR_Heavyweight_Observation_articulated, extra_callback_info1) {
+    1:  item_PRR_Heavyweight_Observation;
+    CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+switch(FEAT_TRAINS,SELF,sw_PRR_Heavyweight_Observation_graphics, position_in_vehid_chain % 2) {
+    0:  spriteset_PRR_Heavyweight_Observation;
+    spriteset_obsolete;
+}
+
+item(FEAT_TRAINS, item_PRR_Heavyweight_Observation, 767) {
+    property {
+        name:                         string(STR_PRR_Heavyweight_Observation_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1880, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 24;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                11;
+        cost_factor:                  149;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        80 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               24;
+        weight:                       61 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_PRR_Heavyweight_Observation_purchase;
+        articulated_part:         sw_PRR_Heavyweight_Observation_articulated;
+        additional_text:          return string(STR_Obsolete_Desc);
+        length:                   (position_in_vehid_chain % 2) == 0 ? 8 : 1;
+        default:                  sw_PRR_Heavyweight_Observation_graphics;
+    }
+}

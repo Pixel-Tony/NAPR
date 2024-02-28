@@ -1,0 +1,84 @@
+//--------------------------------------------------------------------------------------------------Highliner II
+spriteset(spriteset_purchase_Highliner_II, "gfx/USA_Metra_Highliner_II.png") { [4, 97, 87, 16, -27, -12] }
+
+template tmpl_Highliner_II_f(x,y) {
+    [x,      y,    8,     24,     -3,    -12]
+    [x+9,    y,    22,    20,     -14,   -11]
+    [x+32,   y,    32,    16,     -16,   -12]
+    [x+65,   y,    22,    20,     -8,    -13]
+    [x+88,   y,    8,     24,     -3,    -12]
+    [x+97,   y,    22,    20,     -14,   -12]
+    [x+120,  y,    32,    16,     -16,   -12]
+    [x+153,  y,    22,    20,     -8,    -12]
+}
+
+template tmpl_Highliner_II_w(x,y) {
+    [x,      y,    8,     24,     -3,    -12]
+    [x+9,    y,    22,    20,     -14,   -11]
+    [x+32,   y,    32,    16,     -16,   -12]
+    [x+65,   y,    22,    20,     -8,    -12]
+}
+
+spriteset (spriteset_Highliner_II_f, "gfx/USA_Metra_Highliner_II.png") { tmpl_Highliner_II_f(4,4) }
+spriteset (spriteset_Highliner_II_b, "gfx/USA_Metra_Highliner_II.png") { tmpl_Highliner_II_w(92,35) tmpl_Highliner_II_w(4,35) }
+spriteset (spriteset_Highliner_II_w_f, "gfx/USA_Metra_Highliner_II.png") { tmpl_Highliner_II_w(4,66) tmpl_Highliner_II_w(92,66) }
+spriteset (spriteset_Highliner_II_w_b, "gfx/USA_Metra_Highliner_II.png") { tmpl_Highliner_II_w(92,66) tmpl_Highliner_II_w(4,66) }
+
+switch(FEAT_TRAINS, SELF, sw_Highliner_II_articulated_part, extra_callback_info1) {
+    1:   return item_Highliner_II;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+switch(FEAT_TRAINS, SELF, sw_Highliner_II_graphics3, position_in_consist % 2) {
+    0:  spriteset_Highliner_II_w_f;
+    spriteset_Highliner_II_w_b;
+}
+switch(FEAT_TRAINS, SELF, sw_Highliner_II_graphics2, position_in_consist_from_end) {
+    0:  spriteset_Highliner_II_b;
+    sw_Highliner_II_graphics3;
+}
+switch(FEAT_TRAINS, SELF, sw_Highliner_II_graphics, position_in_consist) {
+    0:  spriteset_Highliner_II_f;
+    sw_Highliner_II_graphics2;
+}
+
+item(FEAT_TRAINS, item_Highliner_II, 305) {
+    property {
+        name:                         string(STR_Highliner_II_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(2005, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 35;
+        reliability_decay:            16;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                10;
+        cost_factor:                  45;
+        running_cost_factor:          145;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        130 km/h;
+        misc_flags:                   bitmask(TRAIN_FLAG_MU);
+        refit_cost:                   0;
+        track_type:                   ELRL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        480 kW;
+        running_cost_base:            RUNNING_COST_ELECTRIC;
+        dual_headed:                  0;
+        cargo_capacity:               156;
+        weight:                       64 ton;
+        ai_engine_rank:               0;
+        engine_class:                 ENGINE_CLASS_ELECTRIC;
+        extra_power_per_wagon:        0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_purchase_Highliner_II;
+        articulated_part:         sw_Highliner_II_articulated_part;
+        additional_text:          return string(STR_Highliner_II_Desc);
+        length:                   8;
+        default:                  sw_Highliner_II_graphics;
+    }
+}

@@ -1,0 +1,104 @@
+//--------------------------------------------------------------------------------------------------Budd Pioneer Zephyr
+spriteset (spriteset_Pioneer_Zephyr_purchase, "gfx/USA_Pioneer_Zephyr.png") { [4, 97, 87, 13, -27, -9] }
+
+template tmpl_Pioneer_Zephyr(x,y) {
+      [x,      y,    8,     24,     -3,    -12]
+    [x+9,    y,    22,    20,     -14,   -10]
+    [x+32,   y,    35,    16,     -16,   -13]
+    [x+68,   y,    22,    20,     -8,    -12]
+}
+template tmpl_Pioneer_Zephyr_tail(x,y) {
+      [x,      y,    8,     24,     -3,    -12]
+    [x+9,    y,    22,    20,     -14,   -10]
+    [x+32,   y,    35,    16,     -16,   -13]
+    [x+68,   y,    22,    20,     -8,    -12]
+}
+
+spriteset (spriteset_Pioneer_Zephyr_front, "gfx/USA_Pioneer_Zephyr.png") { tmpl_Pioneer_Zephyr(4,4)  tmpl_Pioneer_Zephyr(95,4) }
+spriteset (spriteset_Pioneer_Zephyr_mid, "gfx/USA_Pioneer_Zephyr.png")   { tmpl_Pioneer_Zephyr(4,35) tmpl_Pioneer_Zephyr(95,35) }
+spriteset (spriteset_Pioneer_Zephyr_end, "gfx/USA_Pioneer_Zephyr.png")   { tmpl_Pioneer_Zephyr(4,66) tmpl_Pioneer_Zephyr(95,66) }
+
+switch(FEAT_TRAINS,SELF,sw_Pioneer_Zephyr_articulated_part, extra_callback_info1) {
+    1:  item_Pioneer_Zephyr;
+    2:  item_Pioneer_Zephyr2;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+switch(FEAT_TRAINS,SELF,sw_Pioneer_Zephyr_graphics, position_in_vehid_chain) {
+    0:  spriteset_Pioneer_Zephyr_front;
+    spriteset_Pioneer_Zephyr_mid;
+}
+
+item(FEAT_TRAINS, item_Pioneer_Zephyr, 236) {
+    property {
+        name:                         string(STR_Pioneer_Zephyr_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1934, 11, 11);
+        model_life:                   118;
+        vehicle_life:                 30;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                19;
+        cost_factor:                  78;
+        running_cost_factor:          178;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        112 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        447 kW;
+        cargo_capacity:               36;
+        weight:                       90 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_Pioneer_Zephyr_purchase;
+        additional_text:          return string(STR_Pioneer_Zephyr_Desc);
+        length:                   8;
+        articulated_part:         sw_Pioneer_Zephyr_articulated_part;
+        default:                  sw_Pioneer_Zephyr_graphics;
+    }
+}
+
+item(FEAT_TRAINS, item_Pioneer_Zephyr2, 1235) {
+    property {
+        name:                         string(STR_Pioneer_Zephyr_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(5000000, 1, 1);
+        model_life:                   7;
+        vehicle_life:                 30;
+        refittable_cargo_classes:     bitmask(CC_MAIL);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                19;
+        cost_factor:                  78;
+        running_cost_factor:          178;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        112 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               10;
+        weight:                       90 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_Pioneer_Zephyr_purchase;
+        additional_text:          return string(STR_Pioneer_Zephyr_Desc);
+        length:                   7;
+        default:                  spriteset_Pioneer_Zephyr_end;
+    }
+}

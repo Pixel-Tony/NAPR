@@ -1,0 +1,90 @@
+//--------------------------------------------------------------------------------------------------PRR GG1
+spriteset (spriteset_purchase_PRR_GG1, "gfx/USA_PRR_GG1.png") { [4,  165,  95,  13,  -19,  -9] }
+template tmpl_PRR_GG1(x,y) {
+      [x,      y,    8,     26,     -3,    -12]
+    [x+9,    y,    24,    21,     -16,   -9]
+    [x+34,   y,    36,    17,     -20,   -13]
+    [x+71,   y,    24,    23,     -10,   -14]
+      [x+96,   y,    8,     26,     -3,    -12]
+    [x+105,  y,    24,    23,     -14,   -13]
+    [x+130,  y,    36,    17,     -16,   -13]
+    [x+167,  y,    24,    21,     -8,    -12]
+}
+spriteset (spriteset_PRR_GG1_1, "gfx/USA_PRR_GG1.png") { tmpl_PRR_GG1(4,4) }
+spriteset (spriteset_PRR_GG1_2, "gfx/USA_PRR_GG1.png") { tmpl_PRR_GG1(4,37) }
+spriteset (spriteset_PRR_GG1_3, "gfx/USA_PRR_GG1.png") { tmpl_PRR_GG1(4,69) }
+spriteset (spriteset_PRR_GG1_4, "gfx/USA_PRR_GG1.png") { tmpl_PRR_GG1(4,101) }
+spriteset (spriteset_PRR_GG1_5, "gfx/USA_PRR_GG1.png") { tmpl_PRR_GG1(4,133) }
+spriteset (spriteset_PRR_GG1_obsolete, "gfx/USA_PRR_GG1.png") { [4,  4,  1,  1,  -23,  -8] }
+
+switch(FEAT_TRAINS,SELF,sw_PRR_GG1_articulated_part, extra_callback_info1) {
+    1:  return item_PRR_GG1;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+switch(FEAT_TRAINS,SELF,sw_PRR_GG1_graphics, cargo_subtype) {
+    0:  spriteset_PRR_GG1_1;
+    1:  spriteset_PRR_GG1_2;
+    2:  spriteset_PRR_GG1_3;
+    3:  spriteset_PRR_GG1_4;
+    spriteset_PRR_GG1_5;
+}
+switch(FEAT_TRAINS,SELF,sw_PRR_GG1_invi_part_sort, position_in_vehid_chain % 2) {
+    0:  sw_PRR_GG1_graphics;
+    spriteset_PRR_GG1_obsolete;
+}
+switch(FEAT_TRAINS,SELF,sw_PRR_GG1_livery_name, cargo_subtype) {
+    0:  return string(STR_Livery_Pennsylvania_Railroad_GG1_1);
+    1:  return string(STR_Livery_Pennsylvania_Railroad_GG1_2);
+    2:  return string(STR_Amtrak_Phase_I);
+    3:  return string(STR_Livery_Pennsylvania_Railroad_GG1_4);
+    return string(STR_Livery_Pennsylvania_Railroad_GG1_5);
+}
+switch(FEAT_TRAINS,SELF,sw_PRR_GG1_length, position_in_vehid_chain % 2) {
+    0:  return 8;
+    return 1;
+}
+
+item(FEAT_TRAINS, item_PRR_GG1, 426) {
+    property {
+        name:                           string(STR_PRR_GG1_Name);
+        climates_available:             bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:              date(1934, 1, 1);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   35;
+        reliability_decay:              11;
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   bitmask();
+        loading_speed:                  0;
+        cost_factor:                    53;
+        running_cost_factor:            153;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        speed:                          100 mph;
+        misc_flags:                     bitmask();
+        refit_cost:                     0;
+        track_type:                     ELRL;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        power:                          4620 hp;
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+        dual_headed:                    0;
+        cargo_capacity:                 1;
+        weight:                         215 ton;
+        ai_engine_rank:                 0;
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+        extra_power_per_wagon:          0;
+        tractive_effort_coefficient:    0.13;
+        air_drag_coefficient:           9/160;
+        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:         0;
+        bitmask_vehicle_info:           0;
+    }
+    graphics {
+        purchase:                       spriteset_purchase_PRR_GG1;
+        additional_text:                return string(STR_PRR_GG1_Desc);
+        articulated_part:               sw_PRR_GG1_articulated_part;
+        cargo_subtype_text:             sw_PRR_GG1_livery_name;
+        cargo_capacity:                 0;
+        length:                         sw_PRR_GG1_length;
+        default:                        sw_PRR_GG1_invi_part_sort;
+    }
+}

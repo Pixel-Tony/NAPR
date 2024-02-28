@@ -1,0 +1,99 @@
+//--------------------------------------------------------------------------------------------------NYC Hudson
+spriteset (spriteset_purchase_4_6_4_Hudson, "gfx/USA_NYC_4_6_4_Hudson.png") { [4,  97,  87,  14,  -27,  -10] }
+
+template tmpl_4_6_4_Hudson_Locomotive_1(x,y) {
+      [x,      y,    8,     24,     -3,    -11]
+    [x+9,    y,    22,    20,     -14,   -10]
+    [x+32,   y,    32,    16,     -16,   -12]
+    [x+65,   y,    22,    20,     -8,    -11]
+}
+
+template tmpl_4_6_4_Hudson_Locomotive_2(x,y) {
+      [x,      y,    8,     24,     -3,    -13]
+    [x+9,    y,    22,    20,     -14,   -10]
+    [x+32,   y,    32,    16,     -16,   -12]
+    [x+65,   y,    22,    20,     -8,    -11]
+}
+
+template tmpl_4_6_4_Hudson_Tender_1(x,y) {
+      [x,      y,    8,     24,     -3,    -12]
+    [x+9,    y,    22,    20,     -12,   -12]
+    [x+32,   y,    32,    16,     -16,   -12]
+    [x+65,   y,    22,    20,     -8,    -12]
+}
+
+template tmpl_4_6_4_Hudson_Tender_2(x,y) {
+      [x,      y,    8,     24,     -3,    -10]
+    [x+9,    y,    22,    20,     -14,   -11]
+    [x+32,   y,    32,    16,     -20,   -12]
+    [x+65,   y,    22,    20,     -10,   -13]
+}
+
+spriteset (spriteset_4_6_4_Hudson_Locomotive, "gfx/USA_NYC_4_6_4_Hudson.png")        { tmpl_4_6_4_Hudson_Locomotive_1(4,4)   tmpl_4_6_4_Hudson_Locomotive_2(92,4) }
+spriteset (spriteset_4_6_4_Hudson_Locomotive_second, "gfx/USA_NYC_4_6_4_Hudson.png") { tmpl_4_6_4_Hudson_Locomotive_1(4,35)   tmpl_4_6_4_Hudson_Locomotive_2(92,35) }
+spriteset (spriteset_4_6_4_Hudson_Tender, "gfx/USA_NYC_4_6_4_Hudson.png")            { tmpl_4_6_4_Hudson_Tender_1(4,66) tmpl_4_6_4_Hudson_Tender_2(92,66) }
+
+switch(FEAT_TRAINS,SELF,sw_4_6_4_Hudson_articulated_part, extra_callback_info1) {
+    1:  return item_4_6_4_Hudson;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+switch(FEAT_TRAINS,SELF,sw_4_6_4_Hudson_Locomotive_animation, motion_counter % 4) {
+    0..1:  spriteset_4_6_4_Hudson_Locomotive;
+    spriteset_4_6_4_Hudson_Locomotive_second;
+}
+switch(FEAT_TRAINS,SELF,sw_4_6_4_Hudson_grapfics, position_in_vehid_chain % 2) {
+    0:  sw_4_6_4_Hudson_Locomotive_animation;
+    spriteset_4_6_4_Hudson_Tender;
+}
+switch(FEAT_TRAINS,SELF, sw_4_6_4_Hudson_length, position_in_vehid_chain % 2) {
+    0:  8;
+    7;
+}
+switch(FEAT_TRAINS,SELF, sw_4_6_4_Hudson_effect, position_in_vehid_chain % 2) {
+    0:  visual_effect_and_powered(VISUAL_EFFECT_STEAM, -2, DISABLE_WAGON_POWER);
+    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, -2, DISABLE_WAGON_POWER);
+}
+
+item(FEAT_TRAINS, item_4_6_4_Hudson, 7) {
+    property {
+        name:                           string(STR_4_6_4_Hudson_Name);
+        climates_available:             bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:              date(1927, 4, 1);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   30;
+        reliability_decay:              16;
+        refittable_cargo_classes:       bitmask();
+        non_refittable_cargo_classes:   bitmask();
+        loading_speed:                  0;
+        cost_factor:                    66;
+        running_cost_factor:            176;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        speed:                          95 mph;
+        misc_flags:                     bitmask(TRAIN_FLAG_MU);
+        refit_cost:                     0;
+        track_type:                     RAIL;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        power:                          2250 hp;
+        running_cost_base:              RUNNING_COST_STEAM;
+        dual_headed:                    0;
+        cargo_capacity:                 1;
+        weight:                         358 ton;
+        ai_engine_rank:                 0;
+        engine_class:                   ENGINE_CLASS_STEAM;
+        extra_power_per_wagon:          0;
+        tractive_effort_coefficient:    0.08;
+        air_drag_coefficient:           8/180;
+        extra_weight_per_wagon:         0;
+        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_STEAM, -4, DISABLE_WAGON_POWER);
+        bitmask_vehicle_info:           0;
+    }
+    graphics {
+        purchase:                       spriteset_purchase_4_6_4_Hudson;
+        additional_text:                return string(STR_4_6_4_Hudson_Desc);
+        articulated_part:               sw_4_6_4_Hudson_articulated_part;
+        length:                         sw_4_6_4_Hudson_length;
+        cargo_capacity:                 0;
+        visual_effect_and_powered:      sw_4_6_4_Hudson_effect;
+        default:                        sw_4_6_4_Hudson_grapfics;
+    }
+}

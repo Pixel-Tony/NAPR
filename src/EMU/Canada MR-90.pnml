@@ -1,0 +1,111 @@
+//--------------------------------------------------------------------------------------------------Canada MR-90
+spriteset (spriteset_purchase_MR90, "gfx/Canada_MR-90.png") { [] [] [4,  97,  87,  15,  -42,  -11] [] [] [] [4,  4,  1,  1,  0,  0] [] }
+spriteset (spriteset_purchase_MR90_trailer, "gfx/Canada_MR-90.png") { [92,  97,  87,  15,  -16,  -11] }
+template tmpl_MR90(x,y) {
+      [x,      y,    8,     24,     -3,    -11]
+    [x+9,    y,    22,    20,     -14,   -10]
+    [x+32,   y,    32,    16,     -16,   -12]
+    [x+65,   y,    22,    20,     -8,    -11]
+}
+spriteset (spriteset_MR90_f, "gfx/Canada_MR-90.png") { tmpl_MR90(4,4)  tmpl_MR90(92,4) }
+spriteset (spriteset_MR90_b, "gfx/Canada_MR-90.png") { tmpl_MR90(4,35) tmpl_MR90(92,35) }
+spriteset (spriteset_MR90_t, "gfx/Canada_MR-90.png") { tmpl_MR90(4,66) tmpl_MR90(92,66) }
+
+switch(FEAT_TRAINS, PARENT, sw_MR90_can_attach_wagon2, vehicle_type_id) {
+    item_MR90:  CB_RESULT_ATTACH_ALLOW;
+    item_MR90_trailer:  CB_RESULT_ATTACH_ALLOW;
+    return string(STR_Attach_Wagon_Disallow);
+}
+switch(FEAT_TRAINS, SELF, sw_MR90_can_attach_wagon, num_vehs_in_consist) {
+    1..10:  sw_MR90_can_attach_wagon2;
+    return string(STR_Attach_Wagon_Disallow);
+}
+switch(FEAT_TRAINS,SELF,sw_MR90_grapfics, position_in_consist) {
+    0:  spriteset_MR90_f;
+    spriteset_MR90_b;
+}
+
+item(FEAT_TRAINS, item_MR90, 322) {
+    property {
+        name:                         string(STR_MR90_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1995, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 34;
+        reliability_decay:            10;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                16;
+        cost_factor:                  46;
+        running_cost_factor:          146;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        130 km/h;
+        misc_flags:                   bitmask(TRAIN_FLAG_MU);
+        refit_cost:                   0;
+        track_type:                   ELRL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        1932 kW;
+        running_cost_base:            RUNNING_COST_ELECTRIC;
+        dual_headed:                  1;
+        cargo_capacity:               88;
+        weight:                       61 ton;
+        ai_engine_rank:               0;
+        engine_class:                 ENGINE_CLASS_ELECTRIC;
+        extra_power_per_wagon:        0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 3, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_purchase_MR90;
+        additional_text:          return string(STR_MR90_Desc);
+        length:                   8;
+        cargo_capacity:           (position_in_vehid_chain % 2 == 0) ? 88 : 80;
+        can_attach_wagon:         sw_MR90_can_attach_wagon;
+        default:                  sw_MR90_grapfics;
+    }
+}
+
+item(FEAT_TRAINS, item_MR90_trailer, 3221) {
+    property {
+        name:                         string(STR_MR90_Trailer_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1995, 1, 1);
+        model_life:                   43;
+        vehicle_life:                 30;
+        reliability_decay:            16;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                16;
+        cost_factor:                  146;
+        running_cost_factor:          7;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        130 km/h;
+        misc_flags:                   bitmask(TRAIN_FLAG_MU);
+        refit_cost:                   0;
+        track_type:                   ELRL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        running_cost_base:            RUNNING_COST_ELECTRIC;
+        dual_headed:                  0;
+        cargo_capacity:               88;
+        weight:                       61 ton;
+        ai_engine_rank:               0;
+        engine_class:                 ENGINE_CLASS_ELECTRIC;
+        extra_power_per_wagon:        0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 3, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_purchase_MR90_trailer;
+        additional_text:          return string(STR_MR90_Trailer_Desc);
+        length:                   8;
+        can_attach_wagon:         sw_MR90_can_attach_wagon;
+        default:                  spriteset_MR90_t;
+    }
+}

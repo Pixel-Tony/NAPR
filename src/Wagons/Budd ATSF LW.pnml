@@ -1,0 +1,403 @@
+//--------------------------------------------------------------------------------------------------ATSF Budd Lightweight Super Chief
+spriteset (spriteset_Budd_Lightweight_Coach_purchase, "gfx/USA_Budd_Lightweight.png")       { [40, 4,   40, 16, -19, -12] }
+spriteset (spriteset_Budd_Lightweight_Diner_purchase, "gfx/USA_Budd_Lightweight.png")       { [40, 39,  40, 16, -19, -12] }
+spriteset (spriteset_Budd_Lightweight_Sleeper_purchase, "gfx/USA_Budd_Lightweight.png")     { [40, 74,  40, 16, -19, -12] }
+spriteset (spriteset_Budd_Lightweight_Baggage_purchase, "gfx/USA_Budd_Lightweight.png")     { [40, 109, 40, 16, -19, -12] }
+spriteset (spriteset_Budd_Lightweight_RPO_purchase, "gfx/USA_Budd_Lightweight.png")         { [40, 144, 40, 16, -19, -12] }
+spriteset (spriteset_Budd_Lightweight_Dome_purchase, "gfx/USA_Budd_Lightweight.png")        { [40, 179, 40, 16, -19, -12] }
+spriteset (spriteset_Budd_Lightweight_Dome_Obs_purchase, "gfx/USA_Budd_Lightweight.png")    { [40, 214, 40, 16, -19, -12] }
+spriteset (spriteset_Budd_Lightweight_Observation_purchase, "gfx/USA_Budd_Lightweight.png") { [40, 249, 40, 16, -19, -12] }
+
+template tmpl_Budd_Lightweight(x,y) {
+    [x,      y,    8,     28,     -3,    -10]
+    [x+9,    y,    26,    22,     -18,   -10]
+    [x+36,   y,    40,    16,     -24,   -12]
+    [x+77,   y,    26,    22,     -12,   -13]
+}
+template tmpl_Budd_Lightweight2(x,y) {
+    [x,      y,    8,     28,     -3,    -14]
+    [x+9,    y,    26,    22,     -14,   -12]
+    [x+36,   y,    40,    16,     -16,   -12]
+    [x+77,   y,    26,    22,     -8,    -11]
+}
+
+template tmpl_Budd_Lightweight_Short(x,y) {
+    [x,      y,    8,     28,     -3,    -10]
+    [x+9,    y,    26,    22,     -18,   -10]
+    [x+36,   y,    40,    16,     -24,   -12]
+    [x+77,   y,    26,    22,     -10,   -12]
+}
+template tmpl_Budd_Lightweight2_Short(x,y) {
+    [x,      y,    8,     28,     -3,    -12]
+    [x+9,    y,    26,    22,     -16,   -11]
+    [x+36,   y,    40,    16,     -20,   -12]
+    [x+77,   y,    26,    22,     -8,    -11]
+}
+spriteset (spriteset_Budd_Lightweight_Coach, "gfx/USA_Budd_Lightweight.png")       { tmpl_Budd_Lightweight(4,4) tmpl_Budd_Lightweight2(108,4) }
+spriteset (spriteset_Budd_Lightweight_Diner, "gfx/USA_Budd_Lightweight.png")       { tmpl_Budd_Lightweight(4,39) tmpl_Budd_Lightweight2(108,39) }
+spriteset (spriteset_Budd_Lightweight_Sleeper, "gfx/USA_Budd_Lightweight.png")     { tmpl_Budd_Lightweight(4,74) tmpl_Budd_Lightweight2(108,74) }
+spriteset (spriteset_Budd_Lightweight_Baggage, "gfx/USA_Budd_Lightweight.png")     { tmpl_Budd_Lightweight_Short(4,109) tmpl_Budd_Lightweight2_Short(108,109) }
+spriteset (spriteset_Budd_Lightweight_RPO, "gfx/USA_Budd_Lightweight.png")         { tmpl_Budd_Lightweight_Short(4,144) tmpl_Budd_Lightweight2_Short(108,144) }
+spriteset (spriteset_Budd_Lightweight_Dome, "gfx/USA_Budd_Lightweight.png")        { tmpl_Budd_Lightweight(4,179) tmpl_Budd_Lightweight2(108,179) }
+spriteset (spriteset_Budd_Lightweight_Dome_Obs, "gfx/USA_Budd_Lightweight.png")    { tmpl_Budd_Lightweight(4,214) tmpl_Budd_Lightweight2(108,214) }
+spriteset (spriteset_Budd_Lightweight_Observation, "gfx/USA_Budd_Lightweight.png") { tmpl_Budd_Lightweight(4,249) tmpl_Budd_Lightweight2(108,249) }
+
+switch(FEAT_TRAINS,SELF,sw_Budd_Lightweight_Coach_graphics, position_in_vehid_chain % 2) {
+    0:  spriteset_Budd_Lightweight_Coach;
+    spriteset_obsolete;
+}
+switch(FEAT_TRAINS,SELF,sw_Budd_Lightweight_Coach_articulated, extra_callback_info1) {
+    1:  item_Budd_Lightweight_Coach;
+    CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+item(FEAT_TRAINS, item_Budd_Lightweight_Coach, 748) {
+    property {
+        name:                         string(STR_Budd_Lightweight_Coach_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1937, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 30;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                14;
+        cost_factor:                  147;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        110 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               25;
+        weight:                       65 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_Budd_Lightweight_Coach_purchase;
+        length:                   5;
+        articulated_part:         sw_Budd_Lightweight_Coach_articulated;
+        default:                  sw_Budd_Lightweight_Coach_graphics;
+    }
+}
+
+switch(FEAT_TRAINS,SELF,sw_Budd_Lightweight_Diner_graphics, position_in_vehid_chain % 2) {
+    0:  spriteset_Budd_Lightweight_Diner;
+    spriteset_obsolete;
+}
+switch(FEAT_TRAINS,SELF,sw_Budd_Lightweight_Diner_articulated, extra_callback_info1) {
+    1:  item_Budd_Lightweight_Diner;
+    CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+item(FEAT_TRAINS, item_Budd_Lightweight_Diner, 738) {
+    property {
+        name:                         string(STR_Budd_Lightweight_Diner_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1937, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 30;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                13;
+        cost_factor:                  150;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        110 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               21;
+        weight:                       65 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_Budd_Lightweight_Diner_purchase;
+        length:                   5;
+        articulated_part:         sw_Budd_Lightweight_Diner_articulated;
+        default:                  sw_Budd_Lightweight_Diner_graphics;
+    }
+}
+
+switch(FEAT_TRAINS,SELF,sw_Budd_Lightweight_Sleeper_graphics, position_in_vehid_chain % 2) {
+    0:  spriteset_Budd_Lightweight_Sleeper;
+    spriteset_obsolete;
+}
+switch(FEAT_TRAINS,SELF,sw_Budd_Lightweight_Sleeper_articulated, extra_callback_info1) {
+    1:  item_Budd_Lightweight_Sleeper;
+    CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+item(FEAT_TRAINS, item_Budd_Lightweight_Sleeper, 739) {
+    property {
+        name:                         string(STR_Budd_Lightweight_Sleeper_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1937, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 30;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                10;
+        cost_factor:                  145;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        110 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               29;
+        weight:                       68 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_Budd_Lightweight_Sleeper_purchase;
+        length:                   5;
+        articulated_part:         sw_Budd_Lightweight_Sleeper_articulated;
+        default:                  sw_Budd_Lightweight_Sleeper_graphics;
+    }
+}
+
+switch(FEAT_TRAINS,SELF,sw_Budd_Lightweight_Baggage_graphics, position_in_vehid_chain % 2) {
+    0:  spriteset_Budd_Lightweight_Baggage;
+    spriteset_obsolete;
+}
+switch(FEAT_TRAINS,SELF,sw_Budd_Lightweight_Baggage_articulated, extra_callback_info1) {
+    1:  item_Budd_Lightweight_Baggage;
+    CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+item(FEAT_TRAINS, item_Budd_Lightweight_Baggage, 740) {
+    property {
+        name:                         string(STR_Budd_Lightweight_Baggage_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1937, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 30;
+        refittable_cargo_classes:     bitmask(CC_MAIL);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                18;
+        cost_factor:                  105;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        110 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               37;
+        weight:                       55 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_Budd_Lightweight_Baggage_purchase;
+        length:                   position_in_vehid_chain % 2 == 0 ? 5 : 4;
+        articulated_part:         sw_Budd_Lightweight_Baggage_articulated;
+        default:                  sw_Budd_Lightweight_Baggage_graphics;
+    }
+}
+
+switch(FEAT_TRAINS,SELF,sw_Budd_Lightweight_RPO_graphics, position_in_vehid_chain % 2) {
+    0:  spriteset_Budd_Lightweight_RPO;
+    spriteset_obsolete;
+}
+switch(FEAT_TRAINS,SELF,sw_Budd_Lightweight_RPO_articulated, extra_callback_info1) {
+    1:  item_Budd_Lightweight_RPO;
+    CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+item(FEAT_TRAINS, item_Budd_Lightweight_RPO, 749) {
+    property {
+        name:                         string(STR_Budd_Lightweight_RPO_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1937, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 30;
+        refittable_cargo_classes:     bitmask(CC_MAIL);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                16;
+        cost_factor:                  110;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        110 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               25;
+        weight:                       57 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_Budd_Lightweight_RPO_purchase;
+        length:                   position_in_vehid_chain % 2 == 0 ? 5 : 4;
+        articulated_part:         sw_Budd_Lightweight_RPO_articulated;
+        default:                  sw_Budd_Lightweight_RPO_graphics;
+    }
+}
+
+switch(FEAT_TRAINS,SELF,sw_Budd_Lightweight_Dome_graphics, position_in_vehid_chain % 2) {
+    0:  spriteset_Budd_Lightweight_Dome;
+    spriteset_obsolete;
+}
+switch(FEAT_TRAINS,SELF,sw_Budd_Lightweight_Dome_articulated, extra_callback_info1) {
+    1:  item_Budd_Lightweight_Dome;
+    CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+item(FEAT_TRAINS, item_Budd_Lightweight_Dome, 741) {
+    property {
+        name:                         string(STR_Budd_Lightweight_Dome_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1937, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 30;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                13;
+        cost_factor:                  175;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        110 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               23;
+        weight:                       67 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_Budd_Lightweight_Dome_purchase;
+        length:                   5;
+        articulated_part:         sw_Budd_Lightweight_Dome_articulated;
+        default:                  sw_Budd_Lightweight_Dome_graphics;
+    }
+}
+
+switch(FEAT_TRAINS,SELF,sw_Budd_Lightweight_Dome_Obs_graphics, position_in_vehid_chain % 2) {
+    0:  spriteset_Budd_Lightweight_Dome_Obs;
+    spriteset_obsolete;
+}
+switch(FEAT_TRAINS,SELF,sw_Budd_Lightweight_Dome_Obs_articulated, extra_callback_info1) {
+    1:  item_Budd_Lightweight_Dome_Obs;
+    CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+item(FEAT_TRAINS, item_Budd_Lightweight_Dome_Obs, 750) {
+    property {
+        name:                         string(STR_Budd_Lightweight_Dome_Obs_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1937, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 30;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                11;
+        cost_factor:                  190;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        110 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               17;
+        weight:                       69 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_Budd_Lightweight_Dome_Obs_purchase;
+        length:                   5;
+        articulated_part:         sw_Budd_Lightweight_Dome_Obs_articulated;
+        default:                  sw_Budd_Lightweight_Dome_Obs_graphics;
+    }
+}
+
+switch(FEAT_TRAINS,SELF,sw_Budd_Lightweight_Observation_graphics, position_in_vehid_chain % 2) {
+    0:  spriteset_Budd_Lightweight_Observation;
+    spriteset_obsolete;
+}
+switch(FEAT_TRAINS,SELF,sw_Budd_Lightweight_Observation_articulated, extra_callback_info1) {
+    1:  item_Budd_Lightweight_Observation;
+    CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+item(FEAT_TRAINS, item_Budd_Lightweight_Observation, 742) {
+    property {
+        name:                         string(STR_Budd_Lightweight_Observation_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1937, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 30;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                10;
+        cost_factor:                  180;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        110 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               13;
+        weight:                       63 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_Budd_Lightweight_Observation_purchase;
+        length:                   5;
+        articulated_part:         sw_Budd_Lightweight_Observation_articulated;
+        default:                  sw_Budd_Lightweight_Observation_graphics;
+    }
+}

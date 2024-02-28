@@ -1,0 +1,280 @@
+template tmpl_Canada_TC_Lightweight_SC(x,y) {
+      [x,      y,    8,     24,     -3,    -12]
+    [x+9,    y,    22,    20,     -14,   -10]
+    [x+32,   y,    32,    16,     -16,   -11]
+    [x+65,   y,    22,    20,     -8,    -11]
+}
+template tmpl_Canada_TC_Lightweight_SC_2(x,y) {
+     [x,      y,    8,     24,     -3,    -14]
+    [x+9,    y,    22,    20,     -14,   -10]
+    [x+32,   y,    32,    16,     -16,   -11]
+    [x+65,   y,    22,    20,     -8,    -11]
+}
+spriteset (spriteset_CNR_TC_Coach_purchase, "gfx/Canada_The_Canadian_Lightweight.png")      { [36, 4,   32, 16, -15, -11] }
+spriteset (spriteset_CNR_TC_Diner_purchase, "gfx/Canada_The_Canadian_Lightweight.png")      { [36, 35,  32, 16, -15, -11] }
+spriteset (spriteset_CNR_TC_Manor_purchase, "gfx/Canada_The_Canadian_Lightweight.png")      { [36, 66,  32, 16, -15, -11] }
+spriteset (spriteset_CNR_TC_Chateau_purchase, "gfx/Canada_The_Canadian_Lightweight.png")    { [36, 97,  32, 16, -15, -11] }
+spriteset (spriteset_CNR_TC_Baggage_purchase, "gfx/Canada_The_Canadian_Lightweight.png")    { [36, 128, 32, 16, -15, -11] }
+spriteset (spriteset_CNR_TC_Skyline_ss_purchase, "gfx/Canada_The_Canadian_Lightweight.png") { [36, 159, 32, 16, -15, -11] }
+spriteset (spriteset_CNR_TC_Park_ss_purchase, "gfx/Canada_The_Canadian_Lightweight.png")    { [36, 190, 32, 16, -15, -11] }
+
+spriteset (spriteset_CNR_TC_Coach, "gfx/Canada_The_Canadian_Lightweight.png")      { tmpl_Canada_TC_Lightweight_SC(4,4)   tmpl_Canada_TC_Lightweight_SC_2(92,4) }
+spriteset (spriteset_CNR_TC_Diner, "gfx/Canada_The_Canadian_Lightweight.png")      { tmpl_Canada_TC_Lightweight_SC(4,35)  tmpl_Canada_TC_Lightweight_SC_2(92,35) }
+spriteset (spriteset_CNR_TC_Manor, "gfx/Canada_The_Canadian_Lightweight.png")      { tmpl_Canada_TC_Lightweight_SC(4,66)  tmpl_Canada_TC_Lightweight_SC_2(92,66) }
+spriteset (spriteset_CNR_TC_Chateau, "gfx/Canada_The_Canadian_Lightweight.png")    { tmpl_Canada_TC_Lightweight_SC(4,97)  tmpl_Canada_TC_Lightweight_SC_2(92,97) }
+spriteset (spriteset_CNR_TC_Baggage, "gfx/Canada_The_Canadian_Lightweight.png")    { tmpl_Canada_TC_Lightweight_SC(4,128) tmpl_Canada_TC_Lightweight_SC_2(92,128) }
+spriteset (spriteset_CNR_TC_Skyline_ss, "gfx/Canada_The_Canadian_Lightweight.png") { tmpl_Canada_TC_Lightweight_SC(4,159) tmpl_Canada_TC_Lightweight_SC_2(92,159) }
+spriteset (spriteset_CNR_TC_Park_ss, "gfx/Canada_The_Canadian_Lightweight.png")    { tmpl_Canada_TC_Lightweight_SC(4,190) tmpl_Canada_TC_Lightweight_SC_2(92,190) }
+
+
+item(FEAT_TRAINS, item_CNR_TC_Coach, 753) {
+    property {
+        name:                         string(STR_CNR_TC_Coach_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1954, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 32;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                12;
+        cost_factor:                  140;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        112 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               68;
+        weight:                       63 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_CNR_TC_Coach_purchase;
+        additional_text:          string(STR_CNR_The_Canadian_Desc);
+        length:                   8;
+        default:                  spriteset_CNR_TC_Coach;
+    }
+}
+
+item(FEAT_TRAINS, item_CNR_TC_Diner, 754) {
+    property {
+        name:                         string(STR_CNR_TC_Diner_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1954, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 32;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                13;
+        cost_factor:                  144;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        112 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               40;
+        weight:                       62 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_CNR_TC_Diner_purchase;
+        additional_text:          string(STR_CNR_The_Canadian_Desc);
+        length:                   8;
+        default:                  spriteset_CNR_TC_Diner;
+    }
+}
+
+item(FEAT_TRAINS, item_CNR_TC_Manor, 755) {
+    property {
+        name:                         string(STR_CNR_TC_Manor_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1954, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 32;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                13;
+        cost_factor:                  146;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        112 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               24;
+        weight:                       61 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_CNR_TC_Manor_purchase;
+        additional_text:          string(STR_CNR_The_Canadian_Desc);
+        length:                   8;
+        default:                  spriteset_CNR_TC_Manor;
+    }
+}
+
+item(FEAT_TRAINS, item_CNR_TC_Chateau, 756) {
+    property {
+        name:                         string(STR_CNR_TC_Chateau_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1954, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 32;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                12;
+        cost_factor:                  142;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        112 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               25;
+        weight:                       61 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_CNR_TC_Chateau_purchase;
+        additional_text:          string(STR_CNR_The_Canadian_Desc);
+        length:                   8;
+        default:                  spriteset_CNR_TC_Chateau;
+    }
+}
+
+item(FEAT_TRAINS, item_CNR_TC_Baggage, 757) {
+    property {
+        name:                         string(STR_CNR_TC_Baggage_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1954, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 32;
+        refittable_cargo_classes:     bitmask(CC_MAIL,CC_ARMOURED);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                20;
+        cost_factor:                  135;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        112 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               68;
+        weight:                       62 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_CNR_TC_Baggage_purchase;
+        additional_text:          string(STR_CNR_The_Canadian_Desc);
+        length:                   8;
+        default:                  spriteset_CNR_TC_Baggage;
+    }
+}
+
+item(FEAT_TRAINS, item_CNR_TC_Skyline_ss, 758) {
+    property {
+        name:                         string(STR_CNR_TC_Skyline_ss_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1954, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 32;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                11;
+        cost_factor:                  148;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        112 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               60;
+        weight:                       66 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_CNR_TC_Skyline_ss_purchase;
+        additional_text:          string(STR_CNR_The_Canadian_Desc);
+        length:                   8;
+        default:                  spriteset_CNR_TC_Skyline_ss;
+    }
+}
+
+item(FEAT_TRAINS, item_CNR_TC_Park_ss, 759) {
+    property {
+        name:                         string(STR_CNR_TC_Park_ss_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1954, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 32;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                11;
+        cost_factor:                  148;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        112 mph;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               54;
+        weight:                       66 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_CNR_TC_Park_ss_purchase;
+        additional_text:          string(STR_CNR_The_Canadian_Desc);
+        length:                   8;
+        default:                  spriteset_CNR_TC_Park_ss;
+    }
+}

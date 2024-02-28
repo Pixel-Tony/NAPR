@@ -1,0 +1,162 @@
+//--------------------------------------------------------------------------------------------------Superliner I
+
+template tmpl_Superliner_I(x,y) {
+      [x,      y,    8,     24,     -3,    -12]
+    [x+9,    y,    22,    20,     -14,   -11]
+    [x+32,   y,    32,    16,     -16,   -12]
+    [x+65,   y,    22,    20,     -8,    -12]
+}
+
+spriteset (spriteset_Superliner_I_Coach, "gfx/USA_Amtrak_Superliner_I.png")   { tmpl_Superliner_I(4,4)  tmpl_Superliner_I(92,4) }
+spriteset (spriteset_Superliner_I_Dining, "gfx/USA_Amtrak_Superliner_I.png")  { tmpl_Superliner_I(4,35) tmpl_Superliner_I(92,35) }
+spriteset (spriteset_Superliner_I_Sleeper, "gfx/USA_Amtrak_Superliner_I.png") { tmpl_Superliner_I(4,66) tmpl_Superliner_I(92,66) }
+spriteset (spriteset_Superliner_I_Lounge, "gfx/USA_Amtrak_Superliner_I.png")  { tmpl_Superliner_I(4,97) tmpl_Superliner_I(92,97) }
+
+spriteset (spriteset_Superliner_I_Coach_purchase, "gfx/USA_Amtrak_Superliner_I.png")   { [36,   4,    32,    16,   -15,   -12] }
+spriteset (spriteset_Superliner_I_Dining_purchase, "gfx/USA_Amtrak_Superliner_I.png")  { [36,   35,   32,    16,   -15,   -12] }
+spriteset (spriteset_Superliner_I_Sleeper_purchase, "gfx/USA_Amtrak_Superliner_I.png") { [36,   66,   32,    16,   -15,   -12] }
+spriteset (spriteset_Superliner_I_Lounge_purchase, "gfx/USA_Amtrak_Superliner_I.png")  { [36,   97,   32,    16,   -15,   -12] }
+
+item(FEAT_TRAINS, item_Superliner_I_Coach, 708) {
+    property {
+        name:                         string(STR_Superliner_I_Coach_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1975, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 2;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                10;
+        cost_factor:                  135;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        160 km/h;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               77;
+        weight:                       69 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_Superliner_I_Coach_purchase;
+        additional_text:          return string(STR_Superliner_Desc);
+        length:                   8;
+        default:                  spriteset_Superliner_I_Coach;
+    }
+}
+
+item(FEAT_TRAINS, item_Superliner_I_Dining, 709) {
+    property {
+        name:                         string(STR_Superliner_I_Dining_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1975, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 2;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                10;
+        cost_factor:                  137;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        160 km/h;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               72;
+        weight:                       72 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_Superliner_I_Dining_purchase;
+        additional_text:          return string(STR_Superliner_Desc);
+        length:                   8;
+        default:                  spriteset_Superliner_I_Dining;
+    }
+}
+
+item(FEAT_TRAINS, item_Superliner_I_Sleeper, 710) {
+    property {
+        name:                         string(STR_Superliner_I_Sleeper_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1975, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 2;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                10;
+        cost_factor:                  136;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        160 km/h;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               44;
+        weight:                       73 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_Superliner_I_Sleeper_purchase;
+        additional_text:          return string(STR_Superliner_Desc);
+        length:                   8;
+        default:                  spriteset_Superliner_I_Sleeper;
+    }
+}
+
+item(FEAT_TRAINS, item_Superliner_I_Lounge, 711) {
+    property {
+        name:                         string(STR_Superliner_I_Lounge_Name);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date(1975, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 2;
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes: bitmask();
+        loading_speed:                10;
+        cost_factor:                  138;
+        running_cost_factor:          0;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        speed:                        160 km/h;
+        misc_flags:                   bitmask();
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        ai_special_flag:              AI_FLAG_PASSENGER;
+        power:                        0;
+        cargo_capacity:               73;
+        weight:                       69 ton;
+        ai_engine_rank:               0;
+        tractive_effort_coefficient:  0.3;
+        air_drag_coefficient:         0.06;
+        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:       0;
+        bitmask_vehicle_info:         0;
+    }
+    graphics {
+        purchase:                 spriteset_Superliner_I_Lounge_purchase;
+        additional_text:          return string(STR_Superliner_Desc);
+        length:                   8;
+        default:                  spriteset_Superliner_I_Lounge;
+    }
+}

@@ -1,0 +1,105 @@
+/* * * * * * * *
+ * Arrow III
+ */
+spriteset (spriteset_purchase_Arrow_III, "gfx/USA_PRR_Arrow_III.png") {
+    [] [] [4,  66,  87,  15,  -42,  -11] [] [] [] [13,  4,  1,  1,  0,  0] []
+}
+spriteset (spriteset_purchase_Arrow_III_Single, "gfx/USA_PRR_Arrow_III.png") { [16,  66,  75,  15,  -15,  -11] }
+template tmpl_Arrow_III(x, y) {
+    [x,    y, 8,  24,      -3,      -11]
+    [x+9,  y, 22, 20,      -14,     -10]
+    [x+32, y, 32, 16,      -16,     -12]
+    [x+65, y, 22, 20,      -8,      -11]
+}
+spriteset (spriteset_Arrow_III_f, "gfx/USA_PRR_Arrow_III.png") { tmpl_Arrow_III(4, 4)   tmpl_Arrow_III(92, 4) }
+spriteset (spriteset_Arrow_III_b, "gfx/USA_PRR_Arrow_III.png") { tmpl_Arrow_III(4, 35) tmpl_Arrow_III(92, 35) }
+
+switch(FEAT_TRAINS, SELF, sw_Arrow_III_grapfics, position_in_vehid_chain % 2) {
+    0:  spriteset_Arrow_III_f;
+    spriteset_Arrow_III_b;
+}
+switch(FEAT_TRAINS, SELF, sw_Arrow_III_Single_grapfics, position_in_consist) {
+    0:  spriteset_Arrow_III_f;
+    spriteset_Arrow_III_b;
+}
+
+item(FEAT_TRAINS, item_Arrow_III, 311) {
+    property {
+        name:                           string(STR_Arrow_III_Name);
+        climates_available:             bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:              date(1977, 1, 1);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   34;
+        reliability_decay:              12;
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   bitmask();
+        loading_speed:                  15;
+        cost_factor:                    70;
+        running_cost_factor:            70;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        speed:                          90 mph;
+        misc_flags:                     bitmask(TRAIN_FLAG_MU);
+        refit_cost:                     0;
+        track_type:                     ELRL;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        power:                          1125 hp;
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+        dual_headed:                    1;
+        cargo_capacity:                 126;
+        weight:                         62 ton;
+        ai_engine_rank:                 0;
+        engine_class:                   ENGINE_CLASS_DIESEL;
+        extra_power_per_wagon:          0;
+        tractive_effort_coefficient:    0.3;
+        air_drag_coefficient:           0.06;
+        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 3, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:         0;
+        bitmask_vehicle_info:           0;
+    }
+    graphics {
+        purchase:                       spriteset_purchase_Arrow_III;
+        additional_text:                return string(STR_Arrow_III_Desc);
+        length:                         8;
+        default:                        sw_Arrow_III_grapfics;
+    }
+}
+item(FEAT_TRAINS, item_Arrow_III_Single) {
+    property {
+        name:                           string(STR_Arrow_III_Single_Name);
+        climates_available:             bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:              date(1977, 1, 1);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   34;
+        reliability_decay:              12;
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   bitmask();
+        loading_speed:                  15;
+        cost_factor:                    35;
+        running_cost_factor:            35;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        speed:                          90 mph;
+        misc_flags:                     bitmask(TRAIN_FLAG_MU);
+        refit_cost:                     0;
+        track_type:                     ELRL;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        power:                          750 hp;
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+        dual_headed:                    0;
+        cargo_capacity:                 126;
+        weight:                         62 ton;
+        ai_engine_rank:                 0;
+        engine_class:                   ENGINE_CLASS_DIESEL;
+        extra_power_per_wagon:          0;
+        tractive_effort_coefficient:    0.3;
+        air_drag_coefficient:           0.06;
+        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 3, DISABLE_WAGON_POWER);
+        extra_weight_per_wagon:         0;
+        bitmask_vehicle_info:           0;
+    }
+    graphics {
+        purchase:                       spriteset_purchase_Arrow_III_Single;
+        additional_text:                return string(STR_Arrow_III_Single_Desc);
+        length:                         8;
+        default:                        sw_Arrow_III_Single_grapfics;
+    }
+}
