@@ -1,0 +1,92 @@
+/*
+ * Amtrak Baggage
+ */
+spriteset(spriteset_Amtrak_Baggage_Phase_III_purchase, "gfx/USA_Amtrak_Baggage.png") { [38, 37, 36, 16, -19, -12] }
+spriteset(spriteset_Amtrak_Baggage_Phase_IVa_purchase, "gfx/USA_Amtrak_Baggage.png") { [38, 70, 36, 16, -19, -12] }
+
+spriteset(spriteset_Amtrak_Baggage_Phase_II, "gfx/USA_Amtrak_Baggage.png")  {
+  tmpl_L_nine_1(4, 4)
+  tmpl_L_nine_2(100, 4)
+}
+spriteset(spriteset_Amtrak_Baggage_Phase_III, "gfx/USA_Amtrak_Baggage.png") {
+  tmpl_L_nine_1(4, 37)
+  tmpl_L_nine_2(100, 37)
+}
+spriteset(spriteset_Amtrak_Baggage_Phase_IVb, "gfx/USA_Amtrak_Baggage.png") {
+  tmpl_L_nine_1(4, 70)
+  tmpl_L_nine_2(100, 70)
+}
+
+// Purchase sprite change on time pass
+switch(FEAT_TRAINS, SELF, sw_Amtrak_Baggage_purchase, current_year) {
+  0..1992: spriteset_Amtrak_Baggage_Phase_III_purchase;
+  spriteset_Amtrak_Baggage_Phase_IVa_purchase;
+}
+switch(FEAT_TRAINS, SELF, sw_Amtrak_Baggage_graphics_auto, current_year) {
+  0..1992: spriteset_Amtrak_Baggage_Phase_III;
+  spriteset_Amtrak_Baggage_Phase_IVb;
+}
+switch(FEAT_TRAINS, SELF, sw_Amtrak_Baggage_graphics2, cargo_subtype) {
+  0: sw_Amtrak_Baggage_graphics_auto;
+  1: spriteset_Amtrak_Baggage_Phase_II;
+  2: spriteset_Amtrak_Baggage_Phase_III;
+  3: spriteset_Amtrak_Baggage_Phase_IVb;
+}
+switch(FEAT_TRAINS, SELF, sw_Amtrak_Baggage_graphics, position_in_vehid_chain % 2) {
+  0: spriteset_obsolete;
+  sw_Amtrak_Baggage_graphics2;
+}
+// Liveries support
+switch(FEAT_TRAINS, SELF, sw_Amtrak_Baggage_livery_names_1, cargo_subtype) {
+  0: string(STR_Livery_Auto);
+  1: string(STR_Amtrak_Phase_II);
+  2: string(STR_Amtrak_Phase_III);
+}
+switch(FEAT_TRAINS, SELF, sw_Amtrak_Baggage_livery_names_2, cargo_subtype) {
+  0: string(STR_Livery_Auto);
+  1: string(STR_Amtrak_Phase_II);
+  2: string(STR_Amtrak_Phase_III);
+  3: string(STR_Amtrak_Phase_VI);
+}
+switch(FEAT_TRAINS, SELF, sw_Amtrak_Baggage_livery_names, current_year) {
+  0..1992: sw_Amtrak_Baggage_livery_names_1;
+  sw_Amtrak_Baggage_livery_names_2;
+}
+
+item(FEAT_TRAINS, item_Amtrak_Baggage, 702) {
+  property {
+    name:                           string(STR_Amtrak_Baggage_Name);
+    climates_available:             bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+    introduction_date:              date(1976, 1, 1);
+    model_life:                     VEHICLE_NEVER_EXPIRES;
+    vehicle_life:                   20;
+    refittable_cargo_classes:       bitmask(CC_MAIL);
+    non_refittable_cargo_classes:   bitmask();
+    loading_speed:                  18;
+    cost_factor:                    140;
+    running_cost_factor:            1;
+    sprite_id:                      SPRITE_ID_NEW_TRAIN;
+    speed:                          180 km/h;
+    misc_flags:                     bitmask();
+    refit_cost:                     0;
+    track_type:                     RAIL;
+    ai_special_flag:                AI_FLAG_PASSENGER;
+    power:                          0;
+    cargo_capacity:                 120;
+    weight:                         58 ton;
+    ai_engine_rank:                 0;
+    tractive_effort_coefficient:    0.3;
+    air_drag_coefficient:           0.06;
+    visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+    extra_weight_per_wagon:         0;
+    bitmask_vehicle_info:           0;
+  }
+  graphics {
+    purchase:                       sw_Amtrak_Baggage_purchase;
+    length:                         (position_in_vehid_chain % 2 == 0) ? 1 : 8;
+    cargo_subtype_text:             sw_Amtrak_Baggage_livery_names;
+    purchase_cargo_capacity:        60;
+    articulated_part:               sw_articulate_once;
+    default:                        sw_Amtrak_Baggage_graphics;
+  }
+}

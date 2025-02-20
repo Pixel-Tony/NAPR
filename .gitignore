@@ -1,8 +1,4 @@
 .vscode/
-refs
-./com.bat
 .nmlcache/
 NAPR.code-workspace
-*.grf
-.vscode/
-mock
+NAPR.grf

@@ -1,0 +1,76 @@
+// EMD F40C
+spriteset(spriteset_F40C_purchase, "gfx/USA_EMD_F40C.png") { [4,  97,  87,  13,  -15,  -9] }
+
+template tmpl_F40C(x, y) {
+  [x,      y,  8, 24,  -3, -10]
+  [x + 9,  y, 22, 20, -14, -10]
+  [x + 32, y, 32, 16, -16, -12]
+  [x + 65, y, 22, 20,  -8, -11]
+}
+
+template tmpl_F40C_2(x, y) {
+  [x,      y,  8, 24,  -3, -10]
+  [x + 9,  y, 22, 20, -14, -10]
+  [x + 32, y, 32, 16, -16, -12]
+  [x + 65, y, 22, 20,  -8, -11]
+}
+
+spriteset(spriteset_F40C_f, "gfx/USA_EMD_F40C.png") { tmpl_F40C(4, 4)         tmpl_F40C_2(92, 4) }
+spriteset(spriteset_F40C_f_off, "gfx/USA_EMD_F40C.png") { tmpl_F40C(4, 66)    tmpl_F40C_2(92, 66) }
+spriteset(spriteset_F40C_b_off, "gfx/USA_EMD_F40C.png") { tmpl_F40C_2(92, 66) tmpl_F40C(4, 66) }
+spriteset(spriteset_F40C_b, "gfx/USA_EMD_F40C.png") { tmpl_F40C_2(92, 35)     tmpl_F40C_2(4, 35) }
+
+switch(FEAT_TRAINS, SELF, sw_F40C_graphics3, position_in_vehid_chain % 2) {
+  0: spriteset_F40C_f_off;
+  spriteset_F40C_b_off;
+}
+switch(FEAT_TRAINS, SELF, sw_F40C_graphics2, position_in_vehid_chain_from_end) {
+  0: spriteset_F40C_b;
+  sw_F40C_graphics3;
+}
+switch(FEAT_TRAINS, SELF, sw_F40C_graphics, position_in_vehid_chain) {
+  0: spriteset_F40C_f;
+  sw_F40C_graphics2;
+}
+
+item(FEAT_TRAINS, item_F40C, 214) {
+  property {
+    name:                           string(STR_F40C_Name);
+    climates_available:             bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+    introduction_date:              date(1974, 1, 1);
+    model_life:                     VEHICLE_NEVER_EXPIRES;
+    vehicle_life:                   35;
+    reliability_decay:              15;
+    refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+    non_refittable_cargo_classes:   bitmask();
+    loading_speed:                  1;
+    cost_factor:                    52;
+    running_cost_factor:            152;
+    sprite_id:                      SPRITE_ID_NEW_TRAIN;
+    speed:                          152 km/h;
+    misc_flags:                     bitmask(TRAIN_FLAG_MU);
+    refit_cost:                     0;
+    track_type:                     RAIL;
+    ai_special_flag:                AI_FLAG_PASSENGER;
+    power:                          2390 kW;
+    running_cost_base:              RUNNING_COST_ELECTRIC;
+    dual_headed:                    0;
+    cargo_capacity:                 1;
+    weight:                         165 ton;
+    ai_engine_rank:                 0;
+    engine_class:                   ENGINE_CLASS_DIESEL;
+    extra_power_per_wagon:          0;
+    tractive_effort_coefficient:    0.3;
+    air_drag_coefficient:           0.06;
+    visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER);
+    extra_weight_per_wagon:         0;
+    bitmask_vehicle_info:           0;
+  }
+  graphics {
+    purchase:                       spriteset_F40C_purchase;
+    additional_text:                string(STR_F40C_Desc);
+    length:                         8;
+    cargo_capacity:                 0;
+    default:                        sw_F40C_graphics;
+  }
+}
