@@ -1,71 +1,120 @@
+// TODO OTTD 17: train_is_driving_backwards -> vehicle_is_moving_backwards
 grf {
-    grfid: "TP\02\01";
-    name: string(STR_GRF_NAME);
-    desc: string(STR_GRF_DESC);
-    version: 15;
-    min_compatible_version: 15;
-    param 1 {
-        param_running_costs {
-            type: int;
-            name: string(STR_Parameter_Running_Costs_NAME);
-            desc: string(STR_Parameter_Running_Costs_DESC);
-            min_value: 0;
-            max_value: 6;
-            def_value: 2;
-            names: {
-                0: string(STR_Parameter_Running_Costs_1_4);
-                1: string(STR_Parameter_Running_Costs_1_2);
-                2: string(STR_Parameter_Running_Costs_1);
-                3: string(STR_Parameter_Running_Costs_2);
-                4: string(STR_Parameter_Running_Costs_4);
-                5: string(STR_Parameter_Running_Costs_8);
-                6: string(STR_Parameter_Running_Costs_16);
-            };
-        }
+  grfid: "TP\02\01";
+  name: string(STR_GRF_NAME);
+  desc: string(STR_GRF_DESC);
+  version: 16;
+  min_compatible_version: 16;
+  param 1 {
+    param_running_costs {
+      type: int;
+      name: string(STR_PARAM_RUNNING_COSTS_NAME);
+      desc: string(STR_PARAM_RUNNING_COSTS_DESC);
+      min_value: 0;
+      max_value: 6;
+      def_value: 2;
+      names: {
+        0: string(STR_PARAM_VALUE_1_4);
+        1: string(STR_PARAM_VALUE_1_2);
+        2: string(STR_PARAM_VALUE_1);
+        3: string(STR_PARAM_VALUE_2);
+        4: string(STR_PARAM_VALUE_4);
+        5: string(STR_PARAM_VALUE_8);
+        6: string(STR_PARAM_VALUE_16);
+      };
     }
-    param 2 {
-        param_wagon_costs {
-            type: int;
-            name: string(STR_Parameter_Wagon_Costs_NAME);
-            desc: string(STR_Parameter_Wagon_Costs_DESC);
-            min_value: 0;
-            max_value: 6;
-            def_value: 2;
-            names: {
-                0: string(STR_Parameter_Wagon_Costs_1_4);
-                1: string(STR_Parameter_Wagon_Costs_1_2);
-                2: string(STR_Parameter_Wagon_Costs_1);
-                3: string(STR_Parameter_Wagon_Costs_2);
-                4: string(STR_Parameter_Wagon_Costs_4);
-                5: string(STR_Parameter_Wagon_Costs_8);
-                6: string(STR_Parameter_Wagon_Costs_16);
-            };
-        }
+  }
+  param 2 {
+    param_wagon_costs {
+      type: int;
+      name: string(STR_PARAM_WAGON_COSTS_NAME);
+      desc: string(STR_PARAM_WAGON_COSTS_DESC);
+      min_value: 0;
+      max_value: 6;
+      def_value: 2;
+      names: {
+        0: string(STR_PARAM_VALUE_1_4);
+        1: string(STR_PARAM_VALUE_1_2);
+        2: string(STR_PARAM_VALUE_1);
+        3: string(STR_PARAM_VALUE_2);
+        4: string(STR_PARAM_VALUE_4);
+        5: string(STR_PARAM_VALUE_8);
+        6: string(STR_PARAM_VALUE_16);
+      };
     }
-}
-
-basecost {
-    PR_RUNNING: (param_running_costs - 2);
-    PR_BUILD_VEHICLE_WAGON: 3;
-}
-
-railtypetable {
-    RAIL,
-    ELRL,
-    // 3rd rail
-    RT_3RD: [
-        MTRO,
-        "3RDR",
-        "3RDC",
-        "3LOW",
-        CLOW,
-        "3MED",
-        CMED,
-        ELRL
-    ]
+  }
 }
 
 train_width_32_px = 1;
-traininfo_y_offset = 3;
-
+traininfo_y_offset = 2;
 disable_item(FEAT_TRAINS);
+
+basecost {
+  PR_RUNNING: (param_running_costs - 2);
+  PR_BUILD_VEHICLE_WAGON: (param_wagon_costs + 5);
+}
+
+// TODO
+railtypetable {
+  RAIL,
+  ELRL,
+  RT_3RD: [MTRO, "3RDR", "3RDC", "3LOW", CLOW, "3MED", CMED, ELRL]
+}
+
+template tmpl_purchase(row, column, offset) { [ 58 + column * 152, 14 + row * 40, 52, 12, -30 - 4*offset, -8] }
+
+template _tmpl_base(row, column, x1, y1, x2, y2, x3, y3, x4, y4) {
+  [  4 + column * 152, 4 + row * 40,  8, 36, x1, y1]
+  [ 18 + column * 152, 4 + row * 40, 34, 28, x2, y2]
+  [ 58 + column * 152, 4 + row * 40, 52, 24, x3, y3]
+  [116 + column * 152, 4 + row * 40, 34, 28, x4, y4]
+}
+
+template tmpl_12_4(row, column) { _tmpl_base(row, column, -3, -17, -20, -16, -26, -18, -12, -16) }
+template tmpl_p_12_wagon(row, column) { [ 58 + column * 152, 4 + row * 40, 52, 24, -30, -18] }
+template tmpl_12(row, column) { tmpl_12_4(row, column) tmpl_12_4(row, column + 1) }
+template tmpl_12_back(row, column) { tmpl_12_4(row, column) tmpl_12_4(row, column + 1) }
+
+spriteset(spriteset_empty, "gfx/template.png") { [ 58, 4, 1, 1, 0, 0] }
+
+switch(FEAT_TRAINS, SELF, sw_sprite_stack, count, [
+  STORE_TEMP(getbits(extra_callback_info1, 8, 8), 0x0),
+  STORE_TEMP(((LOAD_TEMP(0x0) < count - 1) * CB_FLAG_MORE_SPRITES) | PALETTE_USE_DEFAULT, 0x100),
+  LOAD_TEMP(0x0)
+]) { return; }
+
+switch(FEAT_TRAINS, SELF, sw_length_12, (position_in_vehid_chain % 3) == 1 ? 8 : 2) { return; }
+
+switch(FEAT_TRAINS, SELF, sw_articulated_parts, count,
+       extra_callback_info1 < count ? vehicle_type_id : CB_RESULT_NO_MORE_ARTICULATED_PARTS) { return; }
+
+switch(FEAT_TRAINS, SELF, sw_motion_counter_frames, count, train_is_driving_backwards) {
+  1: count - (motion_counter % count) - 1;
+  motion_counter % count;
+}
+
+// i is the index from end of the vehid part being sprited
+switch(FEAT_TRAINS, SELF, sw_has_tail_lights, i, (position_in_consist_from_end == i) * (!train_is_driving_backwards)) { return; }
+
+switch(FEAT_TRAINS, SELF, sw_is_variant_name, getbits(extra_callback_info1, 0, 8) == 0x20 && (getbits(extra_callback_info1, 8, 8) == 0)) { return; }
+
+switch(FEAT_TRAINS, SELF, sw_name, model_suf, type_suf, [
+  STORE_TEMP(string(STR_NAME_TEMPLATE), 256),
+  STORE_TEMP(((sw_is_variant_name() ? string(STR_DASH_SEP) : string(STR_EMPTY)) << 16) + model_suf, 257),
+  STORE_TEMP(type_suf, 258)
+]) { 0x040F; }
+
+switch(FEAT_TRAINS, SELF, sw_str_join2, str_a, str_b, [
+  STORE_TEMP(string(STR_JOIN_2_TEMPLATE), 256),
+  STORE_TEMP((str_b << 16) + str_a, 257)
+]) { 0x040F; }
+
+switch(FEAT_TRAINS, SELF, sw_Amtrak_current_phase, current_year) {
+  0..1974:    0;
+  1975:       1;
+  1976..1992: 2;
+  1993..1999: 3;
+  2000..2001: 4;
+  2002..2021: 5;
+  6;
+}

@@ -1,0 +1,17 @@
+/*
+ * Common PRR tender sprites
+ */
+spriteset(spriteset_p_PRR_tender_8,       "gfx/steam/PRR Tenders.png") { tmpl_purchase(0, 1, -6) }
+// spriteset(spriteset_p_PRR_tender_7,       "gfx/steam/PRR Tenders.png") { tmpl_purchase(0, 1,  9) }
+// spriteset(spriteset_p_PRR_tender_6,       "gfx/steam/PRR Tenders.png") { tmpl_purchase(0, 1,  8) }
+spriteset(spriteset_p_PRR_tender_large_8, "gfx/steam/PRR Tenders.png") { tmpl_purchase(1, 1, -6) }
+// spriteset(spriteset_p_PRR_tender_large_7, "gfx/steam/PRR Tenders.png") { tmpl_purchase(1, 1,  9) }
+// spriteset(spriteset_p_PRR_tender_large_6, "gfx/steam/PRR Tenders.png") { tmpl_purchase(1, 1,  8) }
+
+spriteset(spriteset_PRR_tender,       "gfx/steam/PRR Tenders.png") { tmpl_12_4(0, 0) tmpl_12_4(0, 1) }
+spriteset(spriteset_PRR_tender_large, "gfx/steam/PRR Tenders.png") { tmpl_12_4(1, 0) tmpl_12_4(1, 1) }
+
+switch(FEAT_TRAINS, SELF, sw_spriteset_PRR_tender, index, index) {
+  0: spriteset_PRR_tender;
+  1: spriteset_PRR_tender_large;
+}

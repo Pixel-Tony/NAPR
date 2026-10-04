@@ -1,0 +1,227 @@
+/*
+ * Budd Amfleet I, II for Amtrak
+ */
+spriteset(spriteset_p_Budd_Amfleet_I_Coach_AMTK_II,       "gfx/wagon/Budd Amfleet I Amtrak.png") { tmpl_purchase(0, 0, 0) }
+spriteset(spriteset_mask_p_Budd_Amfleet_I_Coach_AMTK_III, "gfx/wagon/Budd Amfleet I Amtrak.png") { tmpl_purchase(1, 0, 0) }
+spriteset(spriteset_mask_p_Budd_Amfleet_I_Coach_AMTK_IV,  "gfx/wagon/Budd Amfleet I Amtrak.png") { tmpl_purchase(2, 0, 0) }
+spriteset(spriteset_mask_p_Budd_Amfleet_I_Coach_AMTK_V,   "gfx/wagon/Budd Amfleet I Amtrak.png") { tmpl_purchase(3, 0, 0) }
+spriteset(spriteset_mask_p_Budd_Amfleet_I_Coach_AMTK_VI,  "gfx/wagon/Budd Amfleet I Amtrak.png") { tmpl_purchase(4, 0, 0) }
+spriteset(spriteset_mask_p_Budd_Amfleet_I_Coach_AMTK_VII, "gfx/wagon/Budd Amfleet I Amtrak.png") { tmpl_purchase(5, 0, 0) }
+
+spriteset(spriteset_mask_p_Budd_Amfleet_I_Cafe,          "gfx/wagon/Budd Amfleet I Amtrak.png") { tmpl_purchase(0, 1, 0) }
+spriteset(spriteset_mask_p_Budd_Amfleet_I_Cafe_AMTK_III, "gfx/wagon/Budd Amfleet I Amtrak.png") { tmpl_purchase(1, 1, 0) }
+spriteset(spriteset_mask_p_Budd_Amfleet_I_Cafe_AMTK_IV,  "gfx/wagon/Budd Amfleet I Amtrak.png") { tmpl_purchase(2, 1, 0) }
+spriteset(spriteset_mask_p_Budd_Amfleet_I_Cafe_AMTK_V,   "gfx/wagon/Budd Amfleet I Amtrak.png") { tmpl_purchase(3, 1, 0) }
+spriteset(spriteset_mask_p_Budd_Amfleet_I_Cafe_AMTK_VI,  "gfx/wagon/Budd Amfleet I Amtrak.png") { tmpl_purchase(4, 1, 0) }
+spriteset(spriteset_mask_p_Budd_Amfleet_I_Cafe_AMTK_VII, "gfx/wagon/Budd Amfleet I Amtrak.png") { tmpl_purchase(5, 1, 0) }
+
+spriteset(spriteset_Budd_Amfleet_I_Coach_AMTK_II,       "gfx/wagon/Budd Amfleet I Amtrak.png") { tmpl_12_4(0, 0) }
+spriteset(spriteset_mask_Budd_Amfleet_I_Coach_AMTK_III, "gfx/wagon/Budd Amfleet I Amtrak.png") { tmpl_12_4(1, 0) }
+spriteset(spriteset_mask_Budd_Amfleet_I_Coach_AMTK_IV,  "gfx/wagon/Budd Amfleet I Amtrak.png") { tmpl_12_4(2, 0) }
+spriteset(spriteset_mask_Budd_Amfleet_I_Coach_AMTK_V,   "gfx/wagon/Budd Amfleet I Amtrak.png") { tmpl_12_4(3, 0) }
+spriteset(spriteset_mask_Budd_Amfleet_I_Coach_AMTK_VI,  "gfx/wagon/Budd Amfleet I Amtrak.png") { tmpl_12_4(4, 0) }
+spriteset(spriteset_mask_Budd_Amfleet_I_Coach_AMTK_VII, "gfx/wagon/Budd Amfleet I Amtrak.png") { tmpl_12_4(5, 0) }
+
+spriteset(spriteset_mask_Budd_Amfleet_I_Cafe,          "gfx/wagon/Budd Amfleet I Amtrak.png") { tmpl_12_4(0, 1) }
+spriteset(spriteset_mask_Budd_Amfleet_I_Cafe_AMTK_III, "gfx/wagon/Budd Amfleet I Amtrak.png") { tmpl_12_4(1, 1) }
+spriteset(spriteset_mask_Budd_Amfleet_I_Cafe_AMTK_IV,  "gfx/wagon/Budd Amfleet I Amtrak.png") { tmpl_12_4(2, 1) }
+spriteset(spriteset_mask_Budd_Amfleet_I_Cafe_AMTK_V,   "gfx/wagon/Budd Amfleet I Amtrak.png") { tmpl_12_4(3, 1) }
+spriteset(spriteset_mask_Budd_Amfleet_I_Cafe_AMTK_VI,  "gfx/wagon/Budd Amfleet I Amtrak.png") { tmpl_12_4(4, 1) }
+spriteset(spriteset_mask_Budd_Amfleet_I_Cafe_AMTK_VII, "gfx/wagon/Budd Amfleet I Amtrak.png") { tmpl_12_4(5, 1) }
+
+spriteset(spriteset_Budd_Amfleet_I_tail_lights, "gfx/wagon/Budd Amfleet I Amtrak.png") { tmpl_12_4(6, 0) tmpl_12_4(6, 1) }
+
+// Purchase sprites
+switch(FEAT_TRAINS, SELF, sw_spriteset_p_Budd_Amfleet_I_Coach, sw_sprite_stack(2) * max(1, sw_Amtrak_current_phase())) {
+  0..1: spriteset_p_Budd_Amfleet_I_Coach_AMTK_II;
+  2: spriteset_mask_p_Budd_Amfleet_I_Coach_AMTK_III;
+  3: spriteset_mask_p_Budd_Amfleet_I_Coach_AMTK_IV;
+  4: spriteset_mask_p_Budd_Amfleet_I_Coach_AMTK_V;
+  5: spriteset_mask_p_Budd_Amfleet_I_Coach_AMTK_VI;
+  6: spriteset_mask_p_Budd_Amfleet_I_Coach_AMTK_VII;
+}
+
+switch(FEAT_TRAINS, SELF, sw_spriteset_p_Budd_Amfleet_I_Cafe, [
+  sw_sprite_stack(3),
+  LOAD_TEMP(0x0) < 2 ? LOAD_TEMP(0x0) : max(1, sw_Amtrak_current_phase())
+]) {
+  0: spriteset_p_Budd_Amfleet_I_Coach_AMTK_II;
+  1: spriteset_mask_p_Budd_Amfleet_I_Cafe;
+  2: spriteset_mask_p_Budd_Amfleet_I_Cafe_AMTK_III;
+  3: spriteset_mask_p_Budd_Amfleet_I_Cafe_AMTK_IV;
+  4: spriteset_mask_p_Budd_Amfleet_I_Cafe_AMTK_V;
+  5: spriteset_mask_p_Budd_Amfleet_I_Cafe_AMTK_VI;
+  6: spriteset_mask_p_Budd_Amfleet_I_Cafe_AMTK_VII;
+}
+
+// Normal sprites
+switch(FEAT_TRAINS, SELF, sw_spriteset_Budd_Amfleet_I_Coach_by_ind, ind, [
+  sw_sprite_stack(2 + sw_has_tail_lights(1)),
+  LOAD_TEMP(0x0) != 1 ? 10 + LOAD_TEMP(0x0) : ind
+]) {
+  0: spriteset_Budd_Amfleet_I_Coach_AMTK_II;
+  1: spriteset_mask_Budd_Amfleet_I_Coach_AMTK_III;
+  2: spriteset_mask_Budd_Amfleet_I_Coach_AMTK_IV;
+  3: spriteset_mask_Budd_Amfleet_I_Coach_AMTK_V;
+  4: spriteset_mask_Budd_Amfleet_I_Coach_AMTK_VI;
+  5: spriteset_mask_Budd_Amfleet_I_Coach_AMTK_VII;
+  10: spriteset_Budd_Amfleet_I_Coach_AMTK_II;
+  12: spriteset_Budd_Amfleet_I_tail_lights;
+}
+
+switch(FEAT_TRAINS, SELF, sw_spriteset_Budd_Amfleet_I_Cafe_by_ind, ind, [
+  sw_sprite_stack(2 + sw_has_tail_lights(1)),
+  LOAD_TEMP(0x0) != 1 ? 10 + LOAD_TEMP(0x0) : ind
+]) {
+  0: spriteset_mask_Budd_Amfleet_I_Cafe;
+  1: spriteset_mask_Budd_Amfleet_I_Cafe_AMTK_III;
+  2: spriteset_mask_Budd_Amfleet_I_Cafe_AMTK_IV;
+  3: spriteset_mask_Budd_Amfleet_I_Cafe_AMTK_V;
+  4: spriteset_mask_Budd_Amfleet_I_Cafe_AMTK_VI;
+  5: spriteset_mask_Budd_Amfleet_I_Cafe_AMTK_VII;
+  10: spriteset_Budd_Amfleet_I_Coach_AMTK_II;
+  12: spriteset_Budd_Amfleet_I_tail_lights;
+}
+
+switch(FEAT_TRAINS, SELF, sw_Budd_Amfleet_I_ind, cargo_subtype) {
+  0: max(1, sw_Amtrak_current_phase()) - 1;
+  min(cargo_subtype - 1, max(1, sw_Amtrak_current_phase()) - 1);
+}
+
+switch(FEAT_TRAINS, SELF, sw_spriteset_Budd_Amfleet_I_Coach, position_in_vehid_chain % 3) {
+  1: sw_spriteset_Budd_Amfleet_I_Coach_by_ind(sw_Budd_Amfleet_I_ind());
+  spriteset_empty;
+}
+
+switch(FEAT_TRAINS, SELF, sw_spriteset_Budd_Amfleet_I_Cafe, position_in_vehid_chain % 3) {
+  1: sw_spriteset_Budd_Amfleet_I_Cafe_by_ind(sw_Budd_Amfleet_I_ind());
+  spriteset_empty;
+}
+
+switch(FEAT_TRAINS, SELF, sw_liveries_Budd_Amfleet_I, (cargo_subtype + 1) * (max(1, sw_Amtrak_current_phase()) > cargo_subtype - 1)) {
+  1: string(STR_LIVERY_AMTRAK_CURRENT);
+  2: string(STR_LIVERY_AMTRAK_II);
+  3: string(STR_LIVERY_AMTRAK_III);
+  4: string(STR_LIVERY_AMTRAK_IV);
+  5: string(STR_LIVERY_AMTRAK_V);
+  6: string(STR_LIVERY_AMTRAK_VI);
+  7: string(STR_LIVERY_AMTRAK_VII);
+}
+
+item(FEAT_TRAINS, item_Budd_Amfleet_I_Coach, 700) {
+  property {
+    climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+    introduction_date:            date(1975, 1, 6);
+    model_life:                   VEHICLE_NEVER_EXPIRES;
+    vehicle_life:                 20;
+    refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+    non_refittable_cargo_classes: bitmask();
+    loading_speed:                13;
+    cost_factor:                  50;
+    running_cost_factor:          255;
+    sprite_id:                    SPRITE_ID_NEW_TRAIN;
+    speed:                        201 km/h;
+    misc_flags:                   bitmask(TRAIN_FLAG_SPRITE_STACK);
+    refit_cost:                   0;
+    track_type:                   RAIL;
+    ai_special_flag:              AI_FLAG_PASSENGER;
+    power:                        0;
+    cargo_capacity:               84 / 3;
+    weight:                       49 ton;
+    ai_engine_rank:               0;
+    tractive_effort_coefficient:  0.3;
+    air_drag_coefficient:         0.06;
+    visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+    extra_weight_per_wagon:       0;
+    bitmask_vehicle_info:         0;
+  }
+  graphics {
+    name:               sw_name(string(STR_BUDD_AMFLEET_I_MODEL), string(STR_BUDD_AMFLEET_I_COACH_NAME));
+    purchase:           sw_spriteset_p_Budd_Amfleet_I_Coach;
+    additional_text:    string(STR_USAGE_COMMUTER);
+    length:             sw_length_12;
+    cargo_subtype_text: sw_liveries_Budd_Amfleet_I;
+    default:            sw_spriteset_Budd_Amfleet_I_Coach;
+    articulated_part:   sw_articulated_parts(3);
+  }
+}
+
+item(FEAT_TRAINS, item_Budd_Amfleet_I_Coach_long_distance, 701) {
+  property {
+    variant_group:                item_Budd_Amfleet_I_Coach;
+    name:                         string(STR_BUDD_AMFLEET_I_COACH_LD_NAME);
+    climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+    introduction_date:            date(1975, 1, 6);
+    model_life:                   VEHICLE_NEVER_EXPIRES;
+    vehicle_life:                 20;
+    refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+    non_refittable_cargo_classes: bitmask();
+    loading_speed:                13;
+    cost_factor:                  50;
+    running_cost_factor:          100;
+    sprite_id:                    SPRITE_ID_NEW_TRAIN;
+    speed:                        201 km/h;
+    misc_flags:                   bitmask(TRAIN_FLAG_SPRITE_STACK);
+    refit_cost:                   0;
+    track_type:                   RAIL;
+    ai_special_flag:              AI_FLAG_PASSENGER;
+    power:                        0;
+    cargo_capacity:               60 / 3;
+    weight:                       49 ton;
+    ai_engine_rank:               0;
+    tractive_effort_coefficient:  0.3;
+    air_drag_coefficient:         0.06;
+    visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+    extra_weight_per_wagon:       0;
+    bitmask_vehicle_info:         0;
+  }
+  graphics {
+    name:               sw_name(string(STR_BUDD_AMFLEET_I_MODEL), string(STR_BUDD_AMFLEET_I_COACH_LD_NAME));
+    purchase:           sw_spriteset_p_Budd_Amfleet_I_Coach;
+    additional_text:    string(STR_USAGE_LD);
+    length:             sw_length_12;
+    cargo_subtype_text: sw_liveries_Budd_Amfleet_I;
+    default:            sw_spriteset_Budd_Amfleet_I_Coach;
+    articulated_part:   sw_articulated_parts(3);
+  }
+}
+
+item(FEAT_TRAINS, item_Budd_Amfleet_I_Cafe, 702) {
+  property {
+    variant_group:                item_Budd_Amfleet_I_Coach;
+    name:                         string(STR_BUDD_AMFLEET_I_CAFE_NAME);
+    climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+    introduction_date:            date(1975, 1, 6);
+    model_life:                   VEHICLE_NEVER_EXPIRES;
+    vehicle_life:                 20;
+    refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+    non_refittable_cargo_classes: bitmask();
+    loading_speed:                13;
+    cost_factor:                  55;
+    running_cost_factor:          100;
+    sprite_id:                    SPRITE_ID_NEW_TRAIN;
+    speed:                        201 km/h;
+    misc_flags:                   bitmask(TRAIN_FLAG_SPRITE_STACK);
+    refit_cost:                   0;
+    track_type:                   RAIL;
+    ai_special_flag:              AI_FLAG_PASSENGER;
+    power:                        0;
+    cargo_capacity:               55 / 3;
+    weight:                       49 ton;
+    ai_engine_rank:               0;
+    tractive_effort_coefficient:  0.3;
+    air_drag_coefficient:         0.06;
+    visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+    extra_weight_per_wagon:       0;
+    bitmask_vehicle_info:         0;
+  }
+  graphics {
+    name:               sw_name(string(STR_BUDD_AMFLEET_I_MODEL), string(STR_BUDD_AMFLEET_I_CAFE_NAME));
+    purchase:           sw_spriteset_p_Budd_Amfleet_I_Cafe;
+    additional_text:    sw_str_join2(string(STR_USAGE_COMMUTER), string(STR_BONUS_RESTAURANT));
+    length:             sw_length_12;
+    cargo_subtype_text: sw_liveries_Budd_Amfleet_I;
+    default:            sw_spriteset_Budd_Amfleet_I_Cafe;
+    articulated_part:   sw_articulated_parts(3);
+  }
+}

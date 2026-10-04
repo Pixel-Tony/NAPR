@@ -1,3 +1,11 @@
 main:
-	@python proc/process.py NAPR.pnml NAPR.nml
-	@nmlc -c --grf NAPR.grf NAPR.nml
+	./compile.py
+
+copy:
+	./compile.py --copy
+
+watch:
+	./compile.py watch
+
+watch-copy:
+	./compile.py --copy watch

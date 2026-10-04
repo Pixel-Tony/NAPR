@@ -1,0 +1,265 @@
+/*
+ * PRR K4s
+ * TODO:
+ * - 2 streamlined ALW versions as variants
+ */
+spriteset(spriteset_p_PRR_K4s,                  "gfx/steam/PRR K4s.png") { tmpl_purchase(0, 1, 2) }
+spriteset(spriteset_p_PRR_K4s_Loewy_1,          "gfx/steam/PRR K4s.png") { tmpl_purchase(1, 1, 2) }
+spriteset(spriteset_p_PRR_K4s_Loewy_2,          "gfx/steam/PRR K4s.png") { tmpl_purchase(2, 1, 2) }
+spriteset(spriteset_p_PRR_K4s_locomotive_rod_1, "gfx/steam/PRR K4s.png") { tmpl_purchase(3, 1, 2) }
+
+spriteset(spriteset_p_PRR_K4s_tender_Loewy_1, "gfx/steam/PRR K4s.png") { tmpl_purchase(7, 1, 12) }
+spriteset(spriteset_p_PRR_K4s_tender_Loewy_2, "gfx/steam/PRR K4s.png") { tmpl_purchase(8, 1, 11) }
+
+spriteset(spriteset_PRR_K4s_locomotive,         "gfx/steam/PRR K4s.png") { tmpl_12_4( 0, 0) tmpl_12_4( 0, 1) }
+spriteset(spriteset_PRR_K4s_locomotive_Loewy_1, "gfx/steam/PRR K4s.png") { tmpl_12_4( 1, 0) tmpl_12_4( 1, 1) }
+spriteset(spriteset_PRR_K4s_locomotive_Loewy_2, "gfx/steam/PRR K4s.png") { tmpl_12_4( 2, 0) tmpl_12_4( 2, 1) }
+spriteset(spriteset_PRR_K4s_locomotive_rod_1,   "gfx/steam/PRR K4s.png") { tmpl_12_4( 3, 0) tmpl_12_4( 3, 1) }
+spriteset(spriteset_PRR_K4s_locomotive_rod_2,   "gfx/steam/PRR K4s.png") { tmpl_12_4( 4, 0) tmpl_12_4( 4, 1) }
+spriteset(spriteset_PRR_K4s_locomotive_rod_3,   "gfx/steam/PRR K4s.png") { tmpl_12_4( 5, 0) tmpl_12_4( 5, 1) }
+spriteset(spriteset_PRR_K4s_locomotive_rod_4,   "gfx/steam/PRR K4s.png") { tmpl_12_4( 6, 0) tmpl_12_4( 6, 1) }
+spriteset(spriteset_PRR_K4s_tender_ALW_Loewy_1, "gfx/steam/PRR K4s.png") { tmpl_12_4( 7, 0) tmpl_12_4( 7, 1) }
+spriteset(spriteset_PRR_K4s_tender_ALW_Loewy_2, "gfx/steam/PRR K4s.png") { tmpl_12_4( 8, 0) tmpl_12_4( 8, 1) }
+
+switch(FEAT_TRAINS, SELF, sw_spriteset_p_PRR_K4s, [
+  sw_sprite_stack(4),
+  (LOAD_TEMP(0x0) == 1)
+  + (LOAD_TEMP(0x0) == 2) * (vehicle_type_id - item_Altoona_K4s + 2)
+  + (LOAD_TEMP(0x0) == 3) * (vehicle_type_id - item_Altoona_K4s + 6)
+]) {
+  0: spriteset_p_PRR_K4s;
+  1: spriteset_p_PRR_K4s_locomotive_rod_1;
+  2: spriteset_empty;
+  3: spriteset_p_PRR_K4s_Loewy_1;
+  4: spriteset_p_PRR_K4s_Loewy_2;
+  5: spriteset_empty;
+  6: spriteset_p_PRR_tender_8;
+  7: spriteset_p_PRR_K4s_tender_Loewy_1;
+  8: spriteset_p_PRR_K4s_tender_Loewy_2;
+  9: spriteset_p_PRR_tender_large_8;
+}
+
+switch(FEAT_TRAINS, SELF, sw_spriteset_PRR_K4s_locomotive, [
+  sw_sprite_stack(3),
+  (LOAD_TEMP(0x0) == 1) * (sw_motion_counter_frames(4) + 1)
+  + (LOAD_TEMP(0x0) == 2) * (vehicle_type_id - item_Altoona_K4s + 5)
+]) {
+  0: spriteset_PRR_K4s_locomotive;
+  1: spriteset_PRR_K4s_locomotive_rod_1;
+  2: spriteset_PRR_K4s_locomotive_rod_2;
+  3: spriteset_PRR_K4s_locomotive_rod_3;
+  4: spriteset_PRR_K4s_locomotive_rod_4;
+  5: spriteset_empty;
+  6: spriteset_PRR_K4s_locomotive_Loewy_1;
+  7: spriteset_PRR_K4s_locomotive_Loewy_2;
+  8: spriteset_empty;
+}
+
+switch(FEAT_TRAINS, SELF, sw_spriteset_PRR_K4s_tender, vehicle_type_id) {
+  item_Altoona_K4s: spriteset_PRR_tender;
+  item_Altoona_K4s_Loewy_1: spriteset_PRR_K4s_tender_ALW_Loewy_1;
+  item_Altoona_K4s_Loewy_2: spriteset_PRR_K4s_tender_ALW_Loewy_2;
+  item_Baldwin_K4s: spriteset_PRR_tender_large;
+}
+
+switch(FEAT_TRAINS, SELF, sw_spriteset_PRR_K4s, position_in_vehid_chain % 2) {
+  0: sw_spriteset_PRR_K4s_locomotive;
+  sw_spriteset_PRR_K4s_tender;
+}
+
+switch(FEAT_TRAINS, SELF, sw_length_PRR_K4s_tender, vehicle_type_id) {
+  item_Altoona_K4s: 4;
+  item_Altoona_K4s_Loewy_1: 6;
+  item_Altoona_K4s_Loewy_2: 5;
+  item_Baldwin_K4s: 5;
+}
+
+switch(FEAT_TRAINS, SELF, sw_length_PRR_K4s, position_in_vehid_chain % 2) {
+  0: 8;
+  sw_length_PRR_K4s_tender;
+}
+
+switch(FEAT_TRAINS, SELF, sw_effect_PRR_K4s, position_in_vehid_chain % 2) {
+  0: visual_effect_and_powered(VISUAL_EFFECT_STEAM, -3, DISABLE_WAGON_POWER);
+  visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+}
+
+item(FEAT_TRAINS, item_Altoona_K4s, 13) {
+  property {
+    name:                         string(STR_PRR_K4S_NAME);
+    climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+    introduction_date:            date(1914, 1, 1);
+    model_life:                   43;
+    vehicle_life:                 30;
+    reliability_decay:            12;
+    refittable_cargo_classes:     bitmask();
+    non_refittable_cargo_classes: bitmask();
+    loading_speed:                0;
+    cost_factor:                  30 - 2;
+    running_cost_factor:          130 + 20;
+    sprite_id:                    SPRITE_ID_NEW_TRAIN;
+    speed:                        87 mph;
+    misc_flags:                   bitmask(TRAIN_FLAG_SPRITE_STACK);
+    refit_cost:                   0;
+    track_type:                   RAIL;
+    ai_special_flag:              AI_FLAG_PASSENGER;
+    power:                        3286 hp;
+    running_cost_base:            RUNNING_COST_STEAM;
+    dual_headed:                  0;
+    cargo_capacity:               0;
+    weight:                       212 ton;
+    ai_engine_rank:               0;
+    engine_class:                 ENGINE_CLASS_STEAM;
+    extra_power_per_wagon:        0;
+    tractive_effort_coefficient:  0.0933;
+    air_drag_coefficient:         14/137;
+    visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_STEAM, -6, DISABLE_WAGON_POWER);
+    extra_weight_per_wagon:       0;
+    bitmask_vehicle_info:         0;
+  }
+  graphics {
+    name:                       sw_name(string(STR_PRR_K4S_NAME), string(STR_PRR_K4S_ALTOONA));
+    purchase:                   sw_spriteset_p_PRR_K4s;
+    additional_text:            string(STR_USAGE_COMMUTER);
+    articulated_part:           sw_articulated_parts(2);
+    length:                     sw_length_PRR_K4s;
+    visual_effect_and_powered:  sw_effect_PRR_K4s;
+    default:                    sw_spriteset_PRR_K4s;
+  }
+}
+
+item(FEAT_TRAINS, item_Altoona_K4s_Loewy_1, item_Altoona_K4s + 1) {
+  property {
+    variant_group:                item_Altoona_K4s;
+    // climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+    climates_available:           bitmask();
+    introduction_date:            date(1914, 1, 1);
+    model_life:                   43;
+    vehicle_life:                 30;
+    reliability_decay:            12;
+    refittable_cargo_classes:     bitmask();
+    non_refittable_cargo_classes: bitmask();
+    loading_speed:                0;
+    cost_factor:                  30 + 5;
+    running_cost_factor:          130 + 10;
+    sprite_id:                    SPRITE_ID_NEW_TRAIN;
+    speed:                        87 + 5 mph;
+    misc_flags:                   bitmask(TRAIN_FLAG_SPRITE_STACK);
+    refit_cost:                   0;
+    track_type:                   RAIL;
+    ai_special_flag:              AI_FLAG_PASSENGER;
+    power:                        3286 hp;
+    running_cost_base:            RUNNING_COST_STEAM;
+    dual_headed:                  0;
+    cargo_capacity:               0;
+    weight:                       212 ton;
+    ai_engine_rank:               0;
+    engine_class:                 ENGINE_CLASS_STEAM;
+    extra_power_per_wagon:        0;
+    tractive_effort_coefficient:  0.0933;
+    air_drag_coefficient:         14/137;
+    visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_STEAM, -6, DISABLE_WAGON_POWER);
+    extra_weight_per_wagon:       0;
+    bitmask_vehicle_info:         0;
+  }
+  graphics {
+    name:                       sw_name(string(STR_PRR_K4S_NAME), string(STR_PRR_K4S_ALTOONA_LOEWY_1));
+    purchase:                   sw_spriteset_p_PRR_K4s;
+    additional_text:            sw_str_join2(string(STR_USAGE_LD), string(STR_BONUS_STREAMLINED));
+    articulated_part:           sw_articulated_parts(2);
+    length:                     sw_length_PRR_K4s;
+    visual_effect_and_powered:  sw_effect_PRR_K4s;
+    default:                    sw_spriteset_PRR_K4s;
+  }
+}
+
+item(FEAT_TRAINS, item_Altoona_K4s_Loewy_2, item_Altoona_K4s + 2) {
+  property {
+    variant_group:                item_Altoona_K4s;
+    // climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+    climates_available:           bitmask();
+    introduction_date:            date(1914, 1, 1);
+    model_life:                   43;
+    vehicle_life:                 30;
+    reliability_decay:            12;
+    refittable_cargo_classes:     bitmask();
+    non_refittable_cargo_classes: bitmask();
+    loading_speed:                0;
+    cost_factor:                  30 + 3;
+    running_cost_factor:          130 + 8;
+    sprite_id:                    SPRITE_ID_NEW_TRAIN;
+    speed:                        87 + 3 mph;
+    misc_flags:                   bitmask(TRAIN_FLAG_SPRITE_STACK);
+    refit_cost:                   0;
+    track_type:                   RAIL;
+    ai_special_flag:              AI_FLAG_PASSENGER;
+    power:                        3286 hp;
+    running_cost_base:            RUNNING_COST_STEAM;
+    dual_headed:                  0;
+    cargo_capacity:               0;
+    weight:                       212 ton;
+    ai_engine_rank:               0;
+    engine_class:                 ENGINE_CLASS_STEAM;
+    extra_power_per_wagon:        0;
+    tractive_effort_coefficient:  0.0933;
+    air_drag_coefficient:         14/137;
+    visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_STEAM, -6, DISABLE_WAGON_POWER);
+    extra_weight_per_wagon:       0;
+    bitmask_vehicle_info:         0;
+  }
+  graphics {
+    name:                       sw_name(string(STR_PRR_K4S_NAME), string(STR_PRR_K4S_ALTOONA_LOEWY_2));
+    purchase:                   sw_spriteset_p_PRR_K4s;
+    additional_text:            sw_str_join2(string(STR_USAGE_LD), string(STR_BONUS_STREAMLINED));
+    articulated_part:           sw_articulated_parts(2);
+    length:                     sw_length_PRR_K4s;
+    cargo_capacity:             0;
+    visual_effect_and_powered:  sw_effect_PRR_K4s;
+    default:                    sw_spriteset_PRR_K4s;
+  }
+}
+
+item(FEAT_TRAINS, item_Baldwin_K4s, item_Altoona_K4s + 3) {
+  property {
+    variant_group:                item_Altoona_K4s;
+    name:                         string(STR_PRR_K4S_NAME);
+    climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+    introduction_date:            date(1914, 1, 1);
+    model_life:                   43;
+    vehicle_life:                 30;
+    reliability_decay:            12;
+    refittable_cargo_classes:     bitmask();
+    non_refittable_cargo_classes: bitmask();
+    loading_speed:                0;
+    cost_factor:                  30;
+    running_cost_factor:          130;
+    sprite_id:                    SPRITE_ID_NEW_TRAIN;
+    speed:                        87 mph;
+    misc_flags:                   bitmask(TRAIN_FLAG_SPRITE_STACK);
+    refit_cost:                   0;
+    track_type:                   RAIL;
+    ai_special_flag:              AI_FLAG_PASSENGER;
+    power:                        3286 hp;
+    running_cost_base:            RUNNING_COST_STEAM;
+    dual_headed:                  0;
+    weight:                       212 ton;
+    ai_engine_rank:               0;
+    engine_class:                 ENGINE_CLASS_STEAM;
+    extra_power_per_wagon:        0;
+    tractive_effort_coefficient:  0.0933;
+    air_drag_coefficient:         14/137;
+    visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_STEAM, -6, DISABLE_WAGON_POWER);
+    extra_weight_per_wagon:       0;
+    bitmask_vehicle_info:         0;
+  }
+  graphics {
+    name:                       sw_name(string(STR_PRR_K4S_NAME), string(STR_PRR_K4S_BALDWIN));
+    purchase:                   sw_spriteset_p_PRR_K4s;
+    additional_text:            string(STR_USAGE_LD);
+    articulated_part:           sw_articulated_parts(2);
+    length:                     sw_length_PRR_K4s;
+    visual_effect_and_powered:  sw_effect_PRR_K4s;
+    default:                    sw_spriteset_PRR_K4s;
+  }
+}
+
